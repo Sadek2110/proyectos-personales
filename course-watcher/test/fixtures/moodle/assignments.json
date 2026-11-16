@@ -1,0 +1,1262 @@
+{
+  "courses": [
+    {
+      "id": 2005,
+      "fullname": "Estructuras de control en Python",
+      "shortname": "DALP-ECPY-2627",
+      "timemodified": 1790588479,
+      "assignments": [
+        {
+          "id": 86499,
+          "cmid": 346258,
+          "course": 2005,
+          "name": "Prueba práctica U1: evaluación del ejercicio 1 - CE a,b",
+          "nosubmissions": 1,
+          "submissiondrafts": 0,
+          "sendnotifications": 0,
+          "sendlatenotifications": 0,
+          "sendstudentnotifications": 0,
+          "duedate": 0,
+          "allowsubmissionsfromdate": 0,
+          "grade": 10,
+          "gradepenalty": 0,
+          "timemodified": 1793262503,
+          "completionsubmit": 1,
+          "cutoffdate": 0,
+          "gradingduedate": 0,
+          "teamsubmission": 0,
+          "requireallteammemberssubmit": 0,
+          "teamsubmissiongroupingid": 0,
+          "blindmarking": 0,
+          "hidegrader": 0,
+          "revealidentities": 0,
+          "attemptreopenmethod": "untilpass",
+          "maxattempts": 1,
+          "markingworkflow": 0,
+          "markingallocation": 0,
+          "markinganonymous": 0,
+          "requiresubmissionstatement": 0,
+          "preventsubmissionnotingroup": 0,
+          "configs": [
+            {
+              "plugin": "comments",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "commentinline",
+              "value": "0"
+            }
+          ],
+          "intro": "",
+          "introformat": 1,
+          "introfiles": [],
+          "introattachments": [],
+          "timelimit": 0,
+          "submissionattachments": 0
+        },
+        {
+          "id": 87475,
+          "cmid": 350014,
+          "course": 2005,
+          "name": "Prueba práctica U2: evaluación del ejercicio 4 - CE g,j",
+          "nosubmissions": 0,
+          "submissiondrafts": 0,
+          "sendnotifications": 0,
+          "sendlatenotifications": 0,
+          "sendstudentnotifications": 0,
+          "duedate": 0,
+          "allowsubmissionsfromdate": 0,
+          "grade": 10,
+          "gradepenalty": 0,
+          "timemodified": 1794577226,
+          "completionsubmit": 1,
+          "cutoffdate": 0,
+          "gradingduedate": 0,
+          "teamsubmission": 0,
+          "requireallteammemberssubmit": 0,
+          "teamsubmissiongroupingid": 0,
+          "blindmarking": 0,
+          "hidegrader": 0,
+          "revealidentities": 0,
+          "attemptreopenmethod": "untilpass",
+          "maxattempts": 1,
+          "markingworkflow": 0,
+          "markingallocation": 0,
+          "markinganonymous": 0,
+          "requiresubmissionstatement": 0,
+          "preventsubmissionnotingroup": 0,
+          "configs": [
+            {
+              "plugin": "comments",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "commentinline",
+              "value": "0"
+            }
+          ],
+          "intro": "",
+          "introformat": 1,
+          "introfiles": [],
+          "introattachments": [],
+          "timelimit": 0,
+          "submissionattachments": 0
+        },
+        {
+          "id": 87477,
+          "cmid": 350017,
+          "course": 2005,
+          "name": "Prueba práctica U2: evaluación del ejercicio 5 - CE h",
+          "nosubmissions": 0,
+          "submissiondrafts": 0,
+          "sendnotifications": 0,
+          "sendlatenotifications": 0,
+          "sendstudentnotifications": 0,
+          "duedate": 0,
+          "allowsubmissionsfromdate": 0,
+          "grade": 10,
+          "gradepenalty": 0,
+          "timemodified": 1794577231,
+          "completionsubmit": 1,
+          "cutoffdate": 0,
+          "gradingduedate": 0,
+          "teamsubmission": 0,
+          "requireallteammemberssubmit": 0,
+          "teamsubmissiongroupingid": 0,
+          "blindmarking": 0,
+          "hidegrader": 0,
+          "revealidentities": 0,
+          "attemptreopenmethod": "untilpass",
+          "maxattempts": 1,
+          "markingworkflow": 0,
+          "markingallocation": 0,
+          "markinganonymous": 0,
+          "requiresubmissionstatement": 0,
+          "preventsubmissionnotingroup": 0,
+          "configs": [
+            {
+              "plugin": "comments",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "commentinline",
+              "value": "0"
+            }
+          ],
+          "intro": "",
+          "introformat": 1,
+          "introfiles": [],
+          "introattachments": [],
+          "timelimit": 0,
+          "submissionattachments": 0
+        },
+        {
+          "id": 88301,
+          "cmid": 352646,
+          "course": 2005,
+          "name": "Proyecto paralelo U3: Mapa web de volcanes con Folium",
+          "nosubmissions": 0,
+          "submissiondrafts": 0,
+          "sendnotifications": 0,
+          "sendlatenotifications": 0,
+          "sendstudentnotifications": 0,
+          "duedate": 1794437940,
+          "allowsubmissionsfromdate": 1793487600,
+          "grade": 0,
+          "gradepenalty": 0,
+          "timemodified": 1793725595,
+          "completionsubmit": 1,
+          "cutoffdate": 1794437940,
+          "gradingduedate": 0,
+          "teamsubmission": 0,
+          "requireallteammemberssubmit": 0,
+          "teamsubmissiongroupingid": 0,
+          "blindmarking": 0,
+          "hidegrader": 0,
+          "revealidentities": 0,
+          "attemptreopenmethod": "untilpass",
+          "maxattempts": 1,
+          "markingworkflow": 0,
+          "markingallocation": 0,
+          "markinganonymous": 0,
+          "requiresubmissionstatement": 0,
+          "preventsubmissionnotingroup": 0,
+          "configs": [
+            {
+              "plugin": "onlinetext",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "onlinetext",
+              "subtype": "assignsubmission",
+              "name": "wordlimit",
+              "value": "0"
+            },
+            {
+              "plugin": "onlinetext",
+              "subtype": "assignsubmission",
+              "name": "wordlimitenabled",
+              "value": "0"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxsubmissionsizebytes",
+              "value": "10485760"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "filetypeslist",
+              "value": ""
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxfilesubmissions",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            }
+          ],
+          "intro": "<p>Encuentra adjunto un cuaderno de Jupyter con la descripción y guía del proyecto. Evita emplear un LLM para la realización de esta práctica. Es perfectamente lícito (y aconsejable) usar un LLM para ir resolviendo dudas puntuales pero hemos de poner el esfuerzo de familiarizarnos con las tecnologías que se emplean en el cuaderno.</p>\r\n<p>Implementa los \"<em>Retos para practicar</em>\" del final del cuaderno. </p>\r\n<p>Escribe, al entregar en Moodle, un pequeño texto explicando los cambios realizados y en qué he de fijarme para detectarlos.</p>\r\n<p>Entrega el fichero HTML con el resultado final.</p>\r\n<p></p>\r\n<p>Archivos adjuntos:</p>",
+          "introformat": 1,
+          "introfiles": [],
+          "introattachments": [
+            {
+              "filename": "mapa_web_volcanes_folium.ipynb",
+              "filepath": "/",
+              "filesize": 14444,
+              "fileurl": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/webservice/pluginfile.php/703792/mod_assign/introattachment/0/mapa_web_volcanes_folium.ipynb",
+              "timemodified": 1793725595,
+              "mimetype": "application/json",
+              "isexternalfile": false,
+              "icon": "f/json"
+            },
+            {
+              "filename": "Volcanoes_USA.txt",
+              "filepath": "/",
+              "filesize": 8057,
+              "fileurl": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/webservice/pluginfile.php/703792/mod_assign/introattachment/0/Volcanoes_USA.txt",
+              "timemodified": 1793566493,
+              "mimetype": "text/plain",
+              "isexternalfile": false,
+              "icon": "f/text"
+            },
+            {
+              "filename": "world.json",
+              "filepath": "/",
+              "filesize": 2108741,
+              "fileurl": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/webservice/pluginfile.php/703792/mod_assign/introattachment/0/world.json",
+              "timemodified": 1793566493,
+              "mimetype": "application/json",
+              "isexternalfile": false,
+              "icon": "f/json"
+            }
+          ],
+          "timelimit": 0,
+          "submissionattachments": 0
+        },
+        {
+          "id": 87470,
+          "cmid": 350005,
+          "course": 2005,
+          "name": "Prueba práctica U2 - 02",
+          "nosubmissions": 0,
+          "submissiondrafts": 0,
+          "sendnotifications": 0,
+          "sendlatenotifications": 0,
+          "sendstudentnotifications": 0,
+          "duedate": 1794334800,
+          "allowsubmissionsfromdate": 1794331800,
+          "grade": 0,
+          "gradepenalty": 0,
+          "timemodified": 1794334989,
+          "completionsubmit": 1,
+          "cutoffdate": 1794334800,
+          "gradingduedate": 0,
+          "teamsubmission": 0,
+          "requireallteammemberssubmit": 0,
+          "teamsubmissiongroupingid": 0,
+          "blindmarking": 0,
+          "hidegrader": 0,
+          "revealidentities": 0,
+          "attemptreopenmethod": "untilpass",
+          "maxattempts": 1,
+          "markingworkflow": 0,
+          "markingallocation": 0,
+          "markinganonymous": 0,
+          "requiresubmissionstatement": 0,
+          "preventsubmissionnotingroup": 0,
+          "configs": [
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxsubmissionsizebytes",
+              "value": "1048576"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "filetypeslist",
+              "value": ""
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxfilesubmissions",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "commentinline",
+              "value": "0"
+            }
+          ],
+          "intro": "<p>Encuentra adjunto un cuaderno de Jupyter con la prueba práctica de la unidad 1.</p>\r\n<p>Archivo adjunto:</p>",
+          "introformat": 1,
+          "introfiles": [],
+          "introattachments": [
+            {
+              "filename": "pruebaU2-02.ipynb",
+              "filepath": "/",
+              "filesize": 12936,
+              "fileurl": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/webservice/pluginfile.php/699388/mod_assign/introattachment/0/pruebaU2-02.ipynb",
+              "timemodified": 1794332278,
+              "mimetype": "application/json",
+              "isexternalfile": false,
+              "icon": "f/json"
+            }
+          ],
+          "timelimit": 0,
+          "submissionattachments": 0
+        },
+        {
+          "id": 86502,
+          "cmid": 346266,
+          "course": 2005,
+          "name": "Prueba práctica U1: evaluación del ejercicio 3 - CE e,f,g",
+          "nosubmissions": 0,
+          "submissiondrafts": 0,
+          "sendnotifications": 0,
+          "sendlatenotifications": 0,
+          "sendstudentnotifications": 0,
+          "duedate": 0,
+          "allowsubmissionsfromdate": 0,
+          "grade": 10,
+          "gradepenalty": 0,
+          "timemodified": 1793262351,
+          "completionsubmit": 1,
+          "cutoffdate": 0,
+          "gradingduedate": 0,
+          "teamsubmission": 0,
+          "requireallteammemberssubmit": 0,
+          "teamsubmissiongroupingid": 0,
+          "blindmarking": 0,
+          "hidegrader": 0,
+          "revealidentities": 0,
+          "attemptreopenmethod": "untilpass",
+          "maxattempts": 1,
+          "markingworkflow": 0,
+          "markingallocation": 0,
+          "markinganonymous": 0,
+          "requiresubmissionstatement": 0,
+          "preventsubmissionnotingroup": 0,
+          "configs": [
+            {
+              "plugin": "comments",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "commentinline",
+              "value": "0"
+            }
+          ],
+          "intro": "",
+          "introformat": 1,
+          "introfiles": [],
+          "introattachments": [],
+          "timelimit": 0,
+          "submissionattachments": 0
+        },
+        {
+          "id": 86500,
+          "cmid": 346264,
+          "course": 2005,
+          "name": "Prueba práctica U1: evaluación del ejercicio 2 - CE c,d",
+          "nosubmissions": 0,
+          "submissiondrafts": 0,
+          "sendnotifications": 0,
+          "sendlatenotifications": 0,
+          "sendstudentnotifications": 0,
+          "duedate": 0,
+          "allowsubmissionsfromdate": 0,
+          "grade": 10,
+          "gradepenalty": 0,
+          "timemodified": 1793262337,
+          "completionsubmit": 1,
+          "cutoffdate": 0,
+          "gradingduedate": 0,
+          "teamsubmission": 0,
+          "requireallteammemberssubmit": 0,
+          "teamsubmissiongroupingid": 0,
+          "blindmarking": 0,
+          "hidegrader": 0,
+          "revealidentities": 0,
+          "attemptreopenmethod": "untilpass",
+          "maxattempts": 1,
+          "markingworkflow": 0,
+          "markingallocation": 0,
+          "markinganonymous": 0,
+          "requiresubmissionstatement": 0,
+          "preventsubmissionnotingroup": 0,
+          "configs": [
+            {
+              "plugin": "comments",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "commentinline",
+              "value": "0"
+            }
+          ],
+          "intro": "",
+          "introformat": 1,
+          "introfiles": [],
+          "introattachments": [],
+          "timelimit": 0,
+          "submissionattachments": 0
+        },
+        {
+          "id": 86846,
+          "cmid": 347772,
+          "course": 2005,
+          "name": "Proyecto paralelo U2: Calculadora de precio final",
+          "nosubmissions": 0,
+          "submissiondrafts": 0,
+          "sendnotifications": 0,
+          "sendlatenotifications": 0,
+          "sendstudentnotifications": 0,
+          "duedate": 1794005940,
+          "allowsubmissionsfromdate": 1793055600,
+          "grade": 0,
+          "gradepenalty": 0,
+          "timemodified": 1793726024,
+          "completionsubmit": 1,
+          "cutoffdate": 1794005940,
+          "gradingduedate": 0,
+          "teamsubmission": 0,
+          "requireallteammemberssubmit": 0,
+          "teamsubmissiongroupingid": 0,
+          "blindmarking": 0,
+          "hidegrader": 0,
+          "revealidentities": 0,
+          "attemptreopenmethod": "untilpass",
+          "maxattempts": 1,
+          "markingworkflow": 0,
+          "markingallocation": 0,
+          "markinganonymous": 0,
+          "requiresubmissionstatement": 0,
+          "preventsubmissionnotingroup": 0,
+          "configs": [
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxsubmissionsizebytes",
+              "value": "5242880"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "filetypeslist",
+              "value": ""
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxfilesubmissions",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            }
+          ],
+          "intro": "<p>Encuentra adjunto un cuaderno de Jupyter con la descripción y objetivos del proyecto. Puedes incluir tu código en la celda final del propio cuaderno. Evita emplear un LLM para la realización de esta práctica, No es una práctica muy grande y el LLM hará un trabajo impecable (o casi) pero, de esta forma, no nos daremos la oportunidad de familiarizarnos con la tecnología. Desde luego, es perfectamente lícito (y aconsejable) usar un LLM para ir resolviendo dudas puntuales. </p>\r\n<p>Entrega el cuaderno con tu solución (.ipynb) o tu código fuente (.py).</p>\r\n<p>Archivo adjunto:</p>",
+          "introformat": 1,
+          "introfiles": [],
+          "introattachments": [
+            {
+              "filename": "prácticaU2-02.ipynb",
+              "filepath": "/",
+              "filesize": 8404,
+              "fileurl": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/webservice/pluginfile.php/695540/mod_assign/introattachment/0/pr%C3%A1cticaU2-02.ipynb",
+              "timemodified": 1793101975,
+              "mimetype": "application/json",
+              "isexternalfile": false,
+              "icon": "f/json"
+            }
+          ],
+          "timelimit": 0,
+          "submissionattachments": 0
+        },
+        {
+          "id": 92245,
+          "cmid": 364366,
+          "course": 2005,
+          "name": "Proyecto paralelo U5: FastAPI y LLMs",
+          "nosubmissions": 0,
+          "submissiondrafts": 0,
+          "sendnotifications": 0,
+          "sendlatenotifications": 0,
+          "sendstudentnotifications": 0,
+          "duedate": 1796597940,
+          "allowsubmissionsfromdate": 1794438000,
+          "grade": 0,
+          "gradepenalty": 0,
+          "timemodified": 1794499070,
+          "completionsubmit": 1,
+          "cutoffdate": 1796597940,
+          "gradingduedate": 0,
+          "teamsubmission": 0,
+          "requireallteammemberssubmit": 0,
+          "teamsubmissiongroupingid": 0,
+          "blindmarking": 0,
+          "hidegrader": 0,
+          "revealidentities": 0,
+          "attemptreopenmethod": "untilpass",
+          "maxattempts": 1,
+          "markingworkflow": 0,
+          "markingallocation": 0,
+          "markinganonymous": 0,
+          "requiresubmissionstatement": 0,
+          "preventsubmissionnotingroup": 0,
+          "configs": [
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxfilesubmissions",
+              "value": "1"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxsubmissionsizebytes",
+              "value": "20971520"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "filetypeslist",
+              "value": ".pdf"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            }
+          ],
+          "intro": "<p>Encuentra adjunto un cuaderno de Jupyter con la descripción y guía del proyecto. Evita emplear un LLM para la realización de esta práctica. Es perfectamente lícito (y aconsejable) usar un LLM para ir resolviendo dudas puntuales pero hemos de poner el esfuerzo de familiarizarnos con las tecnologías que se emplean en el cuaderno.</p>\r\n<p>Implementa los ejercicios del 1 al 6 (son sus apartados, cuando los tengan) y al menos uno de los retos de la \"<em>Parte 7: Ideas para seguir mejorando</em>\". </p>\r\n<p>Construye un documento con textos y capturas de pantalla explicando los cambios realizados y sus resultados.</p>\r\n<p>La parte del despliegue en Render es completamente optativa pero, si la haces, incluye en el documento la <strong>URL </strong>de tu web (sitio estático) ya desplegado en <strong>Render</strong>. La URL del servidor API REST también es conveniente incluirla.</p>\r\n<p>Entrega solo ese documento exportado a <strong>PDF</strong>.</p>\r\n<p></p>\r\n<p>Archivo adjunto:</p>",
+          "introformat": 1,
+          "introfiles": [],
+          "introattachments": [
+            {
+              "filename": "fastapi_llm.ipynb",
+              "filepath": "/",
+              "filesize": 93007,
+              "fileurl": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/webservice/pluginfile.php/722729/mod_assign/introattachment/0/fastapi_llm.ipynb",
+              "timemodified": 1794498264,
+              "mimetype": "application/json",
+              "isexternalfile": false,
+              "icon": "f/json"
+            }
+          ],
+          "timelimit": 0,
+          "submissionattachments": 0
+        },
+        {
+          "id": 92243,
+          "cmid": 364364,
+          "course": 2005,
+          "name": "Proyecto paralelo U4: Sitio web con Flask",
+          "nosubmissions": 0,
+          "submissiondrafts": 0,
+          "sendnotifications": 0,
+          "sendlatenotifications": 0,
+          "sendstudentnotifications": 0,
+          "duedate": 1795993140,
+          "allowsubmissionsfromdate": 1794438000,
+          "grade": 0,
+          "gradepenalty": 0,
+          "timemodified": 1794498878,
+          "completionsubmit": 1,
+          "cutoffdate": 1795993140,
+          "gradingduedate": 0,
+          "teamsubmission": 0,
+          "requireallteammemberssubmit": 0,
+          "teamsubmissiongroupingid": 0,
+          "blindmarking": 0,
+          "hidegrader": 0,
+          "revealidentities": 0,
+          "attemptreopenmethod": "untilpass",
+          "maxattempts": 1,
+          "markingworkflow": 0,
+          "markingallocation": 0,
+          "markinganonymous": 0,
+          "requiresubmissionstatement": 0,
+          "preventsubmissionnotingroup": 0,
+          "configs": [
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxsubmissionsizebytes",
+              "value": "20971520"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxfilesubmissions",
+              "value": "1"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "filetypeslist",
+              "value": ".pdf"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            }
+          ],
+          "intro": "<p>Encuentra adjunto un cuaderno de Jupyter con la descripción y guía del proyecto. Evita emplear un LLM para la realización de esta práctica. Es perfectamente lícito (y aconsejable) usar un LLM para ir resolviendo dudas puntuales pero hemos de poner el esfuerzo de familiarizarnos con las tecnologías que se emplean en el cuaderno.</p>\r\n<p>Implementa los \"<em>Ejercicios para practicar</em>\" del final del cuaderno. </p>\r\n<p>Construye un documento con textos y capturas de pantalla explicando los cambios realizados y sus resultados. Incluye en ese documento la <strong>URL </strong>de tu web ya desplegada en <strong>Render</strong>.</p>\r\n<p>Entrega solo ese documento exportado a <strong>PDF</strong>.</p>\r\n<p>Archivo adjunto:</p>",
+          "introformat": 1,
+          "introfiles": [],
+          "introattachments": [
+            {
+              "filename": "flask_primer_sitio_web.ipynb",
+              "filepath": "/",
+              "filesize": 27532,
+              "fileurl": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/webservice/pluginfile.php/722727/mod_assign/introattachment/0/flask_primer_sitio_web.ipynb",
+              "timemodified": 1794498662,
+              "mimetype": "application/json",
+              "isexternalfile": false,
+              "icon": "f/json"
+            }
+          ],
+          "timelimit": 0,
+          "submissionattachments": 0
+        },
+        {
+          "id": 87471,
+          "cmid": 350006,
+          "course": 2005,
+          "name": "Prueba práctica U2: evaluación del ejercicio 1 - CE a,b,e",
+          "nosubmissions": 0,
+          "submissiondrafts": 0,
+          "sendnotifications": 0,
+          "sendlatenotifications": 0,
+          "sendstudentnotifications": 0,
+          "duedate": 0,
+          "allowsubmissionsfromdate": 0,
+          "grade": 10,
+          "gradepenalty": 0,
+          "timemodified": 1794577211,
+          "completionsubmit": 1,
+          "cutoffdate": 0,
+          "gradingduedate": 0,
+          "teamsubmission": 0,
+          "requireallteammemberssubmit": 0,
+          "teamsubmissiongroupingid": 0,
+          "blindmarking": 0,
+          "hidegrader": 0,
+          "revealidentities": 0,
+          "attemptreopenmethod": "untilpass",
+          "maxattempts": 1,
+          "markingworkflow": 0,
+          "markingallocation": 0,
+          "markinganonymous": 0,
+          "requiresubmissionstatement": 0,
+          "preventsubmissionnotingroup": 0,
+          "configs": [
+            {
+              "plugin": "comments",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "commentinline",
+              "value": "0"
+            }
+          ],
+          "intro": "",
+          "introformat": 1,
+          "introfiles": [],
+          "introattachments": [],
+          "timelimit": 0,
+          "submissionattachments": 0
+        },
+        {
+          "id": 87472,
+          "cmid": 350007,
+          "course": 2005,
+          "name": "Prueba práctica U2: evaluación del ejercicio 2 y proyecto paralelo U2 - CE c,d",
+          "nosubmissions": 1,
+          "submissiondrafts": 0,
+          "sendnotifications": 0,
+          "sendlatenotifications": 0,
+          "sendstudentnotifications": 0,
+          "duedate": 0,
+          "allowsubmissionsfromdate": 0,
+          "grade": 10,
+          "gradepenalty": 0,
+          "timemodified": 1794577216,
+          "completionsubmit": 1,
+          "cutoffdate": 0,
+          "gradingduedate": 0,
+          "teamsubmission": 0,
+          "requireallteammemberssubmit": 0,
+          "teamsubmissiongroupingid": 0,
+          "blindmarking": 0,
+          "hidegrader": 0,
+          "revealidentities": 0,
+          "attemptreopenmethod": "untilpass",
+          "maxattempts": 1,
+          "markingworkflow": 0,
+          "markingallocation": 0,
+          "markinganonymous": 0,
+          "requiresubmissionstatement": 0,
+          "preventsubmissionnotingroup": 0,
+          "configs": [
+            {
+              "plugin": "comments",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "commentinline",
+              "value": "0"
+            }
+          ],
+          "intro": "",
+          "introformat": 1,
+          "introfiles": [],
+          "introattachments": [],
+          "timelimit": 0,
+          "submissionattachments": 0
+        },
+        {
+          "id": 87473,
+          "cmid": 350008,
+          "course": 2005,
+          "name": "Prueba práctica U2: evaluación del ejercicio 3 - CE f,i",
+          "nosubmissions": 0,
+          "submissiondrafts": 0,
+          "sendnotifications": 0,
+          "sendlatenotifications": 0,
+          "sendstudentnotifications": 0,
+          "duedate": 0,
+          "allowsubmissionsfromdate": 0,
+          "grade": 10,
+          "gradepenalty": 0,
+          "timemodified": 1794577221,
+          "completionsubmit": 1,
+          "cutoffdate": 0,
+          "gradingduedate": 0,
+          "teamsubmission": 0,
+          "requireallteammemberssubmit": 0,
+          "teamsubmissiongroupingid": 0,
+          "blindmarking": 0,
+          "hidegrader": 0,
+          "revealidentities": 0,
+          "attemptreopenmethod": "untilpass",
+          "maxattempts": 1,
+          "markingworkflow": 0,
+          "markingallocation": 0,
+          "markinganonymous": 0,
+          "requiresubmissionstatement": 0,
+          "preventsubmissionnotingroup": 0,
+          "configs": [
+            {
+              "plugin": "comments",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "commentinline",
+              "value": "0"
+            }
+          ],
+          "intro": "",
+          "introformat": 1,
+          "introfiles": [],
+          "introattachments": [],
+          "timelimit": 0,
+          "submissionattachments": 0
+        }
+      ]
+    },
+    {
+      "id": 2475,
+      "fullname": "Programación orientada a objetos",
+      "shortname": "DALP-POO-2627",
+      "timemodified": 1790776880,
+      "assignments": [
+        {
+          "id": 87126,
+          "cmid": 348828,
+          "course": 2475,
+          "name": "Tarea 1. Ejercicios de introducción a POO en Python.",
+          "nosubmissions": 0,
+          "submissiondrafts": 0,
+          "sendnotifications": 0,
+          "sendlatenotifications": 0,
+          "sendstudentnotifications": 1,
+          "duedate": 1793833140,
+          "allowsubmissionsfromdate": 1793142000,
+          "grade": 10,
+          "gradepenalty": 0,
+          "timemodified": 1794248584,
+          "completionsubmit": 0,
+          "cutoffdate": 1793833140,
+          "gradingduedate": 0,
+          "teamsubmission": 0,
+          "requireallteammemberssubmit": 0,
+          "teamsubmissiongroupingid": 0,
+          "blindmarking": 0,
+          "hidegrader": 0,
+          "revealidentities": 0,
+          "attemptreopenmethod": "untilpass",
+          "maxattempts": 1,
+          "markingworkflow": 0,
+          "markingallocation": 0,
+          "markinganonymous": 0,
+          "requiresubmissionstatement": 0,
+          "preventsubmissionnotingroup": 0,
+          "configs": [
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxfilesubmissions",
+              "value": "20"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxsubmissionsizebytes",
+              "value": "2149580800"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "filetypeslist",
+              "value": ""
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "commentinline",
+              "value": "0"
+            },
+            {
+              "plugin": "editpdf",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            }
+          ],
+          "intro": "<p>Realizar los ejercicios propuestos en la siguiente relación:</p>\r\n<p><a href=\"https://docs.google.com/document/d/1ifkGtOxMeeNkbWSmnFx0CcL0BXC9ZYRCI87orRf1xdo/edit?usp=sharing&amp;rm=minimal\" target=\"_blank\" rel=\"noopener\">https://docs.google.com/document/d/1ifkGtOxMeeNkbWSmnFx0CcL0BXC9ZYRCI87orRf1xdo/edit?usp=sharing&amp;rm=minimal</a></p>",
+          "introformat": 1,
+          "introfiles": [],
+          "introattachments": [],
+          "timelimit": 0,
+          "submissionattachments": 0
+        },
+        {
+          "id": 91825,
+          "cmid": 362993,
+          "course": 2475,
+          "name": "Tarea 2. Encapsulación, tipos de métodos y ciclo de vida de los objetos en Python.",
+          "nosubmissions": 0,
+          "submissiondrafts": 0,
+          "sendnotifications": 0,
+          "sendlatenotifications": 0,
+          "sendstudentnotifications": 1,
+          "duedate": 1794869940,
+          "allowsubmissionsfromdate": 1794178800,
+          "grade": 10,
+          "gradepenalty": 0,
+          "timemodified": 1794248571,
+          "completionsubmit": 0,
+          "cutoffdate": 1794869940,
+          "gradingduedate": 0,
+          "teamsubmission": 0,
+          "requireallteammemberssubmit": 0,
+          "teamsubmissiongroupingid": 0,
+          "blindmarking": 0,
+          "hidegrader": 0,
+          "revealidentities": 0,
+          "attemptreopenmethod": "untilpass",
+          "maxattempts": 1,
+          "markingworkflow": 0,
+          "markingallocation": 0,
+          "markinganonymous": 0,
+          "requiresubmissionstatement": 0,
+          "preventsubmissionnotingroup": 0,
+          "configs": [
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxfilesubmissions",
+              "value": "20"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxsubmissionsizebytes",
+              "value": "2149580800"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "filetypeslist",
+              "value": ""
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "commentinline",
+              "value": "0"
+            },
+            {
+              "plugin": "editpdf",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            }
+          ],
+          "intro": "<p>Realizar las tareas propuestas en el siguiente cuaderno de ejercicios en el repositorio: <a href=\"https://github.com/javiercaselli/POODALP2627/blob/main/01-encapsulacion.md\" target=\"_blank\" rel=\"noopener\">https://github.com/javiercaselli/POODALP2627/blob/main/01-encapsulacion.md</a></p>",
+          "introformat": 1,
+          "introfiles": [],
+          "introattachments": [],
+          "timelimit": 0,
+          "submissionattachments": 0
+        }
+      ]
+    },
+    {
+      "id": 2006,
+      "fullname": "Análisis de datos en Python",
+      "shortname": "DALP-ADPY-2627",
+      "timemodified": 1790588473,
+      "assignments": []
+    }
+  ],
+  "warnings": [
+    {
+      "item": "module",
+      "itemid": 61033,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 352433,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 352434,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 352436,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 352437,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 352439,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 352438,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 61028,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 349961,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 350025,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 346273,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 364349,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 364324,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 364332,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 364347,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 364326,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 364343,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 364342,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 364348,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 364344,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 364328,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 364329,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 364330,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    }
+  ]
+}

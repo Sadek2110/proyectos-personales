@@ -1,0 +1,86 @@
+{
+  "courses": [
+    {
+      "id": "591028374610",
+      "name": "Entornos y Sintaxis en Python",
+      "section": "2026-27 · CPIFP Alan Turing",
+      "alternateLink": "https://classroom.google.com/c/ODg3OTY0MTg0ODI4",
+      "courseState": "ACTIVE"
+    }
+  ],
+  "topics": [
+    { "courseId": "591028374610", "topicId": "t0", "name": "Presentación" },
+    { "courseId": "591028374610", "topicId": "t1", "name": "U1 · Introducción" },
+    { "courseId": "591028374610", "topicId": "t2", "name": "U2 · Sintaxis básica" },
+    { "courseId": "591028374610", "topicId": "t3", "name": "U3 · Colecciones" },
+    { "courseId": "591028374610", "topicId": "t4", "name": "U4 · Depuración y pruebas" }
+  ],
+  "courseWork": [
+    {
+      "courseId": "591028374610",
+      "id": "cw_8001",
+      "title": "Práctica: diagrama de flujo",
+      "description": "Realizar diagrama de flujo y presentar en clase.",
+      "state": "PUBLISHED",
+      "alternateLink": "https://classroom.google.com/c/ODg3OTY0MTg0ODI4/a/cw_8001/details",
+      "creationTime": "2026-10-05T09:00:00Z",
+      "updateTime": "2026-10-05T09:00:00Z",
+      "dueDate": { "year": 2026, "month": 10, "day": 13 },
+      "dueTime": { "hours": 21, "minutes": 59 },
+      "workType": "ASSIGNMENT",
+      "topicId": "t1"
+    }
+  ],
+  "courseWorkMaterials": [
+    {
+      "courseId": "591028374610",
+      "id": "cwm_9001",
+      "title": "Introducción al módulo",
+      "state": "PUBLISHED",
+      "alternateLink": "https://classroom.google.com/c/ODg3OTY0MTg0ODI4/m/cwm_9001/details",
+      "creationTime": "2026-09-25T16:00:00Z",
+      "updateTime": "2026-09-25T16:00:00Z",
+      "topicId": "t0",
+      "materials": [
+        { "driveFile": { "driveFile": { "id": "df_1", "title": "Presentacion.pdf", "alternateLink": "https://drive.google.com/file/d/df_1/view" } } }
+      ]
+    },
+    {
+      "courseId": "591028374610",
+      "id": "cwm_9002",
+      "title": "Introducción al desarrollo en Python",
+      "state": "PUBLISHED",
+      "alternateLink": "https://classroom.google.com/c/ODg3OTY0MTg0ODI4/m/cwm_9002/details",
+      "creationTime": "2026-10-01T16:00:00Z",
+      "updateTime": "2026-10-01T16:00:00Z",
+      "topicId": "t1",
+      "materials": [
+        { "driveFile": { "driveFile": { "id": "df_2", "title": "U1_Introduccion.pdf", "alternateLink": "https://drive.google.com/file/d/df_2/view" } } }
+      ]
+    },
+    {
+      "courseId": "591028374610",
+      "id": "cwm_9003",
+      "title": "2.3c Operadores lógicos y de bits",
+      "state": "PUBLISHED",
+      "alternateLink": "https://classroom.google.com/c/ODg3OTY0MTg0ODI4/m/cwm_9003/details",
+      "creationTime": "2026-11-14T16:00:00Z",
+      "updateTime": "2026-11-14T16:00:00Z",
+      "topicId": "t2",
+      "materials": [
+        { "driveFile": { "driveFile": { "id": "df_3", "title": "2_3c_operadores_logicos.ipynb", "alternateLink": "https://drive.google.com/file/d/df_3/view" } } }
+      ]
+    }
+  ],
+  "announcements": [
+    {
+      "courseId": "591028374610",
+      "id": "ann_7001",
+      "text": "Recordad traer Spyder instalado para la sesión del próximo martes.",
+      "state": "PUBLISHED",
+      "alternateLink": "https://classroom.google.com/c/ODg3OTY0MTg0ODI4/p/ann_7001",
+      "creationTime": "2026-11-10T17:30:00Z",
+      "updateTime": "2026-11-10T17:30:00Z"
+    }
+  ]
+}

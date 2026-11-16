@@ -1,0 +1,2594 @@
+[
+  {
+    "id": 7289,
+    "name": "General",
+    "visible": 1,
+    "summary": "",
+    "summaryformat": 1,
+    "section": 0,
+    "hiddenbynumsections": 0,
+    "uservisible": true,
+    "component": null,
+    "itemid": null,
+    "modules": [
+      {
+        "id": 57739,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/forum/view.php?id=57739",
+        "name": "Avisos",
+        "instance": 2836,
+        "contextid": 247094,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/forum/1794492247/monologo?filtericon=1",
+        "modname": "forum",
+        "purpose": "collaboration",
+        "branded": false,
+        "modplural": "Foros",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": null,
+        "activitybadge": [],
+        "customdata": "{\"trackingtype\":\"1\"}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 0,
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0
+      }
+    ]
+  },
+  {
+    "id": 7738,
+    "name": "Inicio de curso",
+    "visible": 1,
+    "summary": "",
+    "summaryformat": 1,
+    "section": 1,
+    "hiddenbynumsections": 0,
+    "uservisible": true,
+    "component": null,
+    "itemid": null,
+    "modules": [
+      {
+        "id": 61017,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/resource/view.php?id=61017",
+        "name": "Programación didáctica 2026-27",
+        "instance": 16399,
+        "contextid": 249108,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/core/1794492247/f/pdf?filtericon=1",
+        "modname": "resource",
+        "purpose": "content",
+        "branded": false,
+        "modplural": "Archivos",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": null,
+        "activitybadge": [],
+        "customdata": "{\"filtericon\":true,\"displayoptions\":\"a:1:{s:10:\\\"printintro\\\";i:1;}\",\"display\":\"1\"}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 0,
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0,
+        "contents": [
+          {
+            "type": "file",
+            "filename": "cedalp_ecp_2526.pdf",
+            "filepath": "/",
+            "filesize": 496862,
+            "fileurl": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/webservice/pluginfile.php/249108/mod_resource/content/7/cedalp_ecp_2526.pdf?forcedownload=1",
+            "timecreated": 1789426549,
+            "timemodified": 1789426549,
+            "sortorder": 1,
+            "mimetype": "application/pdf",
+            "isexternalfile": false,
+            "userid": 171753,
+            "author": "López García, Juan Manuel",
+            "license": "allrightsreserved"
+          }
+        ],
+        "contentsinfo": {
+          "filescount": 1,
+          "filessize": 496862,
+          "lastmodified": 1789426549,
+          "mimetypes": [
+            "application/pdf"
+          ],
+          "repositorytype": ""
+        }
+      },
+      {
+        "id": 61018,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/questionnaire/view.php?id=61018",
+        "name": "Cuestionario de evaluación inicial para 'Estructuras de Control'",
+        "instance": 34,
+        "contextid": 249109,
+        "visible": 1,
+        "uservisible": false,
+        "availabilityinfo": "No disponible hasta que: <a class=\"availability_password-popup\" href=\"https://educacionadistancia.juntadeandalucia.es/centros/malaga/availability/condition/password/index.php?id=61018\">Introduce la contraseña correcta</a>",
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/questionnaire/1794492247/monologo?filtericon=1",
+        "modname": "questionnaire",
+        "purpose": "communication",
+        "branded": false,
+        "modplural": "Encuestas",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": null,
+        "customdata": "{\"customcompletionrules\":{\"completionsubmit\":\"1\"},\"timeopen\":\"1790694900\",\"timeclose\":\"1792101540\"}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 2,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": true,
+          "istrackeduser": true,
+          "uservisible": false,
+          "details": [
+            {
+              "rulename": "completionsubmit",
+              "rulevalue": {
+                "status": 0,
+                "description": "El participante tiene que enviar la encuesta para completarla"
+              }
+            }
+          ],
+          "isoverallcomplete": false
+        },
+        "downloadcontent": 1,
+        "dates": [
+          {
+            "label": "Abrió:",
+            "timestamp": 1790694900,
+            "dataid": "timeopen"
+          },
+          {
+            "label": "Cerró:",
+            "timestamp": 1792101540,
+            "dataid": "timeclose"
+          }
+        ],
+        "groupmode": 0
+      }
+    ]
+  },
+  {
+    "id": 7739,
+    "name": "Introducción a las estructuras de control en Python",
+    "visible": 1,
+    "summary": "",
+    "summaryformat": 1,
+    "section": 2,
+    "hiddenbynumsections": 0,
+    "uservisible": true,
+    "component": null,
+    "itemid": null,
+    "modules": [
+      {
+        "id": 61019,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/resource/view.php?id=61019",
+        "name": "Apuntes UT1 - Algoritmos y programación",
+        "instance": 16400,
+        "contextid": 249110,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/core/1794492247/f/pdf?filtericon=1",
+        "modname": "resource",
+        "purpose": "content",
+        "branded": false,
+        "modplural": "Archivos",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": " <span class=\"resourcelinkdetails\">510.2 KB</span>",
+        "activitybadge": {
+          "badgecontent": "PDF",
+          "badgestyle": "badge-none"
+        },
+        "customdata": "{\"filtericon\":true,\"displayoptions\":\"a:4:{s:10:\\\"printintro\\\";i:1;s:8:\\\"showsize\\\";i:1;s:8:\\\"showtype\\\";i:1;s:11:\\\"filedetails\\\";a:4:{s:4:\\\"size\\\";i:522423;s:4:\\\"type\\\";s:12:\\\"PDF document\\\";s:8:\\\"mimetype\\\";s:15:\\\"application\\/pdf\\\";s:9:\\\"extension\\\";s:3:\\\"PDF\\\";}}\",\"display\":5}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 1,
+        "completiondata": {
+          "state": 1,
+          "timecompleted": 1793876032,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": false,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [],
+          "isoverallcomplete": true
+        },
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0,
+        "contents": [
+          {
+            "type": "file",
+            "filename": "2609.UT1.Algoritmos y programación.pdf",
+            "filepath": "/",
+            "filesize": 522423,
+            "fileurl": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/webservice/pluginfile.php/249110/mod_resource/content/2/2609.UT1.Algoritmos%20y%20programaci%C3%B3n.pdf?forcedownload=1",
+            "timecreated": 1790025355,
+            "timemodified": 1790025362,
+            "sortorder": 1,
+            "mimetype": "application/pdf",
+            "isexternalfile": false,
+            "userid": 171753,
+            "author": "López García, Juan Manuel",
+            "license": "allrightsreserved"
+          }
+        ],
+        "contentsinfo": {
+          "filescount": 1,
+          "filessize": 522423,
+          "lastmodified": 1790025362,
+          "mimetypes": [
+            "application/pdf"
+          ],
+          "repositorytype": ""
+        }
+      },
+      {
+        "id": 61020,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/resource/view.php?id=61020",
+        "name": "Apuntes UT1 - Preparación del entorno",
+        "instance": 16401,
+        "contextid": 249111,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/core/1794492247/f/pdf?filtericon=1",
+        "modname": "resource",
+        "purpose": "content",
+        "branded": false,
+        "modplural": "Archivos",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": " <span class=\"resourcelinkdetails\">256.6 KB</span>",
+        "activitybadge": {
+          "badgecontent": "PDF",
+          "badgestyle": "badge-none"
+        },
+        "customdata": "{\"filtericon\":true,\"displayoptions\":\"a:4:{s:10:\\\"printintro\\\";i:1;s:8:\\\"showsize\\\";i:1;s:8:\\\"showtype\\\";i:1;s:11:\\\"filedetails\\\";a:4:{s:4:\\\"size\\\";i:262809;s:4:\\\"type\\\";s:12:\\\"PDF document\\\";s:8:\\\"mimetype\\\";s:15:\\\"application\\/pdf\\\";s:9:\\\"extension\\\";s:3:\\\"PDF\\\";}}\",\"display\":5}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 1,
+        "completiondata": {
+          "state": 1,
+          "timecompleted": 1793876041,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": false,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [],
+          "isoverallcomplete": true
+        },
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0,
+        "contents": [
+          {
+            "type": "file",
+            "filename": "2609.UT1.Preparación del entorno.pdf",
+            "filepath": "/",
+            "filesize": 262809,
+            "fileurl": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/webservice/pluginfile.php/249111/mod_resource/content/4/2609.UT1.Preparaci%C3%B3n%20del%20entorno.pdf?forcedownload=1",
+            "timecreated": 1790025373,
+            "timemodified": 1790025377,
+            "sortorder": 1,
+            "mimetype": "application/pdf",
+            "isexternalfile": false,
+            "userid": 171753,
+            "author": "López García, Juan Manuel",
+            "license": "allrightsreserved"
+          }
+        ],
+        "contentsinfo": {
+          "filescount": 1,
+          "filessize": 262809,
+          "lastmodified": 1790025377,
+          "mimetypes": [
+            "application/pdf"
+          ],
+          "repositorytype": ""
+        }
+      },
+      {
+        "id": 61021,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/resource/view.php?id=61021",
+        "name": "Cuaderno U1-01: Identificación de los elementos de un programa informático",
+        "instance": 16402,
+        "contextid": 249112,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/core/1794492247/f/json?filtericon=1",
+        "modname": "resource",
+        "purpose": "content",
+        "branded": false,
+        "modplural": "Archivos",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": " <span class=\"resourcelinkdetails\">5.0 KB</span>",
+        "activitybadge": {
+          "badgecontent": "IPYNB",
+          "badgestyle": "badge-none"
+        },
+        "customdata": "{\"filtericon\":true,\"displayoptions\":\"a:3:{s:8:\\\"showsize\\\";i:1;s:8:\\\"showtype\\\";i:1;s:11:\\\"filedetails\\\";a:4:{s:4:\\\"size\\\";i:5168;s:4:\\\"type\\\";s:9:\\\"JSON text\\\";s:8:\\\"mimetype\\\";s:16:\\\"application\\/json\\\";s:9:\\\"extension\\\";s:5:\\\"IPYNB\\\";}}\",\"display\":\"4\"}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 1,
+        "completiondata": {
+          "state": 1,
+          "timecompleted": 1793876042,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": false,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [],
+          "isoverallcomplete": true
+        },
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0,
+        "contents": [
+          {
+            "type": "file",
+            "filename": "cuadernoU1-01.ipynb",
+            "filepath": "/",
+            "filesize": 5168,
+            "fileurl": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/webservice/pluginfile.php/249112/mod_resource/content/3/cuadernoU1-01.ipynb?forcedownload=1",
+            "timecreated": 1789426549,
+            "timemodified": 1789426549,
+            "sortorder": 1,
+            "mimetype": "application/json",
+            "isexternalfile": false,
+            "userid": 171753,
+            "author": "López García, Juan Manuel",
+            "license": "allrightsreserved"
+          }
+        ],
+        "contentsinfo": {
+          "filescount": 1,
+          "filessize": 5168,
+          "lastmodified": 1789426549,
+          "mimetypes": [
+            "application/json"
+          ],
+          "repositorytype": ""
+        }
+      },
+      {
+        "id": 61022,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/resource/view.php?id=61022",
+        "name": "Cuaderno U1-02: Estructura y bloques fundamentales",
+        "instance": 16403,
+        "contextid": 249113,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/core/1794492247/f/json?filtericon=1",
+        "modname": "resource",
+        "purpose": "content",
+        "branded": false,
+        "modplural": "Archivos",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": " <span class=\"resourcelinkdetails\">8.2 KB</span>",
+        "activitybadge": {
+          "badgecontent": "IPYNB",
+          "badgestyle": "badge-none"
+        },
+        "customdata": "{\"filtericon\":true,\"displayoptions\":\"a:3:{s:8:\\\"showsize\\\";i:1;s:8:\\\"showtype\\\";i:1;s:11:\\\"filedetails\\\";a:4:{s:4:\\\"size\\\";i:8370;s:4:\\\"type\\\";s:9:\\\"JSON text\\\";s:8:\\\"mimetype\\\";s:16:\\\"application\\/json\\\";s:9:\\\"extension\\\";s:5:\\\"IPYNB\\\";}}\",\"display\":\"4\"}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 1,
+        "completiondata": {
+          "state": 1,
+          "timecompleted": 1793876046,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": false,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [],
+          "isoverallcomplete": true
+        },
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0,
+        "contents": [
+          {
+            "type": "file",
+            "filename": "cuadernoU1-02.ipynb",
+            "filepath": "/",
+            "filesize": 8370,
+            "fileurl": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/webservice/pluginfile.php/249113/mod_resource/content/6/cuadernoU1-02.ipynb?forcedownload=1",
+            "timecreated": 1789426550,
+            "timemodified": 1789426550,
+            "sortorder": 1,
+            "mimetype": "application/json",
+            "isexternalfile": false,
+            "userid": 171753,
+            "author": "López García, Juan Manuel",
+            "license": "allrightsreserved"
+          }
+        ],
+        "contentsinfo": {
+          "filescount": 1,
+          "filessize": 8370,
+          "lastmodified": 1789426550,
+          "mimetypes": [
+            "application/json"
+          ],
+          "repositorytype": ""
+        }
+      },
+      {
+        "id": 61023,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/resource/view.php?id=61023",
+        "name": "Cuaderno U1-03: Variables, tipos y comentarios",
+        "instance": 16404,
+        "contextid": 249114,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/core/1794492247/f/json?filtericon=1",
+        "modname": "resource",
+        "purpose": "content",
+        "branded": false,
+        "modplural": "Archivos",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": " <span class=\"resourcelinkdetails\">15.8 KB</span>",
+        "activitybadge": {
+          "badgecontent": "IPYNB",
+          "badgestyle": "badge-none"
+        },
+        "customdata": "{\"filtericon\":true,\"displayoptions\":\"a:3:{s:8:\\\"showsize\\\";i:1;s:8:\\\"showtype\\\";i:1;s:11:\\\"filedetails\\\";a:4:{s:4:\\\"size\\\";i:16203;s:4:\\\"type\\\";s:9:\\\"JSON text\\\";s:8:\\\"mimetype\\\";s:16:\\\"application\\/json\\\";s:9:\\\"extension\\\";s:5:\\\"IPYNB\\\";}}\",\"display\":\"4\"}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 1,
+        "completiondata": {
+          "state": 1,
+          "timecompleted": 1793876048,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": false,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [],
+          "isoverallcomplete": true
+        },
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0,
+        "contents": [
+          {
+            "type": "file",
+            "filename": "cuadernoU1-03.ipynb",
+            "filepath": "/",
+            "filesize": 16203,
+            "fileurl": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/webservice/pluginfile.php/249114/mod_resource/content/4/cuadernoU1-03.ipynb?forcedownload=1",
+            "timecreated": 1789426550,
+            "timemodified": 1789426550,
+            "sortorder": 1,
+            "mimetype": "application/json",
+            "isexternalfile": false,
+            "userid": 171753,
+            "author": "López García, Juan Manuel",
+            "license": "allrightsreserved"
+          }
+        ],
+        "contentsinfo": {
+          "filescount": 1,
+          "filessize": 16203,
+          "lastmodified": 1789426550,
+          "mimetypes": [
+            "application/json"
+          ],
+          "repositorytype": ""
+        }
+      },
+      {
+        "id": 61024,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/resource/view.php?id=61024",
+        "name": "Cuaderno U1-04: Literales y lectura de datos por teclado",
+        "instance": 16405,
+        "contextid": 249115,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/core/1794492247/f/json?filtericon=1",
+        "modname": "resource",
+        "purpose": "content",
+        "branded": false,
+        "modplural": "Archivos",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": " <span class=\"resourcelinkdetails\">13.3 KB</span>",
+        "activitybadge": {
+          "badgecontent": "IPYNB",
+          "badgestyle": "badge-none"
+        },
+        "customdata": "{\"filtericon\":true,\"displayoptions\":\"a:3:{s:8:\\\"showsize\\\";i:1;s:8:\\\"showtype\\\";i:1;s:11:\\\"filedetails\\\";a:4:{s:4:\\\"size\\\";i:13610;s:4:\\\"type\\\";s:9:\\\"JSON text\\\";s:8:\\\"mimetype\\\";s:16:\\\"application\\/json\\\";s:9:\\\"extension\\\";s:5:\\\"IPYNB\\\";}}\",\"display\":\"4\"}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 1,
+        "completiondata": {
+          "state": 1,
+          "timecompleted": 1793876050,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": false,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [],
+          "isoverallcomplete": true
+        },
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0,
+        "contents": [
+          {
+            "type": "file",
+            "filename": "cuadernoU1-04.ipynb",
+            "filepath": "/",
+            "filesize": 13610,
+            "fileurl": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/webservice/pluginfile.php/249115/mod_resource/content/5/cuadernoU1-04.ipynb?forcedownload=1",
+            "timecreated": 1789426550,
+            "timemodified": 1789426550,
+            "sortorder": 1,
+            "mimetype": "application/json",
+            "isexternalfile": false,
+            "userid": 171753,
+            "author": "López García, Juan Manuel",
+            "license": "allrightsreserved"
+          }
+        ],
+        "contentsinfo": {
+          "filescount": 1,
+          "filessize": 13610,
+          "lastmodified": 1789426550,
+          "mimetypes": [
+            "application/json"
+          ],
+          "repositorytype": ""
+        }
+      },
+      {
+        "id": 61025,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/resource/view.php?id=61025",
+        "name": "Cuaderno U1-05: Constantes. Operadores. Conversión de tipos",
+        "instance": 16406,
+        "contextid": 249116,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/core/1794492247/f/json?filtericon=1",
+        "modname": "resource",
+        "purpose": "content",
+        "branded": false,
+        "modplural": "Archivos",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": " <span class=\"resourcelinkdetails\">28.5 KB</span>",
+        "activitybadge": {
+          "badgecontent": "IPYNB",
+          "badgestyle": "badge-none"
+        },
+        "customdata": "{\"filtericon\":true,\"displayoptions\":\"a:3:{s:8:\\\"showsize\\\";i:1;s:8:\\\"showtype\\\";i:1;s:11:\\\"filedetails\\\";a:4:{s:4:\\\"size\\\";i:29155;s:4:\\\"type\\\";s:9:\\\"JSON text\\\";s:8:\\\"mimetype\\\";s:16:\\\"application\\/json\\\";s:9:\\\"extension\\\";s:5:\\\"IPYNB\\\";}}\",\"display\":\"4\"}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 1,
+        "completiondata": {
+          "state": 1,
+          "timecompleted": 1793876052,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": false,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [],
+          "isoverallcomplete": true
+        },
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0,
+        "contents": [
+          {
+            "type": "file",
+            "filename": "cuadernoU1-05.ipynb",
+            "filepath": "/",
+            "filesize": 29155,
+            "fileurl": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/webservice/pluginfile.php/249116/mod_resource/content/9/cuadernoU1-05.ipynb?forcedownload=1",
+            "timecreated": 1789426550,
+            "timemodified": 1789426550,
+            "sortorder": 1,
+            "mimetype": "application/json",
+            "isexternalfile": false,
+            "userid": 171753,
+            "author": "López García, Juan Manuel",
+            "license": "allrightsreserved"
+          }
+        ],
+        "contentsinfo": {
+          "filescount": 1,
+          "filessize": 29155,
+          "lastmodified": 1789426550,
+          "mimetypes": [
+            "application/json"
+          ],
+          "repositorytype": ""
+        }
+      },
+      {
+        "id": 61026,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/resource/view.php?id=61026",
+        "name": "Cuaderno U1-06: Estructuras de control. Manejo de errores",
+        "instance": 16407,
+        "contextid": 249117,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/core/1794492247/f/json?filtericon=1",
+        "modname": "resource",
+        "purpose": "content",
+        "branded": false,
+        "modplural": "Archivos",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": " <span class=\"resourcelinkdetails\">24.7 KB</span>",
+        "activitybadge": {
+          "badgecontent": "IPYNB",
+          "badgestyle": "badge-none"
+        },
+        "customdata": "{\"filtericon\":true,\"displayoptions\":\"a:3:{s:8:\\\"showsize\\\";i:1;s:8:\\\"showtype\\\";i:1;s:11:\\\"filedetails\\\";a:4:{s:4:\\\"size\\\";i:25275;s:4:\\\"type\\\";s:9:\\\"JSON text\\\";s:8:\\\"mimetype\\\";s:16:\\\"application\\/json\\\";s:9:\\\"extension\\\";s:5:\\\"IPYNB\\\";}}\",\"display\":\"4\"}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 1,
+        "completiondata": {
+          "state": 1,
+          "timecompleted": 1793876054,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": false,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [],
+          "isoverallcomplete": true
+        },
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0,
+        "contents": [
+          {
+            "type": "file",
+            "filename": "cuadernoU1-06.ipynb",
+            "filepath": "/",
+            "filesize": 25275,
+            "fileurl": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/webservice/pluginfile.php/249117/mod_resource/content/10/cuadernoU1-06.ipynb?forcedownload=1",
+            "timecreated": 1789426550,
+            "timemodified": 1789426550,
+            "sortorder": 1,
+            "mimetype": "application/json",
+            "isexternalfile": false,
+            "userid": 171753,
+            "author": "López García, Juan Manuel",
+            "license": "allrightsreserved"
+          }
+        ],
+        "contentsinfo": {
+          "filescount": 1,
+          "filessize": 25275,
+          "lastmodified": 1789426550,
+          "mimetypes": [
+            "application/json"
+          ],
+          "repositorytype": ""
+        }
+      },
+      {
+        "id": 61027,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/resource/view.php?id=61027",
+        "name": "Python 3 cheat sheet",
+        "instance": 16408,
+        "contextid": 249118,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/core/1794492247/f/pdf?filtericon=1",
+        "modname": "resource",
+        "purpose": "content",
+        "branded": false,
+        "modplural": "Archivos",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": " <span class=\"resourcelinkdetails\">315.1 KB</span>",
+        "activitybadge": {
+          "badgecontent": "PDF",
+          "badgestyle": "badge-none"
+        },
+        "customdata": "{\"filtericon\":true,\"displayoptions\":\"a:4:{s:10:\\\"printintro\\\";i:1;s:8:\\\"showsize\\\";i:1;s:8:\\\"showtype\\\";i:1;s:11:\\\"filedetails\\\";a:4:{s:4:\\\"size\\\";i:322704;s:4:\\\"type\\\";s:12:\\\"PDF document\\\";s:8:\\\"mimetype\\\";s:15:\\\"application\\/pdf\\\";s:9:\\\"extension\\\";s:3:\\\"PDF\\\";}}\",\"display\":5}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 1,
+        "completiondata": {
+          "state": 1,
+          "timecompleted": 1793876232,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": false,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [],
+          "isoverallcomplete": true
+        },
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0,
+        "contents": [
+          {
+            "type": "file",
+            "filename": "memento-python3-en-2.1.2.pdf",
+            "filepath": "/",
+            "filesize": 322704,
+            "fileurl": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/webservice/pluginfile.php/249118/mod_resource/content/1/memento-python3-en-2.1.2.pdf?forcedownload=1",
+            "timecreated": 1789426550,
+            "timemodified": 1789426550,
+            "sortorder": 1,
+            "mimetype": "application/pdf",
+            "isexternalfile": false,
+            "userid": 171753,
+            "author": "López García, Juan Manuel",
+            "license": "allrightsreserved"
+          }
+        ],
+        "contentsinfo": {
+          "filescount": 1,
+          "filessize": 322704,
+          "lastmodified": 1789426550,
+          "mimetypes": [
+            "application/pdf"
+          ],
+          "repositorytype": ""
+        }
+      },
+      {
+        "id": 346222,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/resource/view.php?id=346222",
+        "name": "Cuaderno U1-07: Identificación de las estructuras de control en Python (repaso a lo esencial)",
+        "instance": 95706,
+        "contextid": 692845,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/core/1794492247/f/json?filtericon=1",
+        "modname": "resource",
+        "purpose": "content",
+        "branded": false,
+        "modplural": "Archivos",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": " <span class=\"resourcelinkdetails\">24.1 KB</span>",
+        "activitybadge": {
+          "badgecontent": "IPYNB",
+          "badgestyle": "badge-none"
+        },
+        "customdata": "{\"filtericon\":true,\"displayoptions\":\"a:3:{s:8:\\\"showsize\\\";i:1;s:8:\\\"showtype\\\";i:1;s:11:\\\"filedetails\\\";a:4:{s:4:\\\"size\\\";i:24725;s:4:\\\"type\\\";s:9:\\\"JSON text\\\";s:8:\\\"mimetype\\\";s:16:\\\"application\\/json\\\";s:9:\\\"extension\\\";s:5:\\\"IPYNB\\\";}}\",\"display\":\"4\"}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 1,
+        "completiondata": {
+          "state": 1,
+          "timecompleted": 1793876242,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": false,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [],
+          "isoverallcomplete": true
+        },
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0,
+        "contents": [
+          {
+            "type": "file",
+            "filename": "RA1_Identificacion_estructuras_de_control.ipynb",
+            "filepath": "/",
+            "filesize": 24725,
+            "fileurl": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/webservice/pluginfile.php/692845/mod_resource/content/2/RA1_Identificacion_estructuras_de_control.ipynb?forcedownload=1",
+            "timecreated": 1793016014,
+            "timemodified": 1793016030,
+            "sortorder": 1,
+            "mimetype": "application/json",
+            "isexternalfile": false,
+            "userid": 171753,
+            "author": "López García, Juan Manuel",
+            "license": "allrightsreserved"
+          }
+        ],
+        "contentsinfo": {
+          "filescount": 1,
+          "filessize": 24725,
+          "lastmodified": 1793016030,
+          "mimetypes": [
+            "application/json"
+          ],
+          "repositorytype": ""
+        }
+      },
+      {
+        "id": 346273,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/assign/view.php?id=346273",
+        "name": "Prueba práctica U1 - 02",
+        "instance": 86506,
+        "contextid": 692924,
+        "visible": 1,
+        "uservisible": false,
+        "availabilityinfo": "No disponible hasta que: <a class=\"availability_password-popup\" href=\"https://educacionadistancia.juntadeandalucia.es/centros/malaga/availability/condition/password/index.php?id=346273\">Introduce la contraseña correcta</a>",
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/assign/1794492247/monologo?filtericon=1",
+        "modname": "assign",
+        "purpose": "assessment",
+        "branded": false,
+        "modplural": "Tareas",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": null,
+        "customdata": "{\"duedate\":1793128500,\"cutoffdate\":\"1793128500\",\"allowsubmissionsfromdate\":\"1793122200\"}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 1,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": false,
+          "istrackeduser": true,
+          "uservisible": false,
+          "details": [],
+          "isoverallcomplete": false
+        },
+        "downloadcontent": 1,
+        "dates": [
+          {
+            "label": "Apertura:",
+            "timestamp": 1793122200,
+            "dataid": "allowsubmissionsfromdate"
+          },
+          {
+            "label": "Cierre:",
+            "timestamp": 1793128500,
+            "dataid": "duedate"
+          }
+        ],
+        "groupmode": 0
+      },
+      {
+        "id": 349961,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/assign/view.php?id=349961",
+        "name": "Prueba práctica U1 - 03",
+        "instance": 87448,
+        "contextid": 699328,
+        "visible": 1,
+        "uservisible": false,
+        "availabilityinfo": "No disponible hasta que: <a class=\"availability_password-popup\" href=\"https://educacionadistancia.juntadeandalucia.es/centros/malaga/availability/condition/password/index.php?id=349961\">Introduce la contraseña correcta</a>",
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/assign/1794492247/monologo?filtericon=1",
+        "modname": "assign",
+        "purpose": "assessment",
+        "branded": false,
+        "modplural": "Tareas",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": null,
+        "customdata": "{\"duedate\":1793727000,\"cutoffdate\":\"1793727000\",\"allowsubmissionsfromdate\":\"1793722800\"}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 1,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": false,
+          "istrackeduser": true,
+          "uservisible": false,
+          "details": [],
+          "isoverallcomplete": false
+        },
+        "downloadcontent": 1,
+        "dates": [
+          {
+            "label": "Apertura:",
+            "timestamp": 1793722800,
+            "dataid": "allowsubmissionsfromdate"
+          },
+          {
+            "label": "Cierre:",
+            "timestamp": 1793727000,
+            "dataid": "duedate"
+          }
+        ],
+        "groupmode": 0
+      },
+      {
+        "id": 346258,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/assign/view.php?id=346258",
+        "name": "Prueba práctica U1: evaluación del ejercicio 1 - CE a,b",
+        "instance": 86499,
+        "contextid": 692893,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/assign/1794492247/monologo?filtericon=1",
+        "modname": "assign",
+        "purpose": "assessment",
+        "branded": false,
+        "modplural": "Tareas",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": null,
+        "customdata": "\"\"",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 0,
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0
+      },
+      {
+        "id": 346264,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/assign/view.php?id=346264",
+        "name": "Prueba práctica U1: evaluación del ejercicio 2 - CE c,d",
+        "instance": 86500,
+        "contextid": 692907,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/assign/1794492247/monologo?filtericon=1",
+        "modname": "assign",
+        "purpose": "assessment",
+        "branded": false,
+        "modplural": "Tareas",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": null,
+        "customdata": "\"\"",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 0,
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0
+      },
+      {
+        "id": 346266,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/assign/view.php?id=346266",
+        "name": "Prueba práctica U1: evaluación del ejercicio 3 - CE e,f,g",
+        "instance": 86502,
+        "contextid": 692909,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/assign/1794492247/monologo?filtericon=1",
+        "modname": "assign",
+        "purpose": "assessment",
+        "branded": false,
+        "modplural": "Tareas",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": null,
+        "customdata": "\"\"",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 0,
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0
+      }
+    ]
+  },
+  {
+    "id": 7740,
+    "name": "Sentencias condicionales",
+    "visible": 1,
+    "summary": "",
+    "summaryformat": 1,
+    "section": 3,
+    "hiddenbynumsections": 0,
+    "uservisible": true,
+    "component": null,
+    "itemid": null,
+    "modules": [
+      {
+        "id": 61029,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/resource/view.php?id=61029",
+        "name": "Cuaderno U2-01: Introducción a Tkinter (I)",
+        "instance": 16409,
+        "contextid": 249120,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/core/1794492247/f/json?filtericon=1",
+        "modname": "resource",
+        "purpose": "content",
+        "branded": false,
+        "modplural": "Archivos",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": " <span class=\"resourcelinkdetails\">12.8 KB</span>",
+        "activitybadge": {
+          "badgecontent": "IPYNB",
+          "badgestyle": "badge-none"
+        },
+        "customdata": "{\"filtericon\":true,\"displayoptions\":\"a:3:{s:8:\\\"showsize\\\";i:1;s:8:\\\"showtype\\\";i:1;s:11:\\\"filedetails\\\";a:4:{s:4:\\\"size\\\";i:13132;s:4:\\\"type\\\";s:9:\\\"JSON text\\\";s:8:\\\"mimetype\\\";s:16:\\\"application\\/json\\\";s:9:\\\"extension\\\";s:5:\\\"IPYNB\\\";}}\",\"display\":\"4\"}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 1,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": false,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [],
+          "isoverallcomplete": false
+        },
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0,
+        "contents": [
+          {
+            "type": "file",
+            "filename": "cuadernoU2-01.ipynb",
+            "filepath": "/",
+            "filesize": 13132,
+            "fileurl": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/webservice/pluginfile.php/249120/mod_resource/content/6/cuadernoU2-01.ipynb?forcedownload=1",
+            "timecreated": 1789426551,
+            "timemodified": 1789426551,
+            "sortorder": 1,
+            "mimetype": "application/json",
+            "isexternalfile": false,
+            "userid": 171753,
+            "author": "López García, Juan Manuel",
+            "license": "allrightsreserved"
+          }
+        ],
+        "contentsinfo": {
+          "filescount": 1,
+          "filessize": 13132,
+          "lastmodified": 1789426551,
+          "mimetypes": [
+            "application/json"
+          ],
+          "repositorytype": ""
+        }
+      },
+      {
+        "id": 61030,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/resource/view.php?id=61030",
+        "name": "Cuaderno U2-02: Introducción a Tkinter (II)",
+        "instance": 16410,
+        "contextid": 249121,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/core/1794492247/f/json?filtericon=1",
+        "modname": "resource",
+        "purpose": "content",
+        "branded": false,
+        "modplural": "Archivos",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": " <span class=\"resourcelinkdetails\">41.0 KB</span>",
+        "activitybadge": {
+          "badgecontent": "IPYNB",
+          "badgestyle": "badge-none"
+        },
+        "customdata": "{\"filtericon\":true,\"displayoptions\":\"a:3:{s:8:\\\"showsize\\\";i:1;s:8:\\\"showtype\\\";i:1;s:11:\\\"filedetails\\\";a:4:{s:4:\\\"size\\\";i:41972;s:4:\\\"type\\\";s:9:\\\"JSON text\\\";s:8:\\\"mimetype\\\";s:16:\\\"application\\/json\\\";s:9:\\\"extension\\\";s:5:\\\"IPYNB\\\";}}\",\"display\":\"4\"}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 1,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": false,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [],
+          "isoverallcomplete": false
+        },
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0,
+        "contents": [
+          {
+            "type": "file",
+            "filename": "cuadernoU2-02.ipynb",
+            "filepath": "/",
+            "filesize": 41972,
+            "fileurl": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/webservice/pluginfile.php/249121/mod_resource/content/9/cuadernoU2-02.ipynb?forcedownload=1",
+            "timecreated": 1789426551,
+            "timemodified": 1789426551,
+            "sortorder": 1,
+            "mimetype": "application/json",
+            "isexternalfile": false,
+            "userid": 171753,
+            "author": "López García, Juan Manuel",
+            "license": "allrightsreserved"
+          }
+        ],
+        "contentsinfo": {
+          "filescount": 1,
+          "filessize": 41972,
+          "lastmodified": 1789426551,
+          "mimetypes": [
+            "application/json"
+          ],
+          "repositorytype": ""
+        }
+      },
+      {
+        "id": 61031,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/resource/view.php?id=61031",
+        "name": "Cuaderno U2-03: Clases en Tkinter y TTK",
+        "instance": 16411,
+        "contextid": 249122,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/core/1794492247/f/json?filtericon=1",
+        "modname": "resource",
+        "purpose": "content",
+        "branded": false,
+        "modplural": "Archivos",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": " <span class=\"resourcelinkdetails\">14.8 KB</span>",
+        "activitybadge": {
+          "badgecontent": "IPYNB",
+          "badgestyle": "badge-none"
+        },
+        "customdata": "{\"filtericon\":true,\"displayoptions\":\"a:3:{s:8:\\\"showsize\\\";i:1;s:8:\\\"showtype\\\";i:1;s:11:\\\"filedetails\\\";a:4:{s:4:\\\"size\\\";i:15183;s:4:\\\"type\\\";s:9:\\\"JSON text\\\";s:8:\\\"mimetype\\\";s:16:\\\"application\\/json\\\";s:9:\\\"extension\\\";s:5:\\\"IPYNB\\\";}}\",\"display\":\"4\"}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 1,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": false,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [],
+          "isoverallcomplete": false
+        },
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0,
+        "contents": [
+          {
+            "type": "file",
+            "filename": "cuadernoU2-03.ipynb",
+            "filepath": "/",
+            "filesize": 15183,
+            "fileurl": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/webservice/pluginfile.php/249122/mod_resource/content/7/cuadernoU2-03.ipynb?forcedownload=1",
+            "timecreated": 1789426551,
+            "timemodified": 1789426551,
+            "sortorder": 1,
+            "mimetype": "application/json",
+            "isexternalfile": false,
+            "userid": 171753,
+            "author": "López García, Juan Manuel",
+            "license": "allrightsreserved"
+          }
+        ],
+        "contentsinfo": {
+          "filescount": 1,
+          "filessize": 15183,
+          "lastmodified": 1789426551,
+          "mimetypes": [
+            "application/json"
+          ],
+          "repositorytype": ""
+        }
+      },
+      {
+        "id": 61032,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/resource/view.php?id=61032",
+        "name": "Cuaderno U2-04: Ejercicios con Tkinter y TTK",
+        "instance": 16412,
+        "contextid": 249123,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/core/1794492247/f/json?filtericon=1",
+        "modname": "resource",
+        "purpose": "content",
+        "branded": false,
+        "modplural": "Archivos",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": " <span class=\"resourcelinkdetails\">7.3 KB</span>",
+        "activitybadge": {
+          "badgecontent": "IPYNB",
+          "badgestyle": "badge-none"
+        },
+        "customdata": "{\"filtericon\":true,\"displayoptions\":\"a:3:{s:8:\\\"showsize\\\";i:1;s:8:\\\"showtype\\\";i:1;s:11:\\\"filedetails\\\";a:4:{s:4:\\\"size\\\";i:7455;s:4:\\\"type\\\";s:9:\\\"JSON text\\\";s:8:\\\"mimetype\\\";s:16:\\\"application\\/json\\\";s:9:\\\"extension\\\";s:5:\\\"IPYNB\\\";}}\",\"display\":\"4\"}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 1,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": false,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [],
+          "isoverallcomplete": false
+        },
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0,
+        "contents": [
+          {
+            "type": "file",
+            "filename": "cuadernoU2-04.ipynb",
+            "filepath": "/",
+            "filesize": 7455,
+            "fileurl": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/webservice/pluginfile.php/249123/mod_resource/content/6/cuadernoU2-04.ipynb?forcedownload=1",
+            "timecreated": 1789426551,
+            "timemodified": 1789426551,
+            "sortorder": 1,
+            "mimetype": "application/json",
+            "isexternalfile": false,
+            "userid": 171753,
+            "author": "López García, Juan Manuel",
+            "license": "allrightsreserved"
+          }
+        ],
+        "contentsinfo": {
+          "filescount": 1,
+          "filessize": 7455,
+          "lastmodified": 1789426551,
+          "mimetypes": [
+            "application/json"
+          ],
+          "repositorytype": ""
+        }
+      },
+      {
+        "id": 339916,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/resource/view.php?id=339916",
+        "name": "Cuaderno U2-05: Repaso introductorio a Tkinter",
+        "instance": 93922,
+        "contextid": 682678,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/core/1794492247/f/json?filtericon=1",
+        "modname": "resource",
+        "purpose": "content",
+        "branded": false,
+        "modplural": "Archivos",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": " <span class=\"resourcelinkdetails\">40.4 KB</span>",
+        "activitybadge": {
+          "badgecontent": "IPYNB",
+          "badgestyle": "badge-none"
+        },
+        "customdata": "{\"filtericon\":true,\"displayoptions\":\"a:3:{s:8:\\\"showsize\\\";i:1;s:8:\\\"showtype\\\";i:1;s:11:\\\"filedetails\\\";a:4:{s:4:\\\"size\\\";i:41352;s:4:\\\"type\\\";s:9:\\\"JSON text\\\";s:8:\\\"mimetype\\\";s:16:\\\"application\\/json\\\";s:9:\\\"extension\\\";s:5:\\\"IPYNB\\\";}}\",\"display\":\"4\"}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 1,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": false,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [],
+          "isoverallcomplete": false
+        },
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0,
+        "contents": [
+          {
+            "type": "file",
+            "filename": "Introduccion_a_Tkinter.ipynb",
+            "filepath": "/",
+            "filesize": 41352,
+            "fileurl": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/webservice/pluginfile.php/682678/mod_resource/content/9/Introduccion_a_Tkinter.ipynb?forcedownload=1",
+            "timecreated": 1792581130,
+            "timemodified": 1792581150,
+            "sortorder": 1,
+            "mimetype": "application/json",
+            "isexternalfile": false,
+            "userid": 171753,
+            "author": "López García, Juan Manuel",
+            "license": "allrightsreserved"
+          }
+        ],
+        "contentsinfo": {
+          "filescount": 1,
+          "filessize": 41352,
+          "lastmodified": 1792581150,
+          "mimetypes": [
+            "application/json"
+          ],
+          "repositorytype": ""
+        }
+      },
+      {
+        "id": 347772,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/assign/view.php?id=347772",
+        "name": "Proyecto paralelo U2: Calculadora de precio final",
+        "instance": 86846,
+        "contextid": 695540,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/assign/1794492247/monologo?filtericon=1",
+        "modname": "assign",
+        "purpose": "assessment",
+        "branded": false,
+        "modplural": "Tareas",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": null,
+        "customdata": "{\"customcompletionrules\":{\"completionsubmit\":\"1\"},\"duedate\":1794005940,\"cutoffdate\":\"1794005940\",\"allowsubmissionsfromdate\":\"1793055600\"}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 2,
+        "completiondata": {
+          "state": 1,
+          "timecompleted": 1793910349,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": true,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [
+            {
+              "rulename": "completionsubmit",
+              "rulevalue": {
+                "status": 1,
+                "description": "Hacer un envío"
+              }
+            }
+          ],
+          "isoverallcomplete": true
+        },
+        "downloadcontent": 1,
+        "dates": [
+          {
+            "label": "Apertura:",
+            "timestamp": 1793055600,
+            "dataid": "allowsubmissionsfromdate"
+          },
+          {
+            "label": "Cierre:",
+            "timestamp": 1794005940,
+            "dataid": "duedate"
+          }
+        ],
+        "groupmode": 0
+      },
+      {
+        "id": 346559,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/resource/view.php?id=346559",
+        "name": "Cuaderno U2-06: Sentencias condicionales en Python (repaso a lo esencial)",
+        "instance": 95824,
+        "contextid": 693437,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/core/1794492247/f/json?filtericon=1",
+        "modname": "resource",
+        "purpose": "content",
+        "branded": false,
+        "modplural": "Archivos",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": " <span class=\"resourcelinkdetails\">30.9 KB</span>",
+        "activitybadge": {
+          "badgecontent": "IPYNB",
+          "badgestyle": "badge-none"
+        },
+        "customdata": "{\"filtericon\":true,\"displayoptions\":\"a:3:{s:8:\\\"showsize\\\";i:1;s:8:\\\"showtype\\\";i:1;s:11:\\\"filedetails\\\";a:4:{s:4:\\\"size\\\";i:31606;s:4:\\\"type\\\";s:9:\\\"JSON text\\\";s:8:\\\"mimetype\\\";s:16:\\\"application\\/json\\\";s:9:\\\"extension\\\";s:5:\\\"IPYNB\\\";}}\",\"display\":\"4\"}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 1,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": false,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [],
+          "isoverallcomplete": false
+        },
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0,
+        "contents": [
+          {
+            "type": "file",
+            "filename": "RA2_Sentencias_condicionales.ipynb",
+            "filepath": "/",
+            "filesize": 31606,
+            "fileurl": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/webservice/pluginfile.php/693437/mod_resource/content/1/RA2_Sentencias_condicionales.ipynb?forcedownload=1",
+            "timecreated": 1793030231,
+            "timemodified": 1793030253,
+            "sortorder": 1,
+            "mimetype": "application/json",
+            "isexternalfile": false,
+            "userid": 171753,
+            "author": "López García, Juan Manuel",
+            "license": "allrightsreserved"
+          }
+        ],
+        "contentsinfo": {
+          "filescount": 1,
+          "filessize": 31606,
+          "lastmodified": 1793030253,
+          "mimetypes": [
+            "application/json"
+          ],
+          "repositorytype": ""
+        }
+      },
+      {
+        "id": 352428,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/resource/view.php?id=352428",
+        "name": "Cuaderno U2-07: Sentencias condicionales en Pyhon (ejercicios)",
+        "instance": 97796,
+        "contextid": 703550,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/core/1794492247/f/json?filtericon=1",
+        "modname": "resource",
+        "purpose": "content",
+        "branded": false,
+        "modplural": "Archivos",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": " <span class=\"resourcelinkdetails\">13.5 KB</span>",
+        "activitybadge": {
+          "badgecontent": "IPYNB",
+          "badgestyle": "badge-none"
+        },
+        "customdata": "{\"filtericon\":true,\"displayoptions\":\"a:3:{s:8:\\\"showsize\\\";i:1;s:8:\\\"showtype\\\";i:1;s:11:\\\"filedetails\\\";a:4:{s:4:\\\"size\\\";i:13814;s:4:\\\"type\\\";s:9:\\\"JSON text\\\";s:8:\\\"mimetype\\\";s:16:\\\"application\\/json\\\";s:9:\\\"extension\\\";s:5:\\\"IPYNB\\\";}}\",\"display\":\"4\"}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 1,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": false,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [],
+          "isoverallcomplete": false
+        },
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0,
+        "contents": [
+          {
+            "type": "file",
+            "filename": "cuadernoU2-07-condicionales-ejs.ipynb",
+            "filepath": "/",
+            "filesize": 13814,
+            "fileurl": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/webservice/pluginfile.php/703550/mod_resource/content/2/cuadernoU2-07-condicionales-ejs.ipynb?forcedownload=1",
+            "timecreated": 1793551839,
+            "timemodified": 1793551846,
+            "sortorder": 1,
+            "mimetype": "application/json",
+            "isexternalfile": false,
+            "userid": 171753,
+            "author": "López García, Juan Manuel",
+            "license": "allrightsreserved"
+          }
+        ],
+        "contentsinfo": {
+          "filescount": 1,
+          "filessize": 13814,
+          "lastmodified": 1793551846,
+          "mimetypes": [
+            "application/json"
+          ],
+          "repositorytype": ""
+        }
+      },
+      {
+        "id": 350005,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/assign/view.php?id=350005",
+        "name": "Prueba práctica U2 - 02",
+        "instance": 87470,
+        "contextid": 699388,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/assign/1794492247/monologo?filtericon=1",
+        "modname": "assign",
+        "purpose": "assessment",
+        "branded": false,
+        "modplural": "Tareas",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": null,
+        "customdata": "{\"duedate\":1794334800,\"cutoffdate\":\"1794334800\",\"allowsubmissionsfromdate\":\"1794331800\"}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 1,
+        "completiondata": {
+          "state": 1,
+          "timecompleted": 1794333659,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": false,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [],
+          "isoverallcomplete": true
+        },
+        "downloadcontent": 1,
+        "dates": [
+          {
+            "label": "Apertura:",
+            "timestamp": 1794331800,
+            "dataid": "allowsubmissionsfromdate"
+          },
+          {
+            "label": "Cierre:",
+            "timestamp": 1794334800,
+            "dataid": "duedate"
+          }
+        ],
+        "groupmode": 0
+      },
+      {
+        "id": 350006,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/assign/view.php?id=350006",
+        "name": "Prueba práctica U2: evaluación del ejercicio 1 - CE a,b,e",
+        "instance": 87471,
+        "contextid": 699389,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/assign/1794492247/monologo?filtericon=1",
+        "modname": "assign",
+        "purpose": "assessment",
+        "branded": false,
+        "modplural": "Tareas",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": null,
+        "customdata": "\"\"",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 0,
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0
+      },
+      {
+        "id": 350007,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/assign/view.php?id=350007",
+        "name": "Prueba práctica U2: evaluación del ejercicio 2 y proyecto paralelo U2 - CE c,d",
+        "instance": 87472,
+        "contextid": 699390,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/assign/1794492247/monologo?filtericon=1",
+        "modname": "assign",
+        "purpose": "assessment",
+        "branded": false,
+        "modplural": "Tareas",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": null,
+        "customdata": "\"\"",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 0,
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0
+      },
+      {
+        "id": 350008,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/assign/view.php?id=350008",
+        "name": "Prueba práctica U2: evaluación del ejercicio 3 - CE f,i",
+        "instance": 87473,
+        "contextid": 699391,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/assign/1794492247/monologo?filtericon=1",
+        "modname": "assign",
+        "purpose": "assessment",
+        "branded": false,
+        "modplural": "Tareas",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": null,
+        "customdata": "\"\"",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 0,
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0
+      },
+      {
+        "id": 350014,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/assign/view.php?id=350014",
+        "name": "Prueba práctica U2: evaluación del ejercicio 4 - CE g,j",
+        "instance": 87475,
+        "contextid": 699397,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/assign/1794492247/monologo?filtericon=1",
+        "modname": "assign",
+        "purpose": "assessment",
+        "branded": false,
+        "modplural": "Tareas",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": null,
+        "customdata": "\"\"",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 0,
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0
+      },
+      {
+        "id": 350017,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/assign/view.php?id=350017",
+        "name": "Prueba práctica U2: evaluación del ejercicio 5 - CE h",
+        "instance": 87477,
+        "contextid": 699400,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/assign/1794492247/monologo?filtericon=1",
+        "modname": "assign",
+        "purpose": "assessment",
+        "branded": false,
+        "modplural": "Tareas",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": null,
+        "customdata": "\"\"",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 0,
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0
+      }
+    ]
+  },
+  {
+    "id": 7741,
+    "name": "Sentencias iterativas",
+    "visible": 1,
+    "summary": "",
+    "summaryformat": 1,
+    "section": 4,
+    "hiddenbynumsections": 0,
+    "uservisible": true,
+    "component": null,
+    "itemid": null,
+    "modules": [
+      {
+        "id": 61034,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/url/view.php?id=61034",
+        "name": "The Big Book of Small Python Projects",
+        "instance": 8462,
+        "contextid": 249125,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/url/1794492247/monologo?filtericon=1",
+        "modname": "url",
+        "purpose": "content",
+        "branded": false,
+        "modplural": "URLs",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": null,
+        "customdata": "{\"display\":\"5\",\"filtericon\":true}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 0,
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0,
+        "contents": [
+          {
+            "type": "url",
+            "filename": "The Big Book of Small Python Projects",
+            "filepath": null,
+            "filesize": 0,
+            "fileurl": "https://inventwithpython.com/bigbookpython/",
+            "timecreated": null,
+            "timemodified": 1793552950,
+            "sortorder": null,
+            "userid": null,
+            "author": null,
+            "license": null
+          }
+        ],
+        "contentsinfo": {
+          "filescount": 1,
+          "filessize": 0,
+          "lastmodified": 1793552950,
+          "mimetypes": [],
+          "repositorytype": ""
+        }
+      },
+      {
+        "id": 61035,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/resource/view.php?id=61035",
+        "name": "Cuaderno U3-01: Juego Bagels",
+        "instance": 16413,
+        "contextid": 249126,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/core/1794492247/f/json?filtericon=1",
+        "modname": "resource",
+        "purpose": "content",
+        "branded": false,
+        "modplural": "Archivos",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": " <span class=\"resourcelinkdetails\">8.9 KB</span>",
+        "activitybadge": {
+          "badgecontent": "IPYNB",
+          "badgestyle": "badge-none"
+        },
+        "customdata": "{\"filtericon\":true,\"displayoptions\":\"a:3:{s:8:\\\"showsize\\\";i:1;s:8:\\\"showtype\\\";i:1;s:11:\\\"filedetails\\\";a:4:{s:4:\\\"size\\\";i:9072;s:4:\\\"type\\\";s:9:\\\"JSON text\\\";s:8:\\\"mimetype\\\";s:16:\\\"application\\/json\\\";s:9:\\\"extension\\\";s:5:\\\"IPYNB\\\";}}\",\"display\":\"4\"}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 1,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": false,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [],
+          "isoverallcomplete": false
+        },
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0,
+        "contents": [
+          {
+            "type": "file",
+            "filename": "cuadernoU3-01.ipynb",
+            "filepath": "/",
+            "filesize": 9072,
+            "fileurl": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/webservice/pluginfile.php/249126/mod_resource/content/4/cuadernoU3-01.ipynb?forcedownload=1",
+            "timecreated": 1789426551,
+            "timemodified": 1789426551,
+            "sortorder": 1,
+            "mimetype": "application/json",
+            "isexternalfile": false,
+            "userid": 171753,
+            "author": "López García, Juan Manuel",
+            "license": "allrightsreserved"
+          }
+        ],
+        "contentsinfo": {
+          "filescount": 1,
+          "filessize": 9072,
+          "lastmodified": 1789426551,
+          "mimetypes": [
+            "application/json"
+          ],
+          "repositorytype": ""
+        }
+      },
+      {
+        "id": 61036,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/resource/view.php?id=61036",
+        "name": "Cuaderno U3-02: La paradoja del cumpleaños",
+        "instance": 16414,
+        "contextid": 249127,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/core/1794492247/f/json?filtericon=1",
+        "modname": "resource",
+        "purpose": "content",
+        "branded": false,
+        "modplural": "Archivos",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": " <span class=\"resourcelinkdetails\">9.5 KB</span>",
+        "activitybadge": {
+          "badgecontent": "IPYNB",
+          "badgestyle": "badge-none"
+        },
+        "customdata": "{\"filtericon\":true,\"displayoptions\":\"a:3:{s:8:\\\"showsize\\\";i:1;s:8:\\\"showtype\\\";i:1;s:11:\\\"filedetails\\\";a:4:{s:4:\\\"size\\\";i:9721;s:4:\\\"type\\\";s:9:\\\"JSON text\\\";s:8:\\\"mimetype\\\";s:16:\\\"application\\/json\\\";s:9:\\\"extension\\\";s:5:\\\"IPYNB\\\";}}\",\"display\":\"4\"}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 1,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": false,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [],
+          "isoverallcomplete": false
+        },
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0,
+        "contents": [
+          {
+            "type": "file",
+            "filename": "cuadernoU3-02.ipynb",
+            "filepath": "/",
+            "filesize": 9721,
+            "fileurl": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/webservice/pluginfile.php/249127/mod_resource/content/4/cuadernoU3-02.ipynb?forcedownload=1",
+            "timecreated": 1789426551,
+            "timemodified": 1789426551,
+            "sortorder": 1,
+            "mimetype": "application/json",
+            "isexternalfile": false,
+            "userid": 171753,
+            "author": "López García, Juan Manuel",
+            "license": "allrightsreserved"
+          }
+        ],
+        "contentsinfo": {
+          "filescount": 1,
+          "filessize": 9721,
+          "lastmodified": 1789426551,
+          "mimetypes": [
+            "application/json"
+          ],
+          "repositorytype": ""
+        }
+      },
+      {
+        "id": 61037,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/resource/view.php?id=61037",
+        "name": "Cuaderno U3-03: Mensaje formando una imagen",
+        "instance": 16415,
+        "contextid": 249128,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/core/1794492247/f/json?filtericon=1",
+        "modname": "resource",
+        "purpose": "content",
+        "branded": false,
+        "modplural": "Archivos",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": " <span class=\"resourcelinkdetails\">8.4 KB</span>",
+        "activitybadge": {
+          "badgecontent": "IPYNB",
+          "badgestyle": "badge-none"
+        },
+        "customdata": "{\"filtericon\":true,\"displayoptions\":\"a:3:{s:8:\\\"showsize\\\";i:1;s:8:\\\"showtype\\\";i:1;s:11:\\\"filedetails\\\";a:4:{s:4:\\\"size\\\";i:8625;s:4:\\\"type\\\";s:9:\\\"JSON text\\\";s:8:\\\"mimetype\\\";s:16:\\\"application\\/json\\\";s:9:\\\"extension\\\";s:5:\\\"IPYNB\\\";}}\",\"display\":\"4\"}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 1,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": false,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [],
+          "isoverallcomplete": false
+        },
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0,
+        "contents": [
+          {
+            "type": "file",
+            "filename": "cuadernoU3-03.ipynb",
+            "filepath": "/",
+            "filesize": 8625,
+            "fileurl": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/webservice/pluginfile.php/249128/mod_resource/content/4/cuadernoU3-03.ipynb?forcedownload=1",
+            "timecreated": 1789426551,
+            "timemodified": 1789426551,
+            "sortorder": 1,
+            "mimetype": "application/json",
+            "isexternalfile": false,
+            "userid": 171753,
+            "author": "López García, Juan Manuel",
+            "license": "allrightsreserved"
+          }
+        ],
+        "contentsinfo": {
+          "filescount": 1,
+          "filessize": 8625,
+          "lastmodified": 1789426551,
+          "mimetypes": [
+            "application/json"
+          ],
+          "repositorytype": ""
+        }
+      },
+      {
+        "id": 352646,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/assign/view.php?id=352646",
+        "name": "Proyecto paralelo U3: Mapa web de volcanes con Folium",
+        "instance": 88301,
+        "contextid": 703792,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/assign/1794492247/monologo?filtericon=1",
+        "modname": "assign",
+        "purpose": "assessment",
+        "branded": false,
+        "modplural": "Tareas",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": null,
+        "customdata": "{\"customcompletionrules\":{\"completionsubmit\":\"1\"},\"duedate\":1794437940,\"cutoffdate\":\"1794437940\",\"allowsubmissionsfromdate\":\"1793487600\"}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 2,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": true,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [
+            {
+              "rulename": "completionsubmit",
+              "rulevalue": {
+                "status": 0,
+                "description": "Hacer un envío"
+              }
+            }
+          ],
+          "isoverallcomplete": false
+        },
+        "downloadcontent": 1,
+        "dates": [
+          {
+            "label": "Apertura:",
+            "timestamp": 1793487600,
+            "dataid": "allowsubmissionsfromdate"
+          },
+          {
+            "label": "Cierre:",
+            "timestamp": 1794437940,
+            "dataid": "duedate"
+          }
+        ],
+        "groupmode": 0
+      },
+      {
+        "id": 352431,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/resource/view.php?id=352431",
+        "name": "Cuaderno U3-13: Sentencias iterativas en Python (repaso a lo esencial)",
+        "instance": 97797,
+        "contextid": 703557,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/core/1794492247/f/json?filtericon=1",
+        "modname": "resource",
+        "purpose": "content",
+        "branded": false,
+        "modplural": "Archivos",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": " <span class=\"resourcelinkdetails\">29.9 KB</span>",
+        "activitybadge": {
+          "badgecontent": "IPYNB",
+          "badgestyle": "badge-none"
+        },
+        "customdata": "{\"filtericon\":true,\"displayoptions\":\"a:3:{s:8:\\\"showsize\\\";i:1;s:8:\\\"showtype\\\";i:1;s:11:\\\"filedetails\\\";a:4:{s:4:\\\"size\\\";i:30653;s:4:\\\"type\\\";s:9:\\\"JSON text\\\";s:8:\\\"mimetype\\\";s:16:\\\"application\\/json\\\";s:9:\\\"extension\\\";s:5:\\\"IPYNB\\\";}}\",\"display\":\"4\"}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 1,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": false,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [],
+          "isoverallcomplete": false
+        },
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0,
+        "contents": [
+          {
+            "type": "file",
+            "filename": "cuadernoU3-13-iterativas-repaso.ipynb",
+            "filepath": "/",
+            "filesize": 30653,
+            "fileurl": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/webservice/pluginfile.php/703557/mod_resource/content/2/cuadernoU3-13-iterativas-repaso.ipynb?forcedownload=1",
+            "timecreated": 1793725667,
+            "timemodified": 1793725670,
+            "sortorder": 1,
+            "mimetype": "application/json",
+            "isexternalfile": false,
+            "userid": 171753,
+            "author": "López García, Juan Manuel",
+            "license": "allrightsreserved"
+          }
+        ],
+        "contentsinfo": {
+          "filescount": 1,
+          "filessize": 30653,
+          "lastmodified": 1793725670,
+          "mimetypes": [
+            "application/json"
+          ],
+          "repositorytype": ""
+        }
+      },
+      {
+        "id": 352432,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/resource/view.php?id=352432",
+        "name": "Cuaderno U3-14: Sentencias iterativas en Pyhon (ejercicios)",
+        "instance": 97798,
+        "contextid": 703558,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/core/1794492247/f/json?filtericon=1",
+        "modname": "resource",
+        "purpose": "content",
+        "branded": false,
+        "modplural": "Archivos",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": " <span class=\"resourcelinkdetails\">13.7 KB</span>",
+        "activitybadge": {
+          "badgecontent": "IPYNB",
+          "badgestyle": "badge-none"
+        },
+        "customdata": "{\"filtericon\":true,\"displayoptions\":\"a:3:{s:8:\\\"showsize\\\";i:1;s:8:\\\"showtype\\\";i:1;s:11:\\\"filedetails\\\";a:4:{s:4:\\\"size\\\";i:13996;s:4:\\\"type\\\";s:9:\\\"JSON text\\\";s:8:\\\"mimetype\\\";s:16:\\\"application\\/json\\\";s:9:\\\"extension\\\";s:5:\\\"IPYNB\\\";}}\",\"display\":\"4\"}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 1,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": false,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [],
+          "isoverallcomplete": false
+        },
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0,
+        "contents": [
+          {
+            "type": "file",
+            "filename": "cuadernoU3-14-iterativas-ejs.ipynb",
+            "filepath": "/",
+            "filesize": 13996,
+            "fileurl": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/webservice/pluginfile.php/703558/mod_resource/content/3/cuadernoU3-14-iterativas-ejs.ipynb?forcedownload=1",
+            "timecreated": 1793725686,
+            "timemodified": 1793725688,
+            "sortorder": 1,
+            "mimetype": "application/json",
+            "isexternalfile": false,
+            "userid": 171753,
+            "author": "López García, Juan Manuel",
+            "license": "allrightsreserved"
+          }
+        ],
+        "contentsinfo": {
+          "filescount": 1,
+          "filessize": 13996,
+          "lastmodified": 1793725688,
+          "mimetypes": [
+            "application/json"
+          ],
+          "repositorytype": ""
+        }
+      }
+    ]
+  },
+  {
+    "id": 7742,
+    "name": "Funciones",
+    "visible": 1,
+    "summary": "",
+    "summaryformat": 1,
+    "section": 5,
+    "hiddenbynumsections": 0,
+    "uservisible": true,
+    "component": null,
+    "itemid": null,
+    "modules": [
+      {
+        "id": 364364,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/assign/view.php?id=364364",
+        "name": "Proyecto paralelo U4: Sitio web con Flask",
+        "instance": 92243,
+        "contextid": 722727,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/assign/1794492247/monologo?filtericon=1",
+        "modname": "assign",
+        "purpose": "assessment",
+        "branded": false,
+        "modplural": "Tareas",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": null,
+        "customdata": "{\"customcompletionrules\":{\"completionsubmit\":\"1\"},\"duedate\":1795993140,\"cutoffdate\":\"1795993140\",\"allowsubmissionsfromdate\":\"1794438000\"}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 2,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": true,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [
+            {
+              "rulename": "completionsubmit",
+              "rulevalue": {
+                "status": 0,
+                "description": "Hacer un envío"
+              }
+            }
+          ],
+          "isoverallcomplete": false
+        },
+        "downloadcontent": 1,
+        "dates": [
+          {
+            "label": "Apertura:",
+            "timestamp": 1794438000,
+            "dataid": "allowsubmissionsfromdate"
+          },
+          {
+            "label": "Cierre:",
+            "timestamp": 1795993140,
+            "dataid": "duedate"
+          }
+        ],
+        "groupmode": 0
+      },
+      {
+        "id": 364322,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/resource/view.php?id=364322",
+        "name": "Cuaderno U4-01: Funciones en Python (repaso a lo esencial)",
+        "instance": 101178,
+        "contextid": 722655,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/core/1794492247/f/json?filtericon=1",
+        "modname": "resource",
+        "purpose": "content",
+        "branded": false,
+        "modplural": "Archivos",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": " <span class=\"resourcelinkdetails\">33.3 KB</span>",
+        "activitybadge": {
+          "badgecontent": "IPYNB",
+          "badgestyle": "badge-none"
+        },
+        "customdata": "{\"filtericon\":true,\"displayoptions\":\"a:3:{s:8:\\\"showsize\\\";i:1;s:8:\\\"showtype\\\";i:1;s:11:\\\"filedetails\\\";a:4:{s:4:\\\"size\\\";i:34071;s:4:\\\"type\\\";s:9:\\\"JSON text\\\";s:8:\\\"mimetype\\\";s:16:\\\"application\\/json\\\";s:9:\\\"extension\\\";s:5:\\\"IPYNB\\\";}}\",\"display\":\"4\"}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 1,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": false,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [],
+          "isoverallcomplete": false
+        },
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0,
+        "contents": [
+          {
+            "type": "file",
+            "filename": "cuadernoU4-01-funciones-repaso.ipynb",
+            "filepath": "/",
+            "filesize": 34071,
+            "fileurl": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/webservice/pluginfile.php/722655/mod_resource/content/3/cuadernoU4-01-funciones-repaso.ipynb?forcedownload=1",
+            "timecreated": 1794337081,
+            "timemodified": 1794337093,
+            "sortorder": 1,
+            "mimetype": "application/json",
+            "isexternalfile": false,
+            "userid": 171753,
+            "author": "López García, Juan Manuel",
+            "license": "allrightsreserved"
+          }
+        ],
+        "contentsinfo": {
+          "filescount": 1,
+          "filessize": 34071,
+          "lastmodified": 1794337093,
+          "mimetypes": [
+            "application/json"
+          ],
+          "repositorytype": ""
+        }
+      },
+      {
+        "id": 364323,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/resource/view.php?id=364323",
+        "name": "Cuaderno U4-02: Funciones en Pyhon (ejercicios)",
+        "instance": 101179,
+        "contextid": 722660,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/core/1794492247/f/json?filtericon=1",
+        "modname": "resource",
+        "purpose": "content",
+        "branded": false,
+        "modplural": "Archivos",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": " <span class=\"resourcelinkdetails\">14.4 KB</span>",
+        "activitybadge": {
+          "badgecontent": "IPYNB",
+          "badgestyle": "badge-none"
+        },
+        "customdata": "{\"filtericon\":true,\"displayoptions\":\"a:3:{s:8:\\\"showsize\\\";i:1;s:8:\\\"showtype\\\";i:1;s:11:\\\"filedetails\\\";a:4:{s:4:\\\"size\\\";i:14787;s:4:\\\"type\\\";s:9:\\\"JSON text\\\";s:8:\\\"mimetype\\\";s:16:\\\"application\\/json\\\";s:9:\\\"extension\\\";s:5:\\\"IPYNB\\\";}}\",\"display\":\"4\"}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 1,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": false,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [],
+          "isoverallcomplete": false
+        },
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0,
+        "contents": [
+          {
+            "type": "file",
+            "filename": "cuadernoU4-01-funciones-ejs.ipynb",
+            "filepath": "/",
+            "filesize": 14787,
+            "fileurl": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/webservice/pluginfile.php/722660/mod_resource/content/4/cuadernoU4-01-funciones-ejs.ipynb?forcedownload=1",
+            "timecreated": 1794337243,
+            "timemodified": 1794337248,
+            "sortorder": 1,
+            "mimetype": "application/json",
+            "isexternalfile": false,
+            "userid": 171753,
+            "author": "López García, Juan Manuel",
+            "license": "allrightsreserved"
+          }
+        ],
+        "contentsinfo": {
+          "filescount": 1,
+          "filessize": 14787,
+          "lastmodified": 1794337248,
+          "mimetypes": [
+            "application/json"
+          ],
+          "repositorytype": ""
+        }
+      }
+    ]
+  },
+  {
+    "id": 7743,
+    "name": "Programación de código eficiente y robusto",
+    "visible": 1,
+    "summary": "",
+    "summaryformat": 1,
+    "section": 6,
+    "hiddenbynumsections": 0,
+    "uservisible": true,
+    "component": null,
+    "itemid": null,
+    "modules": [
+      {
+        "id": 364366,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/assign/view.php?id=364366",
+        "name": "Proyecto paralelo U5: FastAPI y LLMs",
+        "instance": 92245,
+        "contextid": 722729,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/assign/1794492247/monologo?filtericon=1",
+        "modname": "assign",
+        "purpose": "assessment",
+        "branded": false,
+        "modplural": "Tareas",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": null,
+        "customdata": "{\"customcompletionrules\":{\"completionsubmit\":\"1\"},\"duedate\":1796597940,\"cutoffdate\":\"1796597940\",\"allowsubmissionsfromdate\":\"1794438000\"}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 2,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": true,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [
+            {
+              "rulename": "completionsubmit",
+              "rulevalue": {
+                "status": 0,
+                "description": "Hacer un envío"
+              }
+            }
+          ],
+          "isoverallcomplete": false
+        },
+        "downloadcontent": 1,
+        "dates": [
+          {
+            "label": "Apertura:",
+            "timestamp": 1794438000,
+            "dataid": "allowsubmissionsfromdate"
+          },
+          {
+            "label": "Cierre:",
+            "timestamp": 1796597940,
+            "dataid": "duedate"
+          }
+        ],
+        "groupmode": 0
+      },
+      {
+        "id": 364339,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/resource/view.php?id=364339",
+        "name": "Cuaderno U5-01: Código eficiente y robusto en Python (repaso a lo esencial)",
+        "instance": 101182,
+        "contextid": 722685,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/core/1794492247/f/json?filtericon=1",
+        "modname": "resource",
+        "purpose": "content",
+        "branded": false,
+        "modplural": "Archivos",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": " <span class=\"resourcelinkdetails\">37.1 KB</span>",
+        "activitybadge": {
+          "badgecontent": "IPYNB",
+          "badgestyle": "badge-none"
+        },
+        "customdata": "{\"filtericon\":true,\"displayoptions\":\"a:3:{s:8:\\\"showsize\\\";i:1;s:8:\\\"showtype\\\";i:1;s:11:\\\"filedetails\\\";a:4:{s:4:\\\"size\\\";i:37946;s:4:\\\"type\\\";s:9:\\\"JSON text\\\";s:8:\\\"mimetype\\\";s:16:\\\"application\\/json\\\";s:9:\\\"extension\\\";s:5:\\\"IPYNB\\\";}}\",\"display\":\"4\"}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 1,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": false,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [],
+          "isoverallcomplete": false
+        },
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0,
+        "contents": [
+          {
+            "type": "file",
+            "filename": "cuadernoU5-01-robusto-repaso.ipynb",
+            "filepath": "/",
+            "filesize": 37946,
+            "fileurl": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/webservice/pluginfile.php/722685/mod_resource/content/3/cuadernoU5-01-robusto-repaso.ipynb?forcedownload=1",
+            "timecreated": 1794337314,
+            "timemodified": 1794337321,
+            "sortorder": 1,
+            "mimetype": "application/json",
+            "isexternalfile": false,
+            "userid": 171753,
+            "author": "López García, Juan Manuel",
+            "license": "allrightsreserved"
+          }
+        ],
+        "contentsinfo": {
+          "filescount": 1,
+          "filessize": 37946,
+          "lastmodified": 1794337321,
+          "mimetypes": [
+            "application/json"
+          ],
+          "repositorytype": ""
+        }
+      },
+      {
+        "id": 364341,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/resource/view.php?id=364341",
+        "name": "Cuaderno U5-02: Código eficiente y robusto en Pyhon (ejercicios)",
+        "instance": 101184,
+        "contextid": 722687,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/core/1794492247/f/json?filtericon=1",
+        "modname": "resource",
+        "purpose": "content",
+        "branded": false,
+        "modplural": "Archivos",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": " <span class=\"resourcelinkdetails\">14.0 KB</span>",
+        "activitybadge": {
+          "badgecontent": "IPYNB",
+          "badgestyle": "badge-none"
+        },
+        "customdata": "{\"filtericon\":true,\"displayoptions\":\"a:3:{s:8:\\\"showsize\\\";i:1;s:8:\\\"showtype\\\";i:1;s:11:\\\"filedetails\\\";a:4:{s:4:\\\"size\\\";i:14310;s:4:\\\"type\\\";s:9:\\\"JSON text\\\";s:8:\\\"mimetype\\\";s:16:\\\"application\\/json\\\";s:9:\\\"extension\\\";s:5:\\\"IPYNB\\\";}}\",\"display\":\"4\"}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 1,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": false,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [],
+          "isoverallcomplete": false
+        },
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0,
+        "contents": [
+          {
+            "type": "file",
+            "filename": "cuadernoU5-02-robusto-ejs.ipynb",
+            "filepath": "/",
+            "filesize": 14310,
+            "fileurl": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/webservice/pluginfile.php/722687/mod_resource/content/4/cuadernoU5-02-robusto-ejs.ipynb?forcedownload=1",
+            "timecreated": 1794337342,
+            "timemodified": 1794337344,
+            "sortorder": 1,
+            "mimetype": "application/json",
+            "isexternalfile": false,
+            "userid": 171753,
+            "author": "López García, Juan Manuel",
+            "license": "allrightsreserved"
+          }
+        ],
+        "contentsinfo": {
+          "filescount": 1,
+          "filessize": 14310,
+          "lastmodified": 1794337344,
+          "mimetypes": [
+            "application/json"
+          ],
+          "repositorytype": ""
+        }
+      }
+    ]
+  }
+]

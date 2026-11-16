@@ -1,0 +1,1955 @@
+{
+  "courses": [
+    {
+      "id": 311,
+      "fullname": "Bastionado de redes y sistemas (CETI_BRS)",
+      "shortname": "CETI_BRS",
+      "timemodified": 1790920350,
+      "assignments": [
+        {
+          "id": 3663,
+          "cmid": 30557,
+          "course": 311,
+          "name": "BRS01. Introducción al bastionado. Tarea",
+          "nosubmissions": 0,
+          "submissiondrafts": 0,
+          "sendnotifications": 0,
+          "sendlatenotifications": 0,
+          "sendstudentnotifications": 1,
+          "duedate": 1792360740,
+          "allowsubmissionsfromdate": 0,
+          "grade": 10,
+          "timemodified": 1791287739,
+          "completionsubmit": 1,
+          "cutoffdate": 1792382400,
+          "gradingduedate": 0,
+          "teamsubmission": 0,
+          "requireallteammemberssubmit": 0,
+          "teamsubmissiongroupingid": 0,
+          "blindmarking": 0,
+          "hidegrader": 0,
+          "revealidentities": 0,
+          "attemptreopenmethod": "untilpass",
+          "maxattempts": 1,
+          "markingworkflow": 0,
+          "markingallocation": 0,
+          "markinganonymous": 0,
+          "requiresubmissionstatement": 0,
+          "preventsubmissionnotingroup": 0,
+          "configs": [
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxfilesubmissions",
+              "value": "20"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxsubmissionsizebytes",
+              "value": "104857600"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "filetypeslist",
+              "value": ""
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "commentinline",
+              "value": "0"
+            },
+            {
+              "plugin": "editpdf",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            }
+          ],
+          "intro": "<iframe src=\"https://www.mecd.es/aulavirtualfpceuta/mod/resource/view.php?id=30799&amp;redirect=1', '', ,toolbar=no,location=no,menubar=no,copyhistory=no,status=no,directories=no,scrollbars=yes,resizable=yes'); return false;\" href=\"https://www.mecd.es/aulavirtualfpceuta/mod/resource/view.php?id=30799\" width=\"100%\" height=\"500\"></iframe>",
+          "introformat": 1,
+          "introfiles": [],
+          "introattachments": [],
+          "timelimit": 0,
+          "submissionattachments": 0
+        },
+        {
+          "id": 3665,
+          "cmid": 30587,
+          "course": 311,
+          "name": "BRS02. Diseño de planes de securización. Tarea",
+          "nosubmissions": 0,
+          "submissiondrafts": 0,
+          "sendnotifications": 0,
+          "sendlatenotifications": 0,
+          "sendstudentnotifications": 1,
+          "duedate": 1794178740,
+          "allowsubmissionsfromdate": 0,
+          "grade": 10,
+          "timemodified": 1792398235,
+          "completionsubmit": 1,
+          "cutoffdate": 1794200400,
+          "gradingduedate": 0,
+          "teamsubmission": 0,
+          "requireallteammemberssubmit": 0,
+          "teamsubmissiongroupingid": 0,
+          "blindmarking": 0,
+          "hidegrader": 0,
+          "revealidentities": 0,
+          "attemptreopenmethod": "untilpass",
+          "maxattempts": 1,
+          "markingworkflow": 0,
+          "markingallocation": 0,
+          "markinganonymous": 0,
+          "requiresubmissionstatement": 0,
+          "preventsubmissionnotingroup": 0,
+          "configs": [
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxfilesubmissions",
+              "value": "20"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxsubmissionsizebytes",
+              "value": "104857600"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "filetypeslist",
+              "value": ""
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "commentinline",
+              "value": "0"
+            },
+            {
+              "plugin": "editpdf",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            }
+          ],
+          "intro": "<iframe src=\"https://www.mecd.es/aulavirtualfpceuta/mod/resource/view.php?id=30801&amp;redirect=1', '', ,toolbar=no,location=no,menubar=no,copyhistory=no,status=no,directories=no,scrollbars=yes,resizable=yes'); return false;\" href=\"https://www.mecd.es/aulavirtualfpceuta/mod/resource/view.php?id=30801\" width=\"100%\" height=\"500\"></iframe>",
+          "introformat": 1,
+          "introfiles": [],
+          "introattachments": [],
+          "timelimit": 0,
+          "submissionattachments": 0
+        },
+        {
+          "id": 3667,
+          "cmid": 30617,
+          "course": 311,
+          "name": "BRS03. Configuración de sistemas de acceso y autenticación de personas. Tarea",
+          "nosubmissions": 0,
+          "submissiondrafts": 0,
+          "sendnotifications": 0,
+          "sendlatenotifications": 0,
+          "sendstudentnotifications": 1,
+          "duedate": 1797289140,
+          "allowsubmissionsfromdate": 0,
+          "grade": 10,
+          "timemodified": 1794482230,
+          "completionsubmit": 1,
+          "cutoffdate": 1797310800,
+          "gradingduedate": 0,
+          "teamsubmission": 0,
+          "requireallteammemberssubmit": 0,
+          "teamsubmissiongroupingid": 0,
+          "blindmarking": 0,
+          "hidegrader": 0,
+          "revealidentities": 0,
+          "attemptreopenmethod": "untilpass",
+          "maxattempts": 1,
+          "markingworkflow": 0,
+          "markingallocation": 0,
+          "markinganonymous": 0,
+          "requiresubmissionstatement": 0,
+          "preventsubmissionnotingroup": 0,
+          "configs": [
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxfilesubmissions",
+              "value": "20"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxsubmissionsizebytes",
+              "value": "104857600"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "filetypeslist",
+              "value": ""
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "commentinline",
+              "value": "0"
+            },
+            {
+              "plugin": "editpdf",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            }
+          ],
+          "intro": "<p><iframe src=\"https://www.mecd.es/aulavirtualfpceuta/mod/resource/view.php?id=30803&amp;redirect=1', '', ,toolbar=no,location=no,menubar=no,copyhistory=no,status=no,directories=no,scrollbars=yes,resizable=yes'); return false;\" width=\"100%\" height=\"500\"></iframe></p>",
+          "introformat": 1,
+          "introfiles": [],
+          "introattachments": [],
+          "timelimit": 0,
+          "submissionattachments": 0
+        }
+      ]
+    },
+    {
+      "id": 177,
+      "fullname": "Análisis forense informático (CETI_AFI)",
+      "shortname": "CETI_AFI",
+      "timemodified": 1789721582,
+      "assignments": [
+        {
+          "id": 1572,
+          "cmid": 16387,
+          "course": 177,
+          "name": "Tarea para AFI01",
+          "nosubmissions": 0,
+          "submissiondrafts": 0,
+          "sendnotifications": 0,
+          "sendlatenotifications": 0,
+          "sendstudentnotifications": 1,
+          "duedate": 1796079540,
+          "allowsubmissionsfromdate": 0,
+          "grade": 10,
+          "timemodified": 1794469568,
+          "completionsubmit": 1,
+          "cutoffdate": 0,
+          "gradingduedate": 0,
+          "teamsubmission": 0,
+          "requireallteammemberssubmit": 0,
+          "teamsubmissiongroupingid": 0,
+          "blindmarking": 0,
+          "hidegrader": 0,
+          "revealidentities": 0,
+          "attemptreopenmethod": "untilpass",
+          "maxattempts": 1,
+          "markingworkflow": 0,
+          "markingallocation": 0,
+          "markinganonymous": 0,
+          "requiresubmissionstatement": 0,
+          "preventsubmissionnotingroup": 0,
+          "configs": [
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxfilesubmissions",
+              "value": "20"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxsubmissionsizebytes",
+              "value": "268435456"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "filetypeslist",
+              "value": ""
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "commentinline",
+              "value": "0"
+            },
+            {
+              "plugin": "editpdf",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            }
+          ],
+          "intro": "<p><iframe src=\"https://www.mecd.es/aulavirtualfpceuta/mod/resource/view.php?id=16450&amp;redirect=1', '', ,toolbar=no,location=no,menubar=no,copyhistory=no,status=no,directories=no,scrollbars=yes,resizable=yes'); return false;\" width=\"100%\" height=\"500\"></iframe></p>",
+          "introformat": 1,
+          "introfiles": [],
+          "introattachments": [],
+          "timelimit": 0,
+          "submissionattachments": 0
+        },
+        {
+          "id": 1573,
+          "cmid": 16402,
+          "course": 177,
+          "name": "Tarea para AFI02",
+          "nosubmissions": 0,
+          "submissiondrafts": 0,
+          "sendnotifications": 0,
+          "sendlatenotifications": 0,
+          "sendstudentnotifications": 1,
+          "duedate": 1767135540,
+          "allowsubmissionsfromdate": 1762902000,
+          "grade": 10,
+          "timemodified": 1794469676,
+          "completionsubmit": 1,
+          "cutoffdate": 0,
+          "gradingduedate": 0,
+          "teamsubmission": 0,
+          "requireallteammemberssubmit": 0,
+          "teamsubmissiongroupingid": 0,
+          "blindmarking": 0,
+          "hidegrader": 0,
+          "revealidentities": 0,
+          "attemptreopenmethod": "untilpass",
+          "maxattempts": 1,
+          "markingworkflow": 0,
+          "markingallocation": 0,
+          "markinganonymous": 0,
+          "requiresubmissionstatement": 0,
+          "preventsubmissionnotingroup": 0,
+          "configs": [
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxfilesubmissions",
+              "value": "20"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxsubmissionsizebytes",
+              "value": "268435456"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "filetypeslist",
+              "value": ""
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "commentinline",
+              "value": "0"
+            },
+            {
+              "plugin": "editpdf",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            }
+          ],
+          "intro": "<p><iframe src=\"https://www.mecd.es/aulavirtualfpceuta/mod/resource/view.php?id=16451&amp;redirect=1', '', ,toolbar=no,location=no,menubar=no,copyhistory=no,status=no,directories=no,scrollbars=yes,resizable=yes'); return false;\" width=\"100%\" height=\"500\"></iframe></p>",
+          "introformat": 1,
+          "introfiles": [],
+          "introattachments": [],
+          "timelimit": 0,
+          "submissionattachments": 0
+        }
+      ]
+    },
+    {
+      "id": 175,
+      "fullname": "Puesta en producción segura (CETI_PPS)",
+      "shortname": "CETI_PPS",
+      "timemodified": 1696493231,
+      "assignments": [
+        {
+          "id": 1558,
+          "cmid": 16161,
+          "course": 175,
+          "name": "Tarea para PPS01",
+          "nosubmissions": 0,
+          "submissiondrafts": 0,
+          "sendnotifications": 0,
+          "sendlatenotifications": 0,
+          "sendstudentnotifications": 1,
+          "duedate": 1794697140,
+          "allowsubmissionsfromdate": 1790919120,
+          "grade": 10,
+          "timemodified": 1791824513,
+          "completionsubmit": 1,
+          "cutoffdate": 0,
+          "gradingduedate": 0,
+          "teamsubmission": 0,
+          "requireallteammemberssubmit": 0,
+          "teamsubmissiongroupingid": 0,
+          "blindmarking": 0,
+          "hidegrader": 0,
+          "revealidentities": 0,
+          "attemptreopenmethod": "untilpass",
+          "maxattempts": 1,
+          "markingworkflow": 0,
+          "markingallocation": 0,
+          "markinganonymous": 0,
+          "requiresubmissionstatement": 0,
+          "preventsubmissionnotingroup": 0,
+          "configs": [
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxfilesubmissions",
+              "value": "20"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxsubmissionsizebytes",
+              "value": "104857600"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "filetypeslist",
+              "value": ""
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "commentinline",
+              "value": "0"
+            },
+            {
+              "plugin": "editpdf",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            }
+          ],
+          "intro": "<iframe src=\"https://www.mecd.es/aulavirtualfpceuta/mod/resource/view.php?id=16224&amp;redirect=1', '', ,toolbar=no,location=no,menubar=no,copyhistory=no,status=no,directories=no,scrollbars=yes,resizable=yes'); return false;\" href=\"https://www.mecd.es/aulavirtualfpceuta/mod/resource/view.php?id=16224\" width=\"100%\" height=\"500\"></iframe>",
+          "introformat": 1,
+          "introfiles": [],
+          "introattachments": [],
+          "timelimit": 0,
+          "submissionattachments": 0
+        }
+      ]
+    },
+    {
+      "id": 174,
+      "fullname": "Normativa de ciberseguridad (CETI_NC)",
+      "shortname": "CETI_NC",
+      "timemodified": 1696501252,
+      "assignments": [
+        {
+          "id": 3751,
+          "cmid": 31313,
+          "course": 174,
+          "name": "Análisis de Cumplimiento Normativo en una empresa española",
+          "nosubmissions": 0,
+          "submissiondrafts": 1,
+          "sendnotifications": 1,
+          "sendlatenotifications": 0,
+          "sendstudentnotifications": 1,
+          "duedate": 1795644000,
+          "allowsubmissionsfromdate": 1792360800,
+          "grade": 10,
+          "timemodified": 1792495977,
+          "completionsubmit": 1,
+          "cutoffdate": 0,
+          "gradingduedate": 1795730400,
+          "teamsubmission": 0,
+          "requireallteammemberssubmit": 0,
+          "teamsubmissiongroupingid": 0,
+          "blindmarking": 0,
+          "hidegrader": 0,
+          "revealidentities": 0,
+          "attemptreopenmethod": "untilpass",
+          "maxattempts": 1,
+          "markingworkflow": 0,
+          "markingallocation": 0,
+          "markinganonymous": 0,
+          "requiresubmissionstatement": 1,
+          "preventsubmissionnotingroup": 0,
+          "submissionstatement": "Confirmo que este trabajo es de elaboración propia, excepto aquellas partes en las que haya reconocido la autoría de la obra o parte de ella a otras personas.",
+          "submissionstatementformat": 1,
+          "configs": [
+            {
+              "plugin": "onlinetext",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "onlinetext",
+              "subtype": "assignsubmission",
+              "name": "wordlimit",
+              "value": "0"
+            },
+            {
+              "plugin": "onlinetext",
+              "subtype": "assignsubmission",
+              "name": "wordlimitenabled",
+              "value": "0"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "commentinline",
+              "value": "0"
+            },
+            {
+              "plugin": "editpdf",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            }
+          ],
+          "intro": "<h5 style=\"text-align: left;\">Introducción</h5><p dir=\"ltr\" style=\"text-align: left;\"></p><p dir=\"ltr\" style=\"text-align: left;\"></p><p dir=\"ltr\">En esta actividad analizaréis cómo una empresa española debe responder ante un ciberincidente aplicando la normativa vigente de protección de datos y ciberseguridad. Habrá que identificar las obligaciones derivadas del RGPD, la LOPDGDD y NIS2, determinar las funciones del responsable de cumplimiento normativo y proponer medidas para prevenir, gestionar y documentar futuros incidentes.</p><h5 style=\"text-align: left;\">Objetivo</h5><p dir=\"ltr\" style=\"text-align: left;\"></p><p dir=\"ltr\">Analizar cómo una empresa española debe aplicar la normativa de protección de datos y ciberseguridad, identificando las funciones y responsabilidades de su responsable de cumplimiento normativo.</p><h5>Modalidad de trabajo</h5><p dir=\"ltr\"></p><p dir=\"ltr\">Individual.</p><h5>Enunciado</h5><p dir=\"ltr\"></p><p dir=\"ltr\">Elege una empresa española real de uno de estos sectores:</p><p dir=\"ltr\"></p><ul><li><span style=\"font-size: 0.9375rem;\">Telecomunicaciones.</span></li><li>Banca o seguros.</li><li><span style=\"font-size: 0.9375rem;\">Salud, clínicas privadas o laboratorios.</span></li><li>Energía.</li><li><span style=\"font-size: 0.9375rem;\">Transporte.</span></li><li>Administración pública o empresa que trabaje para administraciones públicas.</li><li><span style=\"font-size: 0.9375rem;\">Comercio electrónico.</span></li><li>Proveedor de servicios cloud o servicios digitales.</li></ul><p></p><p dir=\"ltr\"></p><p dir=\"ltr\"></p><p dir=\"ltr\"></p><p dir=\"ltr\"></p><p dir=\"ltr\"></p><p dir=\"ltr\"></p><p dir=\"ltr\"></p><p dir=\"ltr\"></p><p dir=\"ltr\"></p><p dir=\"ltr\"></p><p dir=\"ltr\"></p><p dir=\"ltr\">Una vez elegida la empresa, presenta un ejemplo en el que se exponga una situación susceptible de controlar por el Compliance Officer. En esta situación expón la/s normativa/s que fuesen de su aplicación, qué funciones debería realizar el responsable de cumplimiento normativo. Puedes ayudarte del <a href=\"https://www.mecd.es/aulavirtualfpceuta/mod/page/view.php?id=31309\" target=\"_blank\">ejemplo de un caso práctico de aplicación de normativas</a>.</p><p dir=\"ltr\"></p><h5>Entrega</h5><p dir=\"ltr\"></p><p dir=\"ltr\">Habrá que entregar el enlace de un vídeo subido a vuestra cuenta de OneDrive en el que, apoyándote en una presentación digital, expliques de forma clara el ejemplo que has propuesto. Es imprescindible que utilices tu cámara en el vídeo.</p><h5>Criterios de Evaluación</h5><p dir=\"ltr\"></p><p dir=\"ltr\">Los criterios de evaluación que se aplican en esta actividad son los siguientes, relacionados con el resultado de aprendizaje que <em>\"identifica los puntos principales de aplicación para asegurar el cumplimiento normativo reconociendo funciones y responsabilidades\"</em><span>. Son los siguientes:</span></p><p dir=\"ltr\"></p><ul><li>Se han identificado las bases del cumplimiento normativo a tener en cuenta en las organizaciones.</li><li><span style=\"font-size: 0.9375rem;\">Se han descrito y aplicado los principios de un buen gobierno y su relación con la ética profesional.</span></li><li>Se han definido las políticas y procedimientos, así como la estructura organizativa que establezca la cultura del cumplimiento normativo dentro de las organizaciones.</li><li>Se han descrito las funciones o competencias del responsable del cumplimiento normativo dentro de las organizaciones.</li><li>Se han establecido las relaciones con terceros para un correcto cumplimiento normativo.</li></ul><p>El porcentaje de aplicación de cada criterio de evaluación para esta tarea puede consultarse en la rúbrica de la misma.</p><p></p><p></p><p dir=\"ltr\"></p><p dir=\"ltr\"></p><p dir=\"ltr\"></p><p dir=\"ltr\"></p><p dir=\"ltr\"></p><p dir=\"ltr\"></p><p dir=\"ltr\"></p>",
+          "introformat": 1,
+          "introfiles": [],
+          "introattachments": [],
+          "timelimit": 0,
+          "submissionattachments": 0
+        }
+      ]
+    },
+    {
+      "id": 173,
+      "fullname": "Incidentes de ciberseguridad (CETI_IC)",
+      "shortname": "CETI_IC",
+      "timemodified": 1696501326,
+      "assignments": [
+        {
+          "id": 1546,
+          "cmid": 15967,
+          "course": 173,
+          "name": "Tarea para IC01",
+          "nosubmissions": 0,
+          "submissiondrafts": 0,
+          "sendnotifications": 0,
+          "sendlatenotifications": 0,
+          "sendstudentnotifications": 1,
+          "duedate": 1796079540,
+          "allowsubmissionsfromdate": 1790891940,
+          "grade": 10,
+          "timemodified": 1791453133,
+          "completionsubmit": 1,
+          "cutoffdate": 1796079540,
+          "gradingduedate": 0,
+          "teamsubmission": 0,
+          "requireallteammemberssubmit": 0,
+          "teamsubmissiongroupingid": 0,
+          "blindmarking": 0,
+          "hidegrader": 0,
+          "revealidentities": 0,
+          "attemptreopenmethod": "untilpass",
+          "maxattempts": 1,
+          "markingworkflow": 0,
+          "markingallocation": 0,
+          "markinganonymous": 0,
+          "requiresubmissionstatement": 0,
+          "preventsubmissionnotingroup": 0,
+          "configs": [
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxfilesubmissions",
+              "value": "20"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxsubmissionsizebytes",
+              "value": "104857600"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "filetypeslist",
+              "value": ""
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "commentinline",
+              "value": "0"
+            },
+            {
+              "plugin": "editpdf",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            }
+          ],
+          "intro": "<iframe src=\"https://www.mecd.es/aulavirtualfpceuta/mod/resource/view.php?id=16060&amp;redirect=1', '', ,toolbar=no,location=no,menubar=no,copyhistory=no,status=no,directories=no,scrollbars=yes,resizable=yes'); return false;\" href=\"https://www.mecd.es/aulavirtualfpceuta/mod/resource/view.php?id=16060\" width=\"100%\" height=\"500\"></iframe>",
+          "introformat": 1,
+          "introfiles": [],
+          "introattachments": [],
+          "timelimit": 0,
+          "submissionattachments": 0
+        },
+        {
+          "id": 1547,
+          "cmid": 15982,
+          "course": 173,
+          "name": "Tarea para IC02",
+          "nosubmissions": 0,
+          "submissiondrafts": 0,
+          "sendnotifications": 0,
+          "sendlatenotifications": 0,
+          "sendstudentnotifications": 1,
+          "duedate": 1766357940,
+          "allowsubmissionsfromdate": 1764543600,
+          "grade": 10,
+          "timemodified": 1763977485,
+          "completionsubmit": 1,
+          "cutoffdate": 1766357940,
+          "gradingduedate": 0,
+          "teamsubmission": 0,
+          "requireallteammemberssubmit": 0,
+          "teamsubmissiongroupingid": 0,
+          "blindmarking": 0,
+          "hidegrader": 0,
+          "revealidentities": 0,
+          "attemptreopenmethod": "untilpass",
+          "maxattempts": 1,
+          "markingworkflow": 0,
+          "markingallocation": 0,
+          "markinganonymous": 0,
+          "requiresubmissionstatement": 0,
+          "preventsubmissionnotingroup": 0,
+          "configs": [
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxfilesubmissions",
+              "value": "20"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxsubmissionsizebytes",
+              "value": "104857600"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "filetypeslist",
+              "value": ""
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "commentinline",
+              "value": "0"
+            },
+            {
+              "plugin": "editpdf",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            }
+          ],
+          "intro": "<iframe src=\"https://www.mecd.es/aulavirtualfpceuta/mod/resource/view.php?id=16061&amp;redirect=1', '', ,toolbar=no,location=no,menubar=no,copyhistory=no,status=no,directories=no,scrollbars=yes,resizable=yes'); return false;\" href=\"https://www.mecd.es/aulavirtualfpceuta/mod/resource/view.php?id=16061\" width=\"100%\" height=\"500\"></iframe>",
+          "introformat": 1,
+          "introfiles": [],
+          "introattachments": [],
+          "timelimit": 0,
+          "submissionattachments": 0
+        },
+        {
+          "id": 1548,
+          "cmid": 15997,
+          "course": 173,
+          "name": "Tarea para IC03",
+          "nosubmissions": 0,
+          "submissiondrafts": 0,
+          "sendnotifications": 0,
+          "sendlatenotifications": 0,
+          "sendstudentnotifications": 1,
+          "duedate": 1769036340,
+          "allowsubmissionsfromdate": 1767430800,
+          "grade": 10,
+          "timemodified": 1767439545,
+          "completionsubmit": 1,
+          "cutoffdate": 1769036340,
+          "gradingduedate": 0,
+          "teamsubmission": 0,
+          "requireallteammemberssubmit": 0,
+          "teamsubmissiongroupingid": 0,
+          "blindmarking": 0,
+          "hidegrader": 0,
+          "revealidentities": 0,
+          "attemptreopenmethod": "untilpass",
+          "maxattempts": 1,
+          "markingworkflow": 0,
+          "markingallocation": 0,
+          "markinganonymous": 0,
+          "requiresubmissionstatement": 0,
+          "preventsubmissionnotingroup": 0,
+          "configs": [
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxfilesubmissions",
+              "value": "20"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxsubmissionsizebytes",
+              "value": "104857600"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "filetypeslist",
+              "value": ""
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "commentinline",
+              "value": "0"
+            },
+            {
+              "plugin": "editpdf",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            }
+          ],
+          "intro": "<iframe src=\"https://www.mecd.es/aulavirtualfpceuta/mod/resource/view.php?id=16062&amp;redirect=1', '', ,toolbar=no,location=no,menubar=no,copyhistory=no,status=no,directories=no,scrollbars=yes,resizable=yes'); return false;\" href=\"https://www.mecd.es/aulavirtualfpceuta/mod/resource/view.php?id=16062\" width=\"100%\" height=\"500\"></iframe>",
+          "introformat": 1,
+          "introfiles": [],
+          "introattachments": [],
+          "timelimit": 0,
+          "submissionattachments": 0
+        },
+        {
+          "id": 1549,
+          "cmid": 16012,
+          "course": 173,
+          "name": "Tarea para IC04",
+          "nosubmissions": 0,
+          "submissiondrafts": 0,
+          "sendnotifications": 0,
+          "sendlatenotifications": 0,
+          "sendstudentnotifications": 1,
+          "duedate": 1771196340,
+          "allowsubmissionsfromdate": 1769986800,
+          "grade": 10,
+          "timemodified": 1770024677,
+          "completionsubmit": 1,
+          "cutoffdate": 1771196340,
+          "gradingduedate": 0,
+          "teamsubmission": 0,
+          "requireallteammemberssubmit": 0,
+          "teamsubmissiongroupingid": 0,
+          "blindmarking": 0,
+          "hidegrader": 0,
+          "revealidentities": 0,
+          "attemptreopenmethod": "untilpass",
+          "maxattempts": 1,
+          "markingworkflow": 0,
+          "markingallocation": 0,
+          "markinganonymous": 0,
+          "requiresubmissionstatement": 0,
+          "preventsubmissionnotingroup": 0,
+          "configs": [
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxfilesubmissions",
+              "value": "20"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxsubmissionsizebytes",
+              "value": "104857600"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "filetypeslist",
+              "value": ""
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "commentinline",
+              "value": "0"
+            },
+            {
+              "plugin": "editpdf",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            }
+          ],
+          "intro": "<iframe src=\"https://www.mecd.es/aulavirtualfpceuta/mod/resource/view.php?id=16063&amp;redirect=1', '', ,toolbar=no,location=no,menubar=no,copyhistory=no,status=no,directories=no,scrollbars=yes,resizable=yes'); return false;\" href=\"https://www.mecd.es/aulavirtualfpceuta/mod/resource/view.php?id=16063\" width=\"100%\" height=\"500\"></iframe>",
+          "introformat": 1,
+          "introfiles": [],
+          "introattachments": [],
+          "timelimit": 0,
+          "submissionattachments": 0
+        },
+        {
+          "id": 1550,
+          "cmid": 16027,
+          "course": 173,
+          "name": "Tarea para IC05",
+          "nosubmissions": 0,
+          "submissiondrafts": 0,
+          "sendnotifications": 0,
+          "sendlatenotifications": 0,
+          "sendstudentnotifications": 1,
+          "duedate": 1773010740,
+          "allowsubmissionsfromdate": 1771414560,
+          "grade": 10,
+          "timemodified": 1771333053,
+          "completionsubmit": 1,
+          "cutoffdate": 1773010740,
+          "gradingduedate": 0,
+          "teamsubmission": 0,
+          "requireallteammemberssubmit": 0,
+          "teamsubmissiongroupingid": 0,
+          "blindmarking": 0,
+          "hidegrader": 0,
+          "revealidentities": 0,
+          "attemptreopenmethod": "untilpass",
+          "maxattempts": 1,
+          "markingworkflow": 0,
+          "markingallocation": 0,
+          "markinganonymous": 0,
+          "requiresubmissionstatement": 0,
+          "preventsubmissionnotingroup": 0,
+          "configs": [
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxfilesubmissions",
+              "value": "20"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxsubmissionsizebytes",
+              "value": "104857600"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "filetypeslist",
+              "value": ""
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "commentinline",
+              "value": "0"
+            },
+            {
+              "plugin": "editpdf",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            }
+          ],
+          "intro": "<iframe src=\"https://www.mecd.es/aulavirtualfpceuta/mod/resource/view.php?id=16064&amp;redirect=1', '', ,toolbar=no,location=no,menubar=no,copyhistory=no,status=no,directories=no,scrollbars=yes,resizable=yes'); return false;\" href=\"https://www.mecd.es/aulavirtualfpceuta/mod/resource/view.php?id=16064\" width=\"100%\" height=\"500\"></iframe>",
+          "introformat": 1,
+          "introfiles": [],
+          "introattachments": [],
+          "timelimit": 0,
+          "submissionattachments": 0
+        },
+        {
+          "id": 1551,
+          "cmid": 16042,
+          "course": 173,
+          "name": "Tarea para IC06",
+          "nosubmissions": 0,
+          "submissiondrafts": 0,
+          "sendnotifications": 0,
+          "sendlatenotifications": 0,
+          "sendstudentnotifications": 1,
+          "duedate": 1776549540,
+          "allowsubmissionsfromdate": 1773788400,
+          "grade": 10,
+          "timemodified": 1773049410,
+          "completionsubmit": 1,
+          "cutoffdate": 1776549540,
+          "gradingduedate": 0,
+          "teamsubmission": 0,
+          "requireallteammemberssubmit": 0,
+          "teamsubmissiongroupingid": 0,
+          "blindmarking": 0,
+          "hidegrader": 0,
+          "revealidentities": 0,
+          "attemptreopenmethod": "untilpass",
+          "maxattempts": 1,
+          "markingworkflow": 0,
+          "markingallocation": 0,
+          "markinganonymous": 0,
+          "requiresubmissionstatement": 0,
+          "preventsubmissionnotingroup": 0,
+          "configs": [
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxfilesubmissions",
+              "value": "20"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxsubmissionsizebytes",
+              "value": "104857600"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "filetypeslist",
+              "value": ""
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "commentinline",
+              "value": "0"
+            },
+            {
+              "plugin": "editpdf",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            }
+          ],
+          "intro": "<iframe src=\"https://www.mecd.es/aulavirtualfpceuta/mod/resource/view.php?id=16065&amp;redirect=1', '', ,toolbar=no,location=no,menubar=no,copyhistory=no,status=no,directories=no,scrollbars=yes,resizable=yes'); return false;\" href=\"https://www.mecd.es/aulavirtualfpceuta/mod/resource/view.php?id=16065\" width=\"100%\" height=\"500\"></iframe>",
+          "introformat": 1,
+          "introfiles": [],
+          "introattachments": [],
+          "timelimit": 0,
+          "submissionattachments": 0
+        },
+        {
+          "id": 1552,
+          "cmid": 16057,
+          "course": 173,
+          "name": "Tarea para IC07",
+          "nosubmissions": 0,
+          "submissiondrafts": 0,
+          "sendnotifications": 0,
+          "sendlatenotifications": 0,
+          "sendstudentnotifications": 1,
+          "duedate": 1779314340,
+          "allowsubmissionsfromdate": 1776808800,
+          "grade": 10,
+          "timemodified": 1777020586,
+          "completionsubmit": 1,
+          "cutoffdate": 1779314340,
+          "gradingduedate": 0,
+          "teamsubmission": 0,
+          "requireallteammemberssubmit": 0,
+          "teamsubmissiongroupingid": 0,
+          "blindmarking": 0,
+          "hidegrader": 0,
+          "revealidentities": 0,
+          "attemptreopenmethod": "untilpass",
+          "maxattempts": 1,
+          "markingworkflow": 0,
+          "markingallocation": 0,
+          "markinganonymous": 0,
+          "requiresubmissionstatement": 0,
+          "preventsubmissionnotingroup": 0,
+          "configs": [
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxfilesubmissions",
+              "value": "20"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxsubmissionsizebytes",
+              "value": "104857600"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "filetypeslist",
+              "value": ""
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "commentinline",
+              "value": "0"
+            },
+            {
+              "plugin": "editpdf",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            }
+          ],
+          "intro": "<iframe src=\"https://www.mecd.es/aulavirtualfpceuta/mod/resource/view.php?id=16066&amp;redirect=1', '', ,toolbar=no,location=no,menubar=no,copyhistory=no,status=no,directories=no,scrollbars=yes,resizable=yes'); return false;\" href=\"https://www.mecd.es/aulavirtualfpceuta/mod/resource/view.php?id=16066\" width=\"100%\" height=\"500\"></iframe>",
+          "introformat": 1,
+          "introfiles": [],
+          "introattachments": [],
+          "timelimit": 0,
+          "submissionattachments": 0
+        }
+      ]
+    },
+    {
+      "id": 172,
+      "fullname": "Hacking ético (CETI_HE)",
+      "shortname": "CETI_HE",
+      "timemodified": 1696244980,
+      "assignments": [
+        {
+          "id": 1541,
+          "cmid": 15886,
+          "course": 172,
+          "name": "Tarea para HE01",
+          "nosubmissions": 0,
+          "submissiondrafts": 0,
+          "sendnotifications": 0,
+          "sendlatenotifications": 0,
+          "sendstudentnotifications": 1,
+          "duedate": 1796770740,
+          "allowsubmissionsfromdate": 0,
+          "grade": 10,
+          "timemodified": 1794483115,
+          "completionsubmit": 1,
+          "cutoffdate": 1796842200,
+          "gradingduedate": 0,
+          "teamsubmission": 0,
+          "requireallteammemberssubmit": 0,
+          "teamsubmissiongroupingid": 0,
+          "blindmarking": 0,
+          "hidegrader": 0,
+          "revealidentities": 0,
+          "attemptreopenmethod": "untilpass",
+          "maxattempts": 1,
+          "markingworkflow": 0,
+          "markingallocation": 0,
+          "markinganonymous": 0,
+          "requiresubmissionstatement": 0,
+          "preventsubmissionnotingroup": 0,
+          "configs": [
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxfilesubmissions",
+              "value": "20"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxsubmissionsizebytes",
+              "value": "104857600"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "filetypeslist",
+              "value": ""
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "commentinline",
+              "value": "0"
+            },
+            {
+              "plugin": "editpdf",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            }
+          ],
+          "intro": "<p><iframe src=\"https://www.mecd.es/aulavirtualfpceuta/mod/resource/view.php?id=15949&amp;redirect=1', '', ,toolbar=no,location=no,menubar=no,copyhistory=no,status=no,directories=no,scrollbars=yes,resizable=yes'); return false;\" width=\"100%\" height=\"500\"></iframe></p>",
+          "introformat": 1,
+          "introfiles": [],
+          "introattachments": [],
+          "timelimit": 0,
+          "submissionattachments": 0
+        },
+        {
+          "id": 1542,
+          "cmid": 15901,
+          "course": 172,
+          "name": "Tarea para HE02",
+          "nosubmissions": 0,
+          "submissiondrafts": 0,
+          "sendnotifications": 0,
+          "sendlatenotifications": 0,
+          "sendstudentnotifications": 1,
+          "duedate": 1767913140,
+          "allowsubmissionsfromdate": 0,
+          "grade": 10,
+          "timemodified": 1765920726,
+          "completionsubmit": 1,
+          "cutoffdate": 1767913140,
+          "gradingduedate": 1782252000,
+          "teamsubmission": 0,
+          "requireallteammemberssubmit": 0,
+          "teamsubmissiongroupingid": 0,
+          "blindmarking": 0,
+          "hidegrader": 0,
+          "revealidentities": 0,
+          "attemptreopenmethod": "untilpass",
+          "maxattempts": 1,
+          "markingworkflow": 0,
+          "markingallocation": 0,
+          "markinganonymous": 0,
+          "requiresubmissionstatement": 0,
+          "preventsubmissionnotingroup": 0,
+          "configs": [
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxfilesubmissions",
+              "value": "20"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxsubmissionsizebytes",
+              "value": "104857600"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "filetypeslist",
+              "value": ""
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "commentinline",
+              "value": "0"
+            },
+            {
+              "plugin": "editpdf",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            }
+          ],
+          "intro": "<iframe src=\"https://www.mecd.es/aulavirtualfpceuta/mod/resource/view.php?id=15950&amp;redirect=1', '', ,toolbar=no,location=no,menubar=no,copyhistory=no,status=no,directories=no,scrollbars=yes,resizable=yes'); return false;\" href=\"https://www.mecd.es/aulavirtualfpceuta/mod/resource/view.php?id=15950\" width=\"100%\" height=\"500\"></iframe>",
+          "introformat": 1,
+          "introfiles": [],
+          "introattachments": [],
+          "timelimit": 0,
+          "submissionattachments": 0
+        },
+        {
+          "id": 1543,
+          "cmid": 15916,
+          "course": 172,
+          "name": "Tarea para HE03",
+          "nosubmissions": 0,
+          "submissiondrafts": 0,
+          "sendnotifications": 0,
+          "sendlatenotifications": 0,
+          "sendstudentnotifications": 1,
+          "duedate": 1772319540,
+          "allowsubmissionsfromdate": 0,
+          "grade": 10,
+          "timemodified": 1767955294,
+          "completionsubmit": 1,
+          "cutoffdate": 1772319540,
+          "gradingduedate": 0,
+          "teamsubmission": 0,
+          "requireallteammemberssubmit": 0,
+          "teamsubmissiongroupingid": 0,
+          "blindmarking": 0,
+          "hidegrader": 0,
+          "revealidentities": 0,
+          "attemptreopenmethod": "untilpass",
+          "maxattempts": 1,
+          "markingworkflow": 0,
+          "markingallocation": 0,
+          "markinganonymous": 0,
+          "requiresubmissionstatement": 0,
+          "preventsubmissionnotingroup": 0,
+          "configs": [
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxfilesubmissions",
+              "value": "20"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxsubmissionsizebytes",
+              "value": "104857600"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "filetypeslist",
+              "value": ""
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "commentinline",
+              "value": "0"
+            },
+            {
+              "plugin": "editpdf",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            }
+          ],
+          "intro": "<iframe src=\"https://www.mecd.es/aulavirtualfpceuta/mod/resource/view.php?id=15951&amp;redirect=1', '', ,toolbar=no,location=no,menubar=no,copyhistory=no,status=no,directories=no,scrollbars=yes,resizable=yes'); return false;\" href=\"https://www.mecd.es/aulavirtualfpceuta/mod/resource/view.php?id=15951\" width=\"100%\" height=\"500\"></iframe>",
+          "introformat": 1,
+          "introfiles": [],
+          "introattachments": [],
+          "timelimit": 0,
+          "submissionattachments": 0
+        },
+        {
+          "id": 1544,
+          "cmid": 15931,
+          "course": 172,
+          "name": "Tarea para HE04",
+          "nosubmissions": 0,
+          "submissiondrafts": 0,
+          "sendnotifications": 0,
+          "sendlatenotifications": 0,
+          "sendstudentnotifications": 1,
+          "duedate": 1776286800,
+          "allowsubmissionsfromdate": 0,
+          "grade": 10,
+          "timemodified": 1776114872,
+          "completionsubmit": 1,
+          "cutoffdate": 0,
+          "gradingduedate": 1776722400,
+          "teamsubmission": 0,
+          "requireallteammemberssubmit": 0,
+          "teamsubmissiongroupingid": 0,
+          "blindmarking": 0,
+          "hidegrader": 0,
+          "revealidentities": 0,
+          "attemptreopenmethod": "untilpass",
+          "maxattempts": 1,
+          "markingworkflow": 0,
+          "markingallocation": 0,
+          "markinganonymous": 0,
+          "requiresubmissionstatement": 0,
+          "preventsubmissionnotingroup": 0,
+          "configs": [
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxfilesubmissions",
+              "value": "20"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxsubmissionsizebytes",
+              "value": "104857600"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "filetypeslist",
+              "value": ""
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "commentinline",
+              "value": "0"
+            },
+            {
+              "plugin": "editpdf",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            }
+          ],
+          "intro": "<iframe src=\"https://www.mecd.es/aulavirtualfpceuta/mod/resource/view.php?id=15952&amp;redirect=1', '', ,toolbar=no,location=no,menubar=no,copyhistory=no,status=no,directories=no,scrollbars=yes,resizable=yes'); return false;\" href=\"https://www.mecd.es/aulavirtualfpceuta/mod/resource/view.php?id=15952\" width=\"100%\" height=\"500\"></iframe>",
+          "introformat": 1,
+          "introfiles": [],
+          "introattachments": [],
+          "timelimit": 0,
+          "submissionattachments": 0
+        },
+        {
+          "id": 1545,
+          "cmid": 15946,
+          "course": 172,
+          "name": "Tarea para HE05",
+          "nosubmissions": 0,
+          "submissiondrafts": 0,
+          "sendnotifications": 0,
+          "sendlatenotifications": 0,
+          "sendstudentnotifications": 1,
+          "duedate": 1779372000,
+          "allowsubmissionsfromdate": 0,
+          "grade": 10,
+          "timemodified": 1778083658,
+          "completionsubmit": 1,
+          "cutoffdate": 1779373200,
+          "gradingduedate": 0,
+          "teamsubmission": 0,
+          "requireallteammemberssubmit": 0,
+          "teamsubmissiongroupingid": 0,
+          "blindmarking": 0,
+          "hidegrader": 0,
+          "revealidentities": 0,
+          "attemptreopenmethod": "untilpass",
+          "maxattempts": 1,
+          "markingworkflow": 0,
+          "markingallocation": 0,
+          "markinganonymous": 0,
+          "requiresubmissionstatement": 0,
+          "preventsubmissionnotingroup": 0,
+          "configs": [
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxfilesubmissions",
+              "value": "20"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "maxsubmissionsizebytes",
+              "value": "104857600"
+            },
+            {
+              "plugin": "file",
+              "subtype": "assignsubmission",
+              "name": "filetypeslist",
+              "value": ""
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignsubmission",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            },
+            {
+              "plugin": "comments",
+              "subtype": "assignfeedback",
+              "name": "commentinline",
+              "value": "0"
+            },
+            {
+              "plugin": "editpdf",
+              "subtype": "assignfeedback",
+              "name": "enabled",
+              "value": "1"
+            }
+          ],
+          "intro": "<iframe src=\"https://www.mecd.es/aulavirtualfpceuta/mod/resource/view.php?id=15953&amp;redirect=1', '', ,toolbar=no,location=no,menubar=no,copyhistory=no,status=no,directories=no,scrollbars=yes,resizable=yes'); return false;\" href=\"https://www.mecd.es/aulavirtualfpceuta/mod/resource/view.php?id=15953\" width=\"100%\" height=\"500\"></iframe>",
+          "introformat": 1,
+          "introfiles": [],
+          "introattachments": [],
+          "timelimit": 0,
+          "submissionattachments": 0
+        }
+      ]
+    }
+  ],
+  "warnings": [
+    {
+      "item": "module",
+      "itemid": 30647,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 30677,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 30707,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 30737,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 30767,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 30797,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 16417,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 16432,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 16447,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 22082,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 29741,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 29745,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 29747,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 29749,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 29751,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 16176,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 16191,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 16206,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 16221,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 22337,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 29288,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 29777,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 29859,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 31249,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 16097,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 16127,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 16142,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 25351,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 25355,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 25385,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 25389,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 31361,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 31365,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 31467,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 31497,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 31529,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 31531,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 31539,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 31543,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 31573,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    },
+    {
+      "item": "module",
+      "itemid": 31609,
+      "warningcode": "1",
+      "message": "No access rights in module context"
+    }
+  ]
+}

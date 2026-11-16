@@ -1,0 +1,17 @@
+{
+  "name": "course-watcher",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Servicio de vigilancia y sincronización de cursos (Moodle Centros, Classroom y Ciberseguridad) hacia Life OS",
+  "main": "src/index.js",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node --test",
+    "discover:moodle": "node scripts/descubrimiento-moodle.js",
+    "smoke:fase2": "node scripts/smoke-fase-2.js",
+    "smoke:fase6": "node scripts/smoke-fase-6.js"
+  }
+}
