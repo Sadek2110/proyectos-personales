@@ -1,0 +1,5 @@
+---
+import { profile } from '../data/portfolio';
+import Icon from './Icon.astro';
+---
+<footer class="site-footer shell"><a href="/" class="wordmark" aria-label="Volver a inicio">s<span class="brand-slash">/</span>b<span class="brand-dot">.</span></a><p class="mono">© {new Date().getFullYear()} {profile.shortName}.<br /><span>HECHO CON CURIOSIDAD, DESDE CEUTA.</span></p><a class="footer-github" href={profile.github} target="_blank" rel="noopener noreferrer"><Icon name="github" size={18} /> GitHub <Icon size={13} /></a><a class="back-top mono" href="#contenido">VOLVER ARRIBA <Icon name="arrow" size={17} /></a></footer>

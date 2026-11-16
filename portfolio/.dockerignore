@@ -1,0 +1,12 @@
+node_modules
+dist
+.astro
+.git
+.env
+.env.*
+ingredients
+tests
+test-results
+playwright-report
+instructions.md
+README.md

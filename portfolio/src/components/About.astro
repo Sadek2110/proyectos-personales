@@ -1,0 +1,13 @@
+---
+import { profile } from '../data/portfolio';
+import Icon from './Icon.astro';
+---
+<section class="about-section" id="sobre-mi" aria-labelledby="about-title">
+  <div class="shell section">
+    <div class="section-kicker mono"><span>02 / DETRÁS DEL CÓDIGO</span><span>CEUTA, ESPAÑA ↗︎</span></div>
+    <div class="about-grid">
+      <div class="about-heading" data-reveal><p class="eyebrow">CURIOSIDAD COMO PUNTO DE PARTIDA.</p><h2 id="about-title">Me gusta crear.<br />Y entender<br /><span class="accent">el porqué.</span></h2><div class="about-signature">Sadek<span>↗︎</span></div></div>
+      <div class="about-copy" data-reveal><p class="about-intro">{profile.about}</p><p>{profile.approach}</p><p>{profile.learning}</p><div class="education"><span class="education-icon"><Icon name="plus" size={25} /></span><div><strong>Desarrollo de Aplicaciones Web</strong><span>Grado Superior · Finalizado en 2026</span></div></div>{profile.cv && <a class="text-link" href={profile.cv} download>Descargar CV <Icon name="down" /></a>}</div>
+    </div>
+  </div>
+</section>

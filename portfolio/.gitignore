@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.astro/
+.env
+.env.*
+!.env.example
+test-results/
+playwright-report/
+.DS_Store
+
+# Material de trabajo privado y configuración local del editor.
+ingredients/
+.agents/
+.codex/
+*.log
+instructions.md
