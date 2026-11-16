@@ -1,0 +1,41 @@
+import { Button, SnackbarType } from '@workflowbuilder/ui';
+import { useCallback, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
+
+import { Icon } from '@workflow-builder/icons';
+
+import styles from '../import-export-modal.module.css';
+
+import { getStoreDataForIntegration } from '../../../../../store/slices/diagram-slice/actions';
+import { copy } from '../../../../../utils/copy';
+import { noop } from '../../../../../utils/noop';
+import { showTranslatedSnackbar } from '../../../../../utils/show-translated-snackbar';
+import { SyntaxHighlighterLazy } from '../../../../syntax-highlighter/components/syntax-highlighter-lazy';
+
+export function ExportModal() {
+  const { t } = useTranslation();
+
+  const storeData = useMemo(() => {
+    return JSON.stringify(getStoreDataForIntegration(), null, 2);
+  }, []);
+
+  const handleCopy = useCallback(() => {
+    copy(storeData);
+
+    showTranslatedSnackbar({
+      title: 'contentCopied',
+      variant: SnackbarType.SUCCESS,
+    });
+  }, [storeData]);
+
+  return (
+    <div className={styles['container']}>
+      <SyntaxHighlighterLazy value={storeData} onChange={noop} isDisabled />
+      <div className={styles['actions']}>
+        <Button variant="primary" prefixIcon={<Icon name="Copy" />} onClick={handleCopy}>
+          {t('tooltips.copy')}
+        </Button>
+      </div>
+    </div>
+  );
+}

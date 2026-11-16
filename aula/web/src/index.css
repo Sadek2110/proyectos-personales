@@ -1,0 +1,111 @@
+@import 'tailwindcss';
+
+/* Marca Cámara de Comercio de Ceuta, con el rojo atenuado a granate (ver diseno/ en el proyecto) */
+@theme {
+  --color-marca: #a91e2c;
+  --color-marca-oscuro: #8a1823;
+  --color-marca-suave: #f6e7e8;
+  --color-marca-borde: #e6bdc1;
+  --color-amarillo: #ffd400;
+  --color-amarillo-borde: #e6bf00;
+  --color-negro: #1a1a1a;
+  --color-fondo: #f6f5f3;
+  --color-borde: #e2e0dc;
+  --color-texto: #1a1a1a;
+  --color-texto-2: #555555;
+
+  --color-pendiente: #fff4c2;
+  --color-pendiente-texto: #6b5300;
+  --color-entregado: #e3ecf7;
+  --color-entregado-texto: #174a85;
+  --color-revisado: #e3f1e7;
+  --color-revisado-texto: #1e6b3a;
+
+  --font-titulo: 'Poppins', system-ui, sans-serif;
+  --font-cuerpo: 'Atkinson Hyperlegible Next', 'Atkinson Hyperlegible', system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    /* Texto base de 18px: el alumnado tiene más de 45 años */
+    font-size: 18px;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-fondo text-texto font-cuerpo antialiased;
+    line-height: 1.5;
+  }
+  h1, h2, h3, h4 {
+    @apply font-titulo text-texto;
+    line-height: 1.25;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-marca);
+    outline-offset: 2px;
+  }
+  button, [role='button'], a {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+.icono {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'opsz' 24;
+  user-select: none;
+}
+.icono.relleno {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'opsz' 24;
+}
+
+/* Texto de temas y ejercicios (Markdown) */
+.prosa {
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+.prosa h2 {
+  @apply text-marca-oscuro mt-7 mb-2 text-xl font-bold;
+}
+.prosa h3 {
+  @apply mt-5 mb-2 text-lg font-bold;
+}
+.prosa p {
+  @apply mb-4;
+}
+.prosa ol, .prosa ul {
+  @apply mb-4 space-y-2 pl-6;
+}
+.prosa ol {
+  list-style: decimal;
+}
+.prosa ul {
+  list-style: disc;
+}
+.prosa li::marker {
+  @apply text-marca font-bold;
+}
+.prosa a {
+  @apply text-marca-oscuro underline underline-offset-4;
+}
+.prosa strong {
+  @apply font-bold;
+}
+.prosa blockquote {
+  @apply border-amarillo bg-pendiente my-4 rounded-r-xl border-l-4 px-4 py-3;
+}
+
+@media print {
+  .no-imprimir {
+    display: none !important;
+  }
+  body {
+    background: white;
+  }
+}

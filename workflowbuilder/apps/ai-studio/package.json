@@ -1,0 +1,41 @@
+{
+  "name": "@workflow-builder/ai-studio",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently 'pnpm typecheck:watch' 'vite'",
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
+    "typecheck:watch": "tsc --noEmit --watch --pretty",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
+    "test": "vitest run --passWithNoTests",
+    "test:watch": "vitest --passWithNoTests"
+  },
+  "dependencies": {
+    "@phosphor-icons/react": "^2.1.7",
+    "@workflow-builder/types": "workspace:*",
+    "@workflowbuilder/ui": "workspace:*",
+    "@xyflow/react": "catalog:",
+    "clsx": "^2.1.1",
+    "html-to-image": "1.11.11",
+    "immer": "^10.1.1",
+    "mermaid": "^11.15.0",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "react-i18next": "^15.4.1",
+    "react-is": "catalog:",
+    "react-markdown": "^10.1.0",
+    "recharts": "^3.9.0",
+    "remark-gfm": "^4.0.1",
+    "zustand": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/react": "catalog:",
+    "@vitejs/plugin-react": "^4.3.4",
+    "@workflowbuilder/sdk": "workspace:*",
+    "vite": "^6.0.7",
+    "vite-plugin-svgr": "^4.3.0",
+    "vitest": "^3.0.4"
+  }
+}

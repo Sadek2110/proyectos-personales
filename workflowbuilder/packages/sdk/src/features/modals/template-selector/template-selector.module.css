@@ -1,0 +1,38 @@
+:root {
+  --wb-sdk-template-title-width: 140px;
+  --wb-sdk-template-title-padding: 12px;
+  --wb-sdk-template-subtitle-color: var(--wb-ds-colors-gray-500) /* missing token */;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  .sub-title {
+    text-align: center;
+    color: var(--wb-sdk-template-subtitle-color);
+    width: 100%;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    .templates {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: calc(var(--wb-sdk-template-title-width) * 3 + 16px);
+    }
+  }
+}

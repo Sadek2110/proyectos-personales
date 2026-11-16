@@ -1,0 +1,168 @@
+### 1. El Objetivo Final (El Proyecto "Life OS")
+
+El objetivo es construir una **aplicación móvil y web privada** (sin pagar servidores ni licencias) que actúe como centro de mando tras tu mudanza. En lugar de saltar entre 4 aplicaciones inconexas, tendrás una única interfaz con cuatro pestañas en la barra inferior de tu teléfono: **Compras, Tareas, Mapa de Rutas y Horario**, pero manteniendo tus datos sincronizados con las herramientas nativas de Google (Calendar, Tasks, Maps y Sheets).
+
+---
+
+### 2. Arquitectura del Sistema: ¿Qué hace cada pieza?
+
+| Herramienta | Rol en el sistema | Qué hace exactamente |
+| --- | --- | --- |
+| **Google Sheets** | **Base de Datos (Backend)** | Almacena las tablas de productos de compra, inventario del hogar, recados, direcciones y estados de cada tarea. |
+| **Google AppSheet** | **Interfaz (Frontend Móvil/Web)** | Lee el archivo de Sheets y tu Google Calendar para generar una app interactiva con botones, vistas filtradas y mapas. |
+| **Google Maps** | **Motor de Rutas y Geolocalización** | Integrado dentro de AppSheet. Convierte las direcciones de tus recados y supermercados en chinchetas interactivas y calcula las rutas. |
+| **Google Calendar** | **Motor de Horarios (Time-blocking)** | Se conecta de forma bidireccional con AppSheet. Lo que añadas o muevas en la app se refleja en tu calendario de siempre. |
+| **Google Apps Script + Tasks** | **Automatización (Middleware)** | Escucha cambios en tu hoja de cálculo y empuja las tareas pendientes hacia **Google Tasks** automáticamente. |
+
+---
+
+### 3. Guía de Implementación Paso a Paso
+
+#### Fase 1: Preparar la Base de Datos en Google Sheets
+
+AppSheet necesita que la primera fila de cada hoja sean los encabezados exactos para detectar qué tipo de dato es cada columna (texto, fecha, dirección, casilla).
+
+1. Crea una hoja de cálculo nueva llamada **`Mi_Centro_De_Mando`**.
+2. Renombra la primera pestaña como **`Compras`** y pon exactamente estas columnas en la fila 1:
+* `ID` *(Texto único)*
+* `Producto` *(Texto: ej. "Bombillas LED", "Leche")*
+* `Categoria` *(Texto: Supermercado, Ferretería, IKEA, Limpieza)*
+* `Tienda` *(Texto: nombre del comercio)*
+* `Direccion` *(Dirección postal o nombre del sitio + ciudad para que Maps lo ubique)*
+* `Stock` *(Texto: "Falta" o "En casa")*
+
+
+3. Crea una segunda pestaña llamada **`Tareas`** y pon estas columnas en la fila 1:
+* `ID` *(Texto único)*
+* `Titulo` *(Texto: qué hay que hacer)*
+* `Prioridad` *(Texto: Alta, Media, Baja)*
+* `Fecha_Limite` *(Fecha y hora)*
+* `Ubicacion` *(Dirección postal si requiere desplazamiento)*
+* `Completada` *(Casilla de verificación: TRUE/FALSE)*
+* `Sync_Tasks` *(Texto: déjalo vacío, lo usará el script)*
+
+
+
+> **Detalle clave:** Rellena al menos **1 o 2 filas de ejemplo** en cada pestaña antes de pasar a la Fase 2. Si las hojas están vacías, AppSheet no sabrá deducir qué formato tiene cada columna.
+
+---
+
+#### Fase 2: Configurar la Automatización hacia Google Tasks (Apps Script)
+
+Antes de diseñar la app, dejamos listo el puente hacia Google Tasks:
+
+1. En tu Google Sheets, ve al menú superior: **Extensiones > Apps Script**.
+2. En el menú izquierdo, haz clic en el símbolo **`+` junto a "Servicios"**, selecciona **Tasks API** y pulsa **Añadir**.
+3. Borra el código que viene por defecto y pega este bloque (incluye generación automática de IDs y envío a Tasks):
+
+```javascript
+function sincronizarTodo() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const hojaTareas = ss.getSheetByName("Tareas");
+  const datos = hojaTareas.getDataRange().getValues();
+  
+  // Obtener la lista principal de Google Tasks
+  const listas = Tasks.Tasklists.list().items;
+  if (!listas || listas.length === 0) return;
+  const listaId = listas[0].id;
+
+  // Recorrer filas desde la 2 (índice 1)
+  for (let i = 1; i < datos.length; i++) {
+    let titulo = datos[i][1];       // Columna B: Titulo
+    let fecha = datos[i][3];        // Columna D: Fecha_Limite
+    let completada = datos[i][5];   // Columna F: Completada
+    let syncEstado = datos[i][6];   // Columna G: Sync_Tasks
+
+    // Si hay título, no está completada y aún no se ha enviado a Google Tasks
+    if (titulo && completada !== true && syncEstado !== "OK") {
+      let recursoTarea = { title: titulo };
+      
+      // Si tiene fecha límite, formatearla en RFC 3339 para Google Tasks
+      if (fecha instanceof Date) {
+        recursoTarea.due = fecha.toISOString();
+      }
+      
+      Tasks.Tasks.insert(recursoTarea, listaId);
+      hojaTareas.getRange(i + 1, 7).setValue("OK"); // Marcar como sincronizado
+    }
+  }
+}
+
+```
+
+4. Guarda el proyecto (icono del disquete).
+5. En la barra izquierda de Apps Script, entra en **Activadores (icono del reloj)** > **Añadir activador**:
+* Función que se ejecutará: `sincronizarTodo`
+* Fuente del evento: `De una hoja de cálculo`
+* Tipo de evento: `Al producirse un cambio`
+* Guarda y acepta los permisos de tu cuenta de Google.
+
+
+
+---
+
+#### Fase 3: Crear y Configurar la App en Google AppSheet
+
+1. Vuelve a tu Google Sheets y ve a **Extensiones > AppSheet > Crear una aplicación**.
+2. Se abrirá el panel de estudio de AppSheet con tu aplicación ya generada. Ahora vamos a afinar los tipos de datos:
+* Ve al menú izquierdo **Data (icono de cilindro)** > despliega la tabla **`Compras`**:
+* Cambia el tipo (*Type*) de la columna `Direccion` a **`Address`** (esto activa Google Maps).
+* Cambia el tipo de `Stock` a **`Enum`** y añade los valores `"Falta"` y `"En casa"`.
+* En la columna `ID`, asegúrate de que en *Initial Value* ponga `UNIQUEID()`.
+
+
+* Despliega la tabla **`Tareas`**:
+* Cambia `Ubicacion` a tipo **`Address`**.
+* Cambia `Completada` a tipo **`Yes/No`**.
+* Pon `Sync_Tasks` como oculta (desmarca la casilla *Show?*).
+
+
+
+
+3. **Conectar Google Calendar:**
+* En el mismo menú **Data**, pulsa el botón **`+` (Add new data)** arriba.
+* Selecciona **Google Calendar** > elige tu calendario personal. Se añadirá como una tabla más dentro de la app.
+
+
+
+---
+
+#### Fase 4: Diseñar las 4 Vistas de tu Barra Inferior
+
+Ve al menú izquierdo **Views (icono de pantalla móvil)** y crea o edita las vistas en **Primary Navigation**:
+
+1. **Vista 1: "Lista Compra"**
+* *Table:* `Compras` | *View type:* **Deck** o **Table**.
+* *Group by:* `Tienda` o `Categoria` (así cuando entres al súper verás todo agrupado por pasillos o comercios).
+
+
+2. **Vista 2: "Tareas"**
+* *Table:* `Tareas` | *View type:* **Deck**.
+* Activa la acción rápida de marcar como completada directamente desde la lista.
+
+
+3. **Vista 3: "Rutas / Mapa"**
+* Pulsa `+` en *Primary Navigation* para crear una vista nueva.
+* *View type:* **Map**.
+* *Table:* `Tareas` (y en *Secondary data table* dentro de las opciones del mapa selecciona `Compras`, columna `Direccion`).
+* **Resultado:** Verás un mapa único con chinchetas de un color para los recados y de otro color para las tiendas donde tienes que comprar algo.
+
+
+4. **Vista 4: "Mi Horario"**
+* Pulsa `+` en *Primary Navigation*.
+* *Table:* `Primary Calendar` (tu Google Calendar) | *View type:* **Calendar**.
+* Tendrás vista diaria, semanal y mensual interactiva.
+
+
+
+Pulsa **Save** arriba a la derecha. Para instalarla en el móvil, abre el enlace que te envía AppSheet a tu correo o descarga la app oficial de AppSheet en Android/iOS y ancla un acceso directo de tu app en tu pantalla de inicio.
+
+---
+
+### 4. Cosas importantes a tener en cuenta (Limitaciones y Trucos)
+
+* **No borres filas de compras habituales, cámbiales el estado:** En una mudanza y en la vida diaria compras siempre el 80% de las mismas cosas. En lugar de borrar "Leche" cuando la compras, crea un botón en AppSheet (en el menú *Actions*) que cambie la columna `Stock` de `"Falta"` a `"En casa"`. Así tendrás un catálogo permanente y hacer la lista de la compra te llevará 10 segundos tocando botones.
+* **Cómo escribir las direcciones para que el mapa no falle:** Google Maps dentro de AppSheet funciona por geocodificación. Si pones solo *"Ferretería"*, no sabrá cuál es. Pon siempre `"Nombre del sitio, Calle o Ciudad"` (ejemplo: *"Lidl, Ceuta"* o la dirección exacta).
+* **Sincronización unidireccional de Google Tasks:** El script que hemos puesto envía las tareas nuevas de tu App hacia Google Tasks al instante. Si marcas una tarea como hecha dentro de la app nativa de Google Tasks del reloj o del widget, no se marcará sola en el Excel a menos que programemos un segundo bucle inverso (por simplicidad, es mejor gestionar las tareas desde tu nueva app o desde Calendar).
+* **Límite de uso gratuito de AppSheet:** Mientras la aplicación sea para ti (o la compartas con 1 o 2 personas que vivan contigo sin publicar en tiendas oficiales), el plan *Prototype* de AppSheet es **100% gratuito para siempre** y tiene todas las funciones desbloqueadas.
+* **No modifiques el orden ni el nombre de las columnas en Sheets después de crear la app:** Si algún día añades una columna nueva en Google Sheets, debes entrar en AppSheet > *Data* > tu tabla > y pulsar el botón **Regenerate Schema** para que la app no dé error al sincronizar.

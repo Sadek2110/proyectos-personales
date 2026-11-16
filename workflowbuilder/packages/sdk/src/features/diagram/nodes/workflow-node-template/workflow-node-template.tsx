@@ -1,0 +1,113 @@
+import { Collapsible, NodeDescription, NodeIcon, NodePanel, Status } from '@workflowbuilder/ui';
+import { Handle } from '@xyflow/react';
+import { memo, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
+
+import { Icon } from '@workflow-builder/icons';
+
+import styles from './workflow-node-template.module.css';
+
+import type { IconType, LayoutDirection, NodeIconAccent } from '../../../../node/common';
+import type { NodeData } from '../../../../node/node-data';
+import type { BaseNodeProperties } from '../../../../node/node-schema';
+import { withOptionalComponentPlugins } from '../../../plugins-core/adapters/adapter-components';
+import { OptionalNodeContent } from '../../../plugins-core/components/diagram/optional-node-content';
+import { getHandleId } from '../../handles/get-handle-id';
+import { getHandlePosition } from '../../handles/get-handle-position';
+import { getHandlesAlignment } from '../../handles/get-handles-alignment';
+
+/**
+ * Props for the editor's default workflow-node template. A custom node
+ * type wraps this template (or composes its parts) to render its body —
+ * see [Add a custom node](/docs/guides/add-a-custom-node/) for the
+ * full pattern.
+ *
+ * `id`, `icon`, `accent`, `label`, `description` define the header. `selected` /
+ * `isValid` drive visual state. `showHandles` toggles the connection
+ * dots; `layoutDirection` controls which sides those dots sit on.
+ * `children` are rendered inside a collapsible body section.
+ *
+ * Generic over `P` so consumer templates can narrow `data.properties` to
+ * their schema's shape without casts:
+ *
+ * ```ts
+ * type MyProps = WorkflowBuilderNodeTemplateProps<NodeDataProperties<MySchema>>;
+ * ```
+ *
+ * Defaults to the wide `BaseNodeProperties & Record<string, unknown>` so
+ * existing usages remain backward-compatible.
+ *
+ * @category Components
+ */
+export type WorkflowBuilderNodeTemplateProps<P = BaseNodeProperties & Record<string, unknown>> = {
+  id: string;
+  icon: IconType;
+  /** Icon color from the node definition, filled in by the SDK for canvas and palette renders. */
+  accent?: NodeIconAccent;
+  label: string;
+  description: string;
+  data?: NodeData<P>;
+  selected?: boolean;
+  /** Render the Node Disabled variant (palette entries that cannot be added). */
+  disabled?: boolean;
+  layoutDirection?: LayoutDirection;
+  isConnecting?: boolean;
+  showHandles?: boolean;
+  isValid?: boolean;
+  children?: React.ReactNode;
+};
+
+const WorkflowNodeTemplateComponent = memo(
+  ({
+    id,
+    icon,
+    accent,
+    label,
+    description,
+    layoutDirection = 'RIGHT',
+    selected = false,
+    disabled = false,
+    showHandles = true,
+    isValid,
+    children,
+  }: WorkflowBuilderNodeTemplateProps) => {
+    const { t } = useTranslation();
+    const isCanvasNode = showHandles;
+
+    const handleTargetId = getHandleId({ handleType: 'target' });
+    const handleSourceId = getHandleId({ handleType: 'source' });
+
+    const handleTargetPosition = getHandlePosition({ direction: layoutDirection, handleType: 'target' });
+    const handleSourcePosition = getHandlePosition({ direction: layoutDirection, handleType: 'source' });
+
+    const iconElement = useMemo(() => <Icon name={icon} size="inherit" />, [icon]);
+
+    const handlesAlignment = getHandlesAlignment({ layoutDirection });
+
+    return (
+      <Collapsible expandLabel={t('common.expand')} collapseLabel={t('common.collapse')}>
+        <NodePanel.Root selected={selected} disabled={disabled} className={styles['content']}>
+          <NodePanel.Header>
+            <NodeIcon icon={iconElement} accent={accent} disabled={disabled} />
+            <NodeDescription label={label} description={description} disabled={disabled} />
+            {!!children && <Collapsible.Button />}
+          </NodePanel.Header>
+          <NodePanel.Content isVisible={isCanvasNode}>
+            <OptionalNodeContent nodeId={id}>
+              <Status status={isValid === false ? 'invalid' : undefined} />
+              <Collapsible.Content>
+                <div className={styles['collapsible']}>{children}</div>
+              </Collapsible.Content>
+            </OptionalNodeContent>
+          </NodePanel.Content>
+          <NodePanel.Handles isVisible={showHandles} alignment={handlesAlignment}>
+            <Handle id={handleTargetId} position={handleTargetPosition} type="target" />
+            <Handle id={handleSourceId} position={handleSourcePosition} type="source" />
+          </NodePanel.Handles>
+        </NodePanel.Root>
+      </Collapsible>
+    );
+  },
+);
+
+export const WorkflowNodeTemplate = withOptionalComponentPlugins(WorkflowNodeTemplateComponent, 'WorkflowNodeTemplate');

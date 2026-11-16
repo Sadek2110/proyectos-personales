@@ -1,0 +1,341 @@
+[
+  {
+    "id": 7290,
+    "name": "General",
+    "visible": 1,
+    "summary": "",
+    "summaryformat": 1,
+    "section": 0,
+    "hiddenbynumsections": 0,
+    "uservisible": true,
+    "component": null,
+    "itemid": null,
+    "modules": [
+      {
+        "id": 57740,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/forum/view.php?id=57740",
+        "name": "Avisos",
+        "instance": 2837,
+        "contextid": 247092,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/forum/1794492247/monologo?filtericon=1",
+        "modname": "forum",
+        "purpose": "collaboration",
+        "branded": false,
+        "modplural": "Foros",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": null,
+        "activitybadge": [],
+        "customdata": "{\"trackingtype\":\"1\"}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 0,
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0
+      }
+    ]
+  },
+  {
+    "id": 7671,
+    "name": "Inicio de curso",
+    "visible": 1,
+    "summary": "",
+    "summaryformat": 1,
+    "section": 1,
+    "hiddenbynumsections": 0,
+    "uservisible": true,
+    "component": null,
+    "itemid": null,
+    "modules": [
+      {
+        "id": 60446,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/resource/view.php?id=60446",
+        "name": "Programación didáctica 2026-27",
+        "instance": 16300,
+        "contextid": 248079,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/core/1794492247/f/pdf?filtericon=1",
+        "modname": "resource",
+        "purpose": "content",
+        "branded": false,
+        "modplural": "Archivos",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": null,
+        "activitybadge": [],
+        "customdata": "{\"filtericon\":true,\"displayoptions\":\"a:1:{s:10:\\\"printintro\\\";i:1;}\",\"display\":\"1\"}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 0,
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0,
+        "contents": [
+          {
+            "type": "file",
+            "filename": "cedalp_adp_2526.pdf",
+            "filepath": "/",
+            "filesize": 452681,
+            "fileurl": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/webservice/pluginfile.php/248079/mod_resource/content/6/cedalp_adp_2526.pdf?forcedownload=1",
+            "timecreated": 1789423292,
+            "timemodified": 1789423292,
+            "sortorder": 1,
+            "mimetype": "application/pdf",
+            "isexternalfile": false,
+            "userid": 171753,
+            "author": "López García, Juan Manuel",
+            "license": "allrightsreserved"
+          }
+        ],
+        "contentsinfo": {
+          "filescount": 1,
+          "filessize": 452681,
+          "lastmodified": 1789423292,
+          "mimetypes": [
+            "application/pdf"
+          ],
+          "repositorytype": ""
+        }
+      },
+      {
+        "id": 60447,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/questionnaire/view.php?id=60447",
+        "name": "Cuestionario general de evaluación inicial",
+        "instance": 32,
+        "contextid": 248080,
+        "visible": 1,
+        "uservisible": false,
+        "availabilityinfo": "No disponible hasta que: <a class=\"availability_password-popup\" href=\"https://educacionadistancia.juntadeandalucia.es/centros/malaga/availability/condition/password/index.php?id=60447\">Introduce la contraseña correcta</a>",
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/questionnaire/1794492247/monologo?filtericon=1",
+        "modname": "questionnaire",
+        "purpose": "communication",
+        "branded": false,
+        "modplural": "Encuestas",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": null,
+        "customdata": "{\"customcompletionrules\":{\"completionsubmit\":\"1\"},\"timeopen\":\"1790601300\",\"timeclose\":\"1792101540\"}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 2,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": true,
+          "istrackeduser": true,
+          "uservisible": false,
+          "details": [
+            {
+              "rulename": "completionsubmit",
+              "rulevalue": {
+                "status": 0,
+                "description": "El participante tiene que enviar la encuesta para completarla"
+              }
+            }
+          ],
+          "isoverallcomplete": false
+        },
+        "downloadcontent": 1,
+        "dates": [
+          {
+            "label": "Abrió:",
+            "timestamp": 1790601300,
+            "dataid": "timeopen"
+          },
+          {
+            "label": "Cerró:",
+            "timestamp": 1792101540,
+            "dataid": "timeclose"
+          }
+        ],
+        "groupmode": 0
+      },
+      {
+        "id": 60448,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/questionnaire/view.php?id=60448",
+        "name": "Cuestionario de evaluación inicial para 'Análisis de Datos'",
+        "instance": 33,
+        "contextid": 248081,
+        "visible": 1,
+        "uservisible": false,
+        "availabilityinfo": "No disponible hasta que: <a class=\"availability_password-popup\" href=\"https://educacionadistancia.juntadeandalucia.es/centros/malaga/availability/condition/password/index.php?id=60448\">Introduce la contraseña correcta</a>",
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/questionnaire/1794492247/monologo?filtericon=1",
+        "modname": "questionnaire",
+        "purpose": "communication",
+        "branded": false,
+        "modplural": "Encuestas",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": null,
+        "customdata": "{\"customcompletionrules\":{\"completionsubmit\":\"1\"},\"timeopen\":\"1790694900\",\"timeclose\":\"1792101540\"}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 2,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": true,
+          "istrackeduser": true,
+          "uservisible": false,
+          "details": [
+            {
+              "rulename": "completionsubmit",
+              "rulevalue": {
+                "status": 0,
+                "description": "El participante tiene que enviar la encuesta para completarla"
+              }
+            }
+          ],
+          "isoverallcomplete": false
+        },
+        "downloadcontent": 1,
+        "dates": [
+          {
+            "label": "Abrió:",
+            "timestamp": 1790694900,
+            "dataid": "timeopen"
+          },
+          {
+            "label": "Cerró:",
+            "timestamp": 1792101540,
+            "dataid": "timeclose"
+          }
+        ],
+        "groupmode": 0
+      },
+      {
+        "id": 60449,
+        "url": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/mod/resource/view.php?id=60449",
+        "name": "Presentación inicial: Introducción al lenguaje",
+        "instance": 16301,
+        "contextid": 248082,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/theme/image.php/centros/core/1794492247/f/pdf?filtericon=1",
+        "modname": "resource",
+        "purpose": "content",
+        "branded": false,
+        "modplural": "Archivos",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": null,
+        "activitybadge": {
+          "badgecontent": "PDF",
+          "badgestyle": "badge-none"
+        },
+        "customdata": "{\"filtericon\":true,\"displayoptions\":\"a:3:{s:10:\\\"printintro\\\";i:1;s:8:\\\"showtype\\\";i:1;s:11:\\\"filedetails\\\";a:3:{s:4:\\\"type\\\";s:13:\\\"documento PDF\\\";s:8:\\\"mimetype\\\";s:15:\\\"application\\/pdf\\\";s:9:\\\"extension\\\";s:3:\\\"PDF\\\";}}\",\"display\":5}",
+        "noviewlink": false,
+        "candisplay": true,
+        "completion": 1,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": false,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [],
+          "isoverallcomplete": false
+        },
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0,
+        "contents": [
+          {
+            "type": "file",
+            "filename": "2509.presentación inicial python.pdf",
+            "filepath": "/",
+            "filesize": 121812,
+            "fileurl": "https://educacionadistancia.juntadeandalucia.es/centros/malaga/webservice/pluginfile.php/248082/mod_resource/content/2/2509.presentaci%C3%B3n%20inicial%20python.pdf?forcedownload=1",
+            "timecreated": 1789423293,
+            "timemodified": 1789423293,
+            "sortorder": 1,
+            "mimetype": "application/pdf",
+            "isexternalfile": false,
+            "userid": 171753,
+            "author": "López García, Juan Manuel",
+            "license": "allrightsreserved"
+          }
+        ],
+        "contentsinfo": {
+          "filescount": 1,
+          "filessize": 121812,
+          "lastmodified": 1789423293,
+          "mimetypes": [
+            "application/pdf"
+          ],
+          "repositorytype": ""
+        }
+      }
+    ]
+  },
+  {
+    "id": 7672,
+    "name": "Acceso a datos",
+    "visible": 1,
+    "summary": "",
+    "summaryformat": 1,
+    "section": 2,
+    "hiddenbynumsections": 0,
+    "uservisible": true,
+    "component": null,
+    "itemid": null,
+    "modules": []
+  },
+  {
+    "id": 7673,
+    "name": "Manipulación, limpieza y estandarización de datos",
+    "visible": 1,
+    "summary": "",
+    "summaryformat": 1,
+    "section": 3,
+    "hiddenbynumsections": 0,
+    "uservisible": true,
+    "component": null,
+    "itemid": null,
+    "modules": []
+  },
+  {
+    "id": 7674,
+    "name": "Análisis exploratorio de datos",
+    "visible": 1,
+    "summary": "",
+    "summaryformat": 1,
+    "section": 4,
+    "hiddenbynumsections": 0,
+    "uservisible": true,
+    "component": null,
+    "itemid": null,
+    "modules": []
+  },
+  {
+    "id": 7675,
+    "name": "Modelado estadístico de datos",
+    "visible": 1,
+    "summary": "",
+    "summaryformat": 1,
+    "section": 5,
+    "hiddenbynumsections": 0,
+    "uservisible": true,
+    "component": null,
+    "itemid": null,
+    "modules": []
+  }
+]

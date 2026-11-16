@@ -1,0 +1,45 @@
+:root {
+  --wb-sdk-message-control-error-color: var(--wb-public-snackbar-title-color);
+  --wb-sdk-message-control-error-background-color: var(--wb-public-snackbar-error-background);
+  --wb-sdk-message-control-spacing: var(--wb-ds-space-100);
+  --wb-sdk-message-control-border-radius: var(--wb-ds-radius-100);
+  --wb-sdk-message-control-padding: var(--wb-ds-space-100) var(--wb-ds-space-200);
+}
+
+.container {
+  display: flex;
+  gap: var(--wb-sdk-message-control-spacing);
+  border-radius: var(--wb-sdk-message-control-border-radius);
+  padding: var(--wb-sdk-message-control-padding);
+  color: var(--wb-sdk-color);
+  background: var(--wb-sdk-background-color);
+
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+.container--neutral {
+  --wb-sdk-color: var(--wb-ds-ui-text-default);
+  --wb-sdk-background-color: var(--wb-ds-ui-bg-elevated);
+}
+
+.container--warning {
+  --wb-sdk-color: var(--wb-ds-colors-acc5-700);
+  --wb-sdk-background-color: var(--wb-ds-colors-acc5-500-10);
+}
+
+html[data-theme='dark'] .container--warning {
+  --wb-sdk-color: var(--wb-ds-colors-acc5-200);
+}
+
+.container--error {
+  --wb-sdk-color: var(--wb-sdk-message-control-error-color);
+  --wb-sdk-background-color: var(--wb-sdk-message-control-error-background-color);
+}
+
+.content {
+  composes: wb-text-body-s from global;
+
+  padding-top: 1px;
+}

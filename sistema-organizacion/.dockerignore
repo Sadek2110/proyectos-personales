@@ -1,0 +1,11 @@
+.git
+.env
+node_modules
+dist
+apps-script
+datos
+tools
+brief.txt
+README.md
+.data
+test

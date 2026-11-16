@@ -1,0 +1,374 @@
+# @workflowbuilder/sdk
+
+React SDK for [Workflow Builder](https://www.workflowbuilder.io/). Embed a visual, flow-based workflow editor in your app.
+
+[![npm version](https://img.shields.io/npm/v/@workflowbuilder/sdk.svg)](https://www.npmjs.com/package/@workflowbuilder/sdk)
+[![license](https://img.shields.io/npm/l/@workflowbuilder/sdk.svg)](./LICENSE)
+
+- **Docs:** <https://www.workflowbuilder.io/docs/overview/>
+- **Live demo:** <https://app.workflowbuilder.io/>
+- **Source:** <https://github.com/synergycodes/workflowbuilder>
+- **Changelog:** [CHANGELOG.md](./CHANGELOG.md)
+
+## What you get
+
+An embeddable React SDK that ships a complete workflow editor. One compound component (`<WorkflowBuilder.Root>`) is the embed point. Behind it: a plugin architecture, three persistence strategies, a JsonForms-driven schema layer, i18n, theming tokens, and a diagram-template system. You bring node types and a save strategy. The SDK handles canvas, palette, connections, properties, and persistence.
+
+Typical fit:
+
+- Visual editors for AI agent workflows (LLM chains, tool calls, decision branches)
+- Drag-and-drop node-based programming UIs
+- ETL or data-pipeline designers
+- BPMN-style process editors
+- Any flow editor where you want JsonForms-driven node properties plus a swappable persistence layer
+
+Battle-tested in production by teams shipping AI workflow products.
+
+## Install
+
+```bash
+npm install @workflowbuilder/sdk @xyflow/react zustand
+```
+
+Requires React 18 or 19. Everything else the SDK needs (JsonForms, i18next, immer, …) is a regular dependency and installs automatically. See [Peer dependencies](#peer-dependencies) below.
+
+## Upgrading
+
+Moving from 2.3.0 to 3.0? See the [3.0 upgrade guide](https://www.workflowbuilder.io/docs/get-started/upgrade-to-3/).
+
+## Quick start
+
+```tsx
+import { WorkflowBuilder } from '@workflowbuilder/sdk';
+
+import '@workflowbuilder/sdk/style.css';
+
+export function App() {
+  return <WorkflowBuilder.Root name="my-workflow" />;
+}
+```
+
+The editor renders with the default layout (editor header, palette, canvas, properties panel) and persists state to `localStorage` automatically (the default `integration` strategy). The palette is empty until you pass `nodeTypes` — see [`<Root>` props](#workflowbuilderroot-props), the [Add a custom node type guide](https://www.workflowbuilder.io/docs/guides/add-a-custom-node/), and the [node schemas reference](https://www.workflowbuilder.io/docs/node-schemas/) for how to design the data and UI schemas.
+
+Copy-paste-ready node implementations live in the source repo at [`apps/demo/src/app/data/nodes/`](https://github.com/synergycodes/workflowbuilder/tree/main/apps/demo/src/app/data/nodes). Each folder is a self-contained node type with 4 files (`<name>.ts`, `default-properties-data.ts`, `schema.ts`, `uischema.ts`). Available examples: `trigger`, `action`, `decision`, `conditional`, `delay`, `notification`, `multi-port`, `ai-agent` — each documented on the [built-in nodes reference](https://www.workflowbuilder.io/docs/nodes/). Drop the folder into your app, import the node definition, and pass it to `nodeTypes`.
+
+## Compose a custom layout
+
+Pass subcomponents as children to skip the default layout and place each part where you want it:
+
+```tsx
+<WorkflowBuilder.Root nodeTypes={myNodeTypes}>
+  <header>
+    <WorkflowBuilder.EditorHeader />
+  </header>
+  <aside>
+    <WorkflowBuilder.Palette />
+  </aside>
+  <main>
+    <WorkflowBuilder.Canvas />
+  </main>
+  <aside>
+    <WorkflowBuilder.PropertiesPanel />
+  </aside>
+</WorkflowBuilder.Root>
+```
+
+To add custom overlays alongside the default layout, mount it explicitly:
+
+```tsx
+<WorkflowBuilder.Root nodeTypes={myNodeTypes}>
+  <WorkflowBuilder.DefaultLayout />
+  <MyToastBanner />
+</WorkflowBuilder.Root>
+```
+
+Each subcomponent is also exported under a named alias (`WorkflowBuilderEditorHeader`, `WorkflowBuilderPalette`, `WorkflowBuilderCanvas`, `WorkflowBuilderPropertiesPanel`, `WorkflowBuilderDefaultLayout`) for consumers who prefer the classic style.
+
+If you omit `<WorkflowBuilder.EditorHeader />`, read state with [`useWorkflowBuilderState()`](https://www.workflowbuilder.io/docs/api/hooks/useworkflowbuilderstate/) and trigger save / import / export / settings / read-only / theme / layout-direction from your own controls with [`useWorkflowBuilderActions()`](https://www.workflowbuilder.io/docs/guides/configuring-the-editor/#custom-toolbar-without-the-editor-header).
+
+## `<WorkflowBuilder.Root>` props
+
+<!--
+  Maintainer note: these props are documented on three surfaces. The type in
+  packages/sdk/src/workflow-builder-root/workflow-builder-root.types.ts is the
+  source of truth (the API reference is generated from its JSDoc). This table and
+  apps/docs/src/content/docs/guides/configuring-the-editor.md mirror it by hand.
+  When you add / rename / remove a prop, update all three. Descriptions may differ
+  per surface; the set of prop names must match.
+-->
+
+| Prop                | Type                                 | Description                                                                                                                                                                                                                                                                                                     |
+| ------------------- | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `nodeTypes`         | `PaletteItemOrGroup[]`               | Node type definitions. Appear in the palette and drive validation. **Must be a stable reference** — declare at module scope or memoize.                                                                                                                                                                         |
+| `nodeTemplates`     | `WorkflowBuilderNodeTemplates`       | Per-node-type custom renderers. Map of `data.type` → React component, overriding the default node renderer for that type. **Stable reference required** (same as `nodeTypes`).                                                                                                                                  |
+| `edgeTemplates`     | `WorkflowBuilderEdgeTemplates`       | Per-edge-type custom renderers. Map of `edge.type` → React component taking ReactFlow `EdgeProps`, overriding the built-in `labelEdge`. Unregistered types fall back to the default edge. **Stable reference required** (same as `nodeTypes`).                                                                  |
+| `diagramTemplates`  | `TemplateModel[]`                    | Diagram templates available in the template selector. **Stable reference required** (same as `nodeTypes`).                                                                                                                                                                                                      |
+| `plugins`           | `WorkflowBuilderPlugin[]`            | Functions registering decorators. Synchronous, executed once.                                                                                                                                                                                                                                                   |
+| `jsonForm`          | `WorkflowBuilderJsonFormConfig`      | Custom JsonForms renderers, cells, translations.                                                                                                                                                                                                                                                                |
+| `integration`       | `WorkflowBuilderIntegration`         | Data source / sink. Defaults to `localStorage`.                                                                                                                                                                                                                                                                 |
+| `onLoad`            | `(context) => void`                  | Runs once after the initial load with a `WorkflowBuilderLoadContext` (`{ isEmpty, loadFailed, actions }`). The default opens the template selector for an empty diagram that loaded; a custom handler replaces it. After a failed `api` load (`loadFailed`), saving is refused for the rest of the mount.       |
+| `name`              | `string`                             | Workflow name shown in the header.                                                                                                                                                                                                                                                                              |
+| `logo`              | `WorkflowBuilderLogo`                | Replaces the built-in editor header logo: an image URL, `{ light, dark }` per-theme URLs, or a custom element.                                                                                                                                                                                                  |
+| `logoHref`          | `string`                             | Wraps the editor header logo in a link opened in a new tab.                                                                                                                                                                                                                                                     |
+| `editorHeader`      | `WorkflowBuilderEditorHeaderOptions` | Host-wired editor header controls: Clean up, Save as PDF, version chip and Publish. Each renders only when its field is set.                                                                                                                                                                                    |
+| `layoutDirection`   | `'DOWN' \| 'RIGHT'`                  | Initial flow direction.                                                                                                                                                                                                                                                                                         |
+| `initialNodes`      | `WorkflowBuilderNode[]`              | Starting diagram nodes.                                                                                                                                                                                                                                                                                         |
+| `initialEdges`      | `WorkflowBuilderEdge[]`              | Starting diagram edges.                                                                                                                                                                                                                                                                                         |
+| `isValidConnection` | `WorkflowBuilderIsValidConnection`   | Validate connections as the user draws them. See [Connection validation](#connection-validation). **Stable reference required.**                                                                                                                                                                                |
+| `reactFlowProps`    | `WorkflowBuilderReactFlowProps`      | Advanced escape hatch for the underlying ReactFlow canvas. See [Advanced: ReactFlow props](#advanced-reactflow-props). Treat as static config (runtime value changes may not apply immediately).                                                                                                                |
+| `builtInControls`   | `BuiltInControls`                    | Hides built-in controls by key (`save`, `readOnlyToggle`, `themeToggle`, `languageSelector`, `settings`, `workflowRename`, `export`, `import`, `templates`, `paletteToggle`, `delete`, `propertiesPanelToggle`); every key defaults to `true`. Hiding a control does not block its action or keyboard shortcut. |
+| `children`          | `ReactNode`                          | Custom layout. Omit for the default floating-overlay layout (editor header, palette, canvas, properties panel). See [Compose a custom layout](#compose-a-custom-layout).                                                                                                                                        |
+
+Exact prop types come from the auto-generated [`WorkflowBuilderRootProps`](https://www.workflowbuilder.io/docs/api/core/workflowbuilderrootprops/) reference. For how and when to reach for each prop, see [Configuring the editor](https://www.workflowbuilder.io/docs/guides/configuring-the-editor/).
+
+## Persistence
+
+Pick one of three strategies via the `integration` prop.
+
+| Strategy       | Source / sink                                               | When to use                  |
+| -------------- | ----------------------------------------------------------- | ---------------------------- |
+| `localStorage` | Browser `localStorage`                                      | Prototyping, quick starts    |
+| `api`          | `GET` / `POST` to user-provided endpoints                   | Backend-managed persistence  |
+| `props`        | `onDataSave` callback + `initialNodes`/`initialEdges` props | Host-app-managed persistence |
+
+```tsx
+<WorkflowBuilder.Root
+  integration={{
+    strategy: 'api',
+    endpoints: { load: '/api/load', save: '/api/save' },
+  }}
+/>
+```
+
+Full guide: [Persistence strategies on the docs site](https://www.workflowbuilder.io/docs/get-started/persistence/callback/).
+
+## Plugins
+
+The SDK exposes three extension points. Pass plugin functions to the `plugins` prop:
+
+- **Component decorators** (`registerComponentDecorator`). Inject UI into named slots: `OptionalAppChildren`, `OptionalEdgeProperties`, `OptionalHooks` (invisible provider slot), `OptionalNodeContent` (receives `nodeId`). The editor header, the palette and the properties panel have no slots; own UI there uses the `…Content` components (see [The built-in interface](#the-built-in-interface-state-actions-and-your-own-ui) below). A decorator on a slot that 4.0 removed logs a warning naming its replacement and renders nothing.
+- **Function decorators** (`registerFunctionDecorator`). Observe or wrap SDK internals (e.g. `trackFutureChange`) before / after / wrapping the call. The workflow menu's Export and Import items are not one of them: add items next to them with `WorkflowMenuItem` and hide `export` / `import` through `builtInControls`.
+- **Translations** (`registerPluginTranslation`). Extend i18next keys with plugin-specific strings.
+
+```tsx
+import { WorkflowBuilder, type WorkflowBuilderPlugin, registerFunctionDecorator } from '@workflowbuilder/sdk';
+
+const myPlugin: WorkflowBuilderPlugin = () => {
+  registerFunctionDecorator('trackFutureChange', {
+    place: 'after',
+    callback: ({ params }) => auditLog(params),
+    name: 'MyPlugin',
+  });
+};
+
+export function App() {
+  return <WorkflowBuilder.Root plugins={[myPlugin]} />;
+}
+```
+
+Plugins are synchronous. If you need async work (config fetch, WASM load, feature flag lookup), await it outside the SDK and construct the plugin around the resolved value before passing it to `<Root>`.
+
+Full guide: [Build a plugin](https://www.workflowbuilder.io/docs/guides/build-a-plugin/).
+
+## The built-in interface: state, actions, and your own UI
+
+Your own UI in the editor header, the palette and the properties panel does not go through `registerComponentDecorator`; it uses a separate, simpler model, with four tools that work the same way everywhere. (The `PropertiesPanel` slot still takes a props decorator, for the panel's `tabs`, labels and `onDeleteClick`.)
+
+| You want to…                        | Use                                                                                                                                                |
+| ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| read state                          | [`useWorkflowBuilderState()`](https://www.workflowbuilder.io/docs/api/hooks/useworkflowbuilderstate/), e.g. `isReadOnly`, `isPaletteOpen`, `theme` |
+| run a command from your own control | an action from `useWorkflowBuilderActions()`, e.g. `openTemplates()`                                                                               |
+| hide a built-in control             | a key in `builtInControls` on `<WorkflowBuilder.Root>`                                                                                             |
+| add your own UI                     | a component rendered under `<WorkflowBuilder.Root>`: `…Content`, `…MenuItem`                                                                       |
+
+A plugin has no JSX of its own, so it still reaches this model indirectly: it mounts one component through the `OptionalAppChildren` slot shown above, and that component uses these components inside it. Six `…Content` components cover the editor header, palette and properties-panel areas (`EditorHeaderToolsContent`, `EditorHeaderControlsContent`, `PaletteHeaderContent`, `PaletteFooterContent`, `PropertiesPanelHeaderContent`, `PropertiesPanelFooterContent`); two `…MenuItem` components add an item to a built-in menu (`WorkflowMenuItem`, `PropertiesPanelMenuItem`).
+
+Each `…Content` component also takes an optional `place`, `'before'` (the default) or `'after'`, to stand before or after the area's whole built-in group instead of only before it, as a block that never lands between two built-in controls.
+
+Hiding a control never removes what it does: the action and its keyboard shortcut (if any) stay available, so anywhere else that offers the same command keeps working.
+
+```tsx
+import {
+  EditorHeaderToolsContent,
+  PaletteFooterContent,
+  WorkflowBuilder,
+  useWorkflowBuilderActions,
+  useWorkflowBuilderState,
+} from '@workflowbuilder/sdk';
+import { Button } from '@workflowbuilder/ui';
+
+function App() {
+  return (
+    <WorkflowBuilder.Root builtInControls={{ templates: false }}>
+      <WorkflowBuilder.DefaultLayout />
+      <EditorHeaderToolsContent>
+        <TemplatesButton />
+      </EditorHeaderToolsContent>
+      <PaletteFooterContent>
+        <Button size="s" variant="ghost-secondary" onClick={openMarketplace}>
+          Marketplace
+        </Button>
+      </PaletteFooterContent>
+    </WorkflowBuilder.Root>
+  );
+}
+
+function TemplatesButton() {
+  const { isReadOnly } = useWorkflowBuilderState();
+  const { openTemplates } = useWorkflowBuilderActions();
+  return (
+    <Button size="s" variant="ghost-secondary" disabled={isReadOnly} onClick={openTemplates}>
+      Templates
+    </Button>
+  );
+}
+```
+
+This hides the built-in Templates button in the palette footer, adds a replacement in the editor header, and puts a Marketplace button where Templates used to be.
+
+Full guide, including the model's boundaries (mount order, read-only, duplicates): [Built-in interface: hide, move, add](https://www.workflowbuilder.io/docs/guides/build-a-plugin/#built-in-interface-hide-move-add).
+
+## Connection validation
+
+`isValidConnection` decides whether a dragged connection is allowed. Return `false` to reject it: no edge is created, no flicker. It receives the resolved `sourceNode` / `targetNode` (plus the raw `connection`), so you branch on node `data` without reaching into the store.
+
+```tsx
+import { WorkflowBuilder, type WorkflowBuilderIsValidConnection } from '@workflowbuilder/sdk';
+
+// Module scope keeps the reference stable.
+// A start node is the workflow entry point, so it can never be a connection target.
+const isValidConnection: WorkflowBuilderIsValidConnection = ({ targetNode }) => !targetNode.data.isStartNode;
+
+export function App() {
+  return <WorkflowBuilder.Root isValidConnection={isValidConnection} />;
+}
+```
+
+Validates interactive drags only, not programmatic edge writes (templates, paste, `setStoreEdges`). Fail-open: if an endpoint can't be resolved to a node, the connection is allowed.
+
+## Advanced: ReactFlow props
+
+`reactFlowProps` forwards extra props to the underlying ReactFlow canvas for things the SDK doesn't expose directly (zoom limits, key codes, `onNodeClick`, performance flags, …).
+
+```tsx
+const reactFlowProps = {
+  maxZoom: 1.5,
+  zoomOnDoubleClick: false,
+  onNodeClick: (_, node) => console.log(node.id),
+} satisfies WorkflowBuilderReactFlowProps;
+
+<WorkflowBuilder.Root reactFlowProps={reactFlowProps} />;
+```
+
+Props the SDK owns (graph data, the connection / selection / change handlers, type maps, `colorMode`, …) can't be set here. To observe SDK events use the listener APIs (`addNodeChangedListener`, …); to theme use [Theming](#theming). Treat `reactFlowProps` as static config: runtime value changes may not apply immediately.
+
+## Theming
+
+The editor exposes a small set of CSS custom properties for top-level styling. Override them on `:root` to reach the whole editor, including portalled surfaces:
+
+```css
+:root {
+  --wb-public-background-color: #fafafa;
+  --wb-public-transition: 0.15s ease-in;
+  --wb-public-font-family: 'Inter', system-ui, sans-serif;
+  --wb-public-font-family-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+```
+
+Available tokens: `--wb-public-background-color`, `--wb-public-transition`, `--wb-public-font-family`, `--wb-public-font-family-mono`, plus scrollbar styling (`--wb-public-scroll-width`, `--wb-public-scroll-radius`, `--wb-public-scroll-thumb-color`, `--wb-public-scroll-track-color`). `--wb-public-font-family` controls the builder root and the Poppins-backed type roles; the proportional `wb-text-code` role remains Inter. `--wb-public-font-family-mono` controls `wb-text-code-mono` and the syntax editor.
+
+Custom layouts passed as Root children and SDK-owned body portals join the builder's font scope. Content that a host or plugin portals elsewhere does not: CSS variables and font inheritance follow DOM ancestry, not the React tree. The same boundary applies to every token above. Modal, Menu, Tooltip, Select, and DatePicker surfaces mount under `document.body`, so an override scoped only to an app shell will not reach them; use `:root` or apply the overrides to the portal container too.
+
+Deeper color and spacing customization goes through the generated `--wb-ds-*` design-token layer from `@workflowbuilder/ui`. Hand-authored overrides use `--wb-public-*`. The UI Library's component pages include generated CSS-variable tables for component-local UI overrides. Full guide: [Design system and customization](https://www.workflowbuilder.io/docs/overview/features/design-system-and-customization/).
+
+**Prefix ownership.** The Workflow Builder namespace has three families. `--wb-ds-*` variables come from the Figma design-token export, `--wb-sdk-*` variables are private SDK implementation details, and `--wb-public-*` variables are the supported customization contract shared by `@workflowbuilder/ui` and `@workflowbuilder/sdk`. Every `var(--…)` in workspace CSS is validated in continuous integration (CI) against the set of names that actually exist (stylelint, see `packages/tokens/README.md`).
+
+## CSS — global resets
+
+`@workflowbuilder/sdk/style.css` contains a small set of global resets, including:
+
+```css
+body {
+  margin: 0;
+  background-color: var(--wb-public-background-color);
+  overflow: hidden;
+}
+```
+
+The stylesheet does **not** size your document — the editor fills whatever container
+you give it, so give it one. A typical full-viewport host adds in its own CSS:
+
+```css
+html,
+body,
+#root {
+  height: 100vh;
+}
+```
+
+The shipped resets live inside `@layer ui.base` (the lowest layer in the cascade
+order), so any consumer-level rule on `body` / `html` wins automatically — no
+specificity hacks or `!important` needed. Two things to be aware of:
+
+- **`overflow: hidden` on `<body>`** — the editor expects a full-viewport canvas with no
+  page-level scrollbar. If you embed the editor inside a scrolling page, override
+  `body { overflow: auto; }` (or scope the SDK to a sized container with its own
+  `overflow: hidden`) and let the editor's own viewport handle pan/zoom.
+- **`background-color: var(--wb-public-background-color)`** — the body picks up the SDK's
+  background token. If you don't ship the SDK style sheet but render
+  `<WorkflowBuilder.Root />`, the token is undefined and the body falls back to
+  transparent. Either ship the CSS or set `--wb-public-background-color` yourself.
+
+If you don't want the body resets at all, just override them in your own global
+stylesheet — unlayered consumer CSS beats `@layer ui.base` regardless of import
+order.
+
+## Single-instance constraint
+
+Mount one `<WorkflowBuilder.Root>` per page. Plugin / JsonForms / i18n registries and the `useStore.{getState,setState,subscribe}` facade all share a module-level singleton, so two Roots on the same page would silently clash. If you need multiple "workflows" on one page, render them sequentially (mount → save → unmount → mount next).
+
+## TypeScript
+
+`dist/index.d.ts` ships with all required types inlined: icon names (`WBIcon`), domain types (`WorkflowBuilderNode`, `WorkflowBuilderEdge`, `NodeData`, `DiagramModel`, `PaletteItemOrGroup`, `TemplateModel`, …), plugin contracts, and integration types. No extra `@types/*` package needed.
+
+Full API reference: <https://www.workflowbuilder.io/docs/api/core/workflowbuilder/>.
+
+## Browser and runtime
+
+- **Client-side only.** The SDK holds module-level singletons (zustand store identity, i18next instance, immer's frozen-object cache) and uses `i18next-browser-languagedetector`. Mount inside `'use client'` boundaries on Next.js, or behind a client-only wrapper (`dynamic(() => import('./Editor'), { ssr: false })`) on other SSR frameworks.
+- **Modern browsers.** Last two versions of Chrome, Firefox, Safari, Edge.
+- **React 18 or 19.**
+
+## Peer dependencies
+
+Only the libraries your app touches directly are peers. Install them alongside the SDK
+(ranges declared in `peerDependencies`):
+
+- `react`, `react-dom` (`^18.0.0 || ^19.0.0`) — already in any React app
+- `@xyflow/react` (`^12.0.0`) — `Node`, `Edge`, `EdgeProps`, `NodeChange` types you use
+- `zustand` (`^5.0.0`) — `useStore` / `useChangesTrackerStore` return zustand store types
+
+They stay peers so the consumer app and the SDK share a single copy of each — required
+for singletons (zustand store identity, xyflow's React context). The remaining libraries
+the SDK relies on — `@jsonforms/core`, `@jsonforms/react`, `i18next`, `react-i18next`,
+`i18next-browser-languagedetector`, `immer` — are regular `dependencies`: they install
+automatically and are still externalized from the build, so package managers dedupe them
+to a single copy via the caret ranges (they hold singletons too — the i18next instance,
+immer's frozen-object cache, the JsonForms contexts — which is why they are never
+bundled).
+
+Writing custom JsonForms renderers, cells, or testers still needs only the SDK: the
+authoring primitives (`withJsonFormsControlProps`, `rankWith`, `uiTypeIs`, `useJsonForms`,
+`ControlProps`, …) are re-exported from `@workflowbuilder/sdk`. Import them from there,
+never from `@jsonforms/*` directly — that guarantees your renderer uses the SDK's single
+JsonForms copy instead of a second one that would break the React context.
+
+## Support
+
+Built and maintained by [Synergy Codes](https://synergycodes.com/) - the engineers behind the SDK shipping workflow tools for 15 years across 20+ industries. Available for integration, customization, UX, back-end logic, and end-to-end delivery.
+
+[Talk to the team →](https://workflowbuilder.io/consulting/)
+
+## License
+
+Apache 2.0 — see [LICENSE](./LICENSE).

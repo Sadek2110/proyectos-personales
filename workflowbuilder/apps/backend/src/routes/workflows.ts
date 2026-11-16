@@ -1,0 +1,293 @@
+import { and, eq, inArray } from 'drizzle-orm';
+import { Hono } from 'hono';
+import { z } from 'zod';
+
+import type { AssertAuthorized } from '../auth';
+import { database } from '../db/client';
+import { executions, workflows } from '../db/schema';
+import { mapToExecutionModel } from '../domain/mapper/from-integration-data';
+import { getWorkflowEngine } from '../engine';
+import { formatErrorChain } from '../format-error-chain';
+import { logger as backendLogger } from '../logger';
+import { guardExecution } from '../security/execution-guard';
+import type { BackendEnv } from './backend-env';
+import { formatValidationDetails, parseSnapshot } from './snapshot-validation';
+
+const logger = backendLogger.child({ component: 'workflows-route' });
+
+// Both write schemas store a draft as sent, so on a public deployment anyone can save one the editor
+// cannot draw. (follow-up: validate-workflow-drafts)
+const createWorkflowSchema = z.object({
+  name: z.string().min(1).max(200),
+  draftJson: z.unknown().optional(),
+});
+
+const updateDraftSchema = z.object({
+  draftJson: z.unknown(),
+});
+
+const executeSchema = z.object({
+  sourceVersion: z.enum(['draft', 'published']),
+  triggerPayload: z.record(z.string(), z.unknown()).optional(),
+});
+
+export function createWorkflowsRoutes(assertAuthorized: AssertAuthorized): Hono<BackendEnv> {
+  const routes = new Hono<BackendEnv>();
+
+  routes.post('/', async (c) => {
+    await assertAuthorized(c, 'workflows:create', { kind: 'workflows' });
+
+    const parsed = z.safeParse(createWorkflowSchema, await c.req.json());
+    if (!parsed.success) {
+      return c.json(
+        {
+          code: 'validation_error',
+          message: 'Request body failed validation',
+          details: formatValidationDetails(parsed.error),
+        },
+        400,
+      );
+    }
+    const body = parsed.data;
+
+    const [workflow] = await database
+      .insert(workflows)
+      .values({
+        name: body.name,
+        draftJson: body.draftJson ?? null,
+      })
+      .returning();
+
+    return c.json(workflow, 201);
+  });
+
+  routes.get('/', async (c) => {
+    await assertAuthorized(c, 'workflows:list', { kind: 'workflows' });
+
+    const rows = await database
+      .select({
+        id: workflows.id,
+        name: workflows.name,
+        publishedAt: workflows.publishedAt,
+        createdAt: workflows.createdAt,
+        updatedAt: workflows.updatedAt,
+        publishedJson: workflows.publishedJson,
+      })
+      .from(workflows);
+
+    const items = rows.map((row) => ({
+      id: row.id,
+      name: row.name,
+      hasPublished: row.publishedJson !== null,
+      publishedAt: row.publishedAt,
+      createdAt: row.createdAt,
+      updatedAt: row.updatedAt,
+    }));
+
+    return c.json(items);
+  });
+
+  routes.get('/:id', async (c) => {
+    const workflowId = c.req.param('id');
+
+    await assertAuthorized(c, 'workflows:read', { kind: 'workflow', workflowId });
+
+    const [workflow] = await database.select().from(workflows).where(eq(workflows.id, workflowId));
+
+    if (!workflow) {
+      return c.json({ code: 'workflow_not_found', message: 'Workflow not found' }, 404);
+    }
+
+    return c.json(workflow);
+  });
+
+  routes.patch('/:id/draft', async (c) => {
+    const workflowId = c.req.param('id');
+
+    await assertAuthorized(c, 'workflows:update', { kind: 'workflow', workflowId });
+
+    const parsed = z.safeParse(updateDraftSchema, await c.req.json());
+    if (!parsed.success) {
+      return c.json(
+        {
+          code: 'validation_error',
+          message: 'Request body failed validation',
+          details: formatValidationDetails(parsed.error),
+        },
+        400,
+      );
+    }
+    const body = parsed.data;
+
+    const [workflow] = await database
+      .update(workflows)
+      .set({
+        draftJson: body.draftJson,
+        updatedAt: new Date(),
+      })
+      .where(eq(workflows.id, workflowId))
+      .returning();
+
+    if (!workflow) {
+      return c.json({ code: 'workflow_not_found', message: 'Workflow not found' }, 404);
+    }
+
+    return c.json(workflow);
+  });
+
+  routes.post('/:id/publish', async (c) => {
+    const workflowId = c.req.param('id');
+
+    await assertAuthorized(c, 'workflows:publish', { kind: 'workflow', workflowId });
+
+    const [existing] = await database.select().from(workflows).where(eq(workflows.id, workflowId));
+
+    if (!existing) {
+      return c.json({ code: 'workflow_not_found', message: 'Workflow not found' }, 404);
+    }
+
+    // A null draft is not validated; publishing it clears `publishedJson`, as before.
+    if (existing.draftJson !== null) {
+      const parsed = parseSnapshot(c, existing.draftJson, { workflowId, sourceVersion: 'draft' });
+      if (parsed.response !== undefined) return parsed.response;
+    }
+
+    const [workflow] = await database
+      .update(workflows)
+      .set({
+        publishedJson: existing.draftJson,
+        publishedAt: new Date(),
+        updatedAt: new Date(),
+      })
+      .where(eq(workflows.id, workflowId))
+      .returning();
+
+    return c.json(workflow);
+  });
+
+  routes.post('/:id/execute', async (c) => {
+    const workflowId = c.req.param('id');
+
+    await assertAuthorized(c, 'workflows:execute', { kind: 'workflow', workflowId });
+
+    // The one endpoint that spends real LLM budget, so it carries the abuse gate.
+    const blocked = await guardExecution(c);
+    if (blocked) {
+      return blocked;
+    }
+
+    const parsed = z.safeParse(executeSchema, await c.req.json());
+    if (!parsed.success) {
+      return c.json(
+        {
+          code: 'validation_error',
+          message: 'Request body failed validation',
+          details: formatValidationDetails(parsed.error),
+        },
+        400,
+      );
+    }
+    const body = parsed.data;
+
+    const [workflow] = await database.select().from(workflows).where(eq(workflows.id, workflowId));
+
+    if (!workflow) {
+      return c.json({ code: 'workflow_not_found', message: 'Workflow not found' }, 404);
+    }
+
+    const snapshotJson = body.sourceVersion === 'published' ? workflow.publishedJson : workflow.draftJson;
+
+    if (snapshotJson === null) {
+      return c.json({ code: 'published_version_missing', message: `No ${body.sourceVersion} version available` }, 400);
+    }
+
+    const snapshotParse = parseSnapshot(c, snapshotJson, { workflowId, sourceVersion: body.sourceVersion });
+    if (snapshotParse.response !== undefined) return snapshotParse.response;
+
+    // Propagate tenant identity from the HTTP boundary onto the execution row.
+    // The worker reads it back via subquery for event tagging (see worker
+    // database.ts), so it never has to know tenancy exists. Null in
+    // single-tenant mode (the reference default).
+    //
+    // We deliberately do NOT stuff tenantId into the engine `variables` bag:
+    // no reference node executor reads it, so shipping it would be dead
+    // transport. Consumers whose executors need tenant at runtime add it to
+    // `variables` themselves - see seam 2 in tenant-context-port.decision-log.md.
+    const tenantId = c.var.tenant?.tenantId ?? null;
+
+    const [execution] = await database
+      .insert(executions)
+      .values({
+        workflowId,
+        sourceVersion: body.sourceVersion,
+        workflowSnapshotJson: snapshotJson,
+        status: 'pending',
+        triggerPayloadJson: body.triggerPayload ?? null,
+        tenantId,
+      })
+      .returning();
+
+    logger.info('execute requested', {
+      workflowId,
+      executionId: execution.id,
+      sourceVersion: body.sourceVersion,
+    });
+
+    const definition = mapToExecutionModel(workflowId, snapshotParse.snapshot);
+
+    try {
+      await getWorkflowEngine().submit({
+        workflowId,
+        executionId: execution.id,
+        definition,
+        triggerPayload: body.triggerPayload ?? {},
+        variables: {},
+        global: {},
+      });
+    } catch (error) {
+      const message = formatErrorChain(error);
+      logger.error('execute start not confirmed', { workflowId, executionId: execution.id, error: message });
+      // The worker never hears of a run that did not start, and a Stop during the start leaves a 'cancelling'
+      // nothing closes. Zero rows: the worker moved the run, so the engine took the start without confirming it.
+      // If this write lands first instead, the run goes on under 'failed' (follow-up: run-claim-at-start).
+      let workerTookRun = false;
+      try {
+        const now = new Date();
+        const closed = await database
+          .update(executions)
+          .set({ status: 'failed', finishedAt: now, errorMessage: message, updatedAt: now })
+          .where(and(eq(executions.id, execution.id), inArray(executions.status, ['pending', 'cancelling'])))
+          .returning({ id: executions.id });
+        workerTookRun = closed.length === 0;
+      } catch (closeError) {
+        logger.error('execute could not close the run', {
+          workflowId,
+          executionId: execution.id,
+          error: formatErrorChain(closeError),
+        });
+      }
+      if (!workerTookRun) {
+        return c.json(
+          {
+            code: 'execution_start_failed',
+            message: 'The execution engine did not accept the run',
+            executionId: execution.id,
+          },
+          503,
+        );
+      }
+      logger.warn('execute start unconfirmed, but the worker has the run', { workflowId, executionId: execution.id });
+    }
+
+    return c.json(
+      {
+        executionId: execution.id,
+        status: execution.status,
+        streamUrl: `/api/executions/${execution.id}/stream`,
+      },
+      202,
+    );
+  });
+
+  return routes;
+}

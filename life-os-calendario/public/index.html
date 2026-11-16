@@ -1,0 +1,2152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Life OS</title>
+<meta name="theme-color" content="#F4F3EF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121211" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Life OS">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+:root {
+  --bg: #F4F3EF; --surface: #FFFFFF; --surface-2: #ECEAE4; --line: #E3E0D8;
+  --text: #1C1B19; --muted: #77726A; --faint: #A8A39A;
+  --accent: #2F6B4F; --accent-ink: #FFFFFF; --accent-soft: #E1EDE5;
+  --blue: #3D63A8; --blue-soft: #E3EAF6;
+  --red: #C24A2C; --red-soft: #F8E4DD;
+  --amber: #A86E14; --amber-soft: #F5EBD6;
+  --plum: #8A3F86;
+  --shadow: 0 1px 2px rgba(28,27,25,.06), 0 4px 16px rgba(28,27,25,.06);
+  --radius: 16px;
+  --tabbar-h: 64px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121211; --surface: #1C1B19; --surface-2: #272622; --line: #302E2A;
+    --text: #F1EFE9; --muted: #A29D93; --faint: #6E6A62;
+    --accent: #74C49A; --accent-ink: #0E1A13; --accent-soft: #1F3328;
+    --blue: #86A8E8; --blue-soft: #1E2738;
+    --red: #EE8A6E; --red-soft: #3A221B;
+    --amber: #E2B15C; --amber-soft: #352A17;
+    --plum: #D692D2;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 4px 16px rgba(0,0,0,.25);
+    color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body { margin: 0; height: 100%; }
+body {
+  background: var(--bg); color: var(--text);
+  font: 15px/1.4 Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased; overscroll-behavior: none;
+}
+button, input, select { font: inherit; color: inherit; }
+button { background: none; border: 0; padding: 0; cursor: pointer; }
+svg { display: block; }
+
+.app { display: flex; flex-direction: column; height: 100dvh; max-width: 640px; margin: 0 auto; position: relative; }
+
+/* ---------- Cabecera ---------- */
+.top { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px;
+  padding: calc(env(safe-area-inset-top) + 18px) 20px 12px; }
+.top h1 { margin: 0; font-size: 28px; font-weight: 700; letter-spacing: -.02em; }
+.top p { margin: 2px 0 0; color: var(--muted); font-size: 14px; }
+.icon-btn { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; color: var(--muted); }
+.icon-btn:active { background: var(--surface-2); }
+.spin svg { animation: spin .8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.demo { font-size: 11px; font-weight: 600; color: var(--amber); background: var(--amber-soft); padding: 2px 8px; border-radius: 99px; margin-left: 6px; vertical-align: middle; }
+
+/* ---------- Contenido ---------- */
+main { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 0 16px calc(var(--tabbar-h) + 96px); }
+main.full { padding: 0; overflow: hidden; }
+.view[hidden] { display: none; }
+
+.segmented { display: flex; background: var(--surface-2); border-radius: 12px; padding: 3px; margin: 4px 0 16px; }
+.segmented button { flex: 1; padding: 8px 10px; border-radius: 9px; font-weight: 500; font-size: 14px; color: var(--muted); }
+.segmented button b { font-weight: 600; margin-left: 4px; }
+.segmented button.on { background: var(--surface); color: var(--text); box-shadow: var(--shadow); }
+
+.group { margin-bottom: 18px; }
+.group-head { display: flex; align-items: baseline; justify-content: space-between; padding: 0 4px 6px; }
+.group-head .name { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+.group-head .name.danger { color: var(--red); }
+.group-head .sub { font-size: 12px; color: var(--faint); }
+.card { background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+
+.row { display: flex; align-items: center; gap: 12px; padding: 12px 14px; min-height: 56px;
+  transition: opacity .2s, transform .2s; }
+.row + .row { border-top: 1px solid var(--line); }
+.row.leaving { opacity: 0; transform: translateX(24px); }
+.pending { opacity: .55; pointer-events: none; }
+.row-main { flex: 1; min-width: 0; text-align: left; display: flex; flex-direction: column; gap: 2px; }
+.row-title { font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.row.done .row-title { color: var(--faint); text-decoration: line-through; }
+.row-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; font-size: 13px; color: var(--muted); }
+.row-meta .m { display: inline-flex; align-items: center; gap: 4px; min-width: 0; }
+.row-meta .m span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 200px; }
+.row-meta .late { color: var(--red); font-weight: 500; }
+
+.check { flex: none; width: 26px; height: 26px; border-radius: 50%; border: 2px solid var(--faint);
+  display: grid; place-items: center; color: transparent; transition: all .15s; }
+.check:active { transform: scale(.9); }
+.check.on { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.check.prio-Alta { border-color: var(--red); }
+
+.tag { font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 99px; }
+.tag-Alta { color: var(--red); background: var(--red-soft); }
+.tag-Media { color: var(--amber); background: var(--amber-soft); }
+.tag-Baja { color: var(--muted); background: var(--surface-2); }
+
+.pill { flex: none; font-size: 13px; font-weight: 600; padding: 6px 12px; border-radius: 99px; transition: all .15s; }
+.pill-falta { color: var(--red); background: var(--red-soft); }
+.pill-casa { color: var(--accent); background: var(--accent-soft); }
+
+.search { display: flex; align-items: center; gap: 8px; background: var(--surface); border-radius: 12px;
+  padding: 0 12px; margin-bottom: 16px; box-shadow: var(--shadow); color: var(--faint); }
+.search input { flex: 1; border: 0; outline: 0; background: none; padding: 11px 0; font-size: 15px; }
+
+.empty { text-align: center; padding: 56px 24px; color: var(--muted); }
+.empty .ico { width: 64px; height: 64px; margin: 0 auto 14px; border-radius: 20px; display: grid; place-items: center;
+  background: var(--accent-soft); color: var(--accent); }
+.empty h3 { margin: 0 0 4px; color: var(--text); font-size: 17px; }
+.empty p { margin: 0; font-size: 14px; }
+
+.skel { height: 56px; border-radius: 12px; margin-bottom: 8px;
+  background: linear-gradient(90deg, var(--surface) 0%, var(--surface-2) 50%, var(--surface) 100%);
+  background-size: 200% 100%; animation: shimmer 1.2s infinite; }
+@keyframes shimmer { to { background-position: -200% 0; } }
+
+/* ---------- Horario ---------- */
+.days { display: flex; gap: 8px; overflow-x: auto; margin: 0 -16px 16px; padding: 4px 16px; scrollbar-width: none; }
+.days::-webkit-scrollbar { display: none; }
+.day { flex: none; width: 52px; padding: 8px 0 10px; border-radius: 14px; background: var(--surface); box-shadow: var(--shadow);
+  display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.day .dw { font-size: 11px; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.day .dn { font-size: 18px; font-weight: 600; }
+.day .dot { width: 5px; height: 5px; border-radius: 50%; background: transparent; }
+.day .dot.has { background: var(--accent); }
+.day.on { background: var(--accent); color: var(--accent-ink); }
+.day.on .dw { color: inherit; opacity: .8; }
+.day.on .dot.has { background: var(--accent-ink); }
+.day-title { font-size: 17px; font-weight: 600; margin: 0 4px 10px; }
+.allday { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.allday button { background: var(--accent-soft); color: var(--accent); font-weight: 500; font-size: 13px; padding: 6px 12px; border-radius: 10px; }
+.ev { display: flex; gap: 14px; padding: 12px 14px; text-align: left; width: 100%; }
+.ev + .ev { border-top: 1px solid var(--line); }
+.ev-time { flex: none; width: 48px; font-size: 13px; font-variant-numeric: tabular-nums; }
+.ev-time b { display: block; font-weight: 600; }
+.ev-time span { color: var(--faint); }
+.ev-body { flex: 1; min-width: 0; border-left: 3px solid var(--accent); padding-left: 12px; }
+.ev-body.now { border-color: var(--red); }
+.ev-title { font-weight: 500; }
+.link { display: inline-flex; align-items: center; gap: 6px; color: var(--accent); font-weight: 500; font-size: 14px; text-decoration: none; padding: 8px 4px; }
+
+/* ---------- Calendario: barra de navegación ---------- */
+main.cal { padding: 0; overflow: hidden; }
+main.cal > #v-horario { height: 100%; display: flex; flex-direction: column; padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom)); }
+.cal-bar { flex: none; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 12px; }
+main.cal .cal-bar { padding: 0 12px; margin-bottom: 8px; }
+.cal-nav { display: flex; align-items: center; gap: 2px; flex: 1 1 100%; min-width: 0; }
+.cal-hoy { flex: none; height: 36px; padding: 0 12px; margin-right: 4px; border: 1px solid var(--line); border-radius: 10px; font-size: 14px; font-weight: 600; }
+.cal-nav .icon-btn { flex: none; width: 36px; height: 36px; color: var(--text); }
+.cal-tit { min-width: 0; margin: 0 0 0 6px; font-size: 17px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cal-spin { flex: none; color: var(--muted); margin-left: 6px; }
+.cal-vistas { flex: 1 1 100%; }
+.cal-vistas button { flex: 1; }
+
+/* Tiras de evento (comunes a Mes y a la franja de todo el día) */
+.ct { min-width: 0; height: 18px; padding: 0 4px; display: flex; align-items: center; gap: 4px; border-radius: 4px; overflow: hidden;
+  font-size: 11px; line-height: 18px; font-weight: 500; text-align: left; white-space: nowrap; pointer-events: auto;
+  background: color-mix(in srgb, var(--c) 16%, var(--surface)); }
+.ct span { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.ct-hora, .ct i { display: none; flex: none; }
+.ct-barra { background: color-mix(in srgb, var(--c) 34%, var(--surface)); font-weight: 600; }
+.ct-barra.corte-i { border-top-left-radius: 0; border-bottom-left-radius: 0; }
+.ct-barra.corte-d { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+.ct-tarea { background: none; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c) 45%, transparent); }
+.ct-mas { min-width: 0; height: 18px; padding: 0 4px; font-size: 11px; font-weight: 600; color: var(--muted); text-align: left; white-space: nowrap; pointer-events: auto; }
+
+/* Vista Mes */
+.cm { flex: 1; min-height: 0; display: flex; flex-direction: column; background: var(--surface); border-block: 1px solid var(--line); }
+.cm-cab { flex: none; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); border-bottom: 1px solid var(--line); }
+.cm-cab span { padding: 5px 0; text-align: center; font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--muted); }
+.cm-filas { flex: 1; min-height: 0; display: grid; grid-auto-rows: minmax(70px, 1fr); overflow-y: auto; }
+.cm-sem { position: relative; min-height: 0; overflow: hidden; }
+.cm-sem + .cm-sem { border-top: 1px solid var(--line); }
+.cm-fondo { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); }
+.cm-dia { min-width: 0; padding-top: 2px; display: flex; justify-content: center; align-items: flex-start; cursor: pointer; }
+.cm-dia + .cm-dia { border-left: 1px solid var(--line); }
+.cm-dia.finde { background: color-mix(in srgb, var(--surface-2) 40%, transparent); }
+.cm-num { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 500; font-variant-numeric: tabular-nums; }
+.cm-dia.fuera .cm-num { color: var(--faint); }
+.cm-dia.hoy .cm-num { background: var(--accent); color: var(--accent-ink); font-weight: 700; }
+.cm-tiras { position: absolute; top: 26px; left: 0; right: 0; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); grid-auto-rows: 18px; row-gap: 2px; padding-inline: 1px; column-gap: 2px; pointer-events: none; }
+
+/* Vistas Semana y Día */
+.cs { --gutter: 44px; flex: 1; min-height: 0; display: flex; flex-direction: column; background: var(--surface); border-block: 1px solid var(--line); }
+.cs-cab, .cs-todo { flex: none; display: grid; grid-template-columns: var(--gutter) minmax(0, 1fr); overflow-y: hidden; scrollbar-gutter: stable; border-bottom: 1px solid var(--line); }
+.cs-dias { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); }
+.cs-dh { min-width: 0; padding: 5px 0; display: flex; flex-direction: column; align-items: center; gap: 1px; }
+.cs-dh span { font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--muted); }
+.cs-dh b { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.cs-dh.hoy span { color: var(--accent); }
+.cs-dh.hoy b { background: var(--accent); color: var(--accent-ink); }
+.cs-tl { font-size: 10px; color: var(--faint); text-align: right; padding: 5px 6px 0 0; }
+.cs-tiras { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); grid-auto-rows: 18px; row-gap: 2px; column-gap: 2px; padding: 3px 1px; }
+.cg-cuerpo { flex: 1; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; scrollbar-gutter: stable; }
+.cs-grid { position: relative; display: grid; grid-template-columns: var(--gutter) minmax(0, 1fr); height: calc(24 * var(--hora)); }
+.cs-horas { position: relative; }
+.cs-hl { position: absolute; right: 6px; transform: translateY(-50%); font-size: 10px; color: var(--faint); font-variant-numeric: tabular-nums; }
+.cs-cols { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); }
+.cs-col { position: relative; min-width: 0; cursor: pointer; border-left: 1px solid var(--line);
+  background-image: linear-gradient(var(--line) 1px, transparent 1px); background-size: 100% var(--hora); }
+.cs-col.hoy { background-color: color-mix(in srgb, var(--accent-soft) 35%, transparent); }
+.ce { position: absolute; min-width: 0; padding: 2px 2px 2px 3px; overflow: hidden; border-radius: 4px; text-align: left; font-size: 10.5px; line-height: 1.2;
+  background: color-mix(in srgb, var(--c) 24%, var(--surface)); border-left: 2px solid var(--c); box-shadow: 0 0 0 1px var(--surface); }
+.ce b { display: block; font-weight: 600; overflow: hidden; overflow-wrap: anywhere; }
+.cs-7 .ce span { display: none; }
+.ce span { display: block; color: var(--muted); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.ce-corto b { white-space: nowrap; }
+.cs-ahora { position: absolute; left: 0; right: 0; z-index: 2; height: 2px; background: var(--red); pointer-events: none; }
+.cs-ahora::before { content: ''; position: absolute; left: -4px; top: -4px; width: 10px; height: 10px; border-radius: 50%; background: var(--red); }
+
+/* ---------- Mapa ---------- */
+#v-mapa { position: relative; height: 100%; }
+#map { position: absolute; inset: 0 0 calc(var(--tabbar-h) + env(safe-area-inset-bottom)) 0; background: var(--surface-2); }
+@media (prefers-color-scheme: dark) {
+  #map .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) saturate(.45) brightness(.9) contrast(.9); }
+}
+.map-top { position: absolute; z-index: 500; top: 4px; left: 12px; right: 12px; display: flex; gap: 8px; flex-wrap: wrap; }
+.layer { display: inline-flex; align-items: center; gap: 6px; background: var(--surface); box-shadow: var(--shadow);
+  padding: 8px 12px; border-radius: 99px; font-size: 13px; font-weight: 500; }
+.layer i { width: 10px; height: 10px; border-radius: 50%; }
+.layer.off { opacity: .5; }
+.layer.off i { background: var(--faint) !important; }
+.map-bottom { position: absolute; z-index: 500; left: 12px; right: 12px; bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom) + 28px);
+  display: flex; flex-direction: column; gap: 8px; align-items: stretch; }
+.map-note { align-self: center; font-size: 12px; color: var(--muted); background: var(--surface); padding: 4px 10px; border-radius: 99px; box-shadow: var(--shadow); }
+.pin { width: 30px; height: 30px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); display: grid; place-items: center;
+  border: 2px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,.3); }
+.pin b { transform: rotate(45deg); color: #fff; font: 600 12px Inter, sans-serif; }
+.pin-t { background: var(--blue); } .pin-s { background: var(--accent); }
+.leaflet-popup-content-wrapper { border-radius: 14px; background: var(--surface); color: var(--text); }
+.leaflet-popup-tip { background: var(--surface); }
+.leaflet-popup-content { margin: 12px 14px; font: 14px/1.4 Inter, sans-serif; }
+.leaflet-popup-content h4 { margin: 0 0 4px; font-size: 14px; }
+.leaflet-popup-content ul { margin: 4px 0 0; padding-left: 18px; color: var(--muted); }
+.leaflet-container a.leaflet-popup-close-button { color: var(--faint); }
+
+/* ---------- Botones ---------- */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 48px; padding: 0 18px;
+  border-radius: 14px; font-weight: 600; text-decoration: none; }
+.btn-primary { background: var(--accent); color: var(--accent-ink); }
+.btn-ghost { background: var(--surface-2); color: var(--text); }
+.btn-danger { background: var(--red-soft); color: var(--red); }
+.btn:active { transform: scale(.98); }
+.btn[disabled], .btn.disabled { opacity: .45; pointer-events: none; }
+
+.fab { position: absolute; right: 18px; bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom) + 18px); z-index: 600;
+  width: 58px; height: 58px; border-radius: 18px; background: var(--accent); color: var(--accent-ink);
+  display: grid; place-items: center; box-shadow: 0 6px 20px rgba(47,107,79,.35); transition: transform .15s; }
+.fab:active { transform: scale(.94); }
+.fab[hidden] { display: none; }
+.fab.on-map { bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom) + 100px); }
+.map-hint { position: absolute; z-index: 450; left: 50%; top: 45%; transform: translate(-50%, -50%); width: min(300px, calc(100% - 48px));
+  text-align: center; background: var(--surface); border-radius: 16px; padding: 16px; box-shadow: var(--shadow); pointer-events: none; }
+.map-hint b { display: block; margin-bottom: 4px; }
+.map-hint span { color: var(--muted); font-size: 14px; }
+.leaflet-popup-content .btn { height: 38px; margin-top: 10px; width: 100%; font-size: 14px; }
+.cal-name { font-size: 12px; color: var(--faint); }
+
+/* ---------- Rutas guardadas ---------- */
+.mapseg { display: inline-flex; background: var(--surface); box-shadow: var(--shadow); border-radius: 99px; padding: 3px; }
+.mapseg button { padding: 6px 12px; border-radius: 99px; font-size: 13px; font-weight: 500; color: var(--muted); }
+.mapseg button.on { background: var(--accent); color: var(--accent-ink); }
+.mapseg b { font-weight: 600; margin-left: 2px; }
+.rpanel { position: absolute; z-index: 550; left: 0; right: 0; bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom));
+  max-height: 58%; overflow-y: auto; background: var(--bg); border-radius: 22px 22px 0 0; padding: 16px 16px 20px;
+  box-shadow: 0 -6px 24px rgba(0,0,0,.12); }
+.rpanel[hidden] { display: none; }
+.rpanel.detalle { max-height: 52%; }
+.rp-head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.rp-head h3 { margin: 0; font-size: 18px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rp-head p { margin: 2px 0 0; font-size: 13px; color: var(--muted); }
+.rp-head > div:first-child { flex: 1; min-width: 0; }
+.btn-sm { height: 38px; padding: 0 14px; font-size: 14px; border-radius: 12px; flex: none; }
+.ruta-item { display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; padding: 12px 14px; }
+.ruta-item + .ruta-item { border-top: 1px solid var(--line); }
+.ri-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.ri-dur { flex: none; text-align: right; display: flex; flex-direction: column; font-size: 12px; color: var(--muted); }
+.ri-dur b { font-size: 15px; color: var(--text); }
+.line { display: inline-flex; align-items: center; gap: 3px; font-size: 12px; font-weight: 700; padding: 2px 6px; border-radius: 6px; line-height: 1.3; }
+.sep { color: var(--faint); }
+.opts { display: flex; gap: 8px; overflow-x: auto; margin: 0 -16px 12px; padding: 2px 16px; scrollbar-width: none; }
+.opts::-webkit-scrollbar { display: none; }
+.opt { flex: none; display: flex; flex-direction: column; gap: 4px; align-items: flex-start; padding: 10px 12px; border-radius: 14px;
+  background: var(--surface); border: 2px solid transparent; box-shadow: var(--shadow); }
+.opt.on { border-color: var(--accent); }
+.rsum { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin: 4px 2px 12px; }
+.rsum b { font-size: 24px; letter-spacing: -.02em; }
+.rsum span { color: var(--muted); font-size: 14px; }
+.steps { list-style: none; margin: 0 0 12px; padding: 14px 14px 6px; background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow); }
+.st { position: relative; display: flex; gap: 12px; padding-bottom: 16px; font-size: 14px; }
+.st::before { content: ''; position: absolute; left: 13px; top: 28px; bottom: 0; border-left: 3px dotted var(--faint); }
+.st:last-child::before { display: none; }
+.st-transit::before { border-left: 4px solid var(--lc); left: 12px; }
+.st-car::before { border-left-style: solid; border-color: var(--accent); }
+.st .dot { flex: none; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font-style: normal;
+  background: var(--surface-2); color: var(--muted); font-weight: 700; font-size: 13px; position: relative; z-index: 1; }
+.st-transit .dot { background: var(--lc); color: #fff; }
+.st .dot.a { background: var(--accent); color: var(--accent-ink); }
+.st .dot.b { background: var(--blue); color: #fff; }
+.st > div { flex: 1; min-width: 0; padding-top: 4px; }
+.st .dir { color: var(--muted); font-size: 13px; }
+.st .stop { margin-top: 6px; }
+.st .stop b:first-child { display: inline-block; min-width: 44px; font-variant-numeric: tabular-nums; }
+.muted { color: var(--muted); font-size: 13px; margin-top: 2px; }
+.small { font-size: 12px; margin: 0 2px 12px; }
+.aviso { font-size: 13px; color: var(--amber); background: var(--amber-soft); padding: 10px 12px; border-radius: 12px; margin: 0 0 12px; }
+.rp-actions { display: flex; gap: 10px; }
+.rp-actions .btn { flex: 1; height: 44px; font-size: 14px; }
+
+/* ---------- Barra inferior ---------- */
+.tabbar { position: absolute; left: 0; right: 0; bottom: 0; z-index: 700; display: flex;
+  padding: 6px 8px calc(env(safe-area-inset-bottom) + 6px); height: calc(var(--tabbar-h) + env(safe-area-inset-bottom));
+  background: color-mix(in srgb, var(--surface) 88%, transparent); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid var(--line); }
+.tab { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+  font-size: 11px; font-weight: 500; color: var(--faint); position: relative; border-radius: 12px; }
+.tab.on { color: var(--accent); }
+.tab .badge { position: absolute; top: 2px; left: calc(50% + 6px); min-width: 18px; height: 18px; padding: 0 5px;
+  border-radius: 99px; background: var(--red); color: #fff; font-size: 11px; font-weight: 600; display: grid; place-items: center; }
+
+/* ---------- Hoja inferior (formularios) ---------- */
+.backdrop { position: fixed; inset: 0; z-index: 900; background: rgba(0,0,0,.35); opacity: 0; pointer-events: none; transition: opacity .2s; }
+.backdrop.open { opacity: 1; pointer-events: auto; }
+.sheet { position: absolute; left: 0; right: 0; bottom: 0; max-width: 640px; margin: 0 auto; max-height: 92dvh; overflow-y: auto;
+  background: var(--surface); border-radius: 22px 22px 0 0; padding: 8px 20px calc(env(safe-area-inset-bottom) + 20px);
+  transform: translateY(100%); transition: transform .25s cubic-bezier(.2,.8,.2,1); }
+.backdrop.open .sheet { transform: none; }
+.grip { width: 40px; height: 5px; border-radius: 99px; background: var(--line); margin: 0 auto 8px; }
+.sheet-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.sheet-head h2 { margin: 0; font-size: 20px; font-weight: 700; }
+.field { display: block; margin-bottom: 14px; }
+.field > span { display: block; font-size: 13px; font-weight: 500; color: var(--muted); margin-bottom: 6px; }
+.field select { appearance: none; -webkit-appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+  background-position: calc(100% - 20px) 21px, calc(100% - 15px) 21px; background-size: 5px 5px; background-repeat: no-repeat; }
+.field input, .field select { width: 100%; height: 48px; padding: 0 14px; border-radius: 12px; border: 1px solid var(--line);
+  background-color: var(--bg); outline: 0; font-size: 16px; }
+.field input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.field small { display: block; color: var(--faint); font-size: 12px; margin-top: 4px; }
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip input { position: absolute; opacity: 0; pointer-events: none; }
+.chip span { display: inline-block; padding: 9px 16px; border-radius: 12px; background: var(--bg); border: 1px solid var(--line); font-weight: 500; }
+.chip input:checked + span { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.sheet-actions { display: flex; gap: 10px; margin-top: 18px; }
+.sheet-actions .btn-primary { flex: 1; }
+.detail { display: flex; gap: 10px; align-items: flex-start; padding: 8px 0; color: var(--muted); }
+.detail svg { flex: none; margin-top: 1px; }
+
+/* ---------- Aviso ---------- */
+.toast { position: fixed; z-index: 1000; left: 50%; bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom) + 16px);
+  transform: translate(-50%, 20px); opacity: 0; pointer-events: none; transition: all .2s;
+  display: flex; align-items: center; gap: 14px; max-width: calc(100% - 32px); width: max-content;
+  background: var(--text); color: var(--bg); padding: 12px 16px; border-radius: 14px; font-size: 14px; box-shadow: var(--shadow); }
+.toast.show { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
+.toast button { color: var(--accent-soft); font-weight: 600; white-space: nowrap; }
+@media (prefers-color-scheme: dark) { .toast button { color: #2F6B4F; } }
+
+/* ---------- Clase: cada módulo es un bloque con su color y su línea de unidades ---------- */
+.cl-intro { display: grid; gap: 10px; margin: 4px 0 14px; }
+.cl-bar { height: 6px; border-radius: 99px; background: var(--surface-2); overflow: hidden; }
+.cl-bar i { display: block; height: 100%; background: var(--accent); transition: width .2s; }
+.cl-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.cl-tools input { flex: 1 1 200px; min-width: 0; height: 44px; padding: 0 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.cl-ocultar { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 14px; color: var(--muted); }
+.cl-res { display: grid; }
+.cl-res:empty { display: none; }
+.cl-res button { width: 100%; text-align: left; padding: 10px 14px; overflow-wrap: anywhere; }
+.cl-res button + button { border-top: 1px solid var(--line); }
+.cl-res small { color: var(--muted); }
+.cl-res p { margin: 0; padding: 12px 14px; color: var(--muted); }
+
+.cl-nav { position: sticky; top: 0; z-index: 20; display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none;
+  margin: 0 -16px 18px; padding: 6px 16px; background: var(--bg); border-block: 1px solid var(--line); }
+.cl-nav button { flex: 1 0 auto; min-height: 38px; padding: 0 10px; border-radius: 10px; font-size: 13px; font-weight: 600; color: var(--muted); white-space: nowrap;
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
+.cl-nav i { width: 9px; height: 9px; border-radius: 50%; background: var(--cl, var(--text)); }
+.cl-nav button.on { background: var(--cl, var(--text)); color: var(--accent-ink); }
+.cl-nav button.on:not([style]) { color: var(--bg); }
+.cl-nav button.on i { background: currentColor; }
+
+.cl-fechas { margin-bottom: 22px; scroll-margin-top: 58px; }
+.cl-fecha { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 10px; align-items: center; width: 100%; text-align: left; padding: 11px 14px; min-height: 56px; }
+.cl-fecha + .cl-fecha { border-top: 1px solid var(--line); }
+.cl-fecha .cuando { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.cl-fecha b { grid-column: 1 / -1; font-weight: 500; overflow-wrap: anywhere; }
+.cl-fecha small { grid-column: 1 / -1; color: var(--muted); font-size: 13px; }
+
+.cl-mod { --cl: var(--accent); margin-bottom: 22px; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); scroll-margin-top: 58px;
+  background: var(--surface); background: color-mix(in srgb, var(--cl) 9%, var(--surface)); }
+.cl-head { display: grid; gap: 6px; padding: 16px; background: var(--cl); color: var(--accent-ink); }
+.cl-head-top { display: flex; align-items: baseline; justify-content: space-between; gap: 4px 12px; flex-wrap: wrap; }
+.cl-head h2 { margin: 0; font-size: 19px; font-weight: 700; letter-spacing: -.01em; }
+.cl-head p { margin: 0; font-size: 13.5px; }
+.cl-num { font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.cl-mbar { height: 5px; border-radius: 99px; background: rgba(127,127,127,.4); overflow: hidden; }
+.cl-mbar i { display: block; height: 100%; background: var(--accent-ink); transition: width .2s; }
+.cl-aula { justify-self: start; display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 0 10px; margin-top: 2px;
+  border: 1px solid currentColor; border-radius: 10px; font-size: 13px; font-weight: 600; color: inherit; text-decoration: none; }
+
+.cl-line { display: grid; grid-template-columns: minmax(0, 1fr); padding: 6px 12px 12px; }
+.cl-st { position: relative; display: grid; grid-template-columns: 24px minmax(0, 1fr) auto; column-gap: 12px; row-gap: 1px; align-items: center; justify-items: start;
+  width: 100%; min-height: 56px; padding: 12px 10px 12px 0; text-align: left; border-radius: 12px; }
+.cl-st > * { grid-column: 2; }
+.cl-st::before { content: ""; position: absolute; top: 0; bottom: 0; left: 10px; border-left: 4px solid var(--cl); }
+.cl-st.primera::before { top: 24px; }
+.cl-st.ultima::before { bottom: calc(100% - 24px); }
+.cl-st.vacia::before { border-left-style: dashed; opacity: .7; }
+.cl-st[aria-expanded="true"] { background: var(--surface); border-radius: 12px 12px 0 0; }
+.cl-st:focus-visible { outline: 2px solid var(--text); outline-offset: -2px; }
+.cl-dot { grid-column: 1; grid-row: 1 / span 4; align-self: start; position: relative; z-index: 1; width: 24px; height: 24px; border-radius: 50%;
+  border: 4px solid var(--cl); background: var(--surface); display: grid; place-items: center; color: var(--accent-ink); }
+.cl-st.vacia .cl-dot { border-style: dashed; }
+.cl-st.llena .cl-dot { background: var(--cl); }
+.cl-code { font-size: 12px; color: var(--muted); }
+.cl-name { font-weight: 600; line-height: 1.25; overflow-wrap: anywhere; }
+.cl-info { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.cl-ahora { margin-top: 3px; font-size: 11px; font-weight: 600; padding: 1px 7px; border-radius: 99px; background: var(--cl); color: var(--accent-ink); }
+.cl-chev { grid-column: 3; grid-row: 1 / span 4; color: var(--muted); }
+.cl-st[aria-expanded="true"] .cl-chev { transform: rotate(90deg); }
+.cl-st:not([aria-expanded="true"]) .cl-chev { transform: rotate(-90deg); }
+
+.cl-panel { display: grid; gap: 14px; min-width: 0; padding: 14px; margin-bottom: 8px; background: var(--surface); border-radius: 0 0 12px 12px; }
+.cl-panel h3 { margin: 0; font-size: 17px; font-weight: 700; }
+.cl-panel > p { margin: 0; color: var(--muted); }
+.cl-phead { display: grid; gap: 3px; }
+.cl-eyebrow { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 10px; font-size: 12px; color: var(--muted); }
+.cl-group { display: grid; gap: 2px; }
+.cl-group.act { padding: 10px 12px; border-radius: 12px; background: color-mix(in srgb, var(--cl) 10%, var(--surface)); }
+.cl-group h4 { margin: 0; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+.cl-item { display: grid; grid-template-columns: 26px minmax(0, 1fr) auto; gap: 2px 10px; align-items: center; min-height: 52px; padding: 9px 0; }
+.cl-item + .cl-item { border-top: 1px solid var(--line); }
+.cl-item .check { border-color: var(--cl); }
+.cl-item .check.on { background: var(--cl); border-color: var(--cl); }
+.cl-body { min-width: 0; display: grid; gap: 2px; text-align: left; }
+.cl-tipo { display: inline-block; margin-right: 6px; padding: 0 6px; border: 1px solid var(--line); border-radius: 6px; font-size: 11px; font-weight: 500; color: var(--muted); }
+.cl-nombre { font-weight: 500; overflow-wrap: anywhere; }
+.cl-item.hecho .cl-nombre { color: var(--faint); text-decoration: line-through; }
+.cl-meta { font-size: 13px; color: var(--muted); overflow-wrap: anywhere; }
+.cl-meta.alerta { color: var(--red); font-weight: 500; }
+.cl-enlaces { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 5px; }
+.cl-enlaces button { display: inline-flex; align-items: center; gap: 5px; min-height: 34px; padding: 0 10px; border: 1px solid var(--line); border-radius: 10px;
+  background: var(--surface); font-size: 12.5px; font-weight: 500; color: var(--muted); }
+.cl-enlaces button.on { border-color: var(--cl); color: var(--text); }
+.cl-abrir { display: inline-flex; align-items: center; min-height: 36px; padding: 0 12px; border: 1px solid var(--cl); border-radius: 10px; font-size: 13px; font-weight: 600; color: var(--text); text-decoration: none; white-space: nowrap; }
+.cl-pnav { display: flex; flex-wrap: wrap; gap: 8px; justify-content: space-between; padding-top: 12px; border-top: 1px solid var(--line); }
+.cl-pnav button { min-height: 40px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 10px; font-size: 13px; font-weight: 500; text-align: left; }
+.cl-pnav .sig { margin-left: auto; }
+.cl-pie { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 14px; padding: 4px 4px 12px; font-size: 13px; color: var(--muted); }
+.cl-pie button { min-height: 40px; padding: 0 12px; border: 1px solid var(--line); border-radius: 10px; }
+@media (max-width: 460px) {
+  .cl-item { grid-template-columns: 26px minmax(0, 1fr); }
+  .cl-abrir { grid-column: 2; justify-self: start; }
+  .cl-pnav button { flex: 1 1 100%; }
+  .cl-pnav .sig { margin-left: 0; }
+}
+/* Con ancho de sobra, la línea pasa a horizontal y el material se abre debajo de todas las unidades */
+@media (min-width: 1100px) {
+  .cl-nav { margin-inline: 0; }
+  .cl-line { grid-template-columns: repeat(var(--n), minmax(0, 1fr)); padding: 6px 14px 14px; }
+  .cl-st { grid-column: var(--i); grid-row: 1; grid-template-columns: minmax(0, 1fr); justify-items: center; align-content: start; align-items: start;
+    text-align: center; padding: 12px 6px; row-gap: 3px; }
+  .cl-st > * { grid-column: 1; }
+  .cl-dot { grid-column: 1; grid-row: auto; align-self: auto; }
+  .cl-chev { display: none; }
+  .cl-st::before { top: 22px; bottom: auto; left: 0; right: 0; border-left: 0; border-top: 4px solid var(--cl); }
+  .cl-st.primera::before { top: 22px; left: 50%; }
+  .cl-st.ultima::before { bottom: auto; right: 50%; }
+  .cl-st.vacia::before { border-left-style: none; border-top-style: dashed; }
+  .cl-st:hover { background: color-mix(in srgb, var(--cl) 12%, transparent); }
+  .cl-st[aria-expanded="true"]:hover { background: var(--surface); }
+  .cl-panel { grid-column: 1 / -1; grid-row: 2; margin: 0; padding: 18px; border-radius: 12px; }
+  .cl-panel.p-ini { border-top-left-radius: 0; }
+  .cl-panel.p-fin { border-top-right-radius: 0; }
+  .cl-fecha { grid-template-columns: 150px 92px minmax(0, 1fr); }
+  .cl-fecha b, .cl-fecha small { grid-column: 3; }
+  .cl-fecha .cuando { grid-row: 1 / span 2; }
+  .cl-fecha .tag { grid-row: 1 / span 2; justify-self: start; }
+}
+
+/* ---------- Solo escritorio: marca y cerrar sesión ocultos en móvil ---------- */
+.brand, .tab-salir { display: none; }
+
+/* ---------- Escritorio (PC / tablet horizontal) ---------- */
+@media (min-width: 900px) {
+  :root { --side-w: 240px; }
+  .app { max-width: none; display: grid; grid-template-columns: var(--side-w) 1fr; grid-template-rows: auto 1fr; }
+  .tabbar { position: relative; grid-column: 1; grid-row: 1 / 3; height: auto; flex-direction: column; gap: 2px;
+    padding: 24px 14px; background: var(--surface); backdrop-filter: none; border-top: 0; border-right: 1px solid var(--line); }
+  .brand { display: flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 700; letter-spacing: -.01em; padding: 0 10px 22px; }
+  .brand-logo { width: 32px; height: 32px; border-radius: 10px; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; }
+  .tab { flex: none; flex-direction: row; justify-content: flex-start; gap: 12px; padding: 11px 12px; font-size: 15px; color: var(--muted); }
+  .tab:hover { background: var(--surface-2); }
+  .tab.on { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+  .tab .badge { position: static; margin-left: auto; }
+  .tab-salir { display: flex; margin-top: auto; }
+  .top, main { grid-column: 2; }
+  .top { padding: 32px 48px 16px; width: 100%; max-width: calc(820px + 96px); }
+  main > .view:not(#v-mapa) { max-width: 820px; }
+  main { padding: 0 48px 120px; }
+  main.full { padding: 0; }
+  .app:has(main.cal) .top { max-width: none; padding-inline: 24px; }
+  main.cal { padding: 0 24px; }
+  main.cal > #v-horario { max-width: none; padding-bottom: 20px; }
+  main.cal .cal-bar { padding: 0; }
+  .cal-nav { flex: 1 1 auto; width: auto; }
+  .cal-vistas { flex: none; width: 320px; }
+  .cal-tit { font-size: 20px; }
+  .cm, .cs { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+  .cs { --gutter: 56px; }
+  .ct, .ct-mas { height: 20px; font-size: 12px; line-height: 20px; }
+  .cm-tiras, .cs-tiras { grid-auto-rows: 20px; }
+  .ct:not(.ct-barra):not(.ct-tarea) { background: none; }
+  .ct:hover, .ct-mas:hover { background-color: color-mix(in srgb, var(--c, var(--text)) 14%, var(--surface)); }
+  .ct-hora { display: inline; color: var(--muted); }
+  .ct i { display: block; width: 7px; height: 7px; border-radius: 50%; background: var(--c); }
+  .ct-tarea i { background: none; box-shadow: inset 0 0 0 1.5px var(--c); }
+  .ce { padding: 2px 4px 2px 6px; border-left-width: 3px; font-size: 12px; line-height: 1.25; }
+  .cs-7 .ce span { display: block; }
+  .cm-dia:hover { background: color-mix(in srgb, var(--surface-2) 55%, transparent); }
+  .cs-col:hover { background-color: color-mix(in srgb, var(--surface-2) 25%, transparent); }
+  #map { inset: 0; }
+  .map-top { top: 12px; left: 24px; right: auto; }
+  .map-bottom { left: auto; right: 24px; bottom: 24px; width: 320px; }
+  .rpanel, .rpanel.detalle { left: 24px; right: auto; top: 64px; bottom: 24px; width: 400px; max-height: none;
+    border-radius: 20px; box-shadow: var(--shadow); }
+  .fab { position: fixed; right: 48px; bottom: 40px; }
+  .fab.on-map { right: 40px; bottom: 100px; }
+  .toast { bottom: 32px; left: calc(50% + var(--side-w) / 2); }
+  .row:hover, .ev:hover { background: color-mix(in srgb, var(--surface-2) 50%, transparent); }
+  .backdrop { display: grid; place-items: center; }
+  .sheet { position: relative; width: calc(100% - 48px); max-width: 480px; max-height: 86vh; border-radius: 22px;
+    padding: 16px 24px 24px; transform: translateY(12px) scale(.98); opacity: 0; transition: transform .2s, opacity .2s; }
+  .backdrop.open .sheet { opacity: 1; }
+  .grip { display: none; }
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div>
+      <h1 id="titulo">Compras</h1>
+      <p id="subtitulo">&nbsp;</p>
+    </div>
+    <button class="icon-btn" id="btn-refresh" data-act="refrescar" aria-label="Actualizar"></button>
+  </header>
+
+  <main id="main">
+    <section class="view" id="v-compras"></section>
+    <section class="view" id="v-tareas" hidden></section>
+    <section class="view" id="v-mapa" hidden>
+      <div id="map"></div>
+      <div class="map-top" id="map-top"></div>
+      <div class="map-bottom" id="map-bottom"></div>
+      <div class="rpanel" id="rpanel" hidden></div>
+    </section>
+    <section class="view" id="v-horario" hidden></section>
+    <section class="view" id="v-clase" hidden></section>
+  </main>
+
+  <button class="fab" id="fab" data-act="nuevo" aria-label="Añadir"></button>
+  <nav class="tabbar" id="tabbar"></nav>
+</div>
+
+<div class="backdrop" id="backdrop" data-act="fondoSheet"><div class="sheet" id="sheet"></div></div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* =========================================================== Iconos */
+const I = (d, s = 22) => `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+const ICON = {
+  cart: s => I('<circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2.5 3h2.6l2.4 12.2a1.6 1.6 0 0 0 1.6 1.3h8.6a1.6 1.6 0 0 0 1.6-1.2L21 8H6"/>', s),
+  tasks: s => I('<path d="M9 6h11M9 12h11M9 18h11"/><path d="m3.5 6 1 1 2-2M3.5 12l1 1 2-2M3.5 18l1 1 2-2"/>', s),
+  map: s => I('<path d="M9 4 3 6.5v13.5L9 17.5l6 2.5 6-2.5V4l-6 2.5z"/><path d="M9 4v13.5M15 6.5V20"/>', s),
+  cal: s => I('<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/>', s),
+  book: s => I('<path d="M12 7v13M12 7c-1.5-1.6-4-2.5-8-2.5v13c4 0 6.5.9 8 2.5 1.5-1.6 4-2.5 8-2.5v-13c-4 0-6.5.9-8 2.5z"/>', s),
+  plus: s => I('<path d="M12 5v14M5 12h14"/>', s),
+  check: s => I('<path d="m5 12.5 4.5 4.5L19 7.5"/>', s),
+  refresh: s => I('<path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 4v7h-7"/>', s),
+  x: s => I('<path d="M6 6l12 12M18 6 6 18"/>', s),
+  pin: s => I('<path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>', s),
+  clock: s => I('<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>', s),
+  search: s => I('<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>', s),
+  route: s => I('<circle cx="6" cy="19" r="2.5"/><circle cx="18" cy="5" r="2.5"/><path d="M8.5 19H17a3.5 3.5 0 0 0 0-7H7a3.5 3.5 0 0 1 0-7h8.5"/>', s),
+  ext: s => I('<path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/>', s),
+  bus: s => I('<rect x="4" y="3" width="16" height="15" rx="3"/><path d="M4 11h16M8 18v2.5M16 18v2.5"/><circle cx="8" cy="14.5" r=".6" fill="currentColor"/><circle cx="16" cy="14.5" r=".6" fill="currentColor"/>', s),
+  train: s => I('<rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 10h14M8 21l2-4M16 21l-2-4"/>', s),
+  walk: s => I('<circle cx="13" cy="4.5" r="1.8"/><path d="m9 21 2.5-6.5L14 17v4M8.5 11.5 11 8.5l3 1.5 2 3M11.5 14.5 11 8.5"/>', s),
+  car: s => I('<path d="M5 16V11l2-5h10l2 5v5M3.5 16h17v2.5h-17zM5 11h14"/><circle cx="7.5" cy="13.5" r=".6" fill="currentColor"/><circle cx="16.5" cy="13.5" r=".6" fill="currentColor"/>', s),
+  back: s => I('<path d="M15 5l-7 7 7 7"/>', s),
+  next: s => I('<path d="M9 5l7 7-7 7"/>', s),
+  edit: s => I('<path d="M4 20h4L19 9l-4-4L4 16v4zM14 6l4 4"/>', s),
+  logout: s => I('<path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3M10 17l-5-5 5-5M5 12h11"/>', s),
+  sun: s => I('<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>', s),
+};
+
+/* =========================================================== Utilidades */
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const pad = n => String(n).padStart(2, '0');
+const isoDia = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+const hoy = () => isoDia(new Date());
+const sumarDias = (iso, n) => { const [y, m, d] = iso.split('-').map(Number); return isoDia(new Date(y, m - 1, d + n)); };
+const aFecha = s => { const [f, h = '00:00'] = s.split('T'); const [y, m, d] = f.split('-').map(Number); const [hh, mm] = h.split(':').map(Number); return new Date(y, m - 1, d, hh, mm); };
+const DIAS = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+const MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+const msg = e => (e && e.message) || String(e);
+const unicos = arr => [...new Set(arr.filter(Boolean))].sort((a, b) => a.localeCompare(b, 'es'));
+
+function nombreDia(iso, largo) {
+  const h = hoy();
+  if (iso === h) return 'Hoy';
+  if (iso === sumarDias(h, 1)) return 'Mañana';
+  if (iso === sumarDias(h, -1)) return 'Ayer';
+  const d = aFecha(iso);
+  return largo ? `${cap(DIAS[d.getDay()])} ${d.getDate()} de ${MESES[d.getMonth()]}`
+               : `${DIAS[d.getDay()].slice(0, 3)} ${d.getDate()} ${MESES[d.getMonth()].slice(0, 3)}`;
+}
+function fechaCorta(s) {
+  if (!s) return '';
+  const hora = s.slice(11, 16);
+  return nombreDia(s.slice(0, 10)) + (hora && hora !== '00:00' ? ' · ' + hora : '');
+}
+function agrupar(lista, clave, orden) {
+  const m = new Map();
+  lista.forEach(x => { const k = clave(x); if (!m.has(k)) m.set(k, []); m.get(k).push(x); });
+  const grupos = [...m.entries()];
+  return orden ? grupos.sort((a, b) => orden.indexOf(a[0]) - orden.indexOf(b[0])) : grupos.sort((a, b) => a[0].localeCompare(b[0], 'es'));
+}
+function lsGet(k) { try { return localStorage.getItem('lifeos:' + k); } catch (e) { return null; } }
+function lsSet(k, v) { try { localStorage.setItem('lifeos:' + k, v); } catch (e) {} }
+
+/* =========================================================== Servidor */
+const MODO_DEMO = location.protocol === 'file:';   // abrir el archivo suelto = datos de ejemplo
+async function api(fn, ...args) {
+  if (MODO_DEMO) return MOCK[fn](...args);
+  let r;
+  try {
+    r = await fetch('/api/' + fn, {
+      method: 'POST', credentials: 'same-origin',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ args }),
+    });
+  } catch (e) { throw new Error('Sin conexión'); }
+  if (r.status === 401) { location.href = '/login.html'; throw new Error('Sesión caducada'); }
+  const cuerpo = await r.json().catch(() => ({ ok: false, error: 'Respuesta no válida del servidor' }));
+  if (!cuerpo.ok) throw new Error(cuerpo.error || 'Error del servidor');
+  return cuerpo.data;
+}
+
+/* =========================================================== Estado */
+const TABS = [
+  { id: 'compras', label: 'Compras', icon: 'cart' },
+  { id: 'tareas', label: 'Tareas', icon: 'tasks' },
+  { id: 'mapa', label: 'Rutas', icon: 'map' },
+  { id: 'horario', label: 'Horario', icon: 'cal' },
+  { id: 'clase', label: 'Clase', icon: 'book' },
+];
+const VISTAS_CAL = [['mes', 'Mes'], ['semana', 'Semana'], ['dia', 'Día'], ['lista', 'Lista']];
+const PRIORIDADES = ['Alta', 'Media', 'Baja'];
+const CATEGORIAS_BASE = ['Supermercado', 'Ferretería', 'IKEA', 'Limpieza'];
+const S = {
+  compras: [], tareas: [], eventos: [],
+  tab: [new URLSearchParams(location.search).get('tab'), lsGet('tab')].find(v => TABS.some(t => t.id === v)) || 'compras',
+  modoCompras: 'falta', modoTareas: 'pend', dia: hoy(), q: '',
+  calendarios: [],
+  vistaCal: VISTAS_CAL.some(([v]) => v === lsGet('vistaCal')) ? lsGet('vistaCal') : 'mes',
+  // rango: días de eventos ya descargados (un único intervalo, ambos extremos incluidos).
+  cal: { rango: null, gen: 0, cargando: false, errorEn: 0, maxMes: 3, scrollY: null },
+  rutas: [], modoMapa: lsGet('modoMapa') === 'rutas' ? 'rutas' : 'paradas', rutaSel: null, opcion: 0,
+  cargando: true, cargadoEn: 0, capas: { t: true, s: true },
+  clase: { hecho: leerProgresoClase(), abierta: {}, ocultar: false, q: '', modo: null, enVuelo: 0 },
+};
+function leerProgresoClase() { try { return JSON.parse(lsGet('clase')) || {}; } catch (e) { return {}; } }
+
+/* =========================================================== Carga */
+async function cargar() {
+  S.cargando = true; pintarRefresh();
+  S.cal.gen++;
+  const [visIni, visFin] = rangoVisibleCal();
+  const rango = { desde: minIso(visIni, hoy()), hasta: maxIso(visFin, sumarDias(hoy(), 21)) };
+  const [datos, eventos, cals, rutas, clase] = await Promise.allSettled([
+    api('obtenerDatos'), pedirEventos(rango.desde, rango.hasta), api('obtenerCalendarios'), api('obtenerRutas'), api('obtenerClase')]);
+  aplicarProgresoClase(clase);
+  if (cals.status === 'fulfilled') S.calendarios = cals.value;
+  if (rutas.status === 'fulfilled') S.rutas = rutas.value;
+  if (datos.status === 'fulfilled') { S.compras = datos.value.compras; S.tareas = datos.value.tareas; }
+  else toast('No se pudieron cargar los datos: ' + msg(datos.reason));
+  if (eventos.status === 'fulfilled') { S.eventos = eventos.value; S.cal.rango = rango; S.cal.errorEn = 0; }
+  else { S.cal.errorEn = Date.now(); toast('No se pudo leer el calendario: ' + msg(eventos.reason)); }
+  S.cargando = false; S.cargadoEn = Date.now();
+  render();
+}
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible' && Date.now() - S.cargadoEn > 60e3) cargar();
+});
+
+/* =========================================================== Render */
+function render() {
+  const t = S.tab;
+  TABS.forEach(x => { $('#v-' + x.id).hidden = x.id !== t; });
+  $('#main').classList.toggle('full', t === 'mapa');
+  $('#main').classList.toggle('cal', t === 'horario' && S.vistaCal !== 'lista');
+  $('#fab').classList.toggle('on-map', t === 'mapa');
+  $('#fab').hidden = (t === 'mapa' && S.modoMapa === 'rutas') || t === 'clase';
+  $('#titulo').innerHTML = TABS.find(x => x.id === t).label + (MODO_DEMO ? '<span class="demo">DEMO</span>' : '');
+  $('#subtitulo').textContent = subtitulo();
+  pintarTabbar(); pintarRefresh();
+  if (t === 'compras') $('#v-compras').innerHTML = vistaCompras();
+  if (t === 'tareas') $('#v-tareas').innerHTML = vistaTareas();
+  if (t === 'horario') pintarCalendario();
+  if (t === 'mapa') pintarMapa();
+  if (t === 'clase') pintarClase();
+}
+
+function subtitulo() {
+  if (S.cargando && !S.cargadoEn) return 'Cargando…';
+  const falta = S.compras.filter(p => p.stock === 'Falta');
+  const pend = S.tareas.filter(x => !x.completada);
+  const venc = pend.filter(x => x.fecha && x.fecha.slice(0, 10) < hoy()).length;
+  switch (S.tab) {
+    case 'compras': {
+      if (!falta.length) return 'Todo en casa';
+      const tiendas = unicos(falta.map(p => p.tienda)).length;
+      return `${falta.length} por comprar` + (tiendas > 1 ? ` en ${tiendas} tiendas` : '');
+    }
+    case 'tareas': return pend.length ? `${pend.length} pendientes` + (venc ? ` · ${venc} vencidas` : '') : 'Nada pendiente';
+    case 'mapa': return S.modoMapa === 'rutas' ? 'Cómo llegar: bus, a pie o en coche' : 'Recados y tiendas donde te falta algo';
+    case 'horario': { const d = new Date(); return `${cap(DIAS[d.getDay()])}, ${d.getDate()} de ${MESES[d.getMonth()]}`; }
+    case 'clase': { const c = claseTotal(); return `${c.hechos} de ${c.total} completados`; }
+  }
+}
+
+function pintarTabbar() {
+  const falta = S.compras.filter(p => p.stock === 'Falta').length;
+  const urgentes = S.tareas.filter(x => !x.completada && x.fecha && x.fecha.slice(0, 10) <= hoy()).length;
+  const badge = { compras: falta, tareas: urgentes, clase: entregasUrgentes() };
+  $('#tabbar').innerHTML = `<div class="brand"><span class="brand-logo">${ICON.check(18)}</span>Life OS</div>` +
+    TABS.map(x => `
+    <button class="tab ${x.id === S.tab ? 'on' : ''}" data-act="tab" data-id="${x.id}">
+      ${ICON[x.icon](24)}<span>${x.label}</span>
+      ${badge[x.id] ? `<span class="badge">${badge[x.id]}</span>` : ''}
+    </button>`).join('') +
+    `<button class="tab tab-salir" data-act="salir">${ICON.logout(22)}<span>Cerrar sesión</span></button>`;
+}
+function pintarRefresh() {
+  const b = $('#btn-refresh');
+  b.innerHTML = ICON.refresh(20);
+  b.classList.toggle('spin', S.cargando);
+}
+
+const segmented = (clave, opciones) => `<div class="segmented">${opciones.map(([v, txt]) =>
+  `<button class="${S[clave] === v ? 'on' : ''}" data-act="modo" data-k="${clave}" data-id="${v}">${txt}</button>`).join('')}</div>`;
+const vacio = (icon, titulo, texto) => `<div class="empty"><div class="ico">${ICON[icon](30)}</div><h3>${titulo}</h3><p>${texto}</p></div>`;
+const esqueleto = () => '<div class="skel"></div>'.repeat(5);
+const tmp = id => String(id).startsWith('tmp-');
+
+/* ---------- Compras ---------- */
+function vistaCompras() {
+  if (S.cargando && !S.cargadoEn) return esqueleto();
+  const falta = S.compras.filter(p => p.stock === 'Falta');
+  let html = segmented('modoCompras', [['falta', `Por comprar<b>${falta.length}</b>`], ['todo', `Catálogo<b>${S.compras.length}</b>`]]);
+
+  if (S.modoCompras === 'falta') {
+    if (!falta.length) return html + vacio('check', 'No te falta nada', 'Cuando algo se acabe, márcalo en el Catálogo o añádelo con +.');
+    return html + agrupar(falta, p => p.tienda || 'Sin tienda').map(([tienda, items]) => `
+      <div class="group">
+        <div class="group-head"><span class="name">${esc(tienda)}</span><span class="sub">${esc(items[0].direccion || '')}</span></div>
+        <div class="card">${items.map(filaFalta).join('')}</div>
+      </div>`).join('');
+  }
+  return html + `<label class="search">${ICON.search(18)}<input id="buscar" type="search" placeholder="Buscar producto o tienda" value="${esc(S.q)}"></label>
+    <div id="catalogo">${listaCatalogo()}</div>`;
+}
+function filaFalta(p) {
+  return `<div class="row ${tmp(p.id) ? 'pending' : ''}" data-row="${esc(p.id)}">
+    <button class="check" data-act="comprado" data-id="${esc(p.id)}" aria-label="Ya lo tengo">${ICON.check(16)}</button>
+    <button class="row-main" data-act="editarProducto" data-id="${esc(p.id)}">
+      <span class="row-title">${esc(p.producto)}</span>
+      ${p.categoria ? `<span class="row-meta">${esc(p.categoria)}</span>` : ''}
+    </button>
+  </div>`;
+}
+function listaCatalogo() {
+  const q = S.q.trim().toLowerCase();
+  const lista = S.compras.filter(p => !q || `${p.producto} ${p.tienda} ${p.categoria}`.toLowerCase().includes(q));
+  if (!S.compras.length) return vacio('cart', 'Catálogo vacío', 'Añade lo que compras habitualmente con +. No lo borres al comprarlo: así la próxima lista son dos toques.');
+  if (!lista.length) return vacio('search', 'Sin resultados', `Nada coincide con «${esc(S.q)}».`);
+  return agrupar(lista, p => p.categoria || 'Otros').map(([cat, items]) => `
+    <div class="group">
+      <div class="group-head"><span class="name">${esc(cat)}</span><span class="sub">${items.length}</span></div>
+      <div class="card">${items.sort((a, b) => a.producto.localeCompare(b.producto, 'es')).map(p => `
+        <div class="row ${tmp(p.id) ? 'pending' : ''}">
+          <button class="row-main" data-act="editarProducto" data-id="${esc(p.id)}">
+            <span class="row-title">${esc(p.producto)}</span>
+            ${p.tienda ? `<span class="row-meta">${esc(p.tienda)}</span>` : ''}
+          </button>
+          <button class="pill ${p.stock === 'Falta' ? 'pill-falta' : 'pill-casa'}" data-act="toggleStock" data-id="${esc(p.id)}">
+            ${p.stock === 'Falta' ? 'Falta' : 'En casa'}
+          </button>
+        </div>`).join('')}</div>
+    </div>`).join('');
+}
+
+/* ---------- Tareas ---------- */
+const BUCKETS = ['Vencidas', 'Hoy', 'Mañana', 'Próximos 7 días', 'Más adelante', 'Sin fecha'];
+function bucket(t) {
+  if (!t.fecha) return 'Sin fecha';
+  const d = t.fecha.slice(0, 10), h = hoy();
+  if (d < h) return 'Vencidas';
+  if (d === h) return 'Hoy';
+  if (d === sumarDias(h, 1)) return 'Mañana';
+  if (d <= sumarDias(h, 7)) return 'Próximos 7 días';
+  return 'Más adelante';
+}
+function ordenTareas(a, b) {
+  if (!!a.fecha !== !!b.fecha) return a.fecha ? -1 : 1;
+  if (a.fecha !== b.fecha) return a.fecha < b.fecha ? -1 : 1;
+  return PRIORIDADES.indexOf(a.prioridad) - PRIORIDADES.indexOf(b.prioridad);
+}
+function vistaTareas() {
+  if (S.cargando && !S.cargadoEn) return esqueleto();
+  const pend = S.tareas.filter(t => !t.completada).sort(ordenTareas);
+  const hechas = S.tareas.filter(t => t.completada).sort((a, b) => ordenTareas(b, a));
+  let html = segmented('modoTareas', [['pend', `Pendientes<b>${pend.length}</b>`], ['hechas', `Hechas<b>${hechas.length}</b>`]]);
+  if (S.modoTareas === 'pend') {
+    if (!pend.length) return html + vacio('check', 'Todo hecho', 'No tienes tareas pendientes. Toca + para añadir una.');
+    return html + agrupar(pend, bucket, BUCKETS).map(([b, items]) => `
+      <div class="group">
+        <div class="group-head"><span class="name ${b === 'Vencidas' ? 'danger' : ''}">${b}</span><span class="sub">${items.length}</span></div>
+        <div class="card">${items.map(filaTarea).join('')}</div>
+      </div>`).join('');
+  }
+  if (!hechas.length) return html + vacio('tasks', 'Aún nada', 'Las tareas que completes aparecerán aquí.');
+  return html + `<div class="card">${hechas.map(filaTarea).join('')}</div>`;
+}
+function filaTarea(t) {
+  const late = !t.completada && t.fecha && t.fecha.slice(0, 10) < hoy();
+  return `<div class="row ${t.completada ? 'done' : ''} ${tmp(t.id) ? 'pending' : ''}" data-row="${esc(t.id)}">
+    <button class="check ${t.completada ? 'on' : 'prio-' + esc(t.prioridad)}" data-act="toggleTarea" data-id="${esc(t.id)}" aria-label="Completar">${ICON.check(16)}</button>
+    <button class="row-main" data-act="editarTarea" data-id="${esc(t.id)}">
+      <span class="row-title">${esc(t.titulo)}</span>
+      <span class="row-meta">
+        ${t.prioridad && !t.completada ? `<span class="tag tag-${esc(t.prioridad)}">${esc(t.prioridad)}</span>` : ''}
+        ${t.fecha ? `<span class="m ${late ? 'late' : ''}">${ICON.clock(14)}<span>${esc(fechaCorta(t.fecha))}</span></span>` : ''}
+        ${t.ubicacion ? `<span class="m">${ICON.pin(14)}<span>${esc(t.ubicacion)}</span></span>` : ''}
+      </span>
+    </button>
+  </div>`;
+}
+
+/* ---------- Calendario: rejilla de Mes, Semana y Día ---------- */
+const HORA_PX = 48;
+const CM_ARRIBA = 26;   // alto reservado para el número del día en cada semana del Mes
+const minIso = (a, b) => a < b ? a : b;
+const maxIso = (a, b) => a > b ? a : b;
+const difDias = (a, b) => Math.round((aFecha(b) - aFecha(a)) / 864e5);
+const inicioSemana = iso => sumarDias(iso, -((aFecha(iso).getDay() + 6) % 7));
+const diasDesde = (ini, n) => Array.from({ length: n }, (_, i) => sumarDias(ini, i));
+const minutosDe = s => +s.slice(11, 13) * 60 + +s.slice(14, 16);
+const mesCorto = d => MESES[d.getMonth()].slice(0, 3);
+const topAhora = d => (d.getHours() * 60 + d.getMinutes()) / 60 * HORA_PX;
+// Un día de más cubre el último día completo cuando hay cambio de hora en el rango.
+const pedirEventos = (desde, hasta) => api('obtenerEventos', desde, difDias(desde, hasta) + 2);
+
+function rangoVisibleCal() {
+  if (S.vistaCal === 'mes') {
+    const [y, m] = S.dia.split('-').map(Number);
+    return [inicioSemana(`${y}-${pad(m)}-01`), sumarDias(inicioSemana(isoDia(new Date(y, m, 0))), 6)];
+  }
+  if (S.vistaCal === 'semana') { const ini = inicioSemana(S.dia); return [ini, sumarDias(ini, 6)]; }
+  if (S.vistaCal === 'dia') return [S.dia, S.dia];
+  return [minIso(S.dia, hoy()), maxIso(S.dia, sumarDias(hoy(), 13))];
+}
+function visibleDescargado() {
+  const [ini, fin] = rangoVisibleCal(), r = S.cal.rango;
+  return !!r && r.desde <= ini && fin <= r.hasta;
+}
+
+/** Descarga lo que falta alrededor de lo visible, para que pasar de mes sea inmediato. */
+async function asegurarRangoCal() {
+  if (S.tab !== 'horario' || S.cargando || S.cal.cargando || Date.now() - S.cal.errorEn < 30e3) return;
+  const [ini, fin] = rangoVisibleCal();
+  const desde = sumarDias(ini, -35), hasta = sumarDias(fin, 35), r = S.cal.rango;
+  const tramos = !r ? [[desde, hasta]] : [
+    ...(desde < r.desde ? [[desde, sumarDias(r.desde, -1)]] : []),
+    ...(hasta > r.hasta ? [[sumarDias(r.hasta, 1), hasta]] : []),
+  ];
+  if (!tramos.length) return;
+  const gen = S.cal.gen;
+  S.cal.cargando = true;
+  const spin = $('#cal-spin');
+  if (spin) spin.hidden = visibleDescargado();
+  try {
+    const partes = await Promise.all(tramos.map(([a, b]) => pedirEventos(a, b)));
+    if (gen === S.cal.gen) {
+      // Un evento que cruza el borde llega en ambos tramos; los repetidos comparten id, no inicio.
+      const clave = e => `${e.id}|${e.inicio}`;
+      const vistos = new Set(S.eventos.map(clave));
+      partes.flat().forEach(e => { if (!vistos.has(clave(e))) { vistos.add(clave(e)); S.eventos.push(e); } });
+      S.cal.rango = r ? { desde: minIso(desde, r.desde), hasta: maxIso(hasta, r.hasta) } : { desde, hasta };
+    }
+  } catch (e) {
+    S.cal.errorEn = Date.now();
+    toast('No se pudo leer el calendario: ' + msg(e));
+  }
+  S.cal.cargando = false;
+  if (S.tab === 'horario') render();
+}
+
+function tituloCal() {
+  const d = aFecha(S.dia);
+  if (S.vistaCal === 'dia') return `${cap(DIAS[d.getDay()])} ${d.getDate()} ${mesCorto(d)} ${d.getFullYear()}`;
+  if (S.vistaCal === 'semana') {
+    const [a, b] = rangoVisibleCal().map(aFecha);
+    if (a.getFullYear() !== b.getFullYear()) return `${a.getDate()} ${mesCorto(a)} ${a.getFullYear()} – ${b.getDate()} ${mesCorto(b)} ${b.getFullYear()}`;
+    return `${a.getDate()}${a.getMonth() !== b.getMonth() ? ' ' + mesCorto(a) : ''} – ${b.getDate()} ${mesCorto(b)} ${b.getFullYear()}`;
+  }
+  return `${cap(MESES[d.getMonth()])} ${d.getFullYear()}`;
+}
+
+function pintarCalendario() {
+  const v = $('#v-horario');
+  v.innerHTML = vistaCalendario();
+  // Cuántas tiras caben depende del alto real de cada semana, que solo se sabe ya pintado.
+  const fila = v.querySelector('.cm-sem'), tira = v.querySelector('.ct, .ct-mas');
+  if (fila?.clientHeight) {
+    const altoTira = (tira?.offsetHeight || 18) + 2;
+    const caben = Math.max(1, Math.floor((fila.clientHeight - CM_ARRIBA) / altoTira));
+    if (caben !== S.cal.maxMes) { S.cal.maxMes = caben; v.innerHTML = vistaCalendario(); }
+  }
+  const cuerpo = v.querySelector('.cg-cuerpo');
+  if (cuerpo) {
+    const [ini, fin] = rangoVisibleCal(), h = hoy();
+    const horaInicial = ini <= h && h <= fin ? Math.max(new Date().getHours() - 1, 0) : 7;
+    cuerpo.scrollTop = S.cal.scrollY ?? horaInicial * HORA_PX;
+  }
+  asegurarRangoCal();
+}
+
+function vistaCalendario() {
+  const barra = `<div class="cal-bar">
+    <div class="cal-nav">
+      <button class="cal-hoy" data-act="calHoy">Hoy</button>
+      <button class="icon-btn" data-act="calMover" data-id="-1" aria-label="Anterior">${ICON.back(20)}</button>
+      <button class="icon-btn" data-act="calMover" data-id="1" aria-label="Siguiente">${ICON.next(20)}</button>
+      <h2 class="cal-tit">${esc(tituloCal())}</h2>
+      <span class="cal-spin spin" id="cal-spin" ${S.cal.cargando && !visibleDescargado() ? '' : 'hidden'}>${ICON.refresh(16)}</span>
+    </div>
+    <div class="segmented cal-vistas" style="margin:0">${VISTAS_CAL.map(([v, txt]) =>
+      `<button class="${S.vistaCal === v ? 'on' : ''}" data-act="calVista" data-id="${v}">${txt}</button>`).join('')}</div>
+  </div>`;
+  if (S.vistaCal === 'lista') return barra + vistaHorario();
+  if (S.vistaCal === 'mes') return barra + vistaMes();
+  return barra + vistaRejilla(S.vistaCal === 'dia' ? [S.dia] : diasDesde(inicioSemana(S.dia), 7));
+}
+
+/** Días que ocupa un evento. No se incluye el día final de uno de día completo ni el de uno que acaba a medianoche. */
+function diasEvento(e) {
+  const ini = e.inicio.slice(0, 10);
+  let fin = e.fin.slice(0, 10);
+  if (fin > ini && (e.diaCompleto || e.fin.slice(11, 16) === '00:00')) fin = sumarDias(fin, -1);
+  return [ini, maxIso(ini, fin)];
+}
+function tirasCal() {
+  const eventos = S.eventos.map(e => {
+    const [ini, fin] = diasEvento(e);
+    return { e, ini, fin, barra: e.diaCompleto || ini !== fin, orden: e.diaCompleto ? '' : e.inicio };
+  });
+  const tareas = S.tareas.filter(t => !t.completada && t.fecha).map(t => {
+    const dia = t.fecha.slice(0, 10);
+    return { t, ini: dia, fin: dia, barra: false, orden: t.fecha };
+  });
+  return [...eventos, ...tareas];
+}
+
+/**
+ * Coloca las tiras de una fila de días en carriles sin solapes, como las barras de Google Calendar.
+ * Si un día no da abasto, su último carril se reserva para el «+N más».
+ */
+function colocarCarriles(tiras, dias, max) {
+  const a = dias[0], b = dias[dias.length - 1];
+  const fila = tiras.filter(x => x.ini <= b && x.fin >= a).map(x => {
+    const col = Math.max(0, difDias(a, x.ini));
+    return { ...x, col, span: Math.min(dias.length - 1, difDias(a, x.fin)) - col + 1, corteI: x.ini < a, corteD: x.fin > b };
+  }).sort((x, y) => x.col - y.col || y.barra - x.barra || y.span - x.span || (x.orden < y.orden ? -1 : 1));
+
+  const ocupado = [], total = dias.map(() => 0);
+  const enSusDias = (x, fn) => { for (let d = x.col; d < x.col + x.span; d++) if (fn(d)) return true; return false; };
+  fila.forEach(x => {
+    let c = 0;
+    while (enSusDias(x, d => ocupado[c]?.[d])) c++;
+    ocupado[c] ||= [];
+    enSusDias(x, d => { ocupado[c][d] = true; total[d]++; });
+    x.carril = c;
+  });
+
+  const ocultos = dias.map(() => 0), visibles = new Set(fila);
+  for (let cambio = true; cambio;) {
+    cambio = false;
+    visibles.forEach(x => {
+      if (x.carril < max - 1 || (x.carril === max - 1 && !enSusDias(x, d => total[d] > max || ocultos[d] > 0))) return;
+      visibles.delete(x); cambio = true;
+      enSusDias(x, d => { ocultos[d]++; });
+    });
+  }
+  const mas = ocultos.map((n, i) => n ? `<button class="ct-mas" style="grid-column:${i + 1};grid-row:${max}" data-act="calVerDia" data-id="${dias[i]}">+${n} más</button>` : '').join('');
+  return { html: [...visibles].map(htmlTira).join('') + mas, hayAlgo: fila.length > 0 };
+}
+function htmlTira(x) {
+  const pos = `grid-column:${x.col + 1}/span ${x.span};grid-row:${x.carril + 1}`;
+  if (x.t) {
+    const hora = x.t.fecha.slice(11, 16), conHora = hora && hora !== '00:00';
+    return `<button class="ct ct-tarea ${tmp(x.t.id) ? 'pending' : ''}" style="${pos};--c:${x.t.prioridad === 'Alta' ? 'var(--red)' : 'var(--muted)'}"
+      data-act="editarTarea" data-id="${esc(x.t.id)}" title="Tarea: ${esc(x.t.titulo)}"><i></i>${conHora ? `<span class="ct-hora">${hora}</span>` : ''}<span>${esc(x.t.titulo)}</span></button>`;
+  }
+  const e = x.e, datos = `data-act="verEvento" data-id="${esc(e.id)}" data-ini="${esc(e.inicio)}" title="${esc(e.titulo)}"`;
+  const color = `--c:${esc(e.color || 'var(--accent)')}`, pend = tmp(e.id) ? 'pending' : '';
+  if (x.barra) return `<button class="ct ct-barra ${pend} ${x.corteI ? 'corte-i' : ''} ${x.corteD ? 'corte-d' : ''}" style="${pos};${color}" ${datos}><span>${esc(e.titulo)}</span></button>`;
+  return `<button class="ct ${pend}" style="${pos};${color}" ${datos}><i></i><span class="ct-hora">${e.inicio.slice(11, 16)}</span><span>${esc(e.titulo)}</span></button>`;
+}
+
+function vistaMes() {
+  const [ini, fin] = rangoVisibleCal(), h = hoy(), mes = S.dia.slice(0, 7), tiras = tirasCal();
+  const semanas = Array.from({ length: (difDias(ini, fin) + 1) / 7 }, (_, i) => diasDesde(sumarDias(ini, i * 7), 7));
+  const cabecera = semanas[0].map(iso => `<span>${DIAS[aFecha(iso).getDay()].slice(0, 3)}</span>`).join('');
+  const filas = semanas.map(dias => `<div class="cm-sem">
+    <div class="cm-fondo">${dias.map(iso => {
+      const finde = aFecha(iso).getDay() % 6 === 0;
+      return `<div class="cm-dia ${iso === h ? 'hoy' : ''} ${iso.slice(0, 7) !== mes ? 'fuera' : ''} ${finde ? 'finde' : ''}" data-act="calDia" data-id="${iso}">
+        <button class="cm-num" data-act="calVerDia" data-id="${iso}" aria-label="Ver ${esc(nombreDia(iso, true))}">${aFecha(iso).getDate()}</button></div>`;
+    }).join('')}</div>
+    <div class="cm-tiras">${colocarCarriles(tiras, dias, S.cal.maxMes).html}</div>
+  </div>`).join('');
+  return `<div class="cm"><div class="cm-cab">${cabecera}</div><div class="cm-filas">${filas}</div></div>`;
+}
+
+/** Reparte en columnas los eventos de un día que se solapan. */
+function colocarSolapes(lista) {
+  const orden = lista.slice().sort((a, b) => a.ini - b.ini || b.fin - a.fin);
+  let grupo = [], finGrupo = -1;
+  const cerrar = () => { const n = Math.max(0, ...grupo.map(x => x.col + 1)); grupo.forEach(x => { x.cols = n; }); grupo = []; };
+  orden.forEach(x => {
+    if (x.ini >= finGrupo) { cerrar(); finGrupo = -1; }
+    let col = 0;
+    while (grupo.some(o => o.col === col && o.finVisible > x.ini)) col++;
+    x.col = col; grupo.push(x);
+    finGrupo = Math.max(finGrupo, x.finVisible);
+  });
+  cerrar();
+  return orden;
+}
+
+function vistaRejilla(dias) {
+  const h = hoy(), tiras = tirasCal(), ahora = new Date();
+  const cabecera = dias.map(iso => {
+    const d = aFecha(iso);
+    return `<button class="cs-dh ${iso === h ? 'hoy' : ''}" data-act="calVerDia" data-id="${iso}"><span>${DIAS[d.getDay()].slice(0, 3)}</span><b>${d.getDate()}</b></button>`;
+  }).join('');
+  const arriba = colocarCarriles(tiras.filter(x => x.barra || x.t), dias, dias.length === 1 ? 8 : 3);
+  const horas = Array.from({ length: 23 }, (_, i) => `<span class="cs-hl" style="top:${(i + 1) * HORA_PX}px">${pad(i + 1)}:00</span>`).join('');
+  const columnas = dias.map(iso => {
+    const eventos = colocarSolapes(tiras.filter(x => x.e && !x.barra && x.ini === iso).map(x => {
+      const ini = minutosDe(x.e.inicio);
+      const fin = x.e.fin.slice(0, 10) > iso ? 1440 : minutosDe(x.e.fin);
+      // Un evento corto se dibuja con un alto mínimo: también debe contar así al detectar solapes.
+      return { e: x.e, ini, fin, finVisible: Math.max(fin, ini + 25) };
+    }));
+    const html = eventos.map(x => {
+      const alto = Math.max((x.fin - x.ini) / 60 * HORA_PX, 20), corto = alto < 36;
+      return `<button class="ce ${corto ? 'ce-corto' : ''} ${tmp(x.e.id) ? 'pending' : ''}"
+        style="--c:${esc(x.e.color || 'var(--accent)')};top:${x.ini / 60 * HORA_PX}px;height:${alto - 1}px;left:${x.col / x.cols * 100}%;width:calc(${100 / x.cols}% - 3px)"
+        data-act="verEvento" data-id="${esc(x.e.id)}" data-ini="${esc(x.e.inicio)}" title="${esc(x.e.titulo)}">
+        <b>${esc(x.e.titulo)}</b>${corto ? '' : `<span>${x.e.inicio.slice(11, 16)} – ${x.e.fin.slice(11, 16)}</span>`}${alto >= 66 && x.e.lugar ? `<span>${esc(x.e.lugar)}</span>` : ''}
+      </button>`;
+    }).join('');
+    const linea = iso === h ? `<div class="cs-ahora" style="top:${topAhora(ahora)}px"></div>` : '';
+    return `<div class="cs-col ${iso === h ? 'hoy' : ''}" data-act="calHueco" data-id="${iso}">${html}${linea}</div>`;
+  }).join('');
+  return `<div class="cs ${dias.length === 7 ? 'cs-7' : ''}" style="--n:${dias.length};--hora:${HORA_PX}px">
+    <div class="cs-cab"><div></div><div class="cs-dias">${cabecera}</div></div>
+    ${arriba.hayAlgo ? `<div class="cs-todo"><div class="cs-tl">Todo<br>el día</div><div class="cs-tiras">${arriba.html}</div></div>` : ''}
+    <div class="cg-cuerpo"><div class="cs-grid"><div class="cs-horas">${horas}</div><div class="cs-cols">${columnas}</div></div></div>
+  </div>`;
+}
+
+/* ---------- Calendario: vista Lista ---------- */
+function vistaHorario() {
+  if (S.cargando && !S.cargadoEn) return esqueleto();
+  const h = S.dia >= hoy() && S.dia <= sumarDias(hoy(), 13) ? hoy() : S.dia;
+  const conEventos = new Set(S.eventos.map(e => e.inicio.slice(0, 10)));
+  S.tareas.forEach(t => { if (!t.completada && t.fecha) conEventos.add(t.fecha.slice(0, 10)); });
+  let dias = '';
+  for (let i = 0; i < 14; i++) {
+    const iso = sumarDias(h, i), d = aFecha(iso);
+    dias += `<button class="day ${iso === S.dia ? 'on' : ''}" data-act="dia" data-id="${iso}">
+      <span class="dw">${DIAS[d.getDay()].slice(0, 3)}</span><span class="dn">${d.getDate()}</span>
+      <span class="dot ${conEventos.has(iso) ? 'has' : ''}"></span></button>`;
+  }
+  const delDia = S.eventos.filter(e => e.diaCompleto ? (e.inicio.slice(0, 10) <= S.dia && e.fin.slice(0, 10) > S.dia) : e.inicio.slice(0, 10) === S.dia);
+  const todoDia = delDia.filter(e => e.diaCompleto);
+  const conHora = delDia.filter(e => !e.diaCompleto).sort((a, b) => a.inicio < b.inicio ? -1 : 1);
+  const tareasDia = S.tareas.filter(t => !t.completada && t.fecha && t.fecha.slice(0, 10) === S.dia).sort(ordenTareas);
+  const ahora = new Date();
+  const [y, m, d] = S.dia.split('-');
+
+  let html = `<div class="days">${dias}</div><div class="day-title">${esc(nombreDia(S.dia, true))}</div>`;
+  if (todoDia.length) html += `<div class="allday">${todoDia.map(e => `<button data-act="verEvento" data-id="${esc(e.id)}"
+    ${e.color ? `style="background:color-mix(in srgb, ${esc(e.color)} 22%, var(--surface));color:var(--text)"` : ''}>${esc(e.titulo)}</button>`).join('')}</div>`;
+  if (conHora.length) {
+    html += `<div class="card" style="margin-bottom:18px">${conHora.map(e => {
+      const enCurso = aFecha(e.inicio) <= ahora && ahora < aFecha(e.fin);
+      return `<button class="ev ${tmp(e.id) ? 'pending' : ''}" data-act="verEvento" data-id="${esc(e.id)}" data-ini="${esc(e.inicio)}">
+        <div class="ev-time"><b>${e.inicio.slice(11, 16)}</b><span>${e.fin.slice(11, 16)}</span></div>
+        <div class="ev-body ${enCurso ? 'now' : ''}" ${e.color && !enCurso ? `style="border-color:${esc(e.color)}"` : ''}>
+          <div class="ev-title">${esc(e.titulo)}</div>
+          <div class="row-meta">
+            ${e.lugar ? `<span class="m">${ICON.pin(14)}<span>${esc(e.lugar)}</span></span>` : ''}
+            ${e.calendario && S.calendarios.length > 1 ? `<span class="cal-name">${esc(e.calendario)}</span>` : ''}
+          </div></div>
+      </button>`; }).join('')}</div>`;
+  }
+  if (tareasDia.length) {
+    html += `<div class="group"><div class="group-head"><span class="name">Tareas que vencen este día</span></div>
+      <div class="card">${tareasDia.map(filaTarea).join('')}</div></div>`;
+  }
+  if (!delDia.length && !tareasDia.length) html += vacio('cal', 'Día libre', 'No hay nada en el calendario. Toca + para reservar un hueco.');
+  html += `<a class="link" href="https://calendar.google.com/calendar/r/day/${y}/${+m}/${+d}" target="_blank" rel="noopener">${ICON.ext(16)} Abrir en Google Calendar</a>`;
+  return html;
+}
+
+/* ---------- Mapa ---------- */
+function pintarMapa() {
+  if (!window.L) { $('#map').innerHTML = vacio('map', 'Mapa no disponible', 'No se pudo cargar la librería del mapa. Revisa la conexión.'); return; }
+  if (!S.map) {
+    S.map = L.map('map', { zoomControl: false, attributionControl: true }).setView([35.889, -5.317], 13);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>', maxZoom: 19,
+    }).addTo(S.map);
+    S.capa = L.layerGroup().addTo(S.map);
+    S.capaRuta = L.layerGroup().addTo(S.map);
+    // Tocar el mapa: añadir una parada (modo Paradas) o calcular cómo llegar (modo Mis rutas).
+    S.map.on('click', ev => {
+      if (S.modoMapa === 'rutas' && S.rutaSel) return;
+      const coords = `${ev.latlng.lat.toFixed(6)}, ${ev.latlng.lng.toFixed(6)}`;
+      L.popup().setLatLng(ev.latlng).setContent(S.modoMapa === 'rutas'
+        ? `<h4>¿Cómo llegar aquí?</h4><span style="color:var(--muted)">Calcula y guarda la ruta en bus, a pie o en coche.</span>
+           <button class="btn btn-primary" data-act="rutaHasta" data-id="${coords}">${ICON.route(18)} Crear ruta</button>`
+        : `<h4>¿Añadir una parada aquí?</h4><span style="color:var(--muted)">Se guardará como recado en Tareas.</span>
+           <button class="btn btn-primary" data-act="paradaAqui" data-id="${coords}">${ICON.plus(18)} Añadir parada</button>`)
+        .openOn(S.map);
+    });
+  }
+  setTimeout(() => S.map.invalidateSize(), 0);
+  S.capa.clearLayers();
+  S.capaRuta.clearLayers();
+  document.querySelector('.map-hint')?.remove();
+  const seg = `<div class="mapseg">
+    <button class="${S.modoMapa === 'paradas' ? 'on' : ''}" data-act="modoMapa" data-id="paradas">Paradas</button>
+    <button class="${S.modoMapa === 'rutas' ? 'on' : ''}" data-act="modoMapa" data-id="rutas">Mis rutas${S.rutas.length ? ` <b>${S.rutas.length}</b>` : ''}</button></div>`;
+  $('#rpanel').hidden = S.modoMapa !== 'rutas';
+  $('#map-bottom').hidden = S.modoMapa === 'rutas';
+  if (S.modoMapa === 'rutas') { $('#map-top').innerHTML = seg; return pintarRutas(); }
+
+  const tareas = S.tareas.filter(t => !t.completada && t.ubicacion);
+  const tiendas = new Map();
+  S.compras.filter(p => p.stock === 'Falta' && p.direccion).forEach(p => {
+    const k = p.lat != null ? `${p.lat},${p.lng}` : 'x:' + p.direccion;
+    if (!tiendas.has(k)) tiendas.set(k, { nombre: p.tienda || p.direccion, direccion: p.direccion, lat: p.lat, lng: p.lng, items: [] });
+    tiendas.get(k).items.push(p.producto);
+  });
+  const sinUbic = tareas.filter(t => t.lat == null).length + [...tiendas.values()].filter(s => s.lat == null).length;
+  const puntos = [];
+  const icono = (cls, txt) => L.divIcon({ className: '', html: `<div class="pin ${cls}"><b>${txt}</b></div>`, iconSize: [30, 30], iconAnchor: [15, 30], popupAnchor: [0, -28] });
+
+  if (S.capas.t) tareas.filter(t => t.lat != null).sort(ordenTareas).forEach(t => {
+    puntos.push([t.lat, t.lng]);
+    L.marker([t.lat, t.lng], { icon: icono('pin-t', '!') }).addTo(S.capa)
+      .bindPopup(`<h4>${esc(t.titulo)}</h4>${t.fecha ? esc(fechaCorta(t.fecha)) + '<br>' : ''}<span style="color:var(--muted)">${esc(t.ubicacion)}</span>
+        ${tmp(t.id) ? '' : `<button class="btn btn-primary" data-act="rutaATarea" data-id="${esc(t.id)}">${ICON.route(16)} Cómo llegar</button>
+          <button class="btn btn-ghost" data-act="editarTarea" data-id="${esc(t.id)}">Editar o completar</button>`}`);
+  });
+  if (S.capas.s) [...tiendas.values()].filter(s => s.lat != null).forEach(s => {
+    puntos.push([s.lat, s.lng]);
+    L.marker([s.lat, s.lng], { icon: icono('pin-s', s.items.length) }).addTo(S.capa)
+      .bindPopup(`<h4>${esc(s.nombre)}</h4><ul>${s.items.map(i => `<li>${esc(i)}</li>`).join('')}</ul>`);
+  });
+  if (puntos.length === 1) S.map.setView(puntos[0], 15);
+  else if (puntos.length > 1) S.map.fitBounds(puntos, { padding: [50, 50], maxZoom: 15 });
+
+  $('#map-top').innerHTML = seg + `
+    <button class="layer ${S.capas.t ? '' : 'off'}" data-act="capa" data-id="t"><i style="background:var(--blue)"></i>Recados ${tareas.length}</button>
+    <button class="layer ${S.capas.s ? '' : 'off'}" data-act="capa" data-id="s"><i style="background:var(--accent)"></i>Tiendas ${tiendas.size}</button>`;
+  if (!puntos.length) $('#v-mapa').insertAdjacentHTML('beforeend',
+    `<div class="map-hint"><b>Aún no hay paradas</b><span>Toca un punto del mapa o pulsa + para añadir un recado. Las tiendas donde te falta algo aparecen solas.</span></div>`);
+  $('#map-bottom').innerHTML = `
+    ${sinUbic ? `<span class="map-note">${sinUbic} sin ubicar · revisa la dirección</span>` : ''}
+    <a class="btn btn-primary ${puntos.length ? '' : 'disabled'}" href="${urlRuta(puntos)}" target="_blank" rel="noopener">${ICON.route(20)} Ruta en Google Maps</a>`;
+}
+/* ---------- Mis rutas (trayectos guardados con Google Maps) ---------- */
+const MODOS_RUTA = { TRANSIT: 'Transporte público', WALKING: 'A pie', DRIVING: 'Coche' };
+const MODO_GMAPS = { TRANSIT: 'transit', WALKING: 'walking', DRIVING: 'driving' };
+
+/** Decodifica el formato "encoded polyline" de Google en [[lat, lng], ...]. */
+function decodificar(str) {
+  const out = [];
+  let i = 0, lat = 0, lng = 0;
+  while (i < str.length) {
+    for (const k of [0, 1]) {
+      let b, s = 0, r = 0;
+      do { b = str.charCodeAt(i++) - 63; r |= (b & 31) << s; s += 5; } while (b >= 32);
+      const d = r & 1 ? ~(r >> 1) : r >> 1;
+      if (k === 0) lat += d; else lng += d;
+    }
+    out.push([lat / 1e5, lng / 1e5]);
+  }
+  return out;
+}
+
+const icoPaso = modo => modo === 'TRANSIT' ? ICON.bus(18) : modo === 'DRIVING' ? ICON.car(18) : ICON.walk(18);
+function chipLinea(t) {
+  const bg = t.color || 'var(--blue)', fg = t.colorTexto || '#fff';
+  return `<span class="line" style="background:${esc(bg)};color:${esc(fg)}">${t.tipo === 'BUS' || !t.tipo ? ICON.bus(13) : ICON.train(13)}${esc(t.linea || t.vehiculo)}</span>`;
+}
+/** Resumen de una opción: 🚶 › L3 › 🚶 */
+function resumenOpcion(o) {
+  const partes = [];
+  o.pasos.forEach(p => {
+    if (p.modo === 'TRANSIT' && p.transporte) partes.push(chipLinea(p.transporte));
+    else if (partes[partes.length - 1] !== 'walk' && p.modo === 'WALKING') partes.push('walk');
+    else if (p.modo === 'DRIVING' && partes[partes.length - 1] !== 'car') partes.push('car');
+  });
+  return partes.map(p => p === 'walk' ? `<span class="m">${ICON.walk(16)}</span>` : p === 'car' ? `<span class="m">${ICON.car(16)}</span>` : p)
+    .join(`<span class="sep">›</span>`);
+}
+
+function pintarRutas() {
+  const panel = $('#rpanel');
+  const r = S.rutas.find(x => x.id === S.rutaSel);
+  if (!r) {
+    S.rutaSel = null;
+    panel.className = 'rpanel';
+    panel.innerHTML = `
+      <div class="rp-head"><div><h3>Mis rutas</h3><p>Trayectos guardados con horarios de Google Maps</p></div>
+        <button class="btn btn-primary btn-sm" data-act="nuevaRuta">${ICON.plus(18)} Nueva</button></div>
+      ${S.rutas.length ? `<div class="card">${S.rutas.map(x => {
+        const o = x.resultado?.opciones?.[0];
+        return `<button class="ruta-item ${tmp(x.id) ? 'pending' : ''}" data-act="verRuta" data-id="${esc(x.id)}">
+          <div class="ri-main"><span class="row-title">${esc(x.nombre)}</span>
+            <span class="row-meta">${o ? resumenOpcion(o) : esc(MODOS_RUTA[x.modo] || '')}</span></div>
+          <div class="ri-dur">${o ? `<b>${esc(o.duracion)}</b>` : ''}<span>${x.salida ? 'sale ' + esc(x.salida) : esc(MODOS_RUTA[x.modo] || '')}</span></div>
+        </button>`; }).join('')}</div>`
+      : `<div class="empty" style="padding:24px 8px"><div class="ico">${ICON.route(28)}</div><h3>Guarda tus trayectos</h3>
+          <p>Por ejemplo «Casa → Trabajo»: verás qué autobús coger, dónde subir y bajar, y a qué hora pasa.</p></div>`}`;
+    // Sin ruta seleccionada: el mapa muestra los orígenes y destinos guardados.
+    const pts = [];
+    S.rutas.forEach(x => {
+      const o = x.resultado?.opciones?.[0];
+      if (!o) return;
+      pts.push([o.desde.lat, o.desde.lng], [o.hasta.lat, o.hasta.lng]);
+      L.polyline(decodificar(o.polyline || ''), { color: '#3D63A8', weight: 3, opacity: .45 }).addTo(S.capaRuta);
+    });
+    if (pts.length) S.map.fitBounds(pts, { padding: [60, 60], maxZoom: 15 });
+    return;
+  }
+
+  // ----- Detalle de una ruta
+  const opciones = r.resultado?.opciones || [];
+  const i = Math.min(S.opcion, Math.max(opciones.length - 1, 0));
+  const o = opciones[i];
+  panel.className = 'rpanel detalle';
+  const gmaps = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(r.origen)}&destination=${encodeURIComponent(r.destino)}&travelmode=${MODO_GMAPS[r.modo] || 'transit'}`;
+  const act = r.actualizada ? `${nombreDia(r.actualizada.slice(0, 10))} a las ${r.actualizada.slice(11, 16)}` : '';
+  panel.innerHTML = `
+    <div class="rp-head">
+      <button class="icon-btn" data-act="volverRutas" aria-label="Volver">${ICON.back(22)}</button>
+      <div style="flex:1;min-width:0"><h3>${esc(r.nombre)}</h3><p>${esc(MODOS_RUTA[r.modo] || '')}${r.salida ? ' · salida ' + esc(r.salida) : ''}</p></div>
+      <button class="icon-btn" data-act="editarRuta" data-id="${esc(r.id)}" aria-label="Editar">${ICON.edit(20)}</button>
+    </div>
+    ${opciones.length > 1 ? `<div class="opts">${opciones.map((x, k) => `<button class="opt ${k === i ? 'on' : ''}" data-act="opcionRuta" data-id="${k}">
+      <b>${esc(x.duracion)}</b><span class="row-meta">${resumenOpcion(x)}</span></button>`).join('')}</div>` : ''}
+    ${o ? `
+      <div class="rsum"><b>${esc(o.duracion)}</b><span>${o.salida ? `${esc(o.salida)} – ${esc(o.llegada)} · ` : ''}${esc(o.distancia)}${o.tarifa ? ' · ' + esc(o.tarifa) : ''}</span></div>
+      <ol class="steps">
+        <li class="st st-pin"><i class="dot a">A</i><div><b>${esc(o.desde.dir)}</b></div></li>
+        ${o.pasos.map(p => p.modo === 'TRANSIT' && p.transporte ? `
+          <li class="st st-transit" style="--lc:${esc(p.transporte.color || 'var(--blue)')}">
+            <i class="dot">${icoPaso(p.modo)}</i>
+            <div>${chipLinea(p.transporte)} <span class="dir">${p.transporte.direccion ? 'dirección ' + esc(p.transporte.direccion) : esc(p.transporte.nombre)}</span>
+              <div class="stop"><b>${esc(p.transporte.horaSalida)}</b> Sube en <b>${esc(p.transporte.desde)}</b></div>
+              <div class="muted">${p.transporte.paradas} parada${p.transporte.paradas === 1 ? '' : 's'} · ${esc(p.duracion)}${p.transporte.empresa ? ' · ' + esc(p.transporte.empresa) : ''}</div>
+              <div class="stop"><b>${esc(p.transporte.horaLlegada)}</b> Baja en <b>${esc(p.transporte.hasta)}</b></div>
+            </div></li>` : `
+          <li class="st st-${p.modo === 'DRIVING' ? 'car' : 'walk'}"><i class="dot">${icoPaso(p.modo)}</i>
+            <div><span>${esc(p.texto || (p.modo === 'WALKING' ? 'Camina' : 'Conduce'))}</span>
+              <div class="muted">${esc(p.duracion)} · ${esc(p.distancia)}</div></div></li>`).join('')}
+        <li class="st st-pin"><i class="dot b">B</i><div><b>${esc(o.hasta.dir)}</b></div></li>
+      </ol>
+      ${o.avisos.length ? `<p class="aviso">${o.avisos.map(esc).join('<br>')}</p>` : ''}`
+    : `<p class="aviso">Esta ruta no tiene datos. Pulsa «Actualizar horarios».</p>`}
+    <p class="muted small">Calculada ${esc(act)}${r.resultado?.para === 'ahora' || !r.resultado ? ' para salir en ese momento' : ' para salir a las ' + esc(r.resultado.para)}. Los horarios cambian: actualiza antes de salir.</p>
+    <div class="rp-actions">
+      <button class="btn btn-primary" data-act="actualizarRuta" data-id="${esc(r.id)}">${ICON.refresh(18)} Actualizar horarios</button>
+      <a class="btn btn-ghost" href="${gmaps}" target="_blank" rel="noopener">${ICON.ext(18)} Google Maps</a>
+    </div>`;
+
+  if (!o) return;
+  const pts = [];
+  const trazos = o.pasos.filter(p => p.polyline).length === o.pasos.length;
+  if (trazos) o.pasos.forEach(p => {
+    const linea = decodificar(p.polyline);
+    pts.push(...linea);
+    if (p.modo === 'TRANSIT') {
+      L.polyline(linea, { color: '#fff', weight: 9, opacity: .9 }).addTo(S.capaRuta);
+      L.polyline(linea, { color: p.transporte?.color || '#3D63A8', weight: 6 }).addTo(S.capaRuta);
+      L.circleMarker(linea[0], { radius: 6, color: '#fff', weight: 2, fillColor: p.transporte?.color || '#3D63A8', fillOpacity: 1 })
+        .addTo(S.capaRuta).bindPopup(`<h4>${esc(p.transporte?.desde || '')}</h4>${esc(p.transporte?.horaSalida || '')} · línea ${esc(p.transporte?.linea || '')}`);
+    } else {
+      L.polyline(linea, { color: p.modo === 'DRIVING' ? '#2F6B4F' : '#77726A', weight: 4, dashArray: p.modo === 'WALKING' ? '2 8' : null, lineCap: 'round' }).addTo(S.capaRuta);
+    }
+  });
+  else { const l = decodificar(o.polyline || ''); pts.push(...l); L.polyline(l, { color: '#3D63A8', weight: 5 }).addTo(S.capaRuta); }
+  const pin = (txt, cls) => L.divIcon({ className: '', html: `<div class="pin ${cls}"><b>${txt}</b></div>`, iconSize: [30, 30], iconAnchor: [15, 30] });
+  L.marker([o.desde.lat, o.desde.lng], { icon: pin('A', 'pin-s') }).addTo(S.capaRuta);
+  L.marker([o.hasta.lat, o.hasta.lng], { icon: pin('B', 'pin-t') }).addTo(S.capaRuta);
+  if (pts.length) S.map.fitBounds(pts, rutaPadding());
+}
+/** Deja sitio al panel: abajo en móvil, a la izquierda en PC. */
+function rutaPadding() {
+  return matchMedia('(min-width: 900px)').matches
+    ? { paddingTopLeft: [440, 40], paddingBottomRight: [40, 40], maxZoom: 16 }
+    : { paddingTopLeft: [30, 70], paddingBottomRight: [30, Math.round(innerHeight * 0.5)], maxZoom: 16 };
+}
+
+function formRuta(r = { modo: 'TRANSIT' }) {
+  const nueva = !r.id;
+  abrirSheet(nueva ? 'Nueva ruta' : 'Editar ruta',
+    campo('Nombre', input('nombre', r.nombre, 'placeholder="Ej: Casa → Trabajo"'), 'Opcional. Si lo dejas vacío se pone «origen → destino».') +
+    campo('Desde', input('origen', r.origen, 'placeholder="Ej: Calle Larios 5, Málaga" required') +
+      `<button type="button" class="link" data-act="miUbicacion">${ICON.pin(16)} Usar mi ubicación actual</button>`) +
+    campo('Hasta', input('destino', r.destino, 'placeholder="Ej: Estación María Zambrano, Málaga" required')) +
+    campo('Cómo', `<div class="chips">${Object.entries(MODOS_RUTA).map(([v, t]) =>
+      `<label class="chip"><input type="radio" name="modo" value="${v}" ${v === (r.modo || 'TRANSIT') ? 'checked' : ''}><span>${t}</span></label>`).join('')}</div>`) +
+    campo('Hora de salida', input('salida', r.salida, 'type="time"'), 'Vacío = salir en el momento de calcular. Con hora, verás los autobuses de esa hora.'),
+    {
+      textoOk: nueva ? 'Calcular y guardar' : 'Recalcular y guardar', foco: nueva && !r.destino ? 'origen' : null,
+      onSubmit: d => {
+        if (!d.origen.trim() || !d.destino.trim()) { toast('Indica desde dónde y hasta dónde'); return false; }
+        guardarRutaRemota({ ...r, ...d, origen: d.origen.trim(), destino: d.destino.trim(), nombre: d.nombre.trim() });
+      },
+      onDelete: nueva ? null : () => borrarOptimista('rutas', r.id, 'borrarRuta', 'Ruta eliminada').then(() => { S.rutaSel = null; render(); }),
+    });
+}
+
+async function guardarRutaRemota(r) {
+  const nueva = !r.id;
+  const local = nueva ? { ...r, id: 'tmp-' + Date.now(), resultado: null } : null;
+  if (nueva) { S.rutas = [...S.rutas, local]; render(); }
+  toast('Calculando la ruta con Google Maps…');
+  try {
+    const { resultado, actualizada, ...enviar } = r;
+    const res = await api('guardarRuta', nueva ? { ...enviar, id: '' } : enviar);
+    S.rutas = nueva ? S.rutas.map(x => x.id === local.id ? res : x) : S.rutas.map(x => x.id === res.id ? res : x);
+    S.rutaSel = res.id; S.opcion = 0; S.modoMapa = 'rutas';
+    render(); toast('Ruta guardada');
+  } catch (e) {
+    if (nueva) S.rutas = S.rutas.filter(x => x.id !== local.id);
+    render(); toast(msg(e));
+  }
+}
+
+/** Ordena los puntos por cercanía (vecino más próximo) y crea el enlace de Google Maps. */
+function urlRuta(puntos) {
+  if (!puntos.length) return '#';
+  const resto = puntos.slice(1), ruta = [puntos[0]];
+  while (resto.length) {
+    const [la, ln] = ruta[ruta.length - 1];
+    let mejor = 0;
+    resto.forEach((p, i) => { if ((p[0] - la) ** 2 + (p[1] - ln) ** 2 < (resto[mejor][0] - la) ** 2 + (resto[mejor][1] - ln) ** 2) mejor = i; });
+    ruta.push(resto.splice(mejor, 1)[0]);
+  }
+  const f = p => p.join(',');
+  const destino = ruta.pop();
+  const paradas = ruta.slice(0, 9).map(f).join('|');
+  return `https://www.google.com/maps/dir/?api=1&destination=${f(destino)}${paradas ? '&waypoints=' + encodeURIComponent(paradas) : ''}`;
+}
+
+/* =========================================================== Hoja inferior */
+const campo = (label, html, ayuda) => `<label class="field"><span>${label}</span>${html}${ayuda ? `<small>${ayuda}</small>` : ''}</label>`;
+const input = (name, val, extra = '') => `<input name="${name}" value="${esc(val)}" ${extra}>`;
+const conLista = (name, val, opciones, ph) => `<input name="${name}" value="${esc(val)}" list="dl-${name}" placeholder="${esc(ph)}" autocomplete="off">
+  <datalist id="dl-${name}">${opciones.map(o => `<option value="${esc(o)}">`).join('')}</datalist>`;
+const chips = (name, opciones, val) => `<div class="chips">${opciones.map(o =>
+  `<label class="chip"><input type="radio" name="${name}" value="${esc(o)}" ${o === val ? 'checked' : ''}><span>${esc(o)}</span></label>`).join('')}</div>`;
+
+function abrirSheet(titulo, cuerpo, { onSubmit, onDelete, textoOk = 'Guardar', foco } = {}) {
+  $('#sheet').innerHTML = `<div class="grip"></div>
+    <div class="sheet-head"><h2>${esc(titulo)}</h2><button type="button" class="icon-btn" data-act="cerrarSheet" aria-label="Cerrar">${ICON.x(20)}</button></div>
+    <form id="sheet-form" autocomplete="off" novalidate>${cuerpo}
+      <div class="sheet-actions">
+        ${onDelete ? `<button type="button" class="btn btn-danger" id="sheet-del">Eliminar</button>` : ''}
+        ${onSubmit ? `<button type="submit" class="btn btn-primary">${textoOk}</button>` : ''}
+      </div></form>`;
+  $('#backdrop').classList.add('open');
+  const form = $('#sheet-form');
+  form.onsubmit = e => {
+    e.preventDefault();
+    if (onSubmit && onSubmit(Object.fromEntries(new FormData(form))) !== false) cerrarSheet();
+  };
+  if (onDelete) {
+    const b = $('#sheet-del');
+    b.onclick = () => {
+      if (!b.dataset.ok) { b.dataset.ok = 1; b.textContent = '¿Seguro?'; return; }
+      onDelete(); cerrarSheet();
+    };
+  }
+  if (foco) setTimeout(() => form.querySelector(`[name="${foco}"]`)?.focus(), 250);
+}
+function cerrarSheet() { $('#backdrop').classList.remove('open'); }
+
+/* ---------- Formularios ---------- */
+function formProducto(p = { stock: 'Falta' }) {
+  const nuevo = !p.id;
+  abrirSheet(nuevo ? 'Nuevo producto' : 'Editar producto',
+    campo('Producto', input('producto', p.producto, 'placeholder="Ej: Leche" required')) +
+    campo('Categoría', conLista('categoria', p.categoria, unicos([...CATEGORIAS_BASE, ...S.compras.map(x => x.categoria)]), 'Supermercado, Ferretería…')) +
+    `<div class="split">${campo('Tienda', conLista('tienda', p.tienda, unicos(S.compras.map(x => x.tienda)), 'Lidl'))}
+      ${campo('Estado', chips('stock', ['Falta', 'En casa'], p.stock))}</div>` +
+    campo('Dirección', input('direccion', p.direccion, 'placeholder="Lidl, Ceuta"'), 'Nombre del sitio + ciudad, o la calle. Déjalo vacío si no lo sabes.'),
+    {
+      foco: nuevo ? 'producto' : null,
+      onSubmit: d => {
+        if (!d.producto.trim()) { toast('Escribe el nombre del producto'); return false; }
+        guardarOptimista('compras', { ...p, ...d, producto: d.producto.trim() }, 'guardarProducto');
+      },
+      onDelete: nuevo ? null : () => borrarOptimista('compras', p.id, 'borrarProducto', `${p.producto} eliminado`),
+    });
+  // Al elegir una tienda conocida, rellena su dirección.
+  const tienda = $('#sheet-form [name=tienda]'), dir = $('#sheet-form [name=direccion]');
+  tienda.addEventListener('change', () => {
+    const conocida = S.compras.find(x => x.tienda === tienda.value && x.direccion);
+    if (conocida && !dir.value) dir.value = conocida.direccion;
+  });
+}
+
+function formTarea(t = { prioridad: 'Media', completada: false }, { titulo, desdeMapa } = {}) {
+  const nuevo = !t.id;
+  const coords = /^\s*-?\d+(\.\d+)?\s*,\s*-?\d+(\.\d+)?\s*$/.test(t.ubicacion || '');
+  abrirSheet(titulo || (nuevo ? 'Nueva tarea' : 'Editar tarea'),
+    campo('Qué hay que hacer', input('titulo', t.titulo, `placeholder="${desdeMapa ? 'Ej: Recoger paquete' : 'Ej: Empadronarme'}" required`)) +
+    campo('Ubicación', input('ubicacion', t.ubicacion, `placeholder="${desdeMapa ? 'Ej: Correos, Ceuta' : 'Solo si hay que desplazarse'}"`),
+      coords ? 'Punto marcado en el mapa: se convertirá en dirección al guardar.' : 'Nombre del sitio + ciudad, o la calle. Aparecerá en el mapa de rutas.') +
+    campo('Prioridad', chips('prioridad', PRIORIDADES, t.prioridad)) +
+    campo('Fecha límite', input('fecha', t.fecha, 'type="datetime-local"')) +
+    (nuevo ? '' : `<button type="button" class="link" data-act="bloquear" data-id="${esc(t.id)}">${ICON.cal(16)} Reservar un hueco en el calendario</button>`) +
+    (nuevo || t.completada ? '' : `<button type="button" class="link" data-act="hechaForm" data-id="${esc(t.id)}">${ICON.check(16)} Marcar como hecha</button>`),
+    {
+      foco: nuevo ? (desdeMapa && !t.ubicacion ? 'ubicacion' : 'titulo') : null,
+      onSubmit: d => {
+        if (!d.titulo.trim()) { toast('Escribe qué hay que hacer'); return false; }
+        if (desdeMapa && !d.ubicacion.trim()) { toast('Indica dónde es, o toca un punto del mapa'); return false; }
+        // Si son coordenadas, la chincheta aparece al instante mientras el servidor busca la dirección.
+        const m = /^\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)\s*$/.exec(d.ubicacion);
+        guardarOptimista('tareas', { ...t, ...d, titulo: d.titulo.trim(), ubicacion: d.ubicacion.trim(), ...(m ? { lat: +m[1], lng: +m[2] } : {}) }, 'guardarTarea');
+      },
+      onDelete: nuevo ? null : () => borrarOptimista('tareas', t.id, 'borrarTarea', 'Tarea eliminada'),
+    });
+}
+
+function formEvento(pre = {}) {
+  const fecha = pre.fecha || S.dia;
+  const ini = pre.hora || (fecha === hoy() ? pad(Math.min(new Date().getHours() + 1, 23)) + ':00' : '10:00');
+  const [hh, mm] = ini.split(':').map(Number);
+  const fin = `${pad(Math.min(hh + 1, 23))}:${pad(hh >= 23 ? 59 : mm)}`;
+  abrirSheet('Nuevo evento',
+    campo('Título', input('titulo', pre.titulo, 'placeholder="Ej: Ir al Lidl"')) +
+    campo('Día', input('fecha', fecha, 'type="date"')) +
+    `<div class="split">${campo('Empieza', input('inicio', ini, 'type="time"'))}${campo('Termina', input('fin', fin, 'type="time"'))}</div>` +
+    campo('Lugar', input('lugar', pre.lugar, 'placeholder="Opcional"')) +
+    (S.calendarios.length > 1 ? campo('Calendario', `<select name="calendario">${S.calendarios.map(c =>
+      `<option value="${esc(c.id)}" ${c.id === calPorDefecto() ? 'selected' : ''}>${esc(c.nombre)}</option>`).join('')}</select>`) : ''),
+    {
+      textoOk: 'Añadir al calendario', foco: pre.titulo ? null : 'titulo',
+      onSubmit: d => {
+        if (!d.titulo.trim()) { toast('Ponle un título'); return false; }
+        if (!d.fecha || !d.inicio || !d.fin) { toast('Indica día y horas'); return false; }
+        if (d.fin <= d.inicio) { toast('La hora de fin debe ser posterior'); return false; }
+        if (d.calendario) lsSet('cal', d.calendario);
+        crearEventoOptimista({ titulo: d.titulo.trim(), inicio: `${d.fecha}T${d.inicio}`, fin: `${d.fecha}T${d.fin}`, lugar: d.lugar.trim(), calendario: d.calendario || '' });
+      },
+    });
+}
+
+function calPorDefecto() {
+  const guardado = lsGet('cal');
+  if (S.calendarios.some(c => c.id === guardado)) return guardado;
+  return (S.calendarios.find(c => c.principal) || S.calendarios[0] || {}).id;
+}
+
+function verEvento(e) {
+  const hora = e.diaCompleto ? 'Todo el día' : `${e.inicio.slice(11, 16)} – ${e.fin.slice(11, 16)}`;
+  const [y, m, d] = e.inicio.slice(0, 10).split('-');
+  abrirSheet(e.titulo,
+    `<div class="detail">${ICON.clock(18)}<div>${esc(nombreDia(e.inicio.slice(0, 10), true))}<br>${hora}</div></div>` +
+    (e.calendario ? `<div class="detail">${ICON.cal(18)}<div>${esc(e.calendario)}</div></div>` : '') +
+    (e.lugar ? `<div class="detail">${ICON.pin(18)}<a class="link" style="padding:0" target="_blank" rel="noopener"
+      href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(e.lugar)}">${esc(e.lugar)}</a></div>` : '') +
+    (e.recurrente ? `<div class="detail">${ICON.refresh(18)}<div>Evento que se repite: edítalo en Google Calendar.</div></div>` : '') +
+    `<a class="link" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/r/day/${y}/${+m}/${+d}">${ICON.ext(16)} Abrir en Google Calendar</a>`,
+    { onDelete: e.recurrente || tmp(e.id) ? null : () => borrarEventoOptimista(e) });
+}
+
+/* =========================================================== Acciones */
+async function guardarOptimista(lista, obj, fn) {
+  const nuevo = !obj.id;
+  const antes = S[lista].slice();
+  const local = nuevo ? { ...obj, id: 'tmp-' + Date.now() } : obj;
+  S[lista] = nuevo ? [...S[lista], local] : S[lista].map(x => x.id === obj.id ? { ...x, ...obj } : x);
+  render();
+  try {
+    const { lat, lng, ...enviar } = obj;
+    const r = await api(fn, nuevo ? { ...enviar, id: '' } : enviar);
+    S[lista] = S[lista].map(x => x.id === local.id ? r : x);
+    render();
+  } catch (e) {
+    S[lista] = antes; render();
+    toast('No se pudo guardar: ' + msg(e));
+  }
+}
+
+async function borrarOptimista(lista, id, fn, texto) {
+  const antes = S[lista].slice();
+  S[lista] = S[lista].filter(x => x.id !== id);
+  render();
+  try { await api(fn, id); toast(texto); }
+  catch (e) { S[lista] = antes; render(); toast('No se pudo eliminar: ' + msg(e)); }
+}
+
+async function setStock(id, stock, deshacer) {
+  const p = S.compras.find(x => x.id === id);
+  if (!p) return;
+  const prev = p.stock;
+  p.stock = stock; render();
+  if (deshacer) toast(stock === 'En casa' ? `${p.producto} → en casa` : `${p.producto} → a la lista`, () => setStock(id, prev));
+  try { await api('cambiarStock', id, stock); }
+  catch (e) { p.stock = prev; render(); toast('No se pudo actualizar: ' + msg(e)); }
+}
+
+async function setTarea(id, hecha, deshacer) {
+  const t = S.tareas.find(x => x.id === id);
+  if (!t) return;
+  t.completada = hecha; render();
+  if (deshacer) toast(hecha ? 'Tarea completada' : 'Tarea reabierta', () => setTarea(id, !hecha));
+  try { await api('marcarTarea', id, hecha); }
+  catch (e) { t.completada = !hecha; render(); toast('No se pudo actualizar: ' + msg(e)); }
+}
+
+async function crearEventoOptimista(ev) {
+  const cal = S.calendarios.find(c => c.id === ev.calendario);
+  const local = { ...ev, id: 'tmp-' + Date.now(), diaCompleto: false, recurrente: false, color: cal?.color, calendario: cal?.nombre };
+  S.eventos.push(local); S.dia = ev.inicio.slice(0, 10);
+  if (S.tab !== 'horario') { S.tab = 'horario'; lsSet('tab', 'horario'); }
+  render();
+  try {
+    const r = await api('crearEvento', ev);
+    S.eventos = S.eventos.map(x => x.id === local.id ? r : x);
+    render(); toast('Añadido a tu calendario');
+  } catch (e) {
+    S.eventos = S.eventos.filter(x => x.id !== local.id); render();
+    toast('No se pudo crear: ' + msg(e));
+  }
+}
+
+async function borrarEventoOptimista(ev) {
+  const antes = S.eventos.slice();
+  S.eventos = S.eventos.filter(x => x.id !== ev.id); render();
+  try { await api('borrarEvento', ev.id); toast('Evento eliminado'); }
+  catch (e) { S.eventos = antes; render(); toast('No se pudo eliminar: ' + msg(e)); }
+}
+
+/** Anima la salida de una fila antes de quitarla de la lista. */
+function animarSalida(id, fn) {
+  const fila = document.querySelector(`[data-row="${CSS.escape(id)}"]`);
+  if (!fila) return fn();
+  fila.classList.add('leaving');
+  setTimeout(fn, 200);
+}
+
+const ACT = {
+  tab: id => { S.tab = id; lsSet('tab', id); $('#main').scrollTop = 0; render(); },
+  modo: (id, el) => { S[el.dataset.k] = id; render(); },
+  refrescar: () => { if (!S.cargando) cargar(); },
+  nuevo: () => ({
+    compras: () => formProducto(), tareas: () => formTarea(), horario: () => formEvento(),
+    mapa: () => S.modoMapa === 'rutas' ? formRuta() : formTarea(undefined, { titulo: 'Nueva parada', desdeMapa: true }),
+  })[S.tab]?.(),
+  modoMapa: id => { S.modoMapa = id; S.rutaSel = null; lsSet('modoMapa', id); S.map?.closePopup(); render(); },
+  nuevaRuta: () => formRuta(),
+  verRuta: id => { S.rutaSel = id; S.opcion = 0; render(); $('#rpanel').scrollTop = 0; },
+  volverRutas: () => { S.rutaSel = null; render(); },
+  opcionRuta: id => { S.opcion = Number(id); pintarMapa(); },
+  editarRuta: id => { const r = S.rutas.find(x => x.id === id); if (r) formRuta({ ...r }); },
+  actualizarRuta: id => { const r = S.rutas.find(x => x.id === id); if (r) guardarRutaRemota({ ...r }); },
+  rutaHasta: coords => { S.map?.closePopup(); formRuta({ modo: 'TRANSIT', destino: coords }); },
+  rutaATarea: id => {
+    const t = S.tareas.find(x => x.id === id);
+    if (!t) return;
+    S.map?.closePopup(); S.modoMapa = 'rutas'; lsSet('modoMapa', 'rutas'); render();
+    formRuta({ modo: 'TRANSIT', destino: t.ubicacion, nombre: t.titulo });
+  },
+  miUbicacion: (id, el) => {
+    if (!navigator.geolocation) return toast('Tu navegador no permite usar la ubicación');
+    el.textContent = 'Buscando tu ubicación…';
+    navigator.geolocation.getCurrentPosition(
+      p => { $('#sheet-form [name=origen]').value = `${p.coords.latitude.toFixed(6)}, ${p.coords.longitude.toFixed(6)}`; el.textContent = '✓ Ubicación actual'; },
+      () => { el.textContent = 'Usar mi ubicación actual'; toast('No se pudo obtener tu ubicación (revisa el permiso)'); },
+      { enableHighAccuracy: true, timeout: 10000 });
+  },
+  paradaAqui: coords => {
+    S.map?.closePopup();
+    formTarea({ prioridad: 'Media', completada: false, ubicacion: coords }, { titulo: 'Nueva parada', desdeMapa: true });
+  },
+  hechaForm: id => { cerrarSheet(); setTarea(id, true, true); },
+  comprado: (id, el) => { el.classList.add('on'); animarSalida(id, () => setStock(id, 'En casa', true)); },
+  toggleStock: id => { const p = S.compras.find(x => x.id === id); if (p) setStock(id, p.stock === 'Falta' ? 'En casa' : 'Falta'); },
+  editarProducto: id => { const p = S.compras.find(x => x.id === id); if (p) formProducto({ ...p }); },
+  toggleTarea: (id, el) => {
+    const t = S.tareas.find(x => x.id === id);
+    if (!t) return;
+    el.classList.toggle('on', !t.completada);
+    if (S.tab === 'tareas') animarSalida(id, () => setTarea(id, !t.completada, true));
+    else setTarea(id, !t.completada, true);
+  },
+  editarTarea: id => { const t = S.tareas.find(x => x.id === id); if (t) formTarea({ ...t }); },
+  bloquear: id => {
+    const t = S.tareas.find(x => x.id === id);
+    if (!t) return;
+    const hora = t.fecha && t.fecha.slice(11, 16) !== '00:00' ? t.fecha.slice(11, 16) : null;
+    formEvento({ titulo: t.titulo, lugar: t.ubicacion, fecha: t.fecha ? t.fecha.slice(0, 10) : S.dia, hora });
+  },
+  dia: id => { S.dia = id; render(); },
+  // Las repeticiones de un evento comparten id: el inicio distingue cuál se ha tocado.
+  verEvento: (id, el) => { const e = S.eventos.find(x => x.id === id && (!el.dataset.ini || x.inicio === el.dataset.ini)); if (e) verEvento(e); },
+  calVista: id => { S.vistaCal = id; lsSet('vistaCal', id); $('#main').scrollTop = 0; render(); },
+  calHoy: () => { S.dia = hoy(); render(); },
+  calMover: id => {
+    const n = Number(id);
+    if (S.vistaCal === 'mes') {
+      const [y, m, d] = S.dia.split('-').map(Number);
+      const ultimo = new Date(y, m + n, 0).getDate();
+      S.dia = isoDia(new Date(y, m - 1 + n, Math.min(d, ultimo)));
+    } else S.dia = sumarDias(S.dia, S.vistaCal === 'semana' ? n * 7 : n);
+    render();
+  },
+  calVerDia: id => { S.dia = id; S.vistaCal = 'dia'; lsSet('vistaCal', 'dia'); render(); },
+  // Con ratón, un clic en el hueco crea un evento; en el móvil abre el día, como la app de Google.
+  calDia: id => {
+    if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return ACT.calVerDia(id);
+    S.dia = id; formEvento({ fecha: id });
+  },
+  calHueco: (id, el, ev) => {
+    const min = Math.floor((ev.clientY - el.getBoundingClientRect().top) / HORA_PX * 2) * 30;
+    S.dia = id;
+    formEvento({ fecha: id, hora: `${pad(Math.floor(min / 60))}:${pad(min % 60)}` });
+  },
+  capa: id => { S.capas[id] = !S.capas[id]; pintarMapa(); },
+  clUnidad: id => {
+    const [m, u] = id.split('|');
+    const antes = estacionClase(id), arriba = antes ? antes.getBoundingClientRect().top : 0;
+    S.clase.abierta[m] = claseAbierta(m) === u ? '' : u;
+    pintarClase();
+    const ahora = estacionClase(id);
+    if (ahora) { ahora.focus({ preventScroll: true }); $('#main').scrollTop += ahora.getBoundingClientRect().top - arriba; }
+  },
+  clIrUnidad: id => {
+    const [m, u] = id.split('|');
+    S.clase.abierta[m] = u;
+    pintarClase();
+    irEnClase(estacionClase(id));
+  },
+  clIr: id => irEnClase($('#' + id)),
+  clMarcar: id => {
+    const x = itemClase(id);
+    if (!x) return;
+    const nuevo = !hechoItem(x.m, x.u, x.it), tarea = tareaDeItem(x.m, x.it);
+    guardarProgresoClase([id], nuevo);
+    if (tarea && !tmp(tarea.id) && tarea.completada !== nuevo) setTarea(tarea.id, nuevo);
+  },
+  clATarea: id => {
+    const x = itemClase(id);
+    if (!x) return;
+    const tarea = tareaDeItem(x.m, x.it);
+    formTarea(tarea ? { ...tarea } : { titulo: tituloClase(x.m, x.it), prioridad: 'Alta', fecha: x.it.fecha, completada: hechoItem(x.m, x.u, x.it) });
+  },
+  clAHorario: id => {
+    const x = itemClase(id);
+    if (!x) return;
+    const evento = eventoDeItem(x.m, x.it);
+    if (evento) return verEvento(evento);
+    // Una entrega a las 23:59 no deja hueco de una hora: el evento acaba justo al vencer.
+    const hora = x.it.fecha.slice(11, 16);
+    formEvento({ titulo: tituloClase(x.m, x.it), fecha: x.it.fecha.slice(0, 10), hora: hora === '23:59' ? '23:00' : hora });
+  },
+  clOcultar: () => { S.clase.ocultar = !S.clase.ocultar; pintarClase(); },
+  clBorrar: (id, el) => {
+    if (!el.dataset.armado) {
+      el.dataset.armado = '1'; el.textContent = 'Pulsa otra vez para borrarlo todo';
+      setTimeout(() => { if (el.isConnected) { delete el.dataset.armado; el.textContent = 'Borrar mi progreso'; } }, 5000);
+      return;
+    }
+    guardarProgresoClase(Object.keys(S.clase.hecho), false);
+    toast('Progreso de Clase borrado');
+  },
+  salir: () => {
+    if (MODO_DEMO) return toast('En modo demo no hay sesión');
+    const f = document.createElement('form');
+    f.method = 'POST'; f.action = '/logout';
+    document.body.appendChild(f); f.submit();
+  },
+  cerrarSheet: () => cerrarSheet(),
+  fondoSheet: (id, el, ev) => { if (ev.target === el) cerrarSheet(); },
+};
+
+document.addEventListener('click', ev => {
+  const el = ev.target.closest('[data-act]');
+  if (!el) return;
+  ACT[el.dataset.act]?.(el.dataset.id, el, ev);
+});
+document.addEventListener('input', ev => {
+  if (ev.target.id === 'buscar') { S.q = ev.target.value; $('#catalogo').innerHTML = listaCatalogo(); }
+  if (ev.target.id === 'clase-q') { S.clase.q = ev.target.value; $('#clase-res').innerHTML = resultadosClase(); }
+});
+$('#main').addEventListener('scroll', () => { if (S.tab === 'clase') marcarNavClase(); }, { passive: true });
+$('#v-horario').addEventListener('scroll', ev => { if (ev.target.classList?.contains('cg-cuerpo')) S.cal.scrollY = ev.target.scrollTop; }, { passive: true, capture: true });
+window.addEventListener('resize', () => { if (S.tab === 'horario') pintarCalendario(); });
+setInterval(() => { const l = $('.cs-ahora'); if (l) l.style.top = topAhora(new Date()) + 'px'; }, 60e3);
+// Deslizar en horizontal cambia de mes, semana o día.
+let toqueCal = null;
+$('#v-horario').addEventListener('touchstart', ev => {
+  toqueCal = ev.touches.length === 1 && !ev.target.closest('.days') ? { x: ev.touches[0].clientX, y: ev.touches[0].clientY } : null;
+}, { passive: true });
+$('#v-horario').addEventListener('touchend', ev => {
+  if (!toqueCal) return;
+  const dx = ev.changedTouches[0].clientX - toqueCal.x, dy = ev.changedTouches[0].clientY - toqueCal.y;
+  toqueCal = null;
+  if (Math.abs(dx) > 60 && Math.abs(dx) > 2 * Math.abs(dy)) ACT.calMover(dx < 0 ? 1 : -1);
+}, { passive: true });
+document.addEventListener('keydown', ev => {
+  if (ev.key === 'Escape') return cerrarSheet();
+  // Atajo de escritorio: "n" crea un elemento nuevo en la pestaña actual.
+  const escribiendo = /^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement?.tagName);
+  if (ev.key === 'n' && !escribiendo && !ev.ctrlKey && !ev.metaKey && !$('#backdrop').classList.contains('open')) {
+    ev.preventDefault(); ACT.nuevo();
+  }
+});
+
+/* =========================================================== Clase */
+const CLASE = [
+  { id: 'ent', corto: 'Entornos', nombre: 'Entornos y Sintaxis en Python', color: 'var(--accent)', ahora: 'U2',
+    aula: { texto: 'Abrir en Classroom', url: 'https://classroom.google.com/u/1/c/ODg3OTY0MTg0ODI4' },
+    meta: '50 h · 2 h a la semana · Antonio Ortega González. Es la base del resto de módulos y se imparte en paralelo.',
+    unidades: [
+      { k: 'Inicio', t: 'Presentación', items: [
+        { n: 'Introducción al módulo', tipo: 'PDF', nota: 'Hay que aprobar todos los RA. Sin IA en test ni exámenes prácticos, que se hacen en Spyder.' }] },
+      { k: 'U1', t: 'Introducción', sum: 'Programación de alto nivel, intérpretes, algoritmos y ciclo de vida.', items: [
+        { n: 'Introducción al desarrollo en Python', tipo: 'PDF' },
+        { n: 'Práctica: diagrama de flujo', tipo: 'Entrega', fecha: '2026-10-13T23:59', nota: 'Consta sin entregar. Se presenta en clase y necesita validación previa del profesor.' }] },
+      { k: 'U2', t: 'Sintaxis básica', sum: 'Variables, tipos de datos, operadores y comentarios.', items: [
+        { n: '2.1 Mi primer programa', tipo: 'Notebook' },
+        { n: '2.2 Literales de Python', tipo: 'Notebook' },
+        { n: 'Ejercicios de sintaxis básica', tipo: 'PDF' },
+        { n: '2.3 Operadores', tipo: 'Notebook' },
+        { n: '2.3b Indexación (slicing)', tipo: 'Notebook' },
+        { n: '2.3b2 Interpolación y f-strings', tipo: 'Notebook' }] },
+      { k: 'U3', t: 'Colecciones', items: [] },
+      { k: 'U4', t: 'Depuración y pruebas', items: [] },
+    ] },
+  { id: 'est', corto: 'Estructuras', nombre: 'Estructuras de control en Python', color: 'var(--red)', ahora: 'UD3',
+    aula: { texto: 'Abrir en Moodle', url: 'https://educacionadistancia.juntadeandalucia.es/centros/malaga/course/view.php?id=2005' },
+    meta: '80 h',
+    unidades: [
+      { k: 'Inicio', t: 'Inicio de curso', items: [{ n: 'Programación didáctica 2026-27', tipo: 'PDF' }] },
+      { k: 'UD1', t: 'Introducción a las estructuras de control', tri: 'T1', h: 8, items: [
+        { n: 'Apuntes: algoritmos y programación', tipo: 'PDF' },
+        { n: 'Apuntes: preparación del entorno', tipo: 'PDF' },
+        { n: 'U1-01 Elementos de un programa informático', tipo: 'Notebook' },
+        { n: 'U1-02 Estructura y bloques fundamentales', tipo: 'Notebook' },
+        { n: 'U1-03 Variables, tipos y comentarios', tipo: 'Notebook' },
+        { n: 'U1-04 Literales y lectura por teclado', tipo: 'Notebook' },
+        { n: 'U1-05 Constantes, operadores y conversión de tipos', tipo: 'Notebook' },
+        { n: 'U1-06 Estructuras de control y manejo de errores', tipo: 'Notebook' },
+        { n: 'Python 3 cheat sheet', tipo: 'PDF' },
+        { n: 'U1-07 Identificación de las estructuras de control', tipo: 'Notebook' },
+        { n: 'Prueba UT1 (alumnado nuevo)', tipo: 'Prueba', fecha: '2026-11-03T17:15' },
+        { n: 'Prueba práctica U1: ejercicios 1 a 3', tipo: 'Prueba', nota: 'Sin fecha ni entrega abierta. Consúltalo con el profesor.' }] },
+      { k: 'UD2', t: 'Sentencias condicionales', tri: 'T1', h: 18, items: [
+        { n: 'U2-01 Introducción a Tkinter (I)', tipo: 'Notebook' },
+        { n: 'U2-02 Introducción a Tkinter (II)', tipo: 'Notebook' },
+        { n: 'U2-03 Clases en Tkinter y TTK', tipo: 'Notebook' },
+        { n: 'U2-04 Ejercicios con Tkinter y TTK', tipo: 'Notebook' },
+        { n: 'U2-05 Repaso introductorio a Tkinter', tipo: 'Notebook' },
+        { n: 'Proyecto U2: calculadora de precio final', tipo: 'Entrega', fecha: '2026-11-04T23:59', nota: 'Entrega el .ipynb o un .py. El profesor pide no usar un LLM para hacerla, solo para dudas puntuales.' },
+        { n: 'U2-06 Sentencias condicionales (repaso)', tipo: 'Notebook' },
+        { n: 'U2-07 Sentencias condicionales (ejercicios)', tipo: 'Notebook' },
+        { n: 'Prueba U2', tipo: 'Prueba', fecha: '2026-11-10T17:15' }] },
+      { k: 'UD3', t: 'Sentencias iterativas', tri: 'T2', h: 20, items: [
+        { n: 'The Big Book of Small Python Projects', tipo: 'Enlace', url: 'https://inventwithpython.com/bigbookpython/' },
+        { n: 'U3-01 Juego Bagels', tipo: 'Notebook' },
+        { n: 'U3-02 La paradoja del cumpleaños', tipo: 'Notebook' },
+        { n: 'U3-03 Mensaje formando una imagen', tipo: 'Notebook' },
+        { n: 'Proyecto U3: mapa web de volcanes con Folium', tipo: 'Entrega', fecha: '2026-11-11T23:59', nota: 'Implementa los retos del final del cuaderno. Entrega el HTML y un texto corto con lo que has cambiado.' },
+        { n: 'Datos del proyecto: Volcanoes_USA.txt', tipo: 'Datos' },
+        { n: 'Datos del proyecto: world.json', tipo: 'Datos' },
+        { n: 'U3-13 Sentencias iterativas (repaso)', tipo: 'Notebook' },
+        { n: 'U3-14 Sentencias iterativas (ejercicios)', tipo: 'Notebook' },
+        { n: 'Prueba U3', tipo: 'Prueba', fecha: '2026-11-10T17:15' }] },
+      { k: 'UD4', t: 'Funciones', tri: 'T2', h: 22, items: [
+        { n: 'Prueba U4', tipo: 'Prueba', fecha: '2026-11-17T17:07', nota: 'La programación sitúa esta unidad en el 2.º trimestre. Confirma la fecha con el profesor.' }] },
+      { k: 'UD5', t: 'Código eficiente y robusto', tri: 'T3', h: 12, items: [
+        { n: 'Prueba U5', tipo: 'Prueba', fecha: '2026-11-17T17:07', nota: 'La programación sitúa esta unidad en el 3.er trimestre. Confirma la fecha con el profesor.' }] },
+    ] },
+  { id: 'poo', corto: 'POO', nombre: 'Programación orientada a objetos', color: 'var(--blue)', ahora: 'T1',
+    aula: { texto: 'Abrir en Moodle', url: 'https://educacionadistancia.juntadeandalucia.es/centros/malaga/course/view.php?id=2475' },
+    meta: 'Javier Caselli Fernández. Sin programación disponible: faltan las horas y los temas siguientes.',
+    unidades: [
+      { k: 'General', t: 'Repositorio', items: [
+        { n: 'Repositorio del curso en GitHub', tipo: 'Enlace', url: 'https://github.com/javiercaselli/POODALP2627' }] },
+      { k: 'T1', t: 'Python y primeros objetos', sum: 'Cadenas, listas, clase Libro, decisiones, bucles, funciones, clases propias y persistencia en JSON.', items: [
+        { n: 'Python en consola y VSCode: entornos virtuales', tipo: 'PDF' },
+        { n: 'Cuaderno de ejercicios (20 ejercicios)', tipo: 'PDF' },
+        { n: 'Archivos iniciales del cuaderno', tipo: 'ZIP' },
+        { n: 'Tarea: un almacén y un centro de talleres', tipo: 'Entrega', fecha: '2026-11-04T23:59', alerta: true, nota: 'Entrega almacen.py, centro.py y los dos JSON. Tus soluciones e01 a e20 son del cuaderno, no de esta práctica.' }] },
+      { k: 'Vídeos', t: 'Clases grabadas', items: [
+        { n: 'Relación Python y POO, parte 1 (19 oct)', tipo: 'Vídeo', url: 'https://drive.google.com/file/d/1BbxJ5CwaOJVn_QsCb1v30LXT4xnM30Fg/view', nota: 'Solo online. Ábrela con la cuenta del centro.' },
+        { n: 'Relación Python y POO, parte 2 (21 oct)', tipo: 'Vídeo', url: 'https://drive.google.com/file/d/1y31uLPV2mhqjM8Dc3x3MLtAMYd6ak2Rz/view', nota: 'Solo online. Ábrela con la cuenta del centro.' }] },
+      { k: 'Próximos', t: 'Temas por publicar', items: [] },
+    ] },
+  { id: 'ana', corto: 'Análisis', nombre: 'Análisis de datos en Python', color: 'var(--plum)', ahora: 'Inicio',
+    aula: { texto: 'Abrir en Moodle', url: 'https://educacionadistancia.juntadeandalucia.es/centros/malaga/course/view.php?id=2006' },
+    meta: '150 h',
+    unidades: [
+      { k: 'Inicio', t: 'Inicio de curso', items: [
+        { n: 'Programación didáctica 2026-27', tipo: 'PDF' },
+        { n: 'Presentación inicial: introducción al lenguaje', tipo: 'PDF' }] },
+      { k: 'UD1', t: 'Acceso a datos', tri: 'T1', h: 15, items: [] },
+      { k: 'UD2', t: 'Manipulación, limpieza y estandarización', tri: 'T2', h: 50, items: [] },
+      { k: 'UD3', t: 'Análisis exploratorio de datos', tri: 'T2', h: 50, items: [] },
+      { k: 'UD4', t: 'Modelado estadístico de datos', tri: 'T3', h: 35, items: [] },
+    ] },
+];
+const idItem = (m, u, it) => `${m.id}/${u.k}/${it.n}`;
+const tituloClase = (m, it) => `${m.corto}: ${it.n}`;
+// Una entrega o prueba añadida a Tareas o al Horario queda enlazada por su título.
+const tareaDeItem = (m, it) => it.fecha ? S.tareas.find(t => t.titulo === tituloClase(m, it)) : null;
+const eventoDeItem = (m, it) => it.fecha ? S.eventos.find(e => e.titulo === tituloClase(m, it)) : null;
+const hechoItem = (m, u, it) => { const t = tareaDeItem(m, it); return t ? !!t.completada : !!S.clase.hecho[idItem(m, u, it)]; };
+function itemClase(id) {
+  for (const m of CLASE) for (const u of m.unidades) for (const it of u.items) if (idItem(m, u, it) === id) return { m, u, it };
+  return null;
+}
+const sinApiClase = e => /no permitida|desconocida/i.test(msg(e));
+function guardarCacheClase() { lsSet('clase', JSON.stringify(S.clase.hecho)); }
+/** Aplica lo que devuelve la hoja. Sube una vez lo marcado en este dispositivo antes de que existiera la pestaña Clase. */
+function aplicarProgresoClase(res) {
+  if (res.status === 'rejected') { if (sinApiClase(res.reason)) S.clase.modo = 'local'; return; }
+  S.clase.modo = 'hoja';
+  if (S.clase.enVuelo) return;
+  const hoja = res.value || {};
+  if (!lsGet('claseSubida')) {
+    const pendientes = Object.keys(S.clase.hecho).filter(k => !hoja[k]);
+    lsSet('claseSubida', '1');
+    if (pendientes.length) {
+      pendientes.forEach(k => { hoja[k] = true; });
+      api('marcarClase', pendientes, true).catch(() => lsSet('claseSubida', ''));
+    }
+  }
+  S.clase.hecho = hoja;
+  guardarCacheClase();
+}
+async function guardarProgresoClase(ids, hecho) {
+  if (!ids.length) return;
+  const antes = { ...S.clase.hecho };
+  ids.forEach(k => { if (hecho) S.clase.hecho[k] = true; else delete S.clase.hecho[k]; });
+  guardarCacheClase();
+  render();
+  if (S.clase.modo === 'local') return;
+  S.clase.enVuelo++;
+  try { await api('marcarClase', ids, hecho); }
+  catch (e) {
+    if (sinApiClase(e)) { S.clase.modo = 'local'; render(); }
+    else { S.clase.hecho = antes; guardarCacheClase(); render(); toast('No se pudo guardar en la hoja: ' + msg(e)); }
+  } finally { S.clase.enVuelo--; }
+}
+const esActividad = it => it.tipo === 'Entrega' || it.tipo === 'Prueba';
+const conMaterial = u => u.items.some(i => i.tipo !== 'Prueba');
+const claseAbierta = id => { const v = S.clase.abierta[id]; return v === undefined ? CLASE.find(m => m.id === id).ahora : v; };
+const estacionClase = id => [...document.querySelectorAll('.cl-st')].find(b => b.dataset.id === id);
+function cuentaUnidad(m, u) { return { total: u.items.length, hechos: u.items.filter(i => hechoItem(m, u, i)).length }; }
+function cuentaModulo(m) { return m.unidades.reduce((a, u) => { const c = cuentaUnidad(m, u); return { total: a.total + c.total, hechos: a.hechos + c.hechos }; }, { total: 0, hechos: 0 }); }
+function claseTotal() { return CLASE.reduce((a, m) => { const c = cuentaModulo(m); return { total: a.total + c.total, hechos: a.hechos + c.hechos }; }, { total: 0, hechos: 0 }); }
+function recorrerClase(fn) { CLASE.forEach(m => m.unidades.forEach(u => u.items.forEach(it => fn(m, u, it)))); }
+function entregasUrgentes() {
+  let n = 0;
+  recorrerClase((m, u, it) => { if (it.tipo === 'Entrega' && it.fecha && it.fecha.slice(0, 10) <= hoy() && !hechoItem(m, u, it)) n++; });
+  return n;
+}
+function diasHasta(iso) { return Math.round((aFecha(iso.slice(0, 10)) - aFecha(hoy())) / 864e5); }
+function textoDias(n) {
+  if (n === 0) return 'hoy';
+  if (n === 1) return 'mañana';
+  if (n === -1) return 'ayer';
+  return n > 0 ? `en ${n} días` : `hace ${-n} días`;
+}
+function fechasClase() {
+  const ahora = new Date(), filas = [];
+  recorrerClase((m, u, it) => {
+    if (!it.fecha || hechoItem(m, u, it)) return;
+    const pasada = aFecha(it.fecha) < ahora;
+    if (pasada && it.tipo === 'Prueba') return;
+    filas.push({ m, u, it, pasada });
+  });
+  filas.sort((a, b) => a.it.fecha.localeCompare(b.it.fecha));
+  if (!filas.length) return '<div class="row"><span class="row-meta">No queda ninguna fecha pendiente.</span></div>';
+  return filas.map(({ m, u, it, pasada }) => {
+    const n = diasHasta(it.fecha);
+    const clase = pasada ? 'tag-Alta' : n <= 2 ? 'tag-Media' : 'tag-Baja';
+    return `<button class="cl-fecha" data-act="clIrUnidad" data-id="${esc(m.id + '|' + u.k)}">
+      <span class="cuando">${esc(fechaCorta(it.fecha))}</span>
+      <span class="tag ${clase}">${pasada ? 'vencida, ' : ''}${textoDias(n)}</span>
+      <b>${esc(it.n)}</b><small>${esc(it.tipo)} · ${esc(m.nombre)}</small>
+    </button>`;
+  }).join('');
+}
+function resultadosClase() {
+  const q = S.clase.q.trim().toLowerCase();
+  if (q.length < 2) return '';
+  const res = [];
+  CLASE.forEach(m => m.unidades.forEach(u => {
+    if (`${u.t} ${u.sum || ''}`.toLowerCase().includes(q)) res.push({ m, u, texto: `${u.k} ${u.t}` });
+    u.items.forEach(it => { if (it.n.toLowerCase().includes(q)) res.push({ m, u, texto: it.n }); });
+  }));
+  if (!res.length) return '<p>Nada coincide con esa búsqueda.</p>';
+  return res.slice(0, 12).map(r => `<button data-act="clIrUnidad" data-id="${esc(r.m.id + '|' + r.u.k)}">${esc(r.texto)} <small>· ${esc(r.m.corto)}, ${esc(r.u.k)}</small></button>`).join('');
+}
+function enlacesItem(m, it, id) {
+  if (!it.fecha) return '';
+  const tarea = tareaDeItem(m, it), evento = eventoDeItem(m, it);
+  if (aFecha(it.fecha) < new Date() && !tarea && !evento) return '';
+  return `<div class="cl-enlaces">
+    <button class="${tarea ? 'on' : ''}" data-act="clATarea" data-id="${esc(id)}">${ICON[tarea ? 'check' : 'tasks'](14)}${tarea ? 'En Tareas' : 'Añadir a Tareas'}</button>
+    <button class="${evento ? 'on' : ''}" data-act="clAHorario" data-id="${esc(id)}">${ICON[evento ? 'check' : 'cal'](14)}${evento ? 'En Horario' : 'Añadir al Horario'}</button>
+  </div>`;
+}
+function grupoClase(m, u, titulo, items, clase) {
+  const vis = items.filter(it => !(S.clase.ocultar && hechoItem(m, u, it)));
+  if (!vis.length) return '';
+  return `<div class="cl-group ${clase}"><h4>${titulo}</h4>${vis.map(it => {
+    const id = idItem(m, u, it), hecho = hechoItem(m, u, it);
+    return `<div class="cl-item ${hecho ? 'hecho' : ''}">
+      <button class="check ${hecho ? 'on' : ''}" data-act="clMarcar" data-id="${esc(id)}" aria-pressed="${hecho}" aria-label="${hecho ? 'Desmarcar' : 'Marcar como hecho'}: ${esc(it.n)}">${ICON.check(16)}</button>
+      <div class="cl-body">
+        <span class="cl-nombre"><span class="cl-tipo">${esc(it.tipo)}</span>${esc(it.n)}</span>
+        ${it.fecha ? `<span class="cl-meta">${esc(fechaCorta(it.fecha))} (${textoDias(diasHasta(it.fecha))})</span>` : ''}
+        ${it.nota ? `<span class="cl-meta ${it.alerta ? 'alerta' : ''}">${esc(it.nota)}</span>` : ''}
+        ${enlacesItem(m, it, id)}
+      </div>
+      ${it.url ? `<a class="cl-abrir" href="${esc(it.url)}" target="_blank" rel="noopener">Abrir</a>` : ''}
+    </div>`;
+  }).join('')}</div>`;
+}
+function panelClase(m, u) {
+  const c = cuentaUnidad(m, u), i = m.unidades.indexOf(u), ant = m.unidades[i - 1], sig = m.unidades[i + 1];
+  const info = [u.tri ? u.tri.replace('T', 'Trimestre ') : '', u.h ? `${u.h} h` : ''].filter(Boolean).join(' · ');
+  const act = grupoClase(m, u, 'Entregas y pruebas', u.items.filter(esActividad), 'act');
+  const mat = grupoClase(m, u, 'Material', u.items.filter(x => !esActividad(x)), '');
+  let aviso = '';
+  if (!conMaterial(u)) aviso = '<p>Todavía no hay material publicado en esta unidad.</p>';
+  else if (!act && !mat) aviso = '<p>Todo completado en esta unidad.</p>';
+  return `<div class="cl-panel ${i === 0 ? 'p-ini' : ''} ${!sig ? 'p-fin' : ''}">
+    <div class="cl-phead">
+      <div class="cl-eyebrow"><span>${esc(u.k)}${info ? ' · ' + esc(info) : ''}</span>${c.total ? `<span>${c.hechos} de ${c.total} completados</span>` : ''}</div>
+      <h3>${esc(u.t)}</h3>
+    </div>
+    ${u.sum ? `<p>${esc(u.sum)}</p>` : ''}${aviso}${act}${mat}
+    <div class="cl-pnav">
+      ${ant ? `<button data-act="clIrUnidad" data-id="${esc(m.id + '|' + ant.k)}">← ${esc(ant.t)}</button>` : ''}
+      ${sig ? `<button class="sig" data-act="clIrUnidad" data-id="${esc(m.id + '|' + sig.k)}">${esc(sig.t)} →</button>` : ''}
+    </div>
+  </div>`;
+}
+function estacionHtml(m, u, i) {
+  const c = cuentaUnidad(m, u), llena = c.total && c.hechos === c.total, pct = c.total ? c.hechos / c.total * 100 : 0;
+  const vacia = !conMaterial(u), abierta = claseAbierta(m.id) === u.k;
+  const info = [u.tri, u.h ? `${u.h} h` : '', vacia ? 'Sin material' : `${c.hechos} de ${c.total}`].filter(Boolean).join(' · ');
+  const fondo = !llena && pct ? ` style="background:linear-gradient(90deg,var(--cl) ${pct}%,var(--surface) ${pct}%)"` : '';
+  return `<button class="cl-st ${vacia ? 'vacia' : ''} ${llena ? 'llena' : ''} ${i === 0 ? 'primera' : ''} ${i === m.unidades.length - 1 ? 'ultima' : ''}" style="--i:${i + 1}"
+      aria-expanded="${abierta}" data-act="clUnidad" data-id="${esc(m.id + '|' + u.k)}">
+      <span class="cl-dot"${fondo}>${llena ? ICON.check(12) : ''}</span>
+      <span class="cl-code">${esc(u.k)}</span>
+      <span class="cl-name">${esc(u.t)}</span>
+      <span class="cl-info">${esc(info)}</span>
+      ${m.ahora === u.k ? '<span class="cl-ahora">En clase ahora</span>' : ''}
+      <span class="cl-chev" aria-hidden="true">${ICON.back(18)}</span>
+    </button>${abierta ? panelClase(m, u) : ''}`;
+}
+function vistaClase() {
+  const t = claseTotal();
+  return `
+    <div class="cl-intro">
+      <div class="cl-bar" aria-hidden="true"><i style="width:${t.total ? t.hechos / t.total * 100 : 0}%"></i></div>
+      <div class="cl-tools">
+        <input id="clase-q" type="search" value="${esc(S.clase.q)}" placeholder="Busca un tema o archivo: Tkinter, JSON, slicing…" aria-label="Buscar en el curso">
+        <button class="cl-ocultar" data-act="clOcultar" aria-pressed="${S.clase.ocultar}">
+          <span class="check ${S.clase.ocultar ? 'on' : ''}">${ICON.check(16)}</span>Ocultar lo completado
+        </button>
+      </div>
+      <div class="card cl-res" id="clase-res">${resultadosClase()}</div>
+    </div>
+    <nav class="cl-nav" aria-label="Secciones de Clase">
+      <button data-act="clIr" data-id="cl-fechas" data-sec="cl-fechas">Fechas</button>
+      ${CLASE.map(m => `<button style="--cl:${m.color}" data-act="clIr" data-id="cl-${m.id}" data-sec="cl-${m.id}"><i></i>${esc(m.corto)}</button>`).join('')}
+    </nav>
+    <section class="cl-fechas" id="cl-fechas">
+      <div class="group-head"><span class="name">Próximas fechas</span></div>
+      <div class="card">${fechasClase()}</div>
+    </section>
+    ${CLASE.map(m => {
+      const c = cuentaModulo(m);
+      return `<section class="cl-mod" id="cl-${m.id}" style="--cl:${m.color}">
+        <div class="cl-head">
+          <div class="cl-head-top"><h2>${esc(m.nombre)}</h2><span class="cl-num">${c.hechos} de ${c.total}</span></div>
+          <p>${esc(m.meta)}</p>
+          <div class="cl-mbar" aria-hidden="true"><i style="width:${c.total ? c.hechos / c.total * 100 : 0}%"></i></div>
+          <a class="cl-aula" href="${esc(m.aula.url)}" target="_blank" rel="noopener">${esc(m.aula.texto)} ${ICON.ext(14)}</a>
+        </div>
+        <div class="cl-line" style="--n:${m.unidades.length}">${m.unidades.map((u, i) => estacionHtml(m, u, i)).join('')}</div>
+      </section>`;
+    }).join('')}
+    <div class="cl-pie">
+      <span>${S.clase.modo === 'hoja' ? 'Progreso guardado en tu hoja de Google, en la pestaña Clase.'
+        : S.clase.modo === 'local' ? 'Progreso guardado solo en este dispositivo. Actualiza Apps Script para sincronizarlo con la hoja.'
+        : 'Comprobando el progreso guardado en tu hoja…'}</span>
+      <button data-act="clBorrar">Borrar mi progreso</button>
+    </div>`;
+}
+function pintarClase() {
+  const buscando = document.activeElement?.id === 'clase-q';
+  $('#v-clase').innerHTML = vistaClase();
+  if (buscando) { const q = $('#clase-q'); q.focus({ preventScroll: true }); q.setSelectionRange(q.value.length, q.value.length); }
+  marcarNavClase();
+}
+function irEnClase(el) {
+  if (!el) return;
+  const main = $('#main'), nav = document.querySelector('.cl-nav');
+  main.scrollTop += el.getBoundingClientRect().top - main.getBoundingClientRect().top - nav.offsetHeight - 8;
+}
+function marcarNavClase() {
+  const nav = document.querySelector('.cl-nav');
+  if (!nav) return;
+  const limite = $('#main').getBoundingClientRect().top + nav.offsetHeight + 24;
+  let actual = null;
+  nav.querySelectorAll('[data-sec]').forEach(b => { const s = $('#' + b.dataset.sec); if (s && s.getBoundingClientRect().top <= limite) actual = b; });
+  nav.querySelectorAll('[data-sec]').forEach(b => b.classList.toggle('on', b === actual));
+  if (actual && nav.scrollWidth > nav.clientWidth) nav.scrollLeft = actual.offsetLeft - 16;
+}
+
+/* =========================================================== Aviso */
+let toastTimer;
+function toast(texto, deshacer) {
+  const t = $('#toast');
+  t.innerHTML = `<span>${esc(texto)}</span>${deshacer ? '<button type="button" id="toast-undo">Deshacer</button>' : ''}`;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), deshacer ? 5000 : 3500);
+  if (deshacer) $('#toast-undo').onclick = () => { t.classList.remove('show'); deshacer(); };
+}
+
+/* =========================================================== Modo demo (abrir el archivo fuera de Google) */
+const MOCK = (() => {
+  const h = hoy(), rnd = () => Math.random().toString(16).slice(2, 10);
+  const datos = {
+    compras: [
+      { id: 'a1', producto: 'Leche', categoria: 'Supermercado', tienda: 'Lidl', direccion: 'Lidl, Ceuta', stock: 'Falta', lat: 35.8885, lng: -5.3305 },
+      { id: 'a2', producto: 'Huevos', categoria: 'Supermercado', tienda: 'Lidl', direccion: 'Lidl, Ceuta', stock: 'Falta', lat: 35.8885, lng: -5.3305 },
+      { id: 'a3', producto: 'Bombillas LED', categoria: 'Ferretería', tienda: 'Leroy Merlin', direccion: 'Leroy Merlin, Ceuta', stock: 'Falta', lat: 35.8812, lng: -5.3398 },
+      { id: 'a4', producto: 'Lejía', categoria: 'Limpieza', tienda: 'Mercadona', direccion: 'Mercadona, Ceuta', stock: 'En casa', lat: 35.8901, lng: -5.3122 },
+      { id: 'a5', producto: 'Cesta de ropa', categoria: 'IKEA', tienda: '', direccion: '', stock: 'Falta' },
+    ],
+    tareas: [
+      { id: 't1', titulo: 'Empadronarme en el nuevo domicilio', prioridad: 'Alta', fecha: sumarDias(h, -1) + 'T10:00', ubicacion: 'Plaza de África, Ceuta', completada: false, lat: 35.8893, lng: -5.3165 },
+      { id: 't2', titulo: 'Cambiar dirección en el banco', prioridad: 'Media', fecha: h + 'T18:00', ubicacion: '', completada: false },
+      { id: 't3', titulo: 'Contratar internet', prioridad: 'Baja', fecha: sumarDias(h, 3) + 'T00:00', ubicacion: '', completada: false },
+      { id: 't4', titulo: 'Montar la estantería', prioridad: 'Baja', fecha: '', ubicacion: '', completada: true },
+    ],
+  };
+  const eventos = [
+    { id: 'e1', titulo: 'Trabajo', inicio: h + 'T09:00', fin: h + 'T14:00', diaCompleto: false, lugar: '', recurrente: true },
+    { id: 'e2', titulo: 'Recoger llaves del piso', inicio: h + 'T17:00', fin: h + 'T17:30', diaCompleto: false, lugar: 'Calle Real, Ceuta', recurrente: false },
+    { id: 'e3', titulo: 'Mudanza', inicio: sumarDias(h, 2) + 'T00:00', fin: sumarDias(h, 3) + 'T00:00', diaCompleto: true, lugar: '', recurrente: false },
+  ];
+  // Ruta de ejemplo con trazados codificados como los de Google.
+  const cod = pts => { let pl = 0, pg = 0, s = ''; const e = v => { v = v < 0 ? ~(v << 1) : v << 1; let o = ''; while (v >= 32) { o += String.fromCharCode((32 | (v & 31)) + 63); v >>= 5; } return o + String.fromCharCode(v + 63); };
+    pts.forEach(([a, b]) => { const la = Math.round(a * 1e5), lg = Math.round(b * 1e5); s += e(la - pl) + e(lg - pg); pl = la; pg = lg; }); return s; };
+  const A = [35.8832, -5.3301], P1 = [35.8850, -5.3270], P2 = [35.8890, -5.3160], B = [35.8902, -5.3125];
+  const rutas = [{ id: 'r1', nombre: 'Casa → Ayuntamiento', origen: 'Calle Real 10, Ceuta', destino: 'Plaza de África, Ceuta', modo: 'TRANSIT', salida: '',
+    actualizada: h + 'T09:12', resultado: { para: 'ahora', opciones: [
+      { duracion: '18 min', distancia: '2,4 km', salida: '9:20', llegada: '9:38', tarifa: '0,80 €', avisos: [],
+        desde: { dir: 'Calle Real, 10, Ceuta', lat: A[0], lng: A[1] }, hasta: { dir: 'Plaza de África, Ceuta', lat: B[0], lng: B[1] },
+        polyline: cod([A, P1, [35.8870, -5.3220], P2, B]), pasos: [
+          { modo: 'WALKING', texto: 'Camina hasta Parada Calle Real', duracion: '4 min', distancia: '300 m', polyline: cod([A, P1]) },
+          { modo: 'TRANSIT', texto: 'Autobús hacia Centro', duracion: '9 min', distancia: '1,9 km', polyline: cod([P1, [35.8870, -5.3220], P2]),
+            transporte: { linea: '3', nombre: 'Línea 3', vehiculo: 'Autobús', tipo: 'BUS', color: '#C24A2C', colorTexto: '#ffffff', empresa: 'Hadú-Almadraba',
+              desde: 'Parada Calle Real', hasta: 'Plaza de los Reyes', horaSalida: '9:24', horaLlegada: '9:33', paradas: 6, direccion: 'Centro' } },
+          { modo: 'WALKING', texto: 'Camina hasta Plaza de África', duracion: '5 min', distancia: '350 m', polyline: cod([P2, B]) }] },
+      { duracion: '29 min', distancia: '2,1 km', salida: '', llegada: '', tarifa: '', avisos: [],
+        desde: { dir: 'Calle Real, 10, Ceuta', lat: A[0], lng: A[1] }, hasta: { dir: 'Plaza de África, Ceuta', lat: B[0], lng: B[1] },
+        polyline: cod([A, B]), pasos: [{ modo: 'WALKING', texto: 'Camina hacia el este', duracion: '29 min', distancia: '2,1 km', polyline: cod([A, B]) }] }] } }];
+  const ok = v => new Promise(r => setTimeout(() => r(JSON.parse(JSON.stringify(v))), 350));
+  return {
+    obtenerDatos: () => ok(datos), obtenerEventos: () => ok(eventos),
+    obtenerRutas: () => ok(rutas), guardarRuta: () => Promise.reject(new Error('En modo demo no se calculan rutas')),
+    recalcularRuta: () => Promise.reject(new Error('En modo demo no se calculan rutas')), borrarRuta: () => ok(true),
+    obtenerCalendarios: () => ok([{ id: 'p', nombre: 'Principal', color: '#2F6B4F', principal: true }, { id: 'v', nombre: 'Vida malaga', color: '#9A5CB4', principal: false }]),
+    guardarProducto: p => ok({ ...p, id: p.id || rnd() }), cambiarStock: () => ok(true), borrarProducto: () => ok(true),
+    guardarTarea: t => ok({ ...t, id: t.id || rnd(), completada: !!t.completada }), marcarTarea: () => ok(true), borrarTarea: () => ok(true),
+    crearEvento: e => ok({ ...e, id: rnd(), diaCompleto: false, recurrente: false }), borrarEvento: () => ok(true),
+    obtenerClase: () => ok(S.clase.hecho), marcarClase: () => ok(true),
+  };
+})();
+
+/* =========================================================== Inicio */
+$('#fab').innerHTML = ICON.plus(28);
+render();
+cargar();
+if ('serviceWorker' in navigator && !MODO_DEMO) navigator.serviceWorker.register('/sw.js').catch(() => {});
+</script>
+</body>
+</html>

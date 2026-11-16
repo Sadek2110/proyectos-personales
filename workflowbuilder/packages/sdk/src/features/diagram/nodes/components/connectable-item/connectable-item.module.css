@@ -1,0 +1,54 @@
+:root {
+  --wb-sdk-connectable-item-horizontal-padding: var(--wb-ds-canvas-node-row-h-pad);
+  --wb-sdk-connectable-item-vertical-padding: var(--wb-ds-canvas-node-row-v-pad);
+  --wb-sdk-connectable-item-gap: var(--wb-ds-canvas-node-row-gap);
+  --wb-sdk-connectable-item-background: var(--wb-ds-canvas-node-bg-content-default);
+  --wb-sdk-connectable-item-border-radius: var(--wb-ds-canvas-node-row-radius);
+  --wb-sdk-connectable-item-inset: 0rem;
+}
+
+.connectable-item {
+  composes: wb-text-body-s-emphasized from global;
+
+  position: relative;
+  display: flex;
+  max-width: calc(
+    var(--wb-public-node-width) - 2 * (var(--wb-public-node-padding) + var(--wb-public-node-border-size)) - 2 *
+      var(--wb-sdk-connectable-item-inset)
+  );
+  padding: var(--wb-sdk-connectable-item-vertical-padding) var(--wb-sdk-connectable-item-horizontal-padding);
+  background-color: var(--wb-sdk-connectable-item-background);
+  border-radius: var(--wb-sdk-connectable-item-border-radius);
+  justify-content: space-between;
+
+  .label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .handle-container {
+    position: relative;
+
+    :global(.react-flow__handle.react-flow__handle-right) {
+      right: calc((var(--wb-public-node-port-size) + 2 * var(--wb-public-node-port-border-size)) / 2);
+    }
+
+    &.vertical {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+}
+
+.connectable-item--right {
+  /* Node / Row is "fill" in the design: the row takes the section width and only
+     the label truncates. The derived cap above stays for the horizontal branch row
+     of the DOWN layout, which has no design master. */
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+  gap: var(--wb-sdk-connectable-item-gap);
+}

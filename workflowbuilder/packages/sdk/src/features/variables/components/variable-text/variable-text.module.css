@@ -1,0 +1,251 @@
+:root {
+  --wb-sdk-color-violet-400-20: rgba(148, 131, 255, 0.2);
+  --wb-sdk-variable-text-mention-bg: var(--wb-sdk-color-violet-400-20);
+  --wb-sdk-variable-text-suggestion-bg: var(--wb-ds-ui-bg-base);
+  --wb-sdk-variable-text-suggestion-hover: var(--wb-ds-ui-bg-elevated);
+  --wb-sdk-variable-text-suggestion-border: var(--wb-ds-ui-stroke-default);
+  --wb-sdk-variable-text-suggestion-bg-error: var(--wb-ds-ui-bg-base);
+  --wb-sdk-txt-ghost-primary-default: #6b3bff;
+
+  --wb-sdk-variable-backdrop: color-mix(in srgb, var(--wb-public-modal-backdrop-background), transparent 50%);
+}
+
+.control {
+  position: relative;
+  border: var(--wb-public-input-root-border-size) solid var(--wb-public-input-root-border-color);
+  border-radius: var(--wb-public-input-border-radius-m);
+  color: var(--wb-public-input-root-color);
+  transition: all var(--wb-public-transition);
+
+  &.control--error {
+    background-color: var(--wb-public-input-root-background-color-critical);
+    border-color: var(--wb-public-input-root-border-color-critical);
+    color: var(--wb-public-input-root-color-critical);
+
+    .mention {
+      border: 1px solid color-mix(in srgb, var(--wb-public-input-root-border-color-critical), transparent 90%);
+      background-color: color-mix(in srgb, var(--wb-public-input-root-border-color-critical), transparent 90%);
+    }
+  }
+}
+
+.control:focus-within {
+  border-color: var(--wb-public-input-root-border-color-focus);
+}
+
+.input {
+  composes: wb-text-label-m from global;
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: var(--wb-public-input-padding-m);
+  border: none;
+  background: transparent;
+  color: unset;
+  line-height: 140%;
+  outline: none;
+  resize: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+}
+
+.input::placeholder {
+  color: unset;
+  opacity: 0.5;
+}
+
+/*
+ * The highlighter sits behind the input (position:absolute applied by the library inline).
+ * ALL text must be transparent — user reads text from the input layer above.
+ * Only mention backgrounds are visible through the transparent input background.
+ *
+ * The library's text-transparent utility has no effect without Tailwind, so the
+ * transparent color must be set manually.
+ */
+.highlighter {
+  composes: wb-text-label-m from global;
+  padding: var(--wb-public-input-padding-m);
+  border: none;
+  background: transparent;
+  color: transparent;
+  line-height: 140%;
+  box-sizing: border-box;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.mention {
+  text-align: center;
+  border-radius: 4px;
+  padding: 0;
+  background-color: var(--wb-sdk-variable-text-mention-bg);
+  color: transparent;
+  /* If broken to multiple lines it will keep rounded corners */
+  box-decoration-break: clone;
+}
+
+.suggestions {
+  position: fixed;
+  top: 50% !important;
+  /* It beats top added in lib with styles={} */
+  left: 50% !important;
+  bottom: auto !important;
+  right: auto !important;
+  transform: translate(-50%, -50%);
+  /* It needs to beat modal because it is shown above */
+  z-index: 3000;
+  width: 600px !important;
+  max-width: calc(100vw - 2rem);
+  max-height: calc(100dvh - 2rem);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--wb-sdk-variable-text-suggestion-border);
+  border-radius: var(--wb-public-input-border-radius-m);
+  background: var(--wb-sdk-variable-text-suggestion-bg);
+  box-shadow: 0 4px 12px var(--wb-ds-shadow-ui-color);
+}
+
+.suggestionsContainer {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0.5rem 0 0;
+}
+
+body:has(.suggestionsContainer) {
+  &::before {
+    content: '';
+    position: fixed;
+    width: 100vw;
+    height: 100dvh;
+    background-color: var(--wb-sdk-variable-backdrop);
+    z-index: 200;
+  }
+
+  /* Modal already dims the page; don't stack a second backdrop. */
+  &:global(.wb-modal-open)::before {
+    display: none;
+  }
+}
+
+.suggestionsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.25rem 0.5rem 0.25rem 0.75rem;
+}
+
+.suggestionsTitle {
+  composes: wb-text-body-s-emphasized from global;
+  color: var(--wb-ds-ui-text-default);
+}
+
+.suggestionsClose {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  padding: 0;
+  border: none;
+  border-radius: 0.25rem;
+  background: transparent;
+  color: var(--wb-ds-ui-text-muted-default);
+  cursor: pointer;
+}
+
+.suggestionsList {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0.5rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.groupHeader {
+  composes: wb-text-body-s-emphasized from global;
+  color: var(--wb-ds-ui-text-default);
+  display: flex;
+  color: var(--wb-ds-ui-text-default);
+  align-items: center;
+  gap: var(--wb-ds-space-50);
+  flex: 1 0 0;
+  padding: 6px;
+}
+
+.iconWrapper {
+  display: flex;
+  padding: var(--wb-ds-space-87);
+  justify-content: center;
+  align-items: center;
+  gap: var(--wb-ds-space-100);
+
+  svg {
+    fill: var(--wb-sdk-txt-ghost-primary-default);
+  }
+}
+
+.groupHeader:not(:first-child) {
+  margin-top: 0.25rem;
+  padding-top: 0.5rem;
+}
+
+.suggestionItem {
+  padding: 6px;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.suggestionItemFocused {
+  background: var(--wb-sdk-variable-text-suggestion-hover);
+}
+
+.suggestionContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.0625rem;
+  padding: 6px;
+}
+
+.suggestionLabel {
+  color: var(--wb-ds-ui-text-default);
+  composes: wb-text-body-s-emphasized from global;
+}
+
+.suggestionDescription {
+  composes: wb-text-body-s from global;
+  color: var(--wb-ds-ui-text-subtle-default);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.singleLine .input,
+.singleLine .highlighter {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.multiLine .input {
+  min-height: 5rem;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  resize: vertical;
+}
+
+.multiLine .highlighter {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.multiLine .input,
+.multiLine .highlighter {
+  line-height: 170%;
+}

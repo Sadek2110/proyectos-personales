@@ -1,0 +1,69 @@
+:root {
+  --wb-sdk-syntax-highlighter-color: var(--wb-ds-colors-gray-600);
+  --wb-sdk-syntax-highlighter-color-variable-key: var(--wb-ds-colors-acc5-700);
+  --wb-sdk-syntax-highlighter-color-variable-value: var(--wb-ds-colors-blue-500);
+  --wb-sdk-syntax-highlighter-background-color-highlight: var(--wb-ds-colors-green-400-30);
+  --wb-sdk-syntax-highlighter-color-cursor: var(--wb-ds-colors-blue-500);
+}
+
+html[data-theme='light'] {
+  --wb-sdk-syntax-highlighter-color: var(--wb-ds-colors-gray-600);
+  --wb-sdk-syntax-highlighter-color-variable-key: var(--wb-ds-colors-acc5-700);
+  --wb-sdk-syntax-highlighter-color-variable-value: var(--wb-ds-colors-acc1-600);
+  --wb-sdk-syntax-highlighter-background-color-highlight: var(--wb-ds-colors-green-400-30);
+  --wb-sdk-syntax-highlighter-color-cursor: var(--wb-ds-ui-text-subtle-default);
+}
+
+html[data-theme='dark'] {
+  --wb-sdk-syntax-highlighter-color: var(--wb-ds-colors-gray-200);
+  --wb-sdk-syntax-highlighter-color-variable-key: var(--wb-ds-colors-orange-300);
+  --wb-sdk-syntax-highlighter-color-variable-value: var(
+    --wb-ds-colors-acc1-300
+  ); /* missing token: syntax highlighter literal color */
+  --wb-sdk-syntax-highlighter-background-color-highlight: var(--wb-ds-colors-green-400-30);
+  --wb-sdk-syntax-highlighter-color-cursor: var(--wb-ds-colors-blue-500);
+}
+
+/* It shows a tooltip indicating that editing is blocked when disabled */
+:global(.ace_tooltip) {
+  display: none !important;
+}
+
+.container {
+  composes: wb-text-code from global;
+  padding: var(--wb-public-input-padding-m);
+  padding-right: 0;
+  border-radius: var(--wb-public-input-border-radius-m);
+  border: var(--wb-public-input-root-border-size) solid var(--wb-public-input-root-border-color);
+  /* border-bottom: 1px solid var(--wb-public-textarea-root-border-color); */
+  /* transition: all var(--wb-public-transition); */
+
+  :global(.ace_editor) {
+    padding: var(--wb-public-input-padding-m);
+    color: var(--wb-sdk-syntax-highlighter-color) !important;
+    background-color: transparent;
+  }
+
+  :global(.ace_variable) {
+    color: var(--wb-sdk-syntax-highlighter-color-variable-key) !important;
+  }
+
+  :global(.ace_string),
+  :global(.ace_constant),
+  :global(.ace_numeric) {
+    color: var(--wb-sdk-syntax-highlighter-color-variable-value) !important;
+  }
+
+  :global(.ace_cursor) {
+    color: var(--wb-sdk-syntax-highlighter-color-cursor) !important;
+  }
+
+  :global(.ace_marker-layer .ace_bracket) {
+    background-color: var(--wb-sdk-syntax-highlighter-background-color-highlight) !important;
+  }
+
+  /* Dotted line ruler */
+  :global(.ace_indent-guide) {
+    background: none !important;
+  }
+}

@@ -1,0 +1,189 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/layout/Navbar.astro';
+import Footer from '../components/layout/Footer.astro';
+import Grain from '../components/ui/Grain.astro';
+import { site } from '../data/site';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const baseUrl = Astro.site ?? new URL('https://formula.dksaa.com');
+const canonical = new URL(Astro.url.pathname, baseUrl);
+const ogImage = new URL('/og-formula.jpg', baseUrl);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: site.name,
+  url: baseUrl.href,
+};
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0A0B0A" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <script is:inline>document.documentElement.classList.add('js');</script>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">{site.skipLink}</a>
+    <Navbar />
+    <main id="contenido">
+      <slot />
+    </main>
+    <Footer />
+    <Grain />
+  </body>
+</html>
+
+<script>
+  /**
+   * Interacciones transversales: revelado al hacer scroll, luz seguidora en
+   * tarjetas, botones magnéticos y paralaje de los orbes del hero.
+   * Todo con JS nativo y desactivable por `prefers-reduced-motion`.
+   */
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+
+  /* --- Revelado al entrar en pantalla (12–20 px, brief §10) --- */
+
+  const revealables = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]'));
+
+  if (revealables.length > 0) {
+    if (reducedMotion.matches || !('IntersectionObserver' in window)) {
+      revealables.forEach((el) => el.classList.add('is-revealed'));
+    } else {
+      const observer = new IntersectionObserver(
+        (entries, obs) => {
+          for (const entry of entries) {
+            if (!entry.isIntersecting) continue;
+            entry.target.classList.add('is-revealed');
+            obs.unobserve(entry.target);
+          }
+        },
+        { rootMargin: '0px 0px -12% 0px', threshold: 0.1 },
+      );
+
+      revealables.forEach((el) => observer.observe(el));
+    }
+  }
+
+  /* --- Luz seguidora en tarjetas oscuras --- */
+
+  const spotlights = Array.from(document.querySelectorAll<HTMLElement>('[data-spotlight]'));
+
+  if (spotlights.length > 0 && finePointer.matches) {
+    let pending = false;
+    let target: HTMLElement | null = null;
+    let localX = 0;
+    let localY = 0;
+
+    const paint = () => {
+      pending = false;
+      if (!target) return;
+      target.style.setProperty('--mouse-x', `${localX}px`);
+      target.style.setProperty('--mouse-y', `${localY}px`);
+    };
+
+    for (const card of spotlights) {
+      card.addEventListener(
+        'pointermove',
+        (event) => {
+          const rect = card.getBoundingClientRect();
+          target = card;
+          localX = event.clientX - rect.left;
+          localY = event.clientY - rect.top;
+          if (pending) return;
+          pending = true;
+          requestAnimationFrame(paint);
+        },
+        { passive: true },
+      );
+    }
+  }
+
+  /* --- Botones magnéticos: 4 px como máximo, nunca “persiguen” al cursor --- */
+
+  const magnets = Array.from(document.querySelectorAll<HTMLElement>('[data-magnetic]'));
+
+  if (magnets.length > 0 && finePointer.matches && !reducedMotion.matches) {
+    const MAX_PULL = 4;
+    const clamp = (value: number) => Math.max(-MAX_PULL, Math.min(MAX_PULL, value));
+
+    for (const magnet of magnets) {
+      magnet.addEventListener(
+        'pointermove',
+        (event) => {
+          const rect = magnet.getBoundingClientRect();
+          const x = clamp((event.clientX - (rect.left + rect.width / 2)) * 0.25);
+          const y = clamp((event.clientY - (rect.top + rect.height / 2)) * 0.25);
+          magnet.style.setProperty('--mag-x', `${x}px`);
+          magnet.style.setProperty('--mag-y', `${y}px`);
+        },
+        { passive: true },
+      );
+
+      const release = () => {
+        magnet.style.removeProperty('--mag-x');
+        magnet.style.removeProperty('--mag-y');
+      };
+
+      magnet.addEventListener('pointerleave', release);
+      magnet.addEventListener('blur', release);
+    }
+  }
+
+  /* --- Paralaje muy corto de los orbes del hero --- */
+
+  const heroGlow = document.querySelector<HTMLElement>('[data-hero-glow]');
+
+  if (heroGlow && finePointer.matches && !reducedMotion.matches) {
+    const RANGE = 10;
+    let queued = false;
+    let offsetX = 0;
+    let offsetY = 0;
+
+    const apply = () => {
+      queued = false;
+      heroGlow.style.setProperty('--pointer-x', String(offsetX));
+      heroGlow.style.setProperty('--pointer-y', String(offsetY));
+    };
+
+    window.addEventListener(
+      'pointermove',
+      (event) => {
+        offsetX = ((event.clientX / window.innerWidth) * 2 - 1) * RANGE;
+        offsetY = ((event.clientY / window.innerHeight) * 2 - 1) * RANGE;
+        if (queued) return;
+        queued = true;
+        requestAnimationFrame(apply);
+      },
+      { passive: true },
+    );
+  }
+</script>

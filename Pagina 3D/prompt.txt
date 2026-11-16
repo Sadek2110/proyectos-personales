@@ -1,0 +1,558 @@
+# BRIEF — Landing Page 3D interactiva premium
+
+Quiero crear una página web de demostración cuyo objetivo principal sea mostrar una experiencia 3D moderna, premium y visualmente impactante.
+
+No quiero una web tradicional con simples tarjetas y animaciones fade-in. El 3D debe ser el protagonista de toda la experiencia y debe integrarse con el scroll y el contenido.
+
+## CONCEPTO
+
+Crear una landing page ficticia para un producto tecnológico premium llamado:
+
+**NOVA ONE**
+
+Producto:
+Un dispositivo futurista de inteligencia artificial personal.
+
+No es necesario que el producto exista realmente. Se debe diseñar un objeto 3D abstracto/futurista que represente el dispositivo.
+
+Aspecto del producto:
+
+* Forma redondeada y minimalista.
+* Mezcla de cristal oscuro, metal y superficies reflectantes.
+* Pequeño núcleo luminoso interior.
+* Diseño elegante, similar al lenguaje visual de productos tecnológicos premium.
+* Sin copiar ningún producto o marca existente.
+
+---
+
+# DIRECCIÓN VISUAL
+
+La estética debe transmitir:
+
+* Tecnología
+* Lujo
+* Futurismo
+* Minimalismo
+* Precisión
+
+Inspiración conceptual:
+
+Apple product pages + Nothing + Linear + interfaces futuristas premium.
+
+NO copiar sus diseños.
+
+## PALETA
+
+Fondo principal:
+
+#050505
+
+Superficies:
+
+#0B0B0D
+#111114
+
+Texto principal:
+
+#F5F5F5
+
+Texto secundario:
+
+#8A8A93
+
+Acento:
+
+#7C5CFF
+
+Acento secundario opcional:
+
+#5CE1E6
+
+El color debe utilizarse con moderación.
+
+Nada de gradientes arcoíris.
+
+---
+
+# TIPOGRAFÍA
+
+Utilizar una sans-serif moderna.
+
+Preferencias:
+
+Inter
+Geist
+Manrope
+
+Títulos grandes, limpios y con mucho espacio.
+
+---
+
+# EXPERIENCIA
+
+La página debe sentirse como una presentación interactiva de producto.
+
+El objeto 3D permanece como protagonista mientras el usuario hace scroll.
+
+Cada sección modifica:
+
+* posición
+* rotación
+* escala
+* iluminación
+* cámara
+
+del objeto 3D.
+
+Las animaciones deben estar sincronizadas con el scroll.
+
+NO utilizar scroll artificial.
+
+Debe utilizarse el scroll normal del navegador.
+
+---
+
+# SECCIÓN 1 — HERO
+
+Pantalla inicial muy limpia.
+
+Navbar superior:
+
+NOVA
+
+Product
+Technology
+Experience
+
+Botón:
+
+Explore Nova
+
+Centro:
+
+Título enorme:
+
+INTELLIGENCE
+IN YOUR SPACE.
+
+Subtítulo:
+
+A new way to interact with technology.
+
+El dispositivo NOVA ONE aparece flotando en el centro.
+
+Debe tener:
+
+* rotación muy lenta
+* iluminación cinematográfica
+* reflejos suaves
+* sensación de profundidad
+* ligera animación flotante
+
+Al mover el ratón:
+
+la cámara puede reaccionar ligeramente al movimiento.
+
+Nada exagerado.
+
+En la parte inferior:
+
+Scroll to discover ↓
+
+---
+
+# TRANSICIÓN AL HACER SCROLL
+
+Al empezar a bajar:
+
+el título del hero desaparece progresivamente.
+
+El objeto 3D:
+
+* aumenta ligeramente de tamaño
+* gira
+* se desplaza hacia la derecha
+
+La cámara se aproxima.
+
+La transición debe ser extremadamente fluida.
+
+---
+
+# SECCIÓN 2 — DESIGNED AROUND YOU
+
+Layout:
+
+Texto a la izquierda.
+
+Objeto 3D a la derecha.
+
+Título:
+
+Designed around you.
+
+Texto:
+
+NOVA understands your environment, adapts to your habits and stays quietly available when you need it.
+
+Pequeños indicadores:
+
+01 — Adaptive
+02 — Contextual
+03 — Personal
+
+Mientras se recorre esta sección:
+
+el objeto debe rotar mostrando otra parte del dispositivo.
+
+---
+
+# SECCIÓN 3 — EXPLODED VIEW
+
+Esta debe ser una de las partes más impresionantes.
+
+Título:
+
+Engineered from the inside out.
+
+Cuando el usuario llega:
+
+el dispositivo se separa progresivamente en diferentes capas.
+
+Por ejemplo:
+
+capa exterior
+
+estructura metálica
+
+procesador
+
+núcleo central
+
+base
+
+Debe parecer una vista explosionada de producto.
+
+Cada componente se separa lentamente según el progreso del scroll.
+
+Añadir pequeñas líneas técnicas o etiquetas.
+
+Ejemplos:
+
+Neural Core
+
+Spatial Sensors
+
+Adaptive Processor
+
+Acoustic Layer
+
+No convertirlo en una interfaz demasiado técnica.
+
+Debe seguir siendo elegante.
+
+---
+
+# SECCIÓN 4 — CORE
+
+La cámara debe viajar hacia el interior del dispositivo.
+
+El núcleo luminoso ocupa progresivamente gran parte de la pantalla.
+
+Fondo prácticamente negro.
+
+Texto:
+
+A new kind of intelligence.
+
+Subtexto:
+
+Always present.
+Never intrusive.
+
+El núcleo puede tener una animación muy lenta similar a respiración/pulsación.
+
+No utilizar efectos exagerados.
+
+---
+
+# SECCIÓN 5 — INTERACTION
+
+El objeto vuelve a reconstruirse.
+
+Título:
+
+Technology that disappears.
+
+Mostrar tres características:
+
+Spatial awareness
+
+Natural interaction
+
+Ambient intelligence
+
+Cada característica debe aparecer progresivamente mientras el objeto cambia ligeramente de orientación.
+
+---
+
+# SECCIÓN 6 — FINAL
+
+Plano general del dispositivo.
+
+Mucho espacio negativo.
+
+Título enorme:
+
+Meet NOVA ONE.
+
+Texto:
+
+Designed for what comes next.
+
+Botón:
+
+Experience Nova
+
+Debajo:
+
+NOVA © 2026
+
+---
+
+# 3D
+
+Utilizar preferentemente:
+
+Three.js
+
+o
+
+React Three Fiber si la arquitectura elegida utiliza React.
+
+El objeto puede crearse mediante geometría procedural si no existe un modelo GLB.
+
+Priorizar materiales PBR.
+
+Utilizar iluminación realista.
+
+Posible setup:
+
+Environment lighting
+
+Area lights
+
+Soft shadows
+
+Metalness
+
+Roughness
+
+Glass / transmission
+
+Evitar escenas excesivamente pesadas.
+
+---
+
+# ANIMACIÓN
+
+Utilizar:
+
+GSAP
+
+ScrollTrigger
+
+para sincronizar las animaciones con el scroll.
+
+Las animaciones deben depender del progreso real del scroll.
+
+Ejemplo conceptual:
+
+scroll 0–15%
+Hero
+
+15–30%
+Rotación + desplazamiento
+
+30–50%
+Exploded view
+
+50–65%
+Core
+
+65–85%
+Reconstruction
+
+85–100%
+Final product
+
+Las transiciones deben mezclarse entre ellas y no sentirse como secciones independientes.
+
+---
+
+# DETALLES DE INTERACCIÓN
+
+Añadir:
+
+parallax muy ligero
+
+microinteracciones en botones
+
+cursor response sobre el objeto 3D
+
+movimiento de cámara extremadamente sutil con el ratón
+
+efectos de profundidad
+
+entrada progresiva de textos
+
+No utilizar animaciones simplemente porque sí.
+
+Toda animación debe reforzar la sensación 3D.
+
+---
+
+# PERFORMANCE
+
+Esto es MUY importante.
+
+Objetivo:
+
+60 FPS en ordenadores modernos.
+
+Optimizar:
+
+geometría
+
+texturas
+
+luces
+
+sombras
+
+render loop
+
+pixel ratio
+
+lazy loading
+
+En móviles:
+
+reducir calidad gráfica automáticamente.
+
+Limitar devicePixelRatio.
+
+Reducir sombras y efectos.
+
+Desactivar interacciones dependientes del cursor.
+
+Mantener la experiencia visual.
+
+---
+
+# RESPONSIVE
+
+Debe funcionar correctamente en:
+
+Desktop
+Laptop
+Tablet
+Mobile
+
+En móvil:
+
+el objeto sigue siendo protagonista.
+
+Los textos se reorganizan verticalmente.
+
+No permitir overflow horizontal.
+
+---
+
+# ACCESIBILIDAD
+
+Respetar:
+
+prefers-reduced-motion
+
+Si está activo:
+
+reducir considerablemente las animaciones.
+
+Mantener navegación mediante teclado.
+
+Contraste correcto.
+
+---
+
+# ESTRUCTURA DEL PROYECTO
+
+Separar claramente:
+
+components
+
+3D scene
+
+animations
+
+sections
+
+styles
+
+assets
+
+No crear un único archivo enorme.
+
+Crear componentes reutilizables.
+
+---
+
+# OBJETIVO VISUAL
+
+La web tiene que provocar esta sensación:
+
+"¿Cómo está hecha esta página?"
+
+Debe parecer una web de agencia digital premium o una presentación de producto tecnológico de alto nivel.
+
+Evitar completamente el aspecto típico de:
+
+landing page generada por IA
+
+cards genéricas
+
+gradientes excesivos
+
+glassmorphism por todas partes
+
+iconos innecesarios
+
+20 bloques de contenido
+
+animaciones fade-in repetidas
+
+La protagonista es:
+
+LA EXPERIENCIA 3D + EL SCROLL.
+
+---
+
+# IMPORTANTE
+
+Antes de programar:
+
+1. Define la arquitectura.
+2. Define cómo será el objeto 3D.
+3. Define las posiciones de cámara.
+4. Define una timeline completa del scroll.
+5. Después implementa.
+
+El resultado final debe estar completamente funcional.
+
+No utilizar placeholders rotos.
+
+No dejar secciones a medias.
+
+No utilizar imágenes externas si no son necesarias.
+
+Si se necesita un modelo 3D, crear una alternativa procedural directamente con Three.js para que la demo funcione inmediatamente.

@@ -1,0 +1,27 @@
+{
+  "name": "aula-conserjeria-server",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch --env-file-if-exists=../.env src/index.js",
+    "start": "node src/index.js",
+    "test": "node --test --test-reporter=spec \"test/*.test.js\""
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cookie-parser": "^1.4.7",
+    "docx": "^9.5.1",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "marked": "^16.3.0",
+    "multer": "^2.0.2",
+    "nodemailer": "^7.0.6",
+    "pdfkit": "^0.17.2",
+    "pg": "^8.16.3",
+    "zod": "^4.1.11"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.8",
+    "@electric-sql/pglite-socket": "^0.2.11"
+  }
+}

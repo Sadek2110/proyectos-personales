@@ -1,0 +1,31 @@
+:root {
+  --wb-sdk-import-error-color: var(--wb-public-snackbar-title-color);
+  --wb-sdk-import-error-background-color: var(--wb-public-snackbar-error-background);
+  --wb-sdk-import-error-border: var(--wb-public-snackbar-border-size) solid var(--wb-public-snackbar-error-border);
+  --wb-sdk-import-error-border-radius: var(--wb-public-snackbar-border-radius);
+}
+
+.container {
+  display: flex;
+  flex-flow: column;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.tip {
+  color: var(--wb-ds-ui-text-subtle-default);
+}
+
+.error {
+  padding: var(--wb-public-snackbar-padding);
+  color: var(--wb-sdk-import-error-color);
+  background: var(--wb-sdk-import-error-background-color);
+  border: var(--wb-sdk-import-error-border);
+  border-radius: var(--wb-sdk-import-error-border-radius);
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}

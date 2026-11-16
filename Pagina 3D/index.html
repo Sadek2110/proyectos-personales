@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>NOVA ONE — Intelligence in your space.</title>
+    <meta
+      name="description"
+      content="NOVA ONE — a personal intelligence device designed to understand your space, adapt to your habits and stay quietly available."
+    />
+    <meta name="theme-color" content="#050505" />
+    <meta name="color-scheme" content="dark" />
+    <meta property="og:title" content="NOVA ONE — Intelligence in your space." />
+    <meta property="og:description" content="A new way to interact with technology." />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script type="module" src="/src/main.js"></script>
+    <noscript>
+      <style>
+        /* the scroll lock and the loader are owned by JS — without it, fall
+           back to a plain, readable, scrollable document */
+        .loader,
+        .stage,
+        .cue {
+          display: none;
+        }
+        body.is-loading {
+          overflow: auto;
+        }
+        .section {
+          height: auto;
+        }
+        .section__sticky {
+          position: static;
+          height: auto;
+          padding-block: 12vh;
+        }
+      </style>
+    </noscript>
+  </head>
+
+  <body class="is-loading">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- ============ 3D STAGE ============ -->
+    <div class="stage">
+      <canvas id="gl" class="stage__canvas"></canvas>
+      <div class="stage__scrim" id="scrim"></div>
+      <svg class="stage__leaders" id="leaders" aria-hidden="true" focusable="false"></svg>
+      <div class="stage__labels" id="labels" aria-hidden="true"></div>
+    </div>
+
+    <!-- ============ LOADER ============ -->
+    <div class="loader" id="loader" role="status" aria-live="polite">
+      <span class="loader__mark">NOVA</span>
+      <span class="loader__track"><i class="loader__fill" id="loaderFill"></i></span>
+      <span class="loader__pct" id="loaderPct">00</span>
+    </div>
+
+    <!-- ============ NAV ============ -->
+    <header class="nav" id="nav">
+      <a class="nav__mark" href="#hero"><span>NOVA</span></a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#designed">Product</a>
+        <a href="#exploded">Technology</a>
+        <a href="#interaction">Experience</a>
+      </nav>
+      <a class="btn btn--ghost nav__cta" href="#exploded">
+        <span class="btn__label">Explore Nova</span>
+      </a>
+    </header>
+
+    <main id="main">
+      <!-- ============ 01 — HERO ============ -->
+      <section class="section section--hero" id="hero" data-section="hero">
+        <div class="section__sticky">
+          <div class="wrap hero">
+            <h1 class="display hero__title" data-reveal>
+              <span class="line"><span>Intelligence</span></span>
+              <span class="line"><span>in your space.</span></span>
+            </h1>
+            <p class="lead hero__lead" data-reveal>
+              <span class="line"><span>A new way to interact with technology.</span></span>
+            </p>
+          </div>
+          <div class="cue" id="cue">
+            <span class="cue__label">Scroll to discover</span>
+            <span class="cue__line"><i></i></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 02 — DESIGNED AROUND YOU ============ -->
+      <section class="section section--designed" id="designed" data-section="designed">
+        <div class="section__sticky">
+          <div class="wrap grid grid--split">
+            <div class="col col--text">
+              <p class="eyebrow" data-reveal><i class="eyebrow__dot"></i>Product</p>
+              <h2 class="display display--md" data-reveal>
+                <span class="line"><span>Designed</span></span>
+                <span class="line"><span>around you.</span></span>
+              </h2>
+              <p class="body" data-reveal>
+                NOVA understands your environment, adapts to your habits and stays quietly
+                available when you need it.
+              </p>
+              <ul class="specs" data-reveal>
+                <li class="spec">
+                  <span class="spec__num">01</span><i class="spec__rule"></i><span class="spec__label">Adaptive</span>
+                </li>
+                <li class="spec">
+                  <span class="spec__num">02</span><i class="spec__rule"></i><span class="spec__label">Contextual</span>
+                </li>
+                <li class="spec">
+                  <span class="spec__num">03</span><i class="spec__rule"></i><span class="spec__label">Personal</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 03 — EXPLODED VIEW ============ -->
+      <section class="section section--exploded" id="exploded" data-section="exploded">
+        <div class="section__sticky">
+          <div class="wrap exploded">
+            <div class="col col--text">
+              <p class="eyebrow" data-reveal><i class="eyebrow__dot"></i>Technology</p>
+              <h2 class="display display--md" data-reveal>
+                <span class="line"><span>Engineered from</span></span>
+                <span class="line"><span>the inside out.</span></span>
+              </h2>
+              <p class="body body--sm" data-reveal>
+                Six layers, aligned to nine microns. Nothing inside is decorative.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 04 — CORE ============ -->
+      <section class="section section--core" id="core" data-section="core">
+        <div class="section__sticky">
+          <div class="wrap core">
+            <h2 class="display display--md core__title" data-reveal>
+              <span class="line"><span>A new kind</span></span>
+              <span class="line"><span>of intelligence.</span></span>
+            </h2>
+            <p class="lead core__lead" data-reveal>
+              <span class="line"><span>Always present.</span></span>
+              <span class="line"><span>Never intrusive.</span></span>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 05 — INTERACTION ============ -->
+      <section class="section section--interaction" id="interaction" data-section="interaction">
+        <div class="section__sticky">
+          <div class="wrap grid grid--split grid--reverse">
+            <div class="col col--text">
+              <p class="eyebrow" data-reveal><i class="eyebrow__dot"></i>Experience</p>
+              <h2 class="display display--md" data-reveal>
+                <span class="line"><span>Technology</span></span>
+                <span class="line"><span>that disappears.</span></span>
+              </h2>
+              <ol class="features">
+                <li class="feature" data-feature>
+                  <span class="feature__num">01</span>
+                  <h3 class="feature__title">Spatial awareness</h3>
+                  <p class="feature__body">
+                    Nine sensors map the volume of the room and keep NOVA oriented towards you.
+                  </p>
+                </li>
+                <li class="feature" data-feature>
+                  <span class="feature__num">02</span>
+                  <h3 class="feature__title">Natural interaction</h3>
+                  <p class="feature__body">
+                    Speak, gesture, or say nothing at all. There is no interface to learn.
+                  </p>
+                </li>
+                <li class="feature" data-feature>
+                  <span class="feature__num">03</span>
+                  <h3 class="feature__title">Ambient intelligence</h3>
+                  <p class="feature__body">
+                    It runs on device, listens for intent and stays out of the way.
+                  </p>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 06 — FINAL ============ -->
+      <section class="section section--final" id="final" data-section="final">
+        <div class="section__sticky">
+          <div class="wrap final">
+            <h2 class="display final__title" data-reveal>
+              <span class="line"><span>Meet NOVA ONE.</span></span>
+            </h2>
+            <p class="lead final__lead" data-reveal>
+              <span class="line"><span>Designed for what comes next.</span></span>
+            </p>
+            <div class="final__actions" data-reveal>
+              <button class="btn btn--solid" id="experienceBtn" type="button">
+                <span class="btn__label">Experience Nova</span>
+              </button>
+            </div>
+          </div>
+          <footer class="footer">
+            <span>NOVA © 2026</span>
+            <span class="footer__note">Fictional product · Procedural Three.js scene</span>
+          </footer>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

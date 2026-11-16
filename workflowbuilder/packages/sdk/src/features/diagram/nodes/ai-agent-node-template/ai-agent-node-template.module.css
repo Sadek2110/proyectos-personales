@@ -1,0 +1,28 @@
+.root {
+  --wb-public-node-gap: 0;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  .collapsible-content {
+    padding-bottom: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .selected-model-icon {
+    background-color: var(--wb-ds-ui-text-default);
+    color: var(--wb-ds-ui-text-inverse-default);
+    outline: none;
+  }
+
+  .selected-memory-icon {
+    color: var(--wb-ds-ui-text-onaccent-default);
+    background-color: var(--wb-ds-components-button-solid-gray-default);
+    outline: none;
+  }
+}

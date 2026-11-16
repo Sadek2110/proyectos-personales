@@ -1,0 +1,113 @@
+import { Collapsible, NodeDescription, NodeIcon, NodePanel, Status } from '@workflowbuilder/ui';
+import { Handle } from '@xyflow/react';
+import clsx from 'clsx';
+import { memo, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
+
+import { Icon } from '@workflow-builder/icons';
+
+import styles from './ai-agent-node-template.module.css';
+
+import type { IconType, LayoutDirection, NodeIconAccent } from '../../../../node/common';
+import type { ItemOption } from '../../../../node/node-schema';
+import type { AiAgentTool } from '../../../json-form/types/controls';
+import { getHandleId } from '../../handles/get-handle-id';
+import { getHandlePosition } from '../../handles/get-handle-position';
+import { getHandlesAlignment } from '../../handles/get-handles-alignment';
+import { ConnectableItem } from '../components/connectable-item/connectable-item';
+import { SettingInfo } from './components/setting-info/setting-info';
+import { ToolInfo } from './components/tool-info/tool-info';
+
+type Props = {
+  id: string;
+  icon: IconType;
+  accent?: NodeIconAccent;
+  label: string;
+  description: string;
+  selected?: boolean;
+  /** Render the Node Disabled variant (palette entries that cannot be added). */
+  disabled?: boolean;
+  isConnecting?: boolean;
+  showHandles?: boolean;
+  chatModel?: ItemOption | undefined;
+  memoryModel?: ItemOption | undefined;
+  selectedTools?: AiAgentTool[] | undefined;
+  isValid?: boolean;
+  layoutDirection?: LayoutDirection;
+  onAddTool?: () => void;
+};
+
+export const AiAgentNodeTemplate = memo(
+  ({
+    icon,
+    // The agent had its gradient before accents existed; a definition without one keeps it.
+    accent = 'violet-gradient',
+    label,
+    description,
+    selected = false,
+    disabled = false,
+    showHandles = true,
+    chatModel,
+    memoryModel,
+    selectedTools,
+    isValid,
+    layoutDirection = 'RIGHT',
+    onAddTool,
+  }: Props) => {
+    const { t } = useTranslation();
+    const isCanvasNode = showHandles;
+    const handleTargetId = getHandleId({ handleType: 'target' });
+    const handleSourceId = getHandleId({ handleType: 'source' });
+
+    const handleTargetPosition = getHandlePosition({ direction: layoutDirection, handleType: 'target' });
+    const handleSourcePosition = getHandlePosition({ direction: layoutDirection, handleType: 'source' });
+
+    const iconElement = useMemo(() => <Icon name={icon} size="inherit" />, [icon]);
+
+    const handlesAlignment = getHandlesAlignment({ layoutDirection });
+
+    return (
+      <Collapsible expandLabel={t('common.expand')} collapseLabel={t('common.collapse')}>
+        <NodePanel.Root selected={selected} disabled={disabled}>
+          <NodePanel.Header className={styles['header']}>
+            <NodeIcon icon={iconElement} accent={accent} disabled={disabled} />
+            <NodeDescription label={label} description={description} disabled={disabled} />
+            {isCanvasNode && <Collapsible.Button />}
+          </NodePanel.Header>
+          <NodePanel.Content className={styles['content']} isVisible={isCanvasNode}>
+            <Status status={isValid === false ? 'invalid' : undefined} />
+            <Collapsible.Content>
+              <div className={styles['collapsible-content']}>
+                <SettingInfo
+                  label="Chat Model"
+                  actionLabel={chatModel ? chatModel.label : 'Add Chat'}
+                  icon={chatModel?.icon}
+                  className={clsx({ [styles['selected-model-icon']]: chatModel })}
+                />
+                <SettingInfo
+                  label="Memory"
+                  actionLabel={memoryModel ? memoryModel.label : 'Add Memory'}
+                  icon={memoryModel?.icon}
+                  className={clsx({ [styles['selected-memory-icon']]: memoryModel })}
+                />
+              </div>
+            </Collapsible.Content>
+            <ToolInfo onAddTool={onAddTool}>
+              {selectedTools?.map((tool, index) => {
+                const handleId = tool.sourceHandle;
+
+                const label = tool.tool ?? `Tool #${index + 1}`;
+
+                return <ConnectableItem key={tool.id} label={label} handleId={handleId} canHaveBottomHandle={false} />;
+              })}
+            </ToolInfo>
+          </NodePanel.Content>
+          <NodePanel.Handles isVisible={isCanvasNode} alignment={handlesAlignment}>
+            <Handle id={handleTargetId} position={handleTargetPosition} type="target" />
+            <Handle id={handleSourceId} position={handleSourcePosition} type="source" />
+          </NodePanel.Handles>
+        </NodePanel.Root>
+      </Collapsible>
+    );
+  },
+);

@@ -1,0 +1,440 @@
+{
+  "unidades": [
+    ["U01", "Manejo del ordenador"],
+    ["U02", "Archivos y documentos"],
+    ["U03", "Internet y navegación"],
+    ["U04", "Correo electrónico"],
+    ["U05", "Word para conserjería"],
+    ["U06", "Excel para conserjería"],
+    ["U07", "Seguridad digital"]
+  ],
+  "temas": [
+    {
+      "id": "T01", "unidad": "U01", "titulo": "Escritorio y ventanas",
+      "objetivo": "Abrir programas y cambiar entre ventanas sin perder el trabajo.",
+      "teoria": "1nPJnAzU3uF6CCTuAQoScVnvBT4lfF0h3fA9RBjdEAzo", "practica": "1qsM7mJ19M1c90NEEqj3z3xFDwqx4fXDIVrUVifkaZh0",
+      "saber": [
+        "El escritorio es la pantalla de trabajo. El menú Inicio permite buscar aplicaciones y la barra de tareas muestra las que están abiertas. Una ventana es el espacio que ocupa un programa.",
+        "Minimizar oculta la ventana sin cerrar el programa. Maximizar la amplía. Cerrar termina esa ventana y puede pedir que guardes los cambios. Lee el mensaje antes de aceptar.",
+        "Para cambiar de aplicación puedes pulsar su icono en la barra de tareas o usar Alt + Tab. Para apagar el equipo utiliza Inicio y la opción Apagar después de guardar el trabajo."
+      ],
+      "pasos": [
+        "Abre Word desde Inicio y escribe Conserjería Edificio Mirador.",
+        "Abre el navegador y vuelve a Word utilizando la barra de tareas.",
+        "Minimiza Word, recupéralo y maximiza la ventana.",
+        "Guarda el documento como T01_Prueba.docx en Documentos.",
+        "Cierra Word y vuelve a abrir el archivo para comprobar que sigue escrito."
+      ],
+      "entrega": "T01_Prueba.docx",
+      "comprueba": ["Abre las dos aplicaciones", "Cambia de ventana sin cerrar el trabajo", "Guarda y recupera el documento"],
+      "mas": "Repite el cambio de ventana usando solo la barra de tareas.",
+      "pronto": "Repite el cambio con Alt + Tab y explica la diferencia entre minimizar y cerrar."
+    },
+    {
+      "id": "T02", "unidad": "U01", "titulo": "Ratón, teclado y edición",
+      "objetivo": "Escribir un aviso y corregirlo con selección y copiar y pegar.",
+      "teoria": "1WM7ZeXXmCH-Yy_iPfk_9G7uYQ4vc2piwwUBw_GkIYI4", "practica": "1N01QL8mDtPAhOTnNpyyV-UE6AVNpMkQ2hx5T97prJ80",
+      "saber": [
+        "Un clic selecciona y un doble clic suele abrir archivos. El clic derecho muestra opciones del elemento. La rueda desplaza la página. Arrastrar sirve para mover objetos o seleccionar texto.",
+        "Enter crea un párrafo. Retroceso borra a la izquierda y Supr a la derecha. Mayús permite una mayúscula puntual. Bloq Mayús mantiene las mayúsculas activadas.",
+        "Selecciona primero el texto sobre el que quieres actuar. Ctrl + C copia, Ctrl + V pega, Ctrl + X corta y Ctrl + Z deshace. El comando Seleccionar todo puede variar según la aplicación y su idioma. Usa el menú si el atajo no responde."
+      ],
+      "pasos": [
+        "Escribe en Word: La recepción abre de 08:00 a 14:00.",
+        "Añade una segunda línea: Atención a proveedores por la mañana.",
+        "Selecciona la segunda línea, cópiala y pégala debajo.",
+        "Borra la repetición y utiliza Deshacer para recuperarla.",
+        "Corrige el horario a 08:30 y guarda T02_Aviso.docx."
+      ],
+      "entrega": "T02_Aviso.docx",
+      "comprueba": ["Escribe el texto con signos y horas", "Selecciona antes de copiar", "Corrige y deshace una acción"],
+      "mas": "Practica clic y selección con una sola frase.",
+      "pronto": "Mueve el segundo párrafo utilizando cortar y pegar."
+    },
+    {
+      "id": "T03", "unidad": "U02", "titulo": "Carpetas y organización",
+      "objetivo": "Crear una estructura de trabajo y recuperar un archivo.",
+      "teoria": "1GjKjUGFP_wPAb9hnMOrkAJe7PBkz7RWAotVpTMoonyo", "practica": "1BO_3cAC2eFGfL89grZN4JRMz6xDlINUQ7lAwYMBf3EM",
+      "saber": [
+        "Un archivo contiene información, por ejemplo un aviso. Una carpeta agrupa archivos y otras carpetas. El Explorador de archivos permite ver su ubicación. Escritorio, Documentos y Descargas son ubicaciones distintas.",
+        "Copiar deja el original y crea otra copia. Mover cambia la ubicación del archivo. Renombrar cambia su nombre. Antes de borrar, comprueba qué elemento has seleccionado. La Papelera permite recuperar muchos archivos borrados del disco, pero no todos los borrados de USB o de la nube.",
+        "Utiliza nombres descriptivos sin barras ni caracteres especiales. Comprueba la ruta antes de guardar y abre después el archivo para verificar que está en su sitio."
+      ],
+      "pasos": [
+        "Crea en Documentos una carpeta Curso_Conserjeria.",
+        "Dentro crea Avisos, Incidencias, Proveedores y Registros.",
+        "Crea en Word un aviso corto y guárdalo en Avisos como T03_Aviso.docx.",
+        "Copia el aviso a Registros y renombra la copia T03_Copia.docx.",
+        "Elimina solo la copia, recupérala desde la Papelera y comprueba ambas ubicaciones."
+      ],
+      "entrega": "Carpetas creadas y T03_Aviso.docx",
+      "comprueba": ["Crea las cuatro subcarpetas", "Distingue copiar y mover", "Recupera la copia sin borrar el original"],
+      "mas": "Crea solo Avisos y guarda un documento en ella.",
+      "pronto": "Mueve la copia recuperada a Incidencias y explica dónde quedó el original."
+    },
+    {
+      "id": "T04", "unidad": "U02", "titulo": "Formatos: guardar y recuperar",
+      "objetivo": "Distinguir el documento editable del PDF y localizar ambos.",
+      "teoria": "1cj6mb1hR11cuSQ91QRBJOvAClSaMxwZ202hF9PW_ZaM", "practica": "1GtI31KIhGIlk2J7SokgkCNUYLtvyhJz7cCirlXEw668",
+      "saber": [
+        "La extensión ayuda a identificar el formato: DOCX es un documento de Word, XLSX un libro de Excel, PDF mantiene la presentación y JPG o PNG son imágenes. ZIP agrupa archivos comprimidos.",
+        "Guardar actualiza el archivo actual. Guardar como permite elegir otro nombre o ubicación. Exportar a PDF crea una versión para compartir o imprimir. Conserva también el editable para hacer cambios cómodamente. Un PDF puede editarse con algunas herramientas.",
+        "Cambiar la extensión al renombrar no convierte el formato. Si no encuentras un archivo, revisa Documentos y Descargas o busca parte del nombre en el Explorador."
+      ],
+      "pasos": [
+        "Abre el aviso anterior o crea uno con el texto Recepción abierta.",
+        "Guarda una copia editable como T04_Recepcion.docx en Avisos.",
+        "Exporta como T04_Recepcion.pdf en la misma carpeta.",
+        "Cierra las aplicaciones y abre los dos archivos desde el Explorador.",
+        "Indica qué archivo usarías para cambiar el horario y cuál para compartir."
+      ],
+      "entrega": "T04_Recepcion.docx y T04_Recepcion.pdf",
+      "comprueba": ["Conserva el editable", "Exporta un PDF real", "Localiza y abre ambos archivos"],
+      "mas": "Guarda y vuelve a abrir solo el DOCX.",
+      "pronto": "Crea una copia de seguridad en otra ubicación indicada por el profesor."
+    },
+    {
+      "id": "T05", "unidad": "U03", "titulo": "Navegador, pestañas y favoritos",
+      "objetivo": "Consultar dos páginas y guardar una como favorito.",
+      "teoria": "13-kn3Hom0nze5cBbGqI8X_XnIweqwKittYZa_zW9ZlI", "practica": "1hsALPftRPRd14BcgmRZSk_S1IziayGCgaNHwEYNDIfg",
+      "saber": [
+        "El navegador abre páginas web. La barra de direcciones admite una dirección o una búsqueda. Un buscador ayuda a encontrar páginas, pero no es lo mismo que el navegador.",
+        "Cada pestaña permite mantener una página abierta. Atrás vuelve a la página anterior de esa pestaña y Actualizar vuelve a cargarla. Cerrar una pestaña no cierra necesariamente las demás.",
+        "Un favorito guarda un acceso a una página. Revisa la dirección antes de guardarlo. Puedes aumentar el tamaño de la página con el zoom del menú y volver después al 100 %."
+      ],
+      "pasos": [
+        "Abre el navegador y busca el sitio oficial de la Ciudad Autónoma de Ceuta.",
+        "Abre una segunda pestaña y busca la web de la Cámara de Comercio de Ceuta.",
+        "Alterna entre ambas pestañas y comprueba sus títulos.",
+        "Guarda una de las páginas como favorito con un nombre reconocible.",
+        "Aumenta el zoom, vuelve al 100 % y abre el favorito."
+      ],
+      "entrega": "Demostración del favorito y las dos pestañas",
+      "comprueba": ["Abre dos pestañas", "Vuelve a la página correcta", "Guarda y recupera el favorito"],
+      "mas": "Practica con una sola página y el botón Atrás.",
+      "pronto": "Organiza los dos favoritos en una carpeta Conserjería."
+    },
+    {
+      "id": "T06", "unidad": "U03", "titulo": "Búsquedas fiables y formularios",
+      "objetivo": "Encontrar información oficial y completar un formulario de práctica.",
+      "teoria": "1lJ-yq9_TQTtnth6PLAvUYLDrgYwN8CMvFuxJQIqoveo", "practica": "1-skFPwipTqx4V7EZEo910kY6lWwVBp97Dq8UM0X2Hro",
+      "saber": [
+        "Una búsqueda concreta incluye la entidad, el lugar y el dato que necesitas. Algunos resultados son anuncios. Abre la página y comprueba quién publica la información, su fecha y si corresponde a la oficina buscada.",
+        "Para horarios o contactos, prioriza la web oficial y contrasta la información cuando existan dudas. Copia también la dirección de la página para poder volver a consultarla.",
+        "Los formularios utilizan campos de texto, listas y casillas. Un asterisco suele señalar campos obligatorios. Lee antes de enviar. En clase solo se utilizarán formularios de prueba con datos ficticios."
+      ],
+      "pasos": [
+        "Busca un horario de atención publicado en una web oficial de Ceuta.",
+        "Anota entidad, oficina, horario y dirección de la página en Word.",
+        "Distingue un resultado patrocinado de uno no patrocinado, si aparecen.",
+        "En una tabla de Word simula un formulario con Nombre, Vivienda y Motivo.",
+        "Rellénalo con Persona de prueba, 2B y Consulta de horario. No envíes datos a un servicio real."
+      ],
+      "entrega": "T06_Consulta.docx",
+      "comprueba": ["Identifica la entidad y la oficina", "Registra la fuente consultada", "Completa los campos con datos ficticios"],
+      "mas": "Utiliza una búsqueda propuesta por el profesor.",
+      "pronto": "Compara dos fuentes y explica cuál usarías y por qué."
+    },
+    {
+      "id": "T07", "unidad": "U03", "titulo": "Descargas y documentos de internet",
+      "objetivo": "Descargar un PDF y organizarlo para encontrarlo después.",
+      "teoria": "1NMYN1lwjTXBOjcKUT_HNsxfYFS-6U4ep1MtXNsFJ8E0", "practica": "1pLdhdEQokZVDhPWVLDid9xS-LAL_cJRB3FwXeEzAgek",
+      "saber": [
+        "Descargar guarda una copia de un archivo en el equipo. El navegador puede preguntar dónde guardarlo o utilizar Descargas. Abrir un PDF en una pestaña no garantiza que lo hayas guardado.",
+        "Comprueba el origen antes de descargar. Si necesitas un documento, evita botones publicitarios que ofrecen instalar programas. Revisa el nombre y el tipo de archivo.",
+        "Tras descargar, localiza el archivo, renómbralo de forma descriptiva y muévelo a la carpeta adecuada. No ejecutes un programa desconocido para abrir un simple PDF."
+      ],
+      "pasos": [
+        "Localiza un PDF público en un sitio oficial con ayuda del profesor si hace falta.",
+        "Descárgalo y localízalo en el Explorador.",
+        "Renombra la copia T07_Documento_Oficial.pdf.",
+        "Muévelo a Curso_Conserjeria/Proveedores.",
+        "Cierra el navegador y abre el PDF desde su nueva ubicación. Anota la URL de origen."
+      ],
+      "entrega": "T07_Documento_Oficial.pdf y URL de origen",
+      "comprueba": ["Descarga desde una fuente identificada", "Localiza y mueve el archivo", "Lo abre sin depender de la pestaña"],
+      "mas": "Usa un PDF seleccionado por el profesor.",
+      "pronto": "Elimina una copia duplicada verificando antes cuál conservar."
+    },
+    {
+      "id": "T08", "unidad": "U04", "titulo": "Mensajes y destinatarios",
+      "objetivo": "Redactar un correo claro para comunicar una incidencia.",
+      "teoria": "1gn1-MOx7OrPyNbd3XD68hJSuxTg1esk3gIyKPCZbHdY", "practica": "11IaO_mXDCADm2HZj4qufYDjjXSqUeR3L3-e2z5I3FsU",
+      "saber": [
+        "Para identifica a quien debe recibir el mensaje. El asunto resume el motivo. El cuerpo explica lo ocurrido y qué necesitas. Responder mantiene la conversación con el remitente. Responder a todos incluye a los demás destinatarios y debe usarse solo si procede.",
+        "CC envía una copia visible. CCO oculta las direcciones a los demás destinatarios. Antes de enviar, revisa direcciones, asunto y texto.",
+        "Un mensaje de conserjería debe indicar lugar, problema y actuación solicitada, con un tono claro y respetuoso. En clase prepara borradores y envía únicamente al contacto de práctica que confirme el profesor."
+      ],
+      "pasos": [
+        "Abre un borrador o utiliza Word si no dispones de cuenta de práctica.",
+        "Escribe el asunto Incidencia en la iluminación del portal.",
+        "Redacta que una lámpara del portal no funciona y solicita revisión.",
+        "Añade saludo y firma Conserjería de prueba.",
+        "Revisa el texto y conserva el borrador. Explica cuándo usarías responder y responder a todos."
+      ],
+      "entrega": "Borrador o T08_Correo.docx",
+      "comprueba": ["Asunto descriptivo", "Comunica lugar y problema", "Revisa destinatario y texto"],
+      "mas": "Completa un mensaje de tres frases con una plantilla.",
+      "pronto": "Explica un caso adecuado para CCO sin utilizar direcciones reales."
+    },
+    {
+      "id": "T09", "unidad": "U04", "titulo": "Adjuntos y archivo del correo",
+      "objetivo": "Adjuntar el PDF correcto y guardar un archivo recibido.",
+      "teoria": "1A4l1W1PllCdQwtqOjV5FqlLEKpMxxLyIoxV92nfWOVU", "practica": "1cqcoNp3XGoltNeqciZtndaSTT6kUnGGr5P019OB_o7s",
+      "saber": [
+        "Adjuntar incorpora un archivo al mensaje. Descargar un adjunto guarda una copia en el equipo. Un enlace compartido puede exigir permisos de acceso y no funciona siempre como un adjunto.",
+        "Antes de enviar, abre el archivo y comprueba que es la versión correcta. Revisa nombre, formato y tamaño. Si el mensaje menciona un adjunto, confirma que aparece incorporado.",
+        "No abras adjuntos inesperados sin verificar el remitente por un medio conocido. En un equipo compartido, cierra la sesión al terminar y evita guardar contraseñas."
+      ],
+      "pasos": [
+        "Crea un aviso breve y expórtalo como T09_Aviso.pdf.",
+        "Prepara un borrador con asunto Aviso para el tablón.",
+        "Adjunta el PDF y comprueba nombre y formato.",
+        "Guarda el borrador. Envía solo si el profesor facilita y confirma un destinatario de práctica.",
+        "Practica guardar un adjunto de prueba facilitado por el profesor en Avisos."
+      ],
+      "entrega": "T09_Aviso.pdf y borrador con adjunto",
+      "comprueba": ["Adjunta el PDF correcto", "Distingue adjuntar y descargar", "Guarda el archivo recibido en su carpeta"],
+      "mas": "Adjunta un archivo ya preparado.",
+      "pronto": "Explica la diferencia entre enviar una copia y compartir un enlace."
+    },
+    {
+      "id": "T10", "unidad": "U05", "titulo": "Texto y formato básico",
+      "objetivo": "Crear un aviso legible con título y cuerpo diferenciados.",
+      "teoria": "1siZN0Mx_nst-CC9kY7EWf6EPUnHnT5hoXtJISWVfhac", "practica": "1MWS_HR9fgzUI1cTwz45VYz41bswZq7i68nh3Wg6XmNY",
+      "saber": [
+        "Para cambiar el formato de un texto, selecciónalo primero. La fuente determina el aspecto y el tamaño determina su legibilidad. La negrita destaca información. La alineación organiza los párrafos.",
+        "Utiliza una fuente sencilla y pocos tamaños. Un título grande y un cuerpo claro ayudan a leer un aviso. Evita escribir todo el mensaje en mayúsculas o subrayar cada frase.",
+        "Enter inicia otro párrafo. No utilices muchas pulsaciones de espacio para centrar: usa la alineación. Guarda el documento durante el trabajo y comprueba que puedes volver a abrirlo."
+      ],
+      "pasos": [
+        "Crea T10_Ascensor.docx.",
+        "Escribe ASCENSOR FUERA DE SERVICIO como título centrado y en negrita de 28 puntos.",
+        "Añade: El ascensor está temporalmente fuera de servicio por mantenimiento.",
+        "Añade: Utilice las escaleras con precaución. Disculpen las molestias.",
+        "Usa cuerpo de 16 puntos y una fuente sencilla. Guarda y revisa el aviso."
+      ],
+      "entrega": "T10_Ascensor.docx",
+      "comprueba": ["Título destacado", "Cuerpo legible", "Alineación aplicada sin espacios repetidos"],
+      "mas": "Da formato solo al título y al cuerpo.",
+      "pronto": "Destaca una frase relevante sin añadir nuevos colores."
+    },
+    {
+      "id": "T11", "unidad": "U05", "titulo": "Avisos completos y revisión",
+      "objetivo": "Redactar un aviso que indique lugar, horario y actuación.",
+      "teoria": "12NZXKfgo3AP5Kt-4bl75Cis3afQDfixARN2Scs2Kyhc", "practica": "1TFeF3x7Pg9dpiYR1Z0zgZhYE_FETJ1AHmEKFqQLFisA",
+      "saber": [
+        "Un aviso debe responder qué ocurre, dónde, cuándo y qué debe hacer la persona que lo lee. La información concreta evita preguntas y confusiones.",
+        "Organiza el documento con un título, una explicación breve y los datos importantes. Revisa la ortografía, pero no dependas solo del corrector: puede aceptar una palabra correcta que no encaja en la frase.",
+        "Comprueba que el horario de inicio y fin se entiende y que el lugar está identificado. Para ejercicios utiliza una comunidad ficticia y no incluyas teléfonos personales."
+      ],
+      "pasos": [
+        "Crea T11_Corte_Agua.docx para la comunidad ficticia Edificio Mirador.",
+        "Escribe AVISO DE CORTE DE AGUA como título.",
+        "Indica: El lunes de esta práctica se interrumpirá el suministro de 09:00 a 13:00 por mantenimiento.",
+        "Añade: Afecta a todo el edificio. Se recomienda preparar el agua necesaria antes del corte.",
+        "Revisa el texto y destaca el horario. Conserva una versión de una página."
+      ],
+      "entrega": "T11_Corte_Agua.docx",
+      "comprueba": ["Explica motivo y alcance", "Horario visible", "Texto revisado y en una página"],
+      "mas": "Completa un aviso con los cuatro datos principales.",
+      "pronto": "Reescribe el aviso en menos palabras sin perder datos."
+    },
+    {
+      "id": "T12", "unidad": "U05", "titulo": "Diseño de carteles e imágenes",
+      "objetivo": "Añadir una forma o imagen sin dificultar la lectura.",
+      "teoria": "1OGWsUJaiX5UUmechqDQYiuzEL6L8NZHWE89O7g7dWBU", "practica": "1ZdRAQJdaoe0FpI-NkClUoS-CVhK02zAWkm-8sQpxQ-E",
+      "saber": [
+        "El cartel debe permitir identificar el mensaje principal rápidamente. Mantén contraste entre texto y fondo y deja espacio alrededor. El color puede destacar, pero no debe ser la única forma de comunicar una advertencia.",
+        "Word permite insertar formas e imágenes. Una imagen en línea con el texto suele ser más fácil de colocar. Conserva sus proporciones al cambiar el tamaño para evitar deformarla.",
+        "Usa recursos propios, formas de Word o imágenes con permiso de uso. Evita colocar el texto sobre una imagen que dificulte la lectura. Comprueba que todo cabe en la página."
+      ],
+      "pasos": [
+        "Crea un cartel T12_Suelo_Mojado.docx.",
+        "Añade el título PRECAUCIÓN y el mensaje SUELO MOJADO.",
+        "Inserta un triángulo de advertencia mediante una forma y un signo de exclamación.",
+        "Añade Camine con cuidado. Mantén alto contraste y texto grande.",
+        "Revisa que la forma y el texto no se superponen y que el cartel ocupa una página."
+      ],
+      "entrega": "T12_Suelo_Mojado.docx",
+      "comprueba": ["Mensaje principal legible", "Forma sin superposición", "Advertencia comprensible sin depender del color"],
+      "mas": "Utiliza solo una forma y dos líneas de texto.",
+      "pronto": "Prepara una versión en blanco y negro igual de legible."
+    },
+    {
+      "id": "T13", "unidad": "U05", "titulo": "Tablas de contactos y horarios",
+      "objetivo": "Organizar información en una tabla de Word.",
+      "teoria": "1UOzaVGfRSyhCtGbf4bfZ2T7QADxg_iL1V6PnBGACC58", "practica": "1CJUnl4gyBU7-dALGFNcdE1IS3WlsqPYsCPC61KUrvEI",
+      "saber": [
+        "Una tabla distribuye datos en filas y columnas. La primera fila puede indicar qué contiene cada columna. Tabulador permite avanzar entre celdas, aunque en la última puede crear una fila nueva.",
+        "Ajusta el ancho de las columnas según la información. Los bordes suaves y un encabezado destacado facilitan la lectura. Evita usar espacios para simular columnas.",
+        "Las tablas de Word son útiles para horarios y listados breves. Para cálculos y registros que deban filtrarse se utilizará Excel. Comprueba que no se corta el texto de las celdas."
+      ],
+      "pasos": [
+        "Crea T13_Contactos.docx con una tabla de 4 filas y 3 columnas.",
+        "Escribe los encabezados Servicio, Contacto y Disponibilidad.",
+        "Añade Administración / Persona de prueba / Mañanas.",
+        "Añade Ascensores / Empresa de prueba / Según contrato y Limpieza / Equipo de prueba / De 08:00 a 12:00.",
+        "Destaca el encabezado, ajusta anchos y añade una fila para Mantenimiento."
+      ],
+      "entrega": "T13_Contactos.docx",
+      "comprueba": ["Tabla real con encabezados", "Datos en columnas correctas", "Añade una fila sin desorganizar la tabla"],
+      "mas": "Crea una tabla de dos columnas con tres contactos ficticios.",
+      "pronto": "Crea una segunda tabla con horarios de apertura por día."
+    },
+    {
+      "id": "T14", "unidad": "U05", "titulo": "Página, impresión y PDF",
+      "objetivo": "Preparar un cartel para imprimir y conservar su versión editable.",
+      "teoria": "134V5DWZrcYF04_Z4kmty4V7sB3iol_UV9SEXnquBcjM", "practica": "10Uac9srUQsXCzNH__m3WxLR9Gv9DMMkvF4l2CwOl1jA",
+      "saber": [
+        "Los márgenes delimitan la zona de contenido. La orientación vertical o apaisada debe adaptarse al documento. La vista previa permite revisar el resultado antes de gastar papel.",
+        "Comprueba tamaño de papel, número de páginas e impresora seleccionada. Imprimir varias copias o todas las páginas por error puede generar desperdicio. Una práctica puede verificarse en vista previa sin imprimir físicamente.",
+        "Exporta a PDF y abre el resultado para revisar su aspecto. Conserva el DOCX: el PDF sirve como versión de distribución y el editable permite actualizar el aviso."
+      ],
+      "pasos": [
+        "Abre el cartel de corte de agua de T11.",
+        "Configura papel A4 y orientación vertical con márgenes que permitan una sola página.",
+        "Revisa la vista previa y selecciona una copia sin iniciar la impresión.",
+        "Guarda T14_Cartel_Final.docx y exporta T14_Cartel_Final.pdf.",
+        "Abre el PDF y compara título, horario y número de páginas con el editable."
+      ],
+      "entrega": "T14_Cartel_Final.docx y T14_Cartel_Final.pdf",
+      "comprueba": ["A4 y una página", "Comprueba vista previa", "PDF coherente con el editable"],
+      "mas": "Exporta un documento ya preparado.",
+      "pronto": "Prepara otra versión apaisada sin recortar el contenido."
+    },
+    {
+      "id": "T15", "unidad": "U06", "titulo": "Libro, hojas y celdas",
+      "objetivo": "Introducir un registro sencillo y guardarlo como libro de Excel.",
+      "teoria": "1e4e9BpdA8enNwLfh4hRFEbK6YavWeBQnUtwDc_kVhow", "practica": "1qHR3x903vMQkKTsd5mEqXSPzVbCHVIgOvCm8BU9e_Ac",
+      "saber": [
+        "Un libro puede contener varias hojas. Las columnas se identifican con letras y las filas con números. La intersección es una celda: A1 es la columna A y la fila 1.",
+        "Cada celda debe contener un dato. Escribe encabezados en la primera fila y registros debajo. Enter confirma y suele bajar una celda. Puedes editar haciendo doble clic o usando la barra de fórmulas.",
+        "No mezcles varias personas o varios importes en una celda. Ajusta el ancho de las columnas para ver los datos completos. Guarda el libro como XLSX para conservar hojas y formato."
+      ],
+      "pasos": [
+        "Crea T15_Registro.xlsx y renombra la hoja Visitas.",
+        "Escribe Fecha, Hora, Visitante, Vivienda y Motivo en A1:E1.",
+        "Añade tres visitas ficticias con viviendas 1A, 2B y 3C.",
+        "Corrige el motivo de una visita y ajusta el ancho de columnas.",
+        "Indica qué contiene C2 y vuelve a abrir el libro guardado."
+      ],
+      "entrega": "T15_Registro.xlsx",
+      "comprueba": ["Encabezados en A1:E1", "Un dato por celda", "Guarda y recupera el libro"],
+      "mas": "Introduce tres nombres en una columna.",
+      "pronto": "Añade una hoja Paquetes con sus propios encabezados."
+    },
+    {
+      "id": "T16", "unidad": "U06", "titulo": "Tablas y registros completos",
+      "objetivo": "Crear una tabla con paquetes y añadir nuevos registros.",
+      "teoria": "159okoWUaWj0GZ8MgZy-_Sl5dp4eyoIqpNkbLDej1R-4", "practica": "1WdZp3pUwhe-88FRv7OhnuxzrwfXDwpoPiL35RJiefcM",
+      "saber": [
+        "Una tabla tiene encabezados y una fila por registro. Convierte el rango en tabla desde Insertar o Dar formato como tabla y confirma que incluye encabezados.",
+        "Define campos que puedas mantener de forma consistente. Para un estado utiliza siempre los mismos valores, como Pendiente y Recogido. No intercales filas vacías dentro del registro.",
+        "Al añadir datos, comprueba que se incorporan a la tabla. Usa solo nombres ficticios en clase. Evita incluir datos personales que no sean necesarios para la tarea."
+      ],
+      "pasos": [
+        "Crea T16_Paquetes.xlsx con Fecha, Empresa, Destinatario, Vivienda y Estado.",
+        "Añade cinco paquetes ficticios. Marca tres Pendiente y dos Recogido.",
+        "Convierte el rango en tabla con encabezados.",
+        "Añade un sexto paquete al final con estado Pendiente.",
+        "Comprueba que la tabla incluye el sexto registro y guarda."
+      ],
+      "entrega": "T16_Paquetes.xlsx",
+      "comprueba": ["Una fila por paquete", "Tabla con seis registros", "Estados escritos de forma consistente"],
+      "mas": "Crea el registro con tres paquetes.",
+      "pronto": "Añade una columna Hora de recogida y completa solo los recogidos."
+    },
+    {
+      "id": "T17", "unidad": "U06", "titulo": "Fechas, horas y presentación",
+      "objetivo": "Aplicar formatos que permitan leer correctamente un registro.",
+      "teoria": "1-eiV9_dVgFwe6jvQroa3Er5zy_STpoh9zlI61qyLc3w", "practica": "1Uu-REVWT1AG1VDPPoU_j60wZHaFcwfRUWJLJ4qNxNK0",
+      "saber": [
+        "El formato cambia cómo se muestra un valor. Una fecha válida puede mostrarse de varias formas. Comprueba que Excel reconoce la fecha y la hora y que no se han guardado como texto.",
+        "El símbolo #### puede indicar que la columna es demasiado estrecha. Amplíala antes de cambiar el dato. Los importes deben escribirse como números y después recibir el formato de moneda.",
+        "Destaca encabezados y ajusta columnas. Para imprimir, revisa que el ancho no produzca páginas con columnas sueltas. No combines celdas dentro de una tabla de registros."
+      ],
+      "pasos": [
+        "Crea T17_Turnos.xlsx con Persona, Día, Entrada y Salida.",
+        "Añade tres personas ficticias con fechas válidas y turnos 08:00 a 14:00.",
+        "Aplica formato de fecha al día y de hora a Entrada y Salida.",
+        "Ajusta los anchos y destaca el encabezado.",
+        "Revisa la vista previa sin imprimir y comprueba que todas las columnas quedan visibles."
+      ],
+      "entrega": "T17_Turnos.xlsx",
+      "comprueba": ["Fechas y horas reconocidas", "Columnas sin datos cortados", "Registro legible en vista previa"],
+      "mas": "Da formato a una sola fecha y una sola hora.",
+      "pronto": "Añade una columna Observaciones y aplica ajuste de texto."
+    },
+    {
+      "id": "T18", "unidad": "U06", "titulo": "Cálculos y funciones básicas",
+      "objetivo": "Calcular un total y comprobarlo con datos de material.",
+      "teoria": "1f1DirQjbItr8wWi3t3Sn1A4IeslAuunjN8Dn1qdqWuE", "practica": "1k40kX3U3H2jwyc29WaeArSL8jb3JK0f4rPGxpCe6QZU",
+      "saber": [
+        "Las fórmulas empiezan por =. Una referencia como B2 apunta al valor de una celda. =B2*C2 multiplica cantidad por precio y se actualiza si cambian esos valores.",
+        "SUMA añade números de un rango. PROMEDIO calcula su media. CONTAR cuenta celdas numéricas, no todos los nombres ni todos los registros. CONTARA cuenta celdas no vacías. MAX y MIN devuelven el mayor y el menor valor numérico.",
+        "En Excel en español los nombres de función y separadores dependen de la configuración. Usa Insertar función si no reconoce una fórmula. Comprueba el resultado con un cálculo sencillo antes de copiarla."
+      ],
+      "pasos": [
+        "Crea T18_Material.xlsx con Material, Cantidad, Precio unitario e Importe.",
+        "Añade Papel / 2 / 4; Bombillas / 3 / 5; Guantes / 1 / 6 en las filas 2 a 4.",
+        "Escribe =B2*C2 en D2 y copia la fórmula a D3:D4.",
+        "En D5 calcula =SUMA(D2:D4). El total inicial debe ser 29.",
+        "Cambia la cantidad de papel a 3 y comprueba que el total pasa a 33. Calcula el promedio de C2:C4."
+      ],
+      "entrega": "T18_Material.xlsx con total final 33",
+      "comprueba": ["Calcula importes con fórmulas", "Total final 33", "El total cambia al editar una cantidad"],
+      "mas": "Calcula solo dos importes y su suma.",
+      "pronto": "Prueba CONTAR y CONTARA sobre los nombres y explica la diferencia."
+    },
+    {
+      "id": "T19", "unidad": "U06", "titulo": "Ordenar, filtrar y localizar",
+      "objetivo": "Mostrar incidencias pendientes manteniendo unidos los datos.",
+      "teoria": "157veVHa-cCKtVuyKrYqFfi-2cn9rqlLd0qVqN_Jhe24", "practica": "1SMuxNT-TYEKlLzOu53TE5Yl9rExKY5yYnN0xtxGglZE",
+      "saber": [
+        "Ordenar cambia el orden de los registros. Filtrar oculta temporalmente los que no cumplen una condición. Los datos filtrados siguen en el archivo.",
+        "Ordena la tabla completa para que fecha, vivienda y problema permanezcan en la misma fila. Ordenar solo una columna puede mezclar datos de registros distintos.",
+        "Los filtros permiten mostrar estados o viviendas concretos. Quita el filtro para volver a ver todo. Antes de interpretar un recuento comprueba si hay filtros activos y qué filas se están mostrando."
+      ],
+      "pasos": [
+        "Crea T19_Incidencias.xlsx con ID, Fecha, Vivienda, Problema y Estado.",
+        "Añade INC01 a INC06 con fechas distintas, cuatro Pendiente y dos Resuelta.",
+        "Convierte el rango en tabla y ordénala por Fecha de más reciente a más antigua.",
+        "Filtra Estado para mostrar solo Pendiente y comprueba que aparecen cuatro.",
+        "Quita el filtro y comprueba que siguen las seis incidencias con sus datos originales."
+      ],
+      "entrega": "T19_Incidencias.xlsx con seis registros",
+      "comprueba": ["Ordena sin mezclar registros", "Muestra cuatro pendientes", "Recupera la vista completa"],
+      "mas": "Filtra tres incidencias por estado.",
+      "pronto": "Combina filtros por vivienda y estado y explica por qué cambia el resultado."
+    },
+    {
+      "id": "T20", "unidad": "U07", "titulo": "Fraudes, contraseñas y equipos compartidos",
+      "objetivo": "Reconocer señales de fraude y proteger una sesión de trabajo.",
+      "teoria": "12E8NGotGPhqrRhDspD3No4476lktZCo7m9bKwre5ZJA", "practica": "1qn50-sQNpHZRoyelOGkBoUylr6V2uUR4N5FhEoG-nWI",
+      "saber": [
+        "Los mensajes fraudulentos pueden pedir actuar con urgencia, introducir una contraseña o compartir un código. Comprueba la dirección del remitente y el destino del enlace. Si hay dudas, entra por la web habitual o contacta mediante un número ya conocido.",
+        "HTTPS cifra la conexión, pero no demuestra que la web sea legítima. Utiliza contraseñas largas y diferentes y activa la verificación en dos pasos cuando esté disponible. Nunca compartas códigos de acceso ni contraseñas.",
+        "En equipos compartidos, bloquea la pantalla al alejarte, cierra sesión al acabar y evita guardar credenciales. Usa datos ficticios para practicar. No abras enlaces sospechosos ni adjuntos reales durante el ejercicio."
+      ],
+      "pasos": [
+        "Analiza este mensaje ficticio: Tu cuenta se cerrará hoy. Entra en acceso-ejemplo.invalid y envía tu código SMS.",
+        "Anota tres señales de alarma y cómo verificarías el aviso sin seguir el enlace.",
+        "Analiza una petición ficticia de un proveedor que solicita la contraseña del correo.",
+        "Escribe qué harías antes de alejarte del ordenador y al terminar la jornada.",
+        "Redacta tres reglas para usar documentos de vecinos sin exponer datos innecesarios."
+      ],
+      "entrega": "T20_Seguridad.docx",
+      "comprueba": ["Detecta urgencia y solicitud de código", "Verifica por una vía conocida", "Describe bloqueo y cierre de sesión"],
+      "mas": "Identifica qué dato nunca compartirías en el primer mensaje.",
+      "pronto": "Explica por qué una web fraudulenta puede tener HTTPS."
+    }
+  ],
+  "sesiones": [
+    {
+      "id": "SES001", "fecha": "2026-10-08", "titulo": "Evaluación inicial y manejo del escritorio",
+      "unidad": "U01", "tema": "T01", "lugar": "Aula de la Cámara de Comercio de Ceuta",
+      "observaciones": "Horario por confirmar."
+    }
+  ]
+}

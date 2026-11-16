@@ -1,0 +1,43 @@
+/* ---------------------------------------------------------------
+   Design tokens — NOVA ONE
+   Colour is used sparingly: the palette is 95% neutral, the accent
+   only appears where the product's core light would logically bleed.
+   --------------------------------------------------------------- */
+
+:root {
+  /* surfaces */
+  --bg: #050505;
+  --surface-1: #0b0b0d;
+  --surface-2: #111114;
+
+  /* type */
+  --text: #f5f5f5;
+  --muted: #8a8a93;
+
+  /* accents */
+  --accent: #7c5cff;
+  --accent-2: #5ce1e6;
+
+  /* hairlines */
+  --line: rgba(245, 245, 245, 0.1);
+  --line-strong: rgba(245, 245, 245, 0.24);
+
+  /* typography */
+  --font: 'Inter Variable', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Helvetica, Arial, sans-serif;
+
+  /* motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-io: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* metrics */
+  --gutter: clamp(1.25rem, 4vw, 4.5rem);
+  --maxw: 1520px;
+  --nav-h: 76px;
+}
+
+@media (max-width: 720px) {
+  :root {
+    --nav-h: 62px;
+  }
+}

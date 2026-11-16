@@ -1,0 +1,14 @@
+@layer ui.base {
+  :root {
+    --wb-public-form-rich-text-color: var(--wb-ds-ui-text-subtle-default);
+  }
+}
+
+.container {
+  composes: wb-text-body-s from global;
+  color: var(--wb-public-form-rich-text-color);
+
+  a {
+    color: inherit;
+  }
+}

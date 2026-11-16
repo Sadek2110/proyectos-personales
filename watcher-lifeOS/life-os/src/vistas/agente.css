@@ -1,0 +1,56 @@
+/* La conversación se desplaza y la caja de texto se queda fija abajo. */
+.vista-agente { display: flex; flex-direction: column; overflow: hidden; padding-bottom: 12px; }
+.vista-agente > * { width: 100%; flex: none; }
+.vista-agente .chat-lista, .vista-agente .agente-ajustes { flex: 1; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+
+.chat-lista { display: flex; flex-direction: column; gap: 8px; padding-bottom: 8px; }
+.mensaje { max-width: 86%; padding: 9px 13px; border-radius: 14px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.de-usuario { align-self: flex-end; background: var(--linea); color: var(--sobre-linea); border-bottom-right-radius: 4px; }
+.de-agente { align-self: flex-start; background: var(--superficie); border-bottom-left-radius: 4px; }
+.de-sistema { align-self: center; padding: 2px 8px; font-size: 14px; color: var(--texto-suave); text-align: center; }
+.con-error { background: var(--peligro-suave); color: var(--peligro); }
+.pensando { color: var(--texto-suave); animation: latir 1s ease-in-out infinite alternate; }
+
+.confirmacion { align-self: stretch; padding: 12px 14px; border-radius: 12px; background: var(--peligro-suave); }
+.confirmacion p { font-weight: 500; overflow-wrap: anywhere; }
+.confirmacion div { display: flex; gap: 8px; margin-top: 10px; }
+.confirmacion .btn-peligro { background: var(--peligro); color: var(--superficie); }
+.confirmacion .btn-suave { background: var(--superficie); }
+
+.chat-caja { display: flex; align-items: flex-end; gap: 8px; padding-top: 8px; }
+.chat-caja textarea { flex: 1; min-width: 0; min-height: 46px; max-height: 140px; padding: 11px 16px; border: 1px solid var(--raya); border-radius: 23px;
+  background: var(--superficie); color: var(--texto); font: inherit; resize: none; field-sizing: content; outline: 0; }
+.chat-caja textarea:focus { border-color: var(--linea); box-shadow: 0 0 0 1px var(--linea); }
+.chat-enviar { flex: none; width: 46px; height: 46px; display: grid; place-items: center; border-radius: 50%; background: var(--linea); color: var(--sobre-linea); }
+.chat-enviar:disabled { opacity: .45; }
+.chat-microfono { flex: none; width: 46px; height: 46px; display: grid; place-items: center; border-radius: 50%; background: var(--superficie-2); color: var(--texto); }
+.chat-microfono.activo { background: var(--peligro); color: var(--superficie); }
+.chat-microfono:disabled { opacity: .45; }
+.chat-grabando { flex: 1; min-width: 0; min-height: 46px; display: flex; align-items: center; gap: 10px; padding: 0 16px; border-radius: 23px; background: var(--peligro-suave); }
+.chat-grabando i { flex: none; width: 10px; height: 10px; border-radius: 50%; background: var(--peligro); animation: latir .7s ease-in-out infinite alternate; }
+.chat-grabando span { flex: 1; font-weight: 500; }
+
+.enlace-suave { display: inline-flex; align-items: center; gap: 6px; min-height: 32px; font-size: 14px; font-weight: 500; color: var(--texto-suave); }
+.enlace-suave:hover { color: var(--texto); }
+.escuchar { align-self: flex-start; margin: -6px 0 0 4px; }
+.escuchar[aria-pressed="true"] { color: var(--linea); }
+.chat-limpiar { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 8px; min-height: 38px; margin-bottom: 6px; }
+.chat-limpiar span { font-size: 14px; color: var(--texto-suave); }
+
+.ajuste-bloque { padding-bottom: 22px; }
+.ajuste-bloque h2 { font: 600 24px/1.15 'Barlow Condensed', Barlow, sans-serif; margin-bottom: 6px; }
+.ajuste-bloque > p { color: var(--texto-suave); }
+.ajuste-botones { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.interruptor { padding: 10px 0; }
+.interruptor + .interruptor { border-top: 1px solid var(--raya); }
+.interruptor > label:first-child { display: flex; gap: 12px; align-items: flex-start; cursor: pointer; }
+.interruptor input[type=checkbox] { flex: none; width: 22px; height: 22px; margin: 1px 0 0; accent-color: var(--linea); }
+.interruptor b { display: block; font-weight: 500; }
+.interruptor small { display: block; font-size: 14px; color: var(--texto-suave); }
+.ajuste-valor { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 8px 0 0 34px; color: var(--texto-suave); }
+.ajuste-valor input, .ajuste-valor select { height: 40px; padding: 0 10px; border: 1px solid var(--raya); border-radius: 8px; background: var(--fondo); }
+.codigo { display: block; margin-top: 10px; padding: 10px 12px; border-radius: 8px; background: var(--superficie-2); font: 13px/1.4 ui-monospace, Consolas, monospace; overflow-wrap: anywhere; user-select: all; }
+
+@media (min-width: 900px) {
+  .vista-agente { padding-bottom: 24px; }
+}

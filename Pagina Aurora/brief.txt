@@ -1,0 +1,737 @@
+# PRUEBA DE PROGRAMACIÓN WEB — AURORA STUDIOS
+
+Quiero que construyas una página web completa para una empresa ficticia llamada **Aurora Studios**, un estudio digital especializado en diseño web, branding, experiencias interactivas y desarrollo de productos digitales.
+
+No quiero únicamente una landing visualmente bonita. Quiero evaluar tu capacidad para diseñar, estructurar y programar una web moderna y profesional desde cero.
+
+## OBJETIVO
+
+Crear una web premium que parezca realizada por una agencia digital de alto nivel.
+
+La sensación general debe ser:
+
+* Moderna.
+* Minimalista.
+* Tecnológica.
+* Elegante.
+* Muy visual.
+* Con animaciones cuidadas.
+* Sin parecer una plantilla genérica.
+
+Referencia conceptual:
+
+Una mezcla entre una agencia creativa, un estudio tecnológico y una empresa de diseño digital premium.
+
+---
+
+# TECNOLOGÍAS
+
+Utiliza:
+
+* Astro.
+* React únicamente donde sea necesario.
+* TypeScript.
+* Tailwind CSS.
+* Framer Motion o GSAP para animaciones.
+
+Puedes instalar librerías adicionales si aportan valor real.
+
+La aplicación debe poder ejecutarse con:
+
+```bash
+npm install
+npm run dev
+```
+
+Organiza correctamente el proyecto en componentes.
+
+---
+
+# IDENTIDAD VISUAL
+
+Nombre:
+
+**Aurora Studios**
+
+Eslogan:
+
+**Digital experiences built to be remembered.**
+
+Paleta aproximada:
+
+* Fondo principal: negro/gris casi negro.
+* Blanco roto para textos.
+* Morado eléctrico.
+* Azul profundo.
+* Pequeños detalles en rosa/magenta.
+
+Puedes modificar ligeramente estos colores si mejora el resultado.
+
+Tipografía:
+
+Utiliza una combinación moderna y elegante.
+
+Debe existir bastante contraste entre titulares y textos secundarios.
+
+---
+
+# HEADER
+
+Header flotante y transparente.
+
+Debe contener:
+
+Logo:
+
+**AURORA°**
+
+Navegación:
+
+* Work
+* Services
+* Studio
+* Insights
+
+Botón:
+
+**Start a project →**
+
+El header debe cambiar ligeramente cuando se hace scroll.
+
+En móvil debe existir menú hamburguesa animado.
+
+---
+
+# HERO
+
+Debe ocupar prácticamente toda la pantalla.
+
+Titular principal:
+
+**We build digital**
+**experiences that**
+**move people.**
+
+La palabra:
+
+**experiences**
+
+puede tener un tratamiento visual especial.
+
+Texto secundario:
+
+"We partner with ambitious brands to create digital products, identities and experiences that people actually remember."
+
+Botones:
+
+**Explore our work**
+
+**Meet the studio**
+
+Añadir algún elemento visual interactivo en el fondo.
+
+Puede ser:
+
+* partículas,
+* gradientes animados,
+* formas 3D,
+* líneas,
+* ruido,
+* efectos de luz,
+* shader,
+* canvas.
+
+No quiero simplemente una imagen de fondo.
+
+Debe reaccionar ligeramente al movimiento del ratón.
+
+---
+
+# MARQUEE
+
+Debajo del hero debe existir una banda horizontal animada con:
+
+STRATEGY — DESIGN — DEVELOPMENT — BRANDING — MOTION — DIGITAL PRODUCTS —
+
+Debe moverse de forma infinita.
+
+---
+
+# PROYECTOS DESTACADOS
+
+Título:
+
+**Selected work**
+
+Subtítulo:
+
+"A selection of projects where strategy, design and technology come together."
+
+Crear cuatro proyectos.
+
+## Proyecto 01
+
+Nombre:
+
+**NOVA**
+
+Categoría:
+
+Fintech / Product Design
+
+Descripción:
+
+"A new way to understand, manage and grow your money."
+
+Color principal:
+
+Azul eléctrico.
+
+---
+
+## Proyecto 02
+
+Nombre:
+
+**MONO**
+
+Categoría:
+
+Fashion / E-commerce
+
+Descripción:
+
+"Redefining digital fashion through a brutally simple shopping experience."
+
+Color:
+
+Blanco / negro.
+
+---
+
+## Proyecto 03
+
+Nombre:
+
+**ORBIT**
+
+Categoría:
+
+Technology / AI
+
+Descripción:
+
+"An intelligent workspace designed around the way modern teams think."
+
+Color:
+
+Morado.
+
+---
+
+## Proyecto 04
+
+Nombre:
+
+**SOL**
+
+Categoría:
+
+Hospitality / Brand Experience
+
+Descripción:
+
+"A digital identity inspired by Mediterranean light, architecture and culture."
+
+Color:
+
+Naranja / amarillo.
+
+---
+
+Cada proyecto debe aparecer en una tarjeta grande.
+
+Las tarjetas deben tener:
+
+* imagen o composición visual,
+* título,
+* categoría,
+* año,
+* descripción.
+
+Al hacer hover:
+
+* animación suave,
+* movimiento de imagen,
+* aparición de información,
+* algún efecto interesante.
+
+Alterna las composiciones para evitar que todas las tarjetas sean iguales.
+
+---
+
+# SECCIÓN DE SERVICIOS
+
+Título:
+
+**What we do**
+
+Texto:
+
+"We help brands transform ideas into meaningful digital experiences."
+
+Servicios:
+
+01
+
+**Digital Strategy**
+
+Research, positioning, product strategy and digital direction.
+
+02
+
+**Brand Identity**
+
+Visual systems, art direction and identities built for the digital age.
+
+03
+
+**Web Design**
+
+High-end websites focused on storytelling, interaction and conversion.
+
+04
+
+**Development**
+
+Fast, scalable and maintainable digital products built with modern technology.
+
+05
+
+**Motion & Interaction**
+
+Animation and interaction systems that bring digital experiences to life.
+
+Haz esta sección como un listado interactivo.
+
+Al pasar el ratón por cada servicio puede cambiar:
+
+* fondo,
+* imagen,
+* color,
+* animación.
+
+---
+
+# SECCIÓN MANIFIESTO
+
+Gran bloque visual.
+
+Texto:
+
+**The internet doesn't need more websites.**
+
+**It needs better experiences.**
+
+Debajo:
+
+"We believe digital products should feel intuitive, expressive and unmistakably human. Technology is only interesting when it creates emotion."
+
+Añadir animación relacionada con el scroll.
+
+---
+
+# ESTADÍSTICAS
+
+Crear una sección con:
+
+**47**
+Projects launched
+
+**12**
+Design awards
+
+**9**
+Countries
+
+**6**
+Years creating
+
+Los números pueden animarse al entrar en viewport.
+
+---
+
+# PROCESO
+
+Título:
+
+**How we work**
+
+Crear cuatro pasos:
+
+01 — Discover
+
+"We learn about your business, users, competitors and ambitions."
+
+02 — Define
+
+"We transform research into strategy, direction and a clear creative vision."
+
+03 — Create
+
+"Design, prototype and development happen together through rapid iteration."
+
+04 — Launch
+
+"We refine every detail, launch the product and continue improving it."
+
+Crear algún efecto visual relacionado con scroll o progreso.
+
+---
+
+# TESTIMONIOS
+
+Título:
+
+**People we've worked with**
+
+Crear tres testimonios.
+
+Testimonio 1:
+
+"Aurora didn't just redesign our website. They completely changed the way people experience our brand."
+
+Nombre:
+
+**Emma Laurent**
+
+Cargo:
+
+CMO — Nova
+
+---
+
+Testimonio 2:
+
+"They combined strategy, design and engineering in a way we rarely see from digital studios."
+
+Nombre:
+
+**Daniel Kim**
+
+Cargo:
+
+Founder — Orbit
+
+---
+
+Testimonio 3:
+
+"The attention to detail was almost obsessive. And that's exactly why the result feels so good."
+
+Nombre:
+
+**Sofia Martín**
+
+Cargo:
+
+Creative Director — Sol
+
+Crear un slider elegante o una composición horizontal.
+
+---
+
+# CLIENTES
+
+Mostrar nombres ficticios:
+
+NOVA
+
+ORBIT
+
+MONO
+
+SOL
+
+POLAR
+
+FRAME
+
+ARC
+
+NOTIONA
+
+No es necesario usar logos reales.
+
+Crear logos tipográficos ficticios.
+
+---
+
+# CTA FINAL
+
+Crear una sección visualmente impactante.
+
+Texto pequeño:
+
+Have something in mind?
+
+Titular:
+
+**Let's make something**
+**people remember.**
+
+Botón:
+
+**Start a project →**
+
+Añadir una animación llamativa pero elegante.
+
+---
+
+# FOOTER
+
+Logo grande:
+
+**AURORA°**
+
+Columnas:
+
+## Explore
+
+Work
+Services
+Studio
+Insights
+
+## Social
+
+Instagram
+LinkedIn
+Behance
+Dribbble
+
+## Contact
+
+[hello@aurora.studio](mailto:hello@aurora.studio)
+
+Madrid
+Spain
+
+Parte inferior:
+
+© 2026 Aurora Studios
+
+Privacy
+
+Cookies
+
+Instagram
+
+---
+
+# ANIMACIONES
+
+Quiero que las animaciones sean una parte importante de la experiencia.
+
+Implementa:
+
+* aparición de textos al hacer scroll,
+* parallax ligero,
+* animaciones de imágenes,
+* transiciones suaves,
+* elementos que reaccionen al cursor,
+* marquee infinito,
+* hover effects,
+* reveal de secciones,
+* números animados,
+* navegación fluida.
+
+Evita animaciones excesivas que dificulten utilizar la página.
+
+Prioriza 60 FPS siempre que sea posible.
+
+---
+
+# CURSOR
+
+En escritorio crea un cursor personalizado.
+
+Cursor normal:
+
+círculo pequeño.
+
+Al pasar por proyectos:
+
+debe crecer y mostrar:
+
+**VIEW**
+
+Al pasar por botones:
+
+debe reaccionar ligeramente.
+
+Debe desaparecer en dispositivos táctiles.
+
+---
+
+# RESPONSIVE
+
+La web debe funcionar perfectamente en:
+
+* escritorio 1920px,
+* portátil,
+* tablet,
+* móvil.
+
+No quiero simplemente reducir tamaños.
+
+Las composiciones deben adaptarse correctamente.
+
+---
+
+# DETALLES DE UX
+
+Implementa:
+
+* scroll suave,
+* estados hover claros,
+* navegación accesible,
+* focus states,
+* botones interactivos,
+* carga visual agradable,
+* responsive navigation.
+
+Respeta:
+
+```css
+prefers-reduced-motion
+```
+
+para usuarios que tengan las animaciones reducidas.
+
+---
+
+# SEO
+
+Añadir:
+
+Title:
+
+Aurora Studios — Independent Digital Studio
+
+Description:
+
+Aurora Studios is an independent digital studio creating brands, websites and digital products for ambitious companies.
+
+Añadir OpenGraph básico.
+
+---
+
+# CALIDAD DEL CÓDIGO
+
+Quiero:
+
+* componentes reutilizables,
+* separación clara de responsabilidades,
+* TypeScript correcto,
+* nombres descriptivos,
+* estructura profesional,
+* evitar duplicación,
+* CSS mantenible,
+* buenos patrones de React.
+
+No quiero un único archivo gigantesco.
+
+---
+
+# ESTRUCTURA ESPERADA
+
+Algo similar a:
+
+```text
+src/
+
+components/
+    Header
+    Hero
+    Marquee
+    Projects
+    ProjectCard
+    Services
+    Manifesto
+    Stats
+    Process
+    Testimonials
+    Clients
+    CTA
+    Footer
+    Cursor
+
+layouts/
+
+pages/
+
+styles/
+
+data/
+
+utils/
+```
+
+Puedes mejorar esta estructura si lo consideras conveniente.
+
+---
+
+# IMPORTANTE
+
+No quiero que te limites a seguir literalmente las instrucciones.
+
+Toma decisiones propias de:
+
+* dirección de arte,
+* composición,
+* jerarquía visual,
+* animaciones,
+* espaciados,
+* tipografía,
+* interacciones.
+
+Si detectas una oportunidad para mejorar la experiencia, hazlo.
+
+No utilices un diseño típico de SaaS lleno de tarjetas redondeadas.
+
+Evita que todo tenga:
+
+```css
+border-radius: 20px;
+```
+
+Busca una estética de estudio creativo real.
+
+---
+
+# ENTREGA
+
+Quiero que generes el proyecto completo.
+
+No me expliques únicamente cómo hacerlo.
+
+Crea:
+
+1. La estructura del proyecto.
+2. Todos los componentes.
+3. Los estilos.
+4. Las animaciones.
+5. El contenido.
+6. La configuración necesaria.
+7. README con instrucciones.
+
+Antes de terminar:
+
+* comprueba errores TypeScript,
+* ejecuta build,
+* corrige errores,
+* revisa responsive,
+* elimina código sin utilizar.
+
+El proyecto final debe poder ejecutarse directamente.

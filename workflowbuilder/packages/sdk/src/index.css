@@ -1,0 +1,75 @@
+/* The @layer declaration and every @import must precede any rule.
+
+   `ui` is the only top-level layer on purpose: layer order is fixed by first
+   mention anywhere in the document and UI chunk CSS can parse before this
+   file, so a second top-level layer would let load order invert the cascade.
+   See packages/ui/css-layers.md. */
+@layer ui.base, ui.component;
+
+@import '@workflowbuilder/ui/tokens.css';
+
+/* @workflowbuilder/ui styles arrive through the JS module graph - importing
+   its index.css here would bundle every rule twice. */
+@import '@xyflow/react/dist/style.css' layer(ui.base);
+
+/* Layered, so an unlayered consumer override wins whatever the load order. */
+@layer ui.base {
+  :root {
+    --wb-public-transition: 0.1s ease-in;
+    --wb-public-background-color: var(--wb-ds-ui-bg-canvas);
+    --wb-public-scroll-width: 0.375rem;
+    --wb-public-scroll-radius: var(--wb-ds-radius-125);
+    --wb-public-scroll-thumb-color: var(--wb-ds-components-scrollbar-bg-default);
+    --wb-public-scroll-track-color: var(--wb-ds-colors-transparent);
+  }
+}
+
+@layer ui.base {
+  ::-webkit-scrollbar {
+    width: var(--wb-public-scroll-width);
+  }
+  ::-webkit-scrollbar-track {
+    border-radius: var(--wb-public-scroll-radius);
+    background: var(--wb-public-scroll-track-color);
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: var(--wb-public-scroll-radius);
+    background: var(--wb-public-scroll-thumb-color);
+  }
+  input[type='number'],
+  input[type='time'] {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+  }
+  input[type='time']::-webkit-calendar-picker-indicator {
+    display: none;
+  }
+  body {
+    margin: 0;
+    background-color: var(--wb-public-background-color);
+    overflow: hidden;
+  }
+  button {
+    cursor: pointer;
+  }
+  .react-flow.is-segment-dragged * {
+    cursor: copy;
+  }
+  .workflow-builder-root {
+    font-family: var(--wb-public-font-family, 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif);
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+  }
+  .workflow-builder-root-shell {
+    display: contents;
+  }
+}

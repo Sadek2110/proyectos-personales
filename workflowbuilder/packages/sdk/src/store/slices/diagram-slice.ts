@@ -1,0 +1,127 @@
+import { type Connection, type Node, type OnConnect, addEdge } from '@xyflow/react';
+
+import { trackFutureChange } from '../../features/changes-tracker/stores/use-changes-tracker-store';
+import { getEdgeZIndex } from '../../features/diagram/edges/get-edge-z-index';
+import {
+  migrateLegacyHandleIdsOnEdges,
+  migrateLegacyHandleIdsOnNodes,
+} from '../../features/diagram/handles/migrate-legacy-handle-id';
+import type { VariablesIndex } from '../../features/variables/types';
+import {
+  type ConnectionBeingDragged,
+  type DiagramModel,
+  type LayoutDirection,
+  type WorkflowBuilderReactFlowInstance,
+} from '../../node/common';
+import type { WorkflowBuilderEdge, WorkflowBuilderNode } from '../../node/node-data';
+import { getNodeWithErrors } from '../../utils/validation/get-node-errors';
+import type { GetDiagramState, SetDiagramState } from '../store';
+
+export type DiagramState = {
+  nodes: WorkflowBuilderNode[];
+  edges: WorkflowBuilderEdge[];
+  reactFlowInstance: WorkflowBuilderReactFlowInstance | null;
+  workflowName: string | null;
+  globalVariables: VariablesIndex;
+  isReadOnly: boolean;
+  layoutDirection: LayoutDirection;
+  onConnect: OnConnect;
+  onInit: (instance: WorkflowBuilderReactFlowInstance) => void;
+  setWorkflowName: (name: string) => void;
+  setDiagramModel: (model?: DiagramModel, options?: { skipIfNotEmpty?: boolean }) => void;
+  setReadOnly: (value: boolean) => void;
+  setLayoutDirection: (value: LayoutDirection) => void;
+  setConnectionBeingDragged: (nodeId: string | null, handleId: string | null) => void;
+  connectionBeingDragged: ConnectionBeingDragged | null;
+  draggedSegmentDestinationId: string | null;
+  setDraggedSegmentDestinationId: (id: string | null) => void;
+  getNodes: () => Node[];
+};
+
+export function useDiagramSlice(set: SetDiagramState, get: GetDiagramState) {
+  return {
+    nodes: [],
+    edges: [],
+    reactFlowInstance: null,
+    workflowName: null,
+    globalVariables: {},
+    isReadOnly: false,
+    layoutDirection: 'RIGHT' as LayoutDirection,
+    connectionBeingDragged: null,
+    draggedSegmentDestinationId: null,
+    onConnect: (connection: Connection) => {
+      set({
+        edges: addEdge(
+          {
+            ...connection,
+            zIndex: getEdgeZIndex(connection),
+            type: 'labelEdge',
+          },
+          get().edges,
+        ),
+      });
+    },
+    onInit: (instance: WorkflowBuilderReactFlowInstance) => {
+      set({
+        reactFlowInstance: instance,
+      });
+    },
+    setDiagramModel: (model?: DiagramModel, options?: { skipIfNotEmpty?: boolean }) => {
+      if (options?.skipIfNotEmpty) {
+        const { workflowName, nodes } = get();
+        const isEmpty = !workflowName && nodes.length === 0;
+
+        if (!isEmpty) {
+          return;
+        }
+      }
+
+      const nodes = migrateLegacyHandleIdsOnNodes(model?.diagram.nodes.map(getNodeWithErrors) || []);
+      const edges = migrateLegacyHandleIdsOnEdges(model?.diagram.edges || []);
+      const workflowName = model?.name || 'Untitled';
+      const layoutDirection = model?.layoutDirection || 'RIGHT';
+
+      trackFutureChange('setDiagramModel');
+
+      set({
+        nodes,
+        edges,
+        layoutDirection,
+        workflowName,
+      });
+    },
+    setWorkflowName: (name: string) => {
+      set({
+        workflowName: name,
+      });
+    },
+    setReadOnly: (value: boolean) => {
+      set({
+        isReadOnly: value,
+      });
+    },
+    setLayoutDirection: (value: LayoutDirection) => {
+      set({
+        layoutDirection: value,
+      });
+    },
+    setConnectionBeingDragged: (nodeId: string | null, handleId: string | null) => {
+      if (handleId && nodeId) {
+        set({
+          connectionBeingDragged: {
+            handleId,
+            nodeId,
+          },
+        });
+      } else {
+        set({
+          connectionBeingDragged: null,
+        });
+      }
+    },
+    setDraggedSegmentDestinationId: (id: string | null) => {
+      set({ draggedSegmentDestinationId: id });
+    },
+    getNodes: () => get().nodes,
+  };
+}

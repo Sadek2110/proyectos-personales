@@ -1,0 +1,23 @@
+import type { NodePanel } from '@workflowbuilder/ui';
+import type { ComponentProps } from 'react';
+
+import type { LayoutDirection } from '../../../node/common';
+
+// Source-of-truth: `@workflowbuilder/ui`'s `<NodePanel.Handles>` prop, so adding
+// a new alignment in the UI library surfaces here as a type error instead of
+// silently drifting.
+type HandlesAlignment = NonNullable<ComponentProps<typeof NodePanel.Handles>['alignment']>;
+
+// Unifies how built-in node templates choose the `alignment` prop they pass to
+// `<NodePanel.Handles>`, so the formula has one place to evolve instead of
+// being re-derived per template.
+//
+// This helper alone does NOT make ports align across nodes. The visual
+// stability of the resulting port Y depends on the header port `top` rule in
+// `packages/ui/src/components/node/node-panel/handle.module.css`: the formula picks
+// 'header' for horizontal flow, then the CSS pin anchors the port to the NodeIcon's
+// vertical center so multi-line descriptions don't shift it. Both layers must
+// stay in sync; removing either reintroduces the bug.
+export function getHandlesAlignment({ layoutDirection }: { layoutDirection: LayoutDirection }): HandlesAlignment {
+  return layoutDirection === 'RIGHT' ? 'header' : 'center';
+}

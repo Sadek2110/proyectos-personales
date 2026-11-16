@@ -1,0 +1,50 @@
+[class*='_modal_']:has(.container) {
+  width: 780px !important;
+}
+
+.container {
+  --wb-sdk-modal-padding-x: var(--wb-ds-space-300);
+  --wb-sdk-modal-padding-y: var(--wb-ds-space-300);
+
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  gap: 2rem;
+  color: var(--wb-ds-ui-text-subtle-default);
+
+  @media (width > 800px) {
+    flex-flow: row;
+    height: 500px;
+    gap: var(--wb-ds-space-600);
+  }
+}
+
+.navigation {
+  width: 100%;
+
+  @media (width > 800px) {
+    width: 200px;
+  }
+}
+
+.tabs {
+  @media (width > 800px) {
+    /* We wan't list to be scrollable to the bottom */
+    &:has([data-no-b-pd]) {
+      padding-bottom: 0;
+      margin-bottom: calc(-1 * var(--wb-sdk-modal-padding-y));
+    }
+  }
+
+  width: 100%;
+  animation: fadeIn 0.4s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,355 @@
+import type { Connection, EdgeProps, ReactFlowProps } from '@xyflow/react';
+import type { ComponentType, PropsWithChildren, ReactElement } from 'react';
+
+import type { WorkflowBuilderNodeTemplateProps } from '../features/diagram/nodes/workflow-node-template/workflow-node-template';
+import type {
+  JsonFormsCellExtension,
+  JsonFormsRendererExtension,
+  PluginTranslationResource,
+} from '../features/json-form/extension-registry';
+import type { BuiltInControls } from '../features/ui-extensions/built-in-controls';
+import type { WorkflowBuilderActions } from '../hooks/use-workflow-builder-actions';
+import type { LayoutDirection, PaletteItemOrGroup, TemplateModel } from '../node/common';
+import type { WorkflowBuilderEdge, WorkflowBuilderNode } from '../node/node-data';
+import type { OnSaveExternal } from '../types/integration';
+
+/**
+ * Per-node-type custom template registry. Keys are `data.type` values from
+ * the palette; values are React components that take
+ * {@link WorkflowBuilderNodeTemplateProps} and replace the default node renderer
+ * for matching nodes.
+ *
+ * @category Components
+ */
+export type WorkflowBuilderNodeTemplates = Record<string, ComponentType<WorkflowBuilderNodeTemplateProps>>;
+
+/**
+ * Per-edge-type custom renderer registry. Keys are `edge.type` values; values
+ * are React components that take ReactFlow's {@link EdgeProps} (typed for
+ * {@link WorkflowBuilderEdge}) and replace the default edge renderer for
+ * matching edges.
+ *
+ * Unlike node templates, edge templates need no adapter: the built-in edges
+ * already take `EdgeProps` directly, so a consumer component drops straight
+ * into ReactFlow's edge-type map with no wrapping.
+ *
+ * @category Components
+ */
+export type WorkflowBuilderEdgeTemplates = Record<string, ComponentType<EdgeProps<WorkflowBuilderEdge>>>;
+
+/**
+ * Plugin initializer — a synchronous function invoked exactly once on the
+ * first mount of `<WorkflowBuilder.Root>`. Inside the body call one of the
+ * SDK's `register*` APIs:
+ *
+ * - `registerComponentDecorator` — inject UI / hooks into a known slot
+ * - `registerFunctionDecorator` — intercept a registered function before/after
+ * - `registerPluginTranslation` — add i18next strings under `plugins.<name>`
+ * - `registerCustomRenderers` / `registerCustomCells` — extend JsonForms
+ *
+ * Plugins write into module-level registries; they do **not** see the per-Root
+ * store. The Root invokes them through a `useRef`-guarded first-render hook,
+ * so strict-mode double-render is a no-op and re-renders skip the work.
+ *
+ * @example
+ * ```ts
+ * const myPlugin: WorkflowBuilderPlugin = () => {
+ *   registerComponentDecorator('OptionalAppChildren', {
+ *     content: MyWidget,
+ *     name: 'my-plugin',
+ *   });
+ * };
+ * ```
+ *
+ * @category Plugins
+ */
+export type WorkflowBuilderPlugin = () => void;
+
+/**
+ * Persistence strategy for a `<WorkflowBuilder.Root>` instance. Exactly one
+ * variant applies. `integration` is itself optional — omitting it picks the
+ * `localStorage` default.
+ *
+ * `autoSave` controls the automatic saves of every variant: the save after a
+ * change that comes more than 10 seconds after the last successful save, and
+ * the save on tab close. Defaults to `true`. They write only
+ * unsaved changes, so an editor that was only looked at never writes. `false`
+ * turns both off; the built-in Save button and `actions.save()` still write.
+ *
+ * @category Integration
+ */
+export type WorkflowBuilderIntegration =
+  /** Default — save to browser localStorage under `'workflowBuilderDiagram'`. Selected when `integration` is omitted entirely or set to `{}`. */
+  | { strategy?: 'localStorage'; autoSave?: boolean }
+  /** REST persistence — SDK issues `GET endpoints.load` and `POST endpoints.save` on every save event. */
+  | { strategy: 'api'; endpoints: { load: string; save: string }; autoSave?: boolean }
+  /** Host-managed — SDK invokes `onDataSave` with the diagram payload on every save event; the host owns where it lands. */
+  | { strategy: 'props'; onDataSave: OnSaveExternal; autoSave?: boolean };
+
+/**
+ * JsonForms extensions registered with the editor: custom renderers, cell
+ * renderers, and plugin translations.
+ *
+ * @category Plugins
+ */
+export type WorkflowBuilderJsonFormConfig = {
+  renderers?: JsonFormsRendererExtension[];
+  cells?: JsonFormsCellExtension[];
+  translations?: PluginTranslationResource;
+};
+
+/**
+ * Arguments for {@link WorkflowBuilderIsValidConnection}. Source / target nodes
+ * are resolved from the connection's ids, so a rule can branch on node `data`.
+ *
+ * @category Core
+ */
+export type WorkflowBuilderIsValidConnectionParams = {
+  /** The connection candidate (handle ids normalized to `null`). */
+  connection: Connection;
+  /** Node the connection is dragged from. */
+  sourceNode: WorkflowBuilderNode;
+  /** Node the connection is dragged to. */
+  targetNode: WorkflowBuilderNode;
+};
+
+/**
+ * Decides whether a dragged connection is allowed. Return `false` to block the
+ * drop (no edge created, no flicker). Fail-open: if an endpoint can't be
+ * resolved to a node, the connection is allowed and this is not invoked.
+ *
+ * @category Core
+ */
+export type WorkflowBuilderIsValidConnection = (params: WorkflowBuilderIsValidConnectionParams) => boolean;
+
+/**
+ * ReactFlow props the SDK sets itself (spread last in `diagram.tsx`, so they win
+ * over `reactFlowProps`) and omits from {@link WorkflowBuilderReactFlowProps}.
+ * The `diagram.spec` precedence test enforces each one stays owned. Internal:
+ * exported for that test only.
+ */
+export type SdkManagedReactFlowKey =
+  | 'nodes'
+  | 'edges'
+  | 'nodeTypes'
+  | 'edgeTypes'
+  | 'onConnect'
+  | 'onConnectStart'
+  | 'onConnectEnd'
+  | 'onNodesChange'
+  | 'onEdgesChange'
+  | 'onSelectionChange'
+  | 'onInit'
+  | 'onBeforeDelete'
+  | 'onNodeDragStart'
+  | 'onNodeDragStop'
+  | 'onEdgeMouseEnter'
+  | 'onEdgeMouseLeave'
+  | 'onDragOver'
+  | 'onDrop'
+  | 'connectionLineComponent'
+  | 'nodesConnectable'
+  | 'nodesDraggable'
+  | 'isValidConnection';
+
+/**
+ * ReactFlow props omitted from {@link WorkflowBuilderReactFlowProps} but not
+ * re-set in `diagram.tsx`. `default*` are no-ops under the SDK's controlled
+ * `nodes` / `edges`; `colorMode` would clash with the SDK theme. Type-level guard
+ * only (a JS / `as`-cast consumer can still smuggle them; worst case is cosmetic).
+ */
+type SdkReservedReactFlowKey = 'defaultNodes' | 'defaultEdges' | 'colorMode';
+
+/** Every ReactFlow key the escape hatch must not expose. */
+type SdkOwnedReactFlowKey = SdkManagedReactFlowKey | SdkReservedReactFlowKey;
+
+/** Compiles only when `A extends B`. Fails the build if an owned key stops being a real ReactFlow prop (`Omit` doesn't validate keys). */
+type AssertAssignable<A extends B, B> = A;
+
+/**
+ * Escape hatch for the underlying ReactFlow canvas: forwards any ReactFlow prop
+ * except the ones the SDK owns ({@link SdkOwnedReactFlowKey}). Theme via the SDK
+ * design tokens, not `colorMode`.
+ *
+ * Treat as static config: the canvas reads it out-of-band, so changing a value
+ * at runtime may not apply until the canvas re-renders.
+ *
+ * @category Core
+ */
+export type WorkflowBuilderReactFlowProps = Omit<
+  ReactFlowProps<WorkflowBuilderNode, WorkflowBuilderEdge>,
+  AssertAssignable<SdkOwnedReactFlowKey, keyof ReactFlowProps<WorkflowBuilderNode, WorkflowBuilderEdge>>
+>;
+
+/**
+ * Editor header logo accepted by `<WorkflowBuilder.Root>`: an image URL, per-theme
+ * image URLs, or a custom element.
+ *
+ * @category Core
+ */
+export type WorkflowBuilderLogo = string | { light: string; dark: string } | ReactElement;
+
+/**
+ * Version shown in the editor header version chip.
+ *
+ * @category Core
+ */
+export type WorkflowBuilderVersion = {
+  /** Version number shown in the chip. */
+  number: number;
+  /** Marks the version as an unpublished draft. */
+  isDraft: boolean;
+};
+
+/**
+ * Host-wired editor header controls. Each renders only when its field is set.
+ *
+ * @category Core
+ */
+export type WorkflowBuilderEditorHeaderOptions = {
+  /**
+   * Called with the chosen direction when the user picks Clean up. The SDK has already set and tracked the new
+   * direction before calling it; moving (and tracking) the nodes is the host's job.
+   */
+  onCleanUp?: (direction: LayoutDirection) => void | Promise<void>;
+  /** Called when the user picks Save as PDF in the workflow name menu. */
+  onSaveAsPdf?: () => void;
+  /** Version shown in the chip next to the workflow name. */
+  version?: WorkflowBuilderVersion;
+  /** Called when the user clicks Publish. */
+  onPublish?: () => void;
+};
+
+/**
+ * What `onLoad` on `<WorkflowBuilder.Root>` receives once the initial load finished.
+ *
+ * @category Core
+ */
+export type WorkflowBuilderLoadContext = {
+  /** True when the initial load produced no nodes. A `name` alone does not make the diagram non-empty. */
+  isEmpty: boolean;
+  /**
+   * True when the `api` load request failed; always `false` for `localStorage` and `props`. The
+   * editor stays usable, but refuses to save for the rest of this Root mount, so nothing can
+   * overwrite the copy on the server that could not be loaded.
+   */
+  loadFailed: boolean;
+  /**
+   * The same actions as `useWorkflowBuilderActions()`. Safe to keep after the handler returns: they
+   * act on this Root while it is mounted and do nothing once it unmounts.
+   */
+  actions: WorkflowBuilderActions;
+};
+
+/**
+ * Props accepted by `<WorkflowBuilder.Root>`.
+ *
+ * @category Core
+ */
+export type WorkflowBuilderRootProps = PropsWithChildren<{
+  /**
+   * Node type definitions rendered in the palette and used for validation.
+   * **Must be a stable reference** — declare at module level or memoize.
+   * Passing an inline literal (`nodeTypes={[...]}`) overwrites the SDK's
+   * module-level palette holder on every parent re-render.
+   */
+  nodeTypes?: PaletteItemOrGroup[];
+  /**
+   * Per-node-type custom renderers — map of `data.type` → React component.
+   * Overrides the default `WorkflowNodeTemplate` for the matching node type.
+   * Use {@link defineNodeTemplate} for the typing helper.
+   *
+   * **Must be a stable reference** (same rationale as `nodeTypes`).
+   */
+  nodeTemplates?: WorkflowBuilderNodeTemplates;
+  /**
+   * Per-edge-type custom renderers. Map of `edge.type` to a React component.
+   * Overrides the built-in `'labelEdge'` for the matching edge type; edges
+   * whose type isn't registered fall back to the default edge.
+   *
+   * Each component is authored exactly like a ReactFlow custom edge (it takes
+   * `EdgeProps` directly). The only SDK-specific step is registering it here
+   * instead of via ReactFlow's `edgeTypes`. See ReactFlow's "Custom Edges"
+   * guide: https://reactflow.dev/learn/customization/custom-edges. To match the
+   * built-in selection and hover look, reuse the exported `useLabelEdgeHover`
+   * and `EnhancedBaseEdge`, or restyle selection globally via the
+   * `--wb-public-edge-color-select` CSS variable. A custom edge does not inherit
+   * the built-in self-connecting loop or label rendering.
+   *
+   * **Must be a stable reference** (same rationale as `nodeTemplates`).
+   */
+  edgeTemplates?: WorkflowBuilderEdgeTemplates;
+  /**
+   * Diagram templates available in the template selector.
+   * **Must be a stable reference** (same rationale as `nodeTypes`).
+   */
+  diagramTemplates?: TemplateModel[];
+  /** Plugin initializers invoked synchronously, in order, on first mount. */
+  plugins?: WorkflowBuilderPlugin[];
+  /** Custom JsonForms renderers / cells / translations. */
+  jsonForm?: WorkflowBuilderJsonFormConfig;
+  /** Persistence strategy. Defaults to `{ strategy: 'localStorage' }`. */
+  integration?: WorkflowBuilderIntegration;
+  /**
+   * Runs once per Root mount, after the initial load of the active integration: for `localStorage`
+   * and `props` right after mount, for `api` once the load request settled, also when it failed.
+   * Defaults to `({ isEmpty, loadFailed, actions }) => { if (isEmpty && !loadFailed) actions.openTemplates(); }`,
+   * which offers the template selector for an empty diagram. A custom handler replaces the default
+   * entirely, so the template selector opens only when the handler calls `actions.openTemplates()`.
+   */
+  onLoad?: (context: WorkflowBuilderLoadContext) => void;
+  /** Workflow name displayed in the editor header and persisted with the diagram. */
+  name?: string;
+  /**
+   * Replaces the built-in Workflow Builder logo in the editor header: an image URL,
+   * `{ light, dark }` per-theme image URLs, or a custom element rendered as-is.
+   */
+  logo?: WorkflowBuilderLogo;
+  /** Wraps the editor header logo (built-in or custom) in a link opened in a new tab. */
+  logoHref?: string;
+  /** Host-wired editor header controls: Clean up, Save as PDF, version chip and Publish. Each renders only when its field is set. */
+  editorHeader?: WorkflowBuilderEditorHeaderOptions;
+  /** Initial layout direction (`'RIGHT'` or `'DOWN'`). */
+  layoutDirection?: LayoutDirection;
+  /** Initial nodes rendered on first mount. */
+  initialNodes?: WorkflowBuilderNode[];
+  /** Initial edges rendered on first mount. */
+  initialEdges?: WorkflowBuilderEdge[];
+  /**
+   * Validate connections as the user draws them. Return `false` to reject the
+   * drop. **Must be a stable reference.**
+   *
+   * @example
+   * ```ts
+   * // A start node is the workflow entry point, so it can never be a connection target.
+   * const isValidConnection: WorkflowBuilderIsValidConnection = ({ targetNode }) => !targetNode.data.isStartNode;
+   * ```
+   */
+  isValidConnection?: WorkflowBuilderIsValidConnection;
+  /**
+   * Advanced escape hatch: forwards extra props to the ReactFlow canvas (see
+   * {@link WorkflowBuilderReactFlowProps}). Treat as static config; runtime value
+   * changes may not apply immediately.
+   */
+  reactFlowProps?: WorkflowBuilderReactFlowProps;
+  /**
+   * Hides built-in controls of the editor header, the palette and the properties panel. Keys: `save`,
+   * `readOnlyToggle`, `themeToggle`, `languageSelector`, `settings`, `workflowRename`, `export`,
+   * `import`, `templates`, `paletteToggle`, `delete`, `propertiesPanelToggle`. Every key defaults to
+   * `true` (shown); `false` hides the control. Hiding a control never blocks what it does: the
+   * action stays reachable programmatically (e.g. `useWorkflowBuilderActions`), and its keyboard
+   * shortcut (if any - e.g. the Delete key) keeps working. The palette starts collapsed, so hiding
+   * `paletteToggle` means it never opens unless the app calls `setPaletteOpen(true)` itself, e.g.
+   * from `onLoad`; hiding `propertiesPanelToggle` leaves the same dead end once that panel is
+   * collapsed, unless the app calls `setPropertiesPanelOpen(true)`.
+   *
+   * Changes apply on the next render. An inline object works, but a new object re-renders every
+   * built-in control, so prefer a stable reference (a module constant or `useMemo`).
+   *
+   * @example
+   * ```tsx
+   * <WorkflowBuilder.Root builtInControls={{ delete: canEdit }} />
+   * ```
+   */
+  builtInControls?: BuiltInControls;
+}>;

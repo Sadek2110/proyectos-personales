@@ -1,0 +1,303 @@
+/* ---------------------------------------------------------------
+   Stage (fixed 3D canvas) + scroll sections
+   Every section is a tall scroll track with a sticky viewport-sized
+   frame inside it. The scroll length of each track is what the 3D
+   storyboard is measured against.
+   --------------------------------------------------------------- */
+
+.stage {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  /* the stage owns its own stacking context: canvas < scrim < leaders < labels,
+     and the whole group sits below the document text. */
+}
+
+.stage__canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Keeps the section-4 headline legible once the core fills the frame. It is
+   weighted to the top because that is where the type sits — a centred radial
+   would just grey out the thing we came here to look at. */
+.stage__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(5, 5, 5, 0.94) 0%,
+    rgba(5, 5, 5, 0.78) 24%,
+    rgba(5, 5, 5, 0.26) 48%,
+    rgba(5, 5, 5, 0) 70%
+  );
+}
+
+.stage__leaders {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  overflow: visible;
+}
+
+.stage__labels {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+}
+
+/* ------------------------------ flow --------------------------- */
+
+main {
+  position: relative;
+  z-index: 1;
+}
+
+.section {
+  position: relative;
+  width: 100%;
+  height: var(--span, 100vh);
+}
+
+.section__sticky {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  /* text must never eat pointer events meant for the scene */
+  pointer-events: none;
+}
+
+.section__sticky a,
+.section__sticky button,
+.section__sticky .footer {
+  pointer-events: auto;
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.grid {
+  display: grid;
+  align-items: center;
+  gap: var(--gutter);
+}
+
+.grid--split {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+.grid--reverse .col--text {
+  grid-column: 2;
+}
+
+.col--text {
+  max-width: 34rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(1.1rem, 2vw, 1.8rem);
+}
+
+/* --------------------------- 01 hero --------------------------- */
+
+.section--hero {
+  --span: 170vh;
+}
+
+.section--hero .section__sticky {
+  align-items: flex-start;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(0.9rem, 1.8vw, 1.5rem);
+  text-align: center;
+  padding-top: calc(var(--nav-h) + 3vh);
+}
+
+/* the hero headline is bounded by height as well as width: the product
+   needs the lower two thirds of the frame, whatever the window is */
+.hero__title {
+  font-size: clamp(2.5rem, min(7.4vw, 8vh), 6.8rem);
+  max-width: 18ch;
+}
+
+.hero__lead {
+  max-width: 34ch;
+}
+
+/* ------------------------ 02 designed -------------------------- */
+
+.section--designed {
+  --span: 170vh;
+}
+
+/* ------------------------ 03 exploded -------------------------- */
+
+.section--exploded {
+  --span: 220vh;
+}
+
+.section--exploded .section__sticky {
+  align-items: flex-start;
+  padding-top: calc(var(--nav-h) + 5vh);
+}
+
+.exploded .col--text {
+  max-width: 32rem;
+}
+
+/* --------------------------- 04 core --------------------------- */
+
+.section--core {
+  --span: 160vh;
+}
+
+.section--core .section__sticky {
+  align-items: flex-start;
+  padding-top: calc(var(--nav-h) + 6vh);
+}
+
+.core {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1.2rem, 2vw, 1.8rem);
+  text-align: center;
+}
+
+.core__title {
+  max-width: 20ch;
+}
+
+/* ----------------------- 05 interaction ------------------------ */
+
+.section--interaction {
+  --span: 190vh;
+}
+
+.features {
+  width: 100%;
+  margin-top: clamp(0.4rem, 1.4vw, 1rem);
+}
+
+/* -------------------------- 06 final --------------------------- */
+
+.section--final {
+  --span: 150vh;
+}
+
+.section--final .section__sticky {
+  align-items: flex-end;
+  padding-bottom: clamp(3rem, 8vh, 5.5rem);
+}
+
+.final {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1.3rem, 2.2vw, 2rem);
+  text-align: center;
+}
+
+.final__title {
+  font-size: clamp(2.6rem, min(7.6vw, 9vh), 6.6rem);
+  max-width: 20ch;
+}
+
+.final__actions {
+  margin-top: clamp(0.4rem, 1.4vw, 1rem);
+}
+
+/* ------------------------- responsive -------------------------- */
+
+@media (max-width: 1024px) {
+  .col--text {
+    max-width: 28rem;
+  }
+}
+
+@media (max-width: 900px) {
+  /* the device stays the protagonist: it keeps the upper half of the
+     frame, the copy stacks underneath it */
+  .grid--split {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .grid--reverse .col--text,
+  .grid--split .col--text {
+    grid-column: 1;
+  }
+
+  .section--designed .section__sticky,
+  .section--interaction .section__sticky {
+    align-items: flex-end;
+    padding-bottom: clamp(2.5rem, 9vh, 6rem);
+  }
+
+  .section--hero .section__sticky {
+    align-items: stretch;
+  }
+
+  .section--exploded .section__sticky {
+    align-items: flex-end;
+    padding-top: 0;
+    padding-bottom: clamp(2.5rem, 9vh, 6rem);
+  }
+
+  .col--text,
+  .exploded .col--text {
+    max-width: 30rem;
+    gap: clamp(0.7rem, 1.6vh, 1.1rem);
+  }
+
+  .body {
+    max-width: 38ch;
+  }
+}
+
+@media (max-width: 640px) {
+  .section--hero {
+    --span: 150vh;
+  }
+
+  .section--designed {
+    --span: 155vh;
+  }
+
+  .section--exploded {
+    --span: 200vh;
+  }
+
+  .section--core {
+    --span: 150vh;
+  }
+
+  .section--interaction {
+    --span: 185vh;
+  }
+
+  .section--final {
+    --span: 140vh;
+  }
+}

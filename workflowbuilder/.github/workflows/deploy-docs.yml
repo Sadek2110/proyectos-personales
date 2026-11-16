@@ -1,0 +1,76 @@
+name: Deploy docs
+
+# Builds the docs site and deploys it to Azure Static Web Apps. Runs only when a
+# maintainer starts it from the Actions tab (workflow_dispatch): pick the `release`
+# branch, then "Run workflow". Nothing deploys on push. The site documents what is
+# on npm, and `main` runs ahead of npm between releases (unreleased SDK API, packages
+# not published yet), so the production deploy refuses every branch but `release`.
+# A preview environment (SWA_ENV set) may deploy from any branch.
+#
+# Required repo secrets:
+#   SWA_TOKEN          Azure Static Web Apps deployment token
+#   UMAMI_WEBSITE_ID   Analytics site ID baked into the docs build
+#
+# Required repo variable:
+#   SWA_ENV            SWA environment name (leave unset for production)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy-docs:
+    name: Build and deploy docs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Refuse a production deploy from any branch but release
+        # An unset SWA_ENV means the production environment.
+        if: github.ref_name != 'release' && !vars.SWA_ENV
+        run: |
+          echo "::error::Production docs deploy requested from '${GITHUB_REF_NAME}'. The site has to match npm, so it is built from 'release' only. Select the release branch, or set the SWA_ENV variable to deploy a preview."
+          exit 1
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Enable Corepack
+        run: npm i -g corepack@latest
+
+      - name: Install pnpm
+        run: corepack prepare
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # UI must build first: docs imports @workflowbuilder/ui/{styles,tokens}.css
+      # and its components, both resolved from packages/ui/dist.
+      - name: Build UI
+        run: pnpm build:ui
+
+      # SDK must build first so TypeDoc can read its compiled types.
+      - name: Build SDK
+        run: pnpm --filter @workflowbuilder/sdk build:lib
+
+      - name: Build docs
+        run: pnpm --filter @workflow-builder/docs build
+        env:
+          UMAMI_WEBSITE_ID: ${{ secrets.UMAMI_WEBSITE_ID }}
+
+      - name: Deploy to Azure Static Web Apps
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.SWA_TOKEN }}
+          action: "upload"
+          app_location: "apps/docs/dist"
+          skip_app_build: true
+          skip_api_build: true
+          deployment_environment: ${{ vars.SWA_ENV }}

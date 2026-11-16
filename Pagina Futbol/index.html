@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>La Jugada</title>
+    <meta name="description" content="Una jugada de fútbol cinematográfica en 3D: controla el ritmo con el scroll y lleva el balón hasta la escuadra." />
+  </head>
+  <body>
+    <canvas id="escena"></canvas>
+
+    <div class="ambiente" aria-hidden="true">
+      <div class="vigneta"></div>
+      <div class="grano"></div>
+      <div class="destello-gol" id="destello-gol"></div>
+    </div>
+
+    <div id="carga">
+      <div class="carga-marca">LJ</div>
+      <div class="carga-linea"><span id="carga-linea-barra"></span></div>
+      <p>Encendiendo el estadio <span id="carga-pct">0%</span></p>
+    </div>
+
+    <header class="cabecera">
+      <a class="marca" href="#inicio" aria-label="Volver al inicio">LJ<span>La Jugada</span></a>
+      <div class="directo"><i></i> Experiencia 3D</div>
+    </header>
+
+    <div class="marcador" aria-live="polite">
+      <span class="equipo">LOC</span>
+      <span class="goles"><span id="goles-local">0</span><b>:</b>0</span>
+      <span class="equipo">VIS</span>
+      <span class="minuto" id="minuto">00'</span>
+    </div>
+
+    <aside class="navegacion" aria-label="Progreso de la jugada">
+      <span id="capitulo">00</span>
+      <div class="progreso"><div id="progreso-barra"></div></div>
+      <span>04</span>
+    </aside>
+
+    <main id="historia">
+      <section class="bloque hero" id="inicio">
+        <div class="tarjeta">
+          <p class="etiqueta"><span></span> Una historia en 90 minutos</p>
+          <h1>La<br><em>Jugada</em></h1>
+          <p class="intro">Del círculo central a la escuadra. Tú marcas el ritmo de cada metro.</p>
+          <div class="pista"><i></i><span>Desliza para jugar</span></div>
+        </div>
+      </section>
+
+      <section class="bloque derecha">
+        <div class="tarjeta">
+          <p class="etiqueta">01 <span></span> Saque de centro</p>
+          <h2>El primer<br>pase</h2>
+          <p>El mediocentro atrae la presión y encuentra al interior entre líneas.</p>
+          <small>18 m · pase vertical</small>
+        </div>
+      </section>
+
+      <section class="bloque izquierda">
+        <div class="tarjeta">
+          <p class="etiqueta">02 <span></span> Por la banda</p>
+          <h2>De primera<br>a la banda</h2>
+          <p>Un toque orientado y un segundo pase liberan al extremo por fuera.</p>
+          <small>32 m · cambio de ritmo</small>
+        </div>
+      </section>
+
+      <section class="bloque derecha">
+        <div class="tarjeta">
+          <p class="etiqueta">03 <span></span> Zona decisiva</p>
+          <h2>Un metro<br>es suficiente</h2>
+          <p>El extremo conduce, recorta al defensor y deja la portería de frente.</p>
+          <small>16,5 m · dentro del área</small>
+        </div>
+      </section>
+
+      <section class="bloque final">
+        <div class="tarjeta">
+          <p class="etiqueta">04 <span></span> Minuto noventa</p>
+          <h2 class="gol">GOL<span>!</span></h2>
+          <p>Directo a la escuadra. El estadio despierta.</p>
+          <button id="repetir" type="button">Repetir la jugada <b>↺</b></button>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "life-os",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Centro de mando personal: compras, tareas, rutas, horario y clase sobre Google Sheets, Tasks y Calendar",
+  "main": "server.js",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "node server.js",
+    "demo": "node -e \"process.env.DEMO='true';process.env.COOKIE_SECURE='false';process.env.APP_PASSWORD=process.env.APP_PASSWORD||'demo';process.env.SESSION_SECRET=process.env.SESSION_SECRET||'x'.repeat(32);require('./server.js')\""
+  }
+}

@@ -1,0 +1,518 @@
+{
+ "generado": "2026-11-16T19:47:54.494Z",
+ "pendientes": [
+  {
+   "curso": "ciber",
+   "modulo": "ic",
+   "tipo": "Entrega",
+   "nombre": "Tarea para IC02",
+   "fecha": "2025-12-21 23:59",
+   "estado": "new",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "ic",
+   "tipo": "Test",
+   "nombre": "Examen para IC02",
+   "fecha": "2025-12-21 23:59",
+   "estado": "sin hacer",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "afi",
+   "tipo": "Entrega",
+   "nombre": "Tarea para AFI02",
+   "fecha": "2025-12-30 23:59",
+   "estado": "new",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "he",
+   "tipo": "Entrega",
+   "nombre": "Tarea para HE02",
+   "fecha": "2026-01-08 23:59",
+   "estado": "new",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "he",
+   "tipo": "Test",
+   "nombre": "Examen para HE02",
+   "fecha": "2026-01-08 23:59",
+   "estado": "sin hacer",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "ic",
+   "tipo": "Entrega",
+   "nombre": "Tarea para IC03",
+   "fecha": "2026-01-21 23:59",
+   "estado": "new",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "ic",
+   "tipo": "Test",
+   "nombre": "Examen para IC03",
+   "fecha": "2026-01-21 23:59",
+   "estado": "sin hacer",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "ic",
+   "tipo": "Entrega",
+   "nombre": "Tarea para IC04",
+   "fecha": "2026-02-15 23:59",
+   "estado": "new",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "ic",
+   "tipo": "Test",
+   "nombre": "Examen para IC04",
+   "fecha": "2026-02-15 23:59",
+   "estado": "sin hacer",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "he",
+   "tipo": "Entrega",
+   "nombre": "Tarea para HE03",
+   "fecha": "2026-02-28 23:59",
+   "estado": "new",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "ic",
+   "tipo": "Entrega",
+   "nombre": "Tarea para IC05",
+   "fecha": "2026-03-08 23:59",
+   "estado": "new",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "ic",
+   "tipo": "Test",
+   "nombre": "Examen para IC05",
+   "fecha": "2026-03-08 23:59",
+   "estado": "sin hacer",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "he",
+   "tipo": "Test",
+   "nombre": "Examen para HE03",
+   "fecha": "2026-03-26 11:00",
+   "estado": "sin hacer",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "he",
+   "tipo": "Test",
+   "nombre": "Examen para HE04",
+   "fecha": "2026-04-14 20:25",
+   "estado": "sin hacer",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "he",
+   "tipo": "Entrega",
+   "nombre": "Tarea para HE04",
+   "fecha": "2026-04-15 23:00",
+   "estado": "new",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "ic",
+   "tipo": "Entrega",
+   "nombre": "Tarea para IC06",
+   "fecha": "2026-04-18 23:59",
+   "estado": "new",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "ic",
+   "tipo": "Test",
+   "nombre": "Examen para IC06",
+   "fecha": "2026-04-18 23:59",
+   "estado": "sin hacer",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "ic",
+   "tipo": "Entrega",
+   "nombre": "Tarea para IC07",
+   "fecha": "2026-05-20 23:59",
+   "estado": "new",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "he",
+   "tipo": "Entrega",
+   "nombre": "Tarea para HE05",
+   "fecha": "2026-05-21 16:00",
+   "estado": "new",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "he",
+   "tipo": "Test",
+   "nombre": "Examen para HE05",
+   "fecha": "2026-05-21 23:43",
+   "estado": "sin hacer",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "ic",
+   "tipo": "Test",
+   "nombre": "Examen para revisar para IC04",
+   "fecha": "2026-05-21 23:59",
+   "estado": "sin hacer",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "ic",
+   "tipo": "Test",
+   "nombre": "Examen para revisar para IC05",
+   "fecha": "2026-05-21 23:59",
+   "estado": "sin hacer",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "ic",
+   "tipo": "Test",
+   "nombre": "Examen para revisar para IC06",
+   "fecha": "2026-05-21 23:59",
+   "estado": "sin hacer",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "ic",
+   "tipo": "Test",
+   "nombre": "Examen para IC07",
+   "fecha": "2026-05-21 23:59",
+   "estado": "sin hacer",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "ic",
+   "tipo": "Test",
+   "nombre": "Examen para revisar para IC07",
+   "fecha": "2026-05-21 23:59",
+   "estado": "sin hacer",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "brs",
+   "tipo": "Entrega",
+   "nombre": "BRS01. Introducción al bastionado. Tarea",
+   "fecha": "2026-10-18 23:59",
+   "estado": "new",
+   "nota": null
+  },
+  {
+   "curso": "python",
+   "modulo": "poo",
+   "tipo": "Entrega",
+   "nombre": "Tarea 1. Ejercicios de introducción a POO en Python.",
+   "fecha": "2026-11-04 23:59",
+   "estado": "new",
+   "nota": null
+  },
+  {
+   "curso": "python",
+   "modulo": "est",
+   "tipo": "Entrega",
+   "nombre": "Proyecto paralelo U2: Calculadora de precio final",
+   "fecha": "2026-11-06 23:59",
+   "estado": "submitted",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "brs",
+   "tipo": "Entrega",
+   "nombre": "BRS02. Diseño de planes de securización. Tarea",
+   "fecha": "2026-11-08 23:59",
+   "estado": "new",
+   "nota": null
+  },
+  {
+   "curso": "python",
+   "modulo": "est",
+   "tipo": "Entrega",
+   "nombre": "Prueba práctica U2 - 02",
+   "fecha": "2026-11-10 19:20",
+   "estado": "submitted",
+   "nota": null
+  },
+  {
+   "curso": "python",
+   "modulo": "est",
+   "tipo": "Entrega",
+   "nombre": "Proyecto paralelo U3: Mapa web de volcanes con Folium",
+   "fecha": "2026-11-11 23:59",
+   "estado": "new",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "pps",
+   "tipo": "Entrega",
+   "nombre": "Tarea para PPS01",
+   "fecha": "2026-11-14 23:59",
+   "estado": "new",
+   "nota": null
+  },
+  {
+   "curso": "python",
+   "modulo": "poo",
+   "tipo": "Entrega",
+   "nombre": "Tarea 2. Encapsulación, tipos de métodos y ciclo de vida de los objetos en Python.",
+   "fecha": "2026-11-16 23:59",
+   "estado": "submitted",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "nc",
+   "tipo": "Entrega",
+   "nombre": "Análisis de Cumplimiento Normativo en una empresa española",
+   "fecha": "2026-11-25 23:00",
+   "estado": "new",
+   "nota": null
+  },
+  {
+   "curso": "python",
+   "modulo": "est",
+   "tipo": "Entrega",
+   "nombre": "Proyecto paralelo U4: Sitio web con Flask",
+   "fecha": "2026-11-29 23:59",
+   "estado": "new",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "afi",
+   "tipo": "Entrega",
+   "nombre": "Tarea para AFI01",
+   "fecha": "2026-11-30 23:59",
+   "estado": "new",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "ic",
+   "tipo": "Entrega",
+   "nombre": "Tarea para IC01",
+   "fecha": "2026-11-30 23:59",
+   "estado": "new",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "ic",
+   "tipo": "Test",
+   "nombre": "Examen para IC01",
+   "fecha": "2026-11-30 23:59",
+   "estado": "sin hacer",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "ic",
+   "tipo": "Test",
+   "nombre": "Examen para revisar para IC01",
+   "fecha": "2026-11-30 23:59",
+   "estado": "sin hacer",
+   "nota": null
+  },
+  {
+   "curso": "python",
+   "modulo": "est",
+   "tipo": "Entrega",
+   "nombre": "Proyecto paralelo U5: FastAPI y LLMs",
+   "fecha": "2026-12-06 23:59",
+   "estado": "new",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "he",
+   "tipo": "Entrega",
+   "nombre": "Tarea para HE01",
+   "fecha": "2026-12-08 23:59",
+   "estado": "new",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "he",
+   "tipo": "Test",
+   "nombre": "Examen para HE01",
+   "fecha": "2026-12-09 12:01",
+   "estado": "sin hacer",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "brs",
+   "tipo": "Entrega",
+   "nombre": "BRS03. Configuración de sistemas de acceso y autenticación de personas. Tarea",
+   "fecha": "2026-12-14 23:59",
+   "estado": "new",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "pps",
+   "tipo": "Test",
+   "nombre": "Examen para PPS01",
+   "fecha": "2027-01-30 23:59",
+   "estado": "sin hacer",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "nc",
+   "tipo": "Test",
+   "nombre": "Test Unidad 1",
+   "fecha": "2027-06-07 23:59",
+   "estado": "sin hacer",
+   "nota": null
+  },
+  {
+   "curso": "python",
+   "modulo": "est",
+   "tipo": "Entrega",
+   "nombre": "Prueba práctica U1: evaluación del ejercicio 1 - CE a,b",
+   "fecha": null,
+   "estado": "new",
+   "nota": null
+  },
+  {
+   "curso": "python",
+   "modulo": "est",
+   "tipo": "Entrega",
+   "nombre": "Prueba práctica U2: evaluación del ejercicio 4 - CE g,j",
+   "fecha": null,
+   "estado": "new",
+   "nota": "10,00 / 10,00"
+  },
+  {
+   "curso": "python",
+   "modulo": "est",
+   "tipo": "Entrega",
+   "nombre": "Prueba práctica U2: evaluación del ejercicio 5 - CE h",
+   "fecha": null,
+   "estado": "new",
+   "nota": "10,00 / 10,00"
+  },
+  {
+   "curso": "python",
+   "modulo": "est",
+   "tipo": "Entrega",
+   "nombre": "Prueba práctica U1: evaluación del ejercicio 3 - CE e,f,g",
+   "fecha": null,
+   "estado": "new",
+   "nota": null
+  },
+  {
+   "curso": "python",
+   "modulo": "est",
+   "tipo": "Entrega",
+   "nombre": "Prueba práctica U1: evaluación del ejercicio 2 - CE c,d",
+   "fecha": null,
+   "estado": "new",
+   "nota": null
+  },
+  {
+   "curso": "python",
+   "modulo": "est",
+   "tipo": "Entrega",
+   "nombre": "Prueba práctica U2: evaluación del ejercicio 1 - CE a,b,e",
+   "fecha": null,
+   "estado": "new",
+   "nota": "10,00 / 10,00"
+  },
+  {
+   "curso": "python",
+   "modulo": "est",
+   "tipo": "Entrega",
+   "nombre": "Prueba práctica U2: evaluación del ejercicio 2 y parte relacionada del proyecto paralelo U2 - CE c,d",
+   "fecha": null,
+   "estado": "new",
+   "nota": "10,00 / 10,00"
+  },
+  {
+   "curso": "python",
+   "modulo": "est",
+   "tipo": "Entrega",
+   "nombre": "Prueba práctica U2: evaluación del ejercicio 3 - CE f,i",
+   "fecha": null,
+   "estado": "new",
+   "nota": "10,00 / 10,00"
+  },
+  {
+   "curso": "ciber",
+   "modulo": "brs",
+   "tipo": "Test",
+   "nombre": "BRS01. Cuestionario de autoevaluación",
+   "fecha": null,
+   "estado": "sin hacer",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "brs",
+   "tipo": "Test",
+   "nombre": "BRS02. Cuestionario de autoevaluación",
+   "fecha": null,
+   "estado": "sin hacer",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "afi",
+   "tipo": "Test",
+   "nombre": "Cuestionario de la UT 1",
+   "fecha": null,
+   "estado": "sin hacer",
+   "nota": null
+  },
+  {
+   "curso": "ciber",
+   "modulo": "afi",
+   "tipo": "Test",
+   "nombre": "Cuestionario de la UT 2",
+   "fecha": null,
+   "estado": "sin hacer",
+   "nota": null
+  }
+ ]
+}

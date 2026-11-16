@@ -1,0 +1,57 @@
+import {
+  type ExecutionEvent,
+  type ExecutionEventType,
+  type ExecutionSnapshot,
+  type ExecutionStatus,
+  TERMINAL_EXECUTION_EVENT_TYPES,
+  TERMINAL_EXECUTION_STATUSES,
+} from '@workflow-builder/types/workflow-execution/execution-events';
+
+import { BACKEND_URL } from '../config';
+import { applyConnectionLost, applyEvent, applySnapshot } from '../stores/use-execution-store';
+
+const TERMINAL_TYPES: ReadonlySet<ExecutionEventType> = new Set(TERMINAL_EXECUTION_EVENT_TYPES);
+const TERMINAL_STATUSES: ReadonlySet<ExecutionStatus> = new Set(TERMINAL_EXECUTION_STATUSES);
+const MAX_RETRIES = 5;
+
+export function connectExecutionStream(executionId: string, streamUrl: string): () => void {
+  const url = `${BACKEND_URL}${streamUrl}`;
+  const eventSource = new EventSource(url);
+  let retries = 0;
+
+  eventSource.addEventListener('message', (message: MessageEvent) => {
+    if (!message.data) return;
+
+    retries = 0;
+
+    const parsed = JSON.parse(message.data as string) as ExecutionSnapshot | ExecutionEvent;
+
+    // Closed first: a throwing store write must not skip it and leave the browser reconnecting.
+    if ('events' in parsed && 'lastSequence' in parsed) {
+      const snapshot = parsed as ExecutionSnapshot;
+      if (TERMINAL_STATUSES.has(snapshot.status)) {
+        eventSource.close();
+      }
+      applySnapshot(snapshot);
+    } else {
+      const event = parsed as ExecutionEvent;
+      if (TERMINAL_TYPES.has(event.type)) {
+        eventSource.close();
+      }
+      applyEvent(event);
+    }
+  });
+
+  eventSource.addEventListener('error', () => {
+    // Any non-200 answer or wrong MIME type, a proxy's 502 included, closes the source and the browser
+    // never retries; only a network error stays CONNECTING and retries on its own.
+    if (eventSource.readyState === EventSource.CLOSED || ++retries > MAX_RETRIES) {
+      eventSource.close();
+      applyConnectionLost();
+    }
+  });
+
+  return () => {
+    eventSource.close();
+  };
+}

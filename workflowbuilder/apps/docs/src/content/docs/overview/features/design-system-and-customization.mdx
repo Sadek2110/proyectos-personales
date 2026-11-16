@@ -1,0 +1,76 @@
+---
+title: Design System & Customization
+description: Workflow Builder's design system - tokens, themes, and how to customize the UI.
+sidebar:
+  order: 4
+---
+
+import YoutubeEmbed from '../../../../components/youtube-embed.astro';
+
+Workflow Builder includes a fully developed design system based on [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) methodology. It uses design tokens (CSS variables) so the entire visual appearance can be changed by adjusting a small set of values.
+
+## Atomic Design structure
+
+| Level         | Examples                                |
+| ------------- | --------------------------------------- |
+| **Atoms**     | Buttons, inputs, icons, badges          |
+| **Molecules** | Form fields with labels, node cards     |
+| **Organisms** | Properties panel, node palette, toolbar |
+| **Templates** | Full editor layout                      |
+
+## Design tokens
+
+The UI is powered by CSS custom properties (tokens) for colors, typography, spacing, and elevation. Changing a token propagates through the entire interface.
+
+Example token categories:
+
+- **UI backgrounds:** `--wb-ds-ui-bg-base`, `--wb-ds-ui-bg-elevated`, `--wb-ds-ui-bg-inset`
+- **Text:** `--wb-ds-ui-text-default`, `--wb-ds-ui-text-subtle-default`, `--wb-ds-ui-text-muted-default`
+- **Node:** `--wb-ds-canvas-node-bg-primary-default`, `--wb-ds-canvas-node-stroke-default`, `--wb-ds-canvas-node-icon-primary`
+- **Buttons:** `--wb-ds-components-button-solid-primary-default`, `--wb-ds-components-button-solid-gray-default`
+- **Spacing:** `--wb-ds-space-50`, `--wb-ds-space-100`, ..., `--wb-ds-space-400`
+- **Border radius:** `--wb-ds-radius-50`, `--wb-ds-radius-100`, ..., `--wb-ds-radius-300`
+- **Shadows:** `--wb-ds-shadow-ui-xs-*`, `--wb-ds-shadow-ui-s-*`, ..., `--wb-ds-shadow-ui-xl-*`
+
+### Component overrides
+
+The hand-authored `--wb-public-*` variables are a separate family for per-component customization. The generated CSS-variable tables on UI Library component pages are the `--wb-public-*` tables.
+
+Theming is done by overriding CSS custom properties. Create a CSS file with your overrides and import it after the default theme:
+
+```css
+:root {
+  --wb-ds-ui-bg-base: #1a1a2e;
+  --wb-ds-ui-text-default: #e0e0e0;
+  --wb-ds-components-button-solid-primary-default: #4a90d9;
+}
+```
+
+Both light and dark mode tokens are defined separately, so you can customize each theme independently. Use a component's `--wb-public-*` variables when a change should not affect the shared token system.
+
+## Light and dark mode
+
+Workflow Builder supports both light and dark modes out of the box, controlled by the `prefers-color-scheme` media query or a toggle.
+
+## Styled components on headless foundations
+
+Workflow Builder ships with a complete default theme, but the underlying components come from [`@workflowbuilder/ui`](/ui-library/overview/), our component library built on the headless [Base UI](https://base-ui.com/) primitives. The styled layer is fully tokenized and isolated in cascade layers, so you can retheme or replace it through the `--wb-ds-*` design tokens without fighting against built-in component styles. The visual layer is fully separate from the functional layer.
+
+## White-label support
+
+The design system is set up for white-labeling. Replace logo, colors, typography, and any visual asset to match your product's brand.
+
+## Video walkthrough
+
+For a visual overview of the design system, watch the walkthrough below.
+
+<YoutubeEmbed videoId="q2IiQh2uDEA" title="Workflow Builder Design System Walkthrough" />
+
+## See also
+
+- [Workflow Builder as a React component](/get-started/quick-start/wb-as-react-component/) - embed Workflow Builder into an existing React app
+
+## References
+
+- [`@workflowbuilder/ui`](/ui-library/overview/) - the component library behind the default theme, built on [Base UI](https://base-ui.com/)
+- [Atomic Design methodology](https://bradfrost.com/blog/post/atomic-web-design/) - the structural model behind the design system

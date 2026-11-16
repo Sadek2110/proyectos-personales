@@ -1,0 +1,30 @@
+div.container {
+  padding-bottom: 0;
+  margin-bottom: calc(-1 * var(--wb-sdk-modal-padding-y));
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2rem;
+    background-image: linear-gradient(to bottom, transparent, var(--wb-public-modal-content-background));
+    pointer-events: none;
+  }
+}
+
+.empty-message {
+  margin: 0;
+}
+
+.variables {
+  display: flex;
+  flex-flow: column;
+  gap: 0.5rem;
+  overflow: auto;
+  margin-right: calc(-1 * var(--wb-ds-space-200));
+  padding-right: var(--wb-ds-space-200);
+  padding-bottom: var(--wb-sdk-modal-padding-y);
+}

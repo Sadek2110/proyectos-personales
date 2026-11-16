@@ -1,0 +1,38 @@
+:root {
+  --wb-sdk-spinner-color: var(--wb-ds-ui-text-onaccent-default);
+}
+
+.container {
+  position: relative;
+}
+
+.container--success {
+  --wb-sdk-spinner-color: var(--wb-ds-ui-text-onaccent-default);
+}
+
+.container--ghost-critical {
+  --wb-sdk-spinner-color: var(--wb-public-button-ghost-critical-color);
+}
+
+.container--pending button {
+  color: transparent;
+  pointer-events: none;
+}
+
+.icon--spinner {
+  position: absolute;
+  color: var(--wb-sdk-spinner-color);
+  top: 50%;
+  left: 50%;
+  animation: spin infinite linear 1.6s;
+}
+
+@keyframes spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}

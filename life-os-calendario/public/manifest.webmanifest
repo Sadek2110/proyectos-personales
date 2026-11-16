@@ -1,0 +1,22 @@
+{
+  "name": "Life OS",
+  "short_name": "Life OS",
+  "description": "Compras, tareas, rutas, horario y clase sincronizados con Google",
+  "lang": "es",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#F4F3EF",
+  "theme_color": "#2F6B4F",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ],
+  "shortcuts": [
+    { "name": "Lista de la compra", "url": "/?tab=compras" },
+    { "name": "Tareas", "url": "/?tab=tareas" },
+    { "name": "Clase", "url": "/?tab=clase" }
+  ]
+}

@@ -1,0 +1,35 @@
+:root {
+  --wb-sdk-settings-tab-header-border: var(--wb-public-node-border-size) solid var(--wb-public-node-border-color);
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  height: 3.5rem;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: var(--wb-sdk-settings-tab-header-border);
+
+  + * {
+    padding-top: var(--wb-ds-space-200);
+  }
+}
+
+.content {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
+.title,
+.description {
+  margin: 0;
+}
+
+.title {
+  color: var(--wb-ds-ui-text-default);
+}
+
+.children {
+  margin-left: auto;
+}

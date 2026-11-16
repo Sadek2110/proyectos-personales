@@ -1,0 +1,361 @@
+:root {
+  --noche: #06120e;
+  --panel: rgba(7, 20, 15, 0.72);
+  --panel-fuerte: rgba(5, 15, 11, 0.88);
+  --texto: #f6f8f5;
+  --suave: rgba(246, 248, 245, 0.68);
+  --linea: rgba(255, 255, 255, 0.14);
+  --acento: #c8ff45;
+  --radio: 5px;
+}
+
+* { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; background: var(--noche); }
+body {
+  min-width: 320px;
+  background: var(--noche);
+  color: var(--texto);
+  font-family: 'Inter Variable', Inter, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+button, a { font: inherit; }
+
+#escena {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  display: block;
+}
+
+/* Capa de acabado cinematográfico */
+.ambiente, .vigneta, .grano, .destello-gol {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+.ambiente { z-index: 3; }
+.vigneta {
+  background:
+    linear-gradient(180deg, rgba(0, 6, 4, 0.38), transparent 24%, transparent 72%, rgba(0, 4, 3, 0.52)),
+    radial-gradient(circle at 50% 45%, transparent 32%, rgba(0, 7, 5, 0.42) 100%);
+}
+.grano {
+  opacity: 0.035;
+  background-image:
+    repeating-radial-gradient(circle at 17% 31%, #fff 0 0.6px, transparent 0.8px 4px),
+    repeating-radial-gradient(circle at 76% 62%, #fff 0 0.5px, transparent 0.8px 5px);
+  background-size: 11px 13px, 17px 19px;
+  mix-blend-mode: soft-light;
+}
+.destello-gol {
+  opacity: 0;
+  background: radial-gradient(circle at 74% 45%, rgba(200, 255, 69, 0.42), transparent 42%);
+  mix-blend-mode: screen;
+}
+.destello-gol.activo { animation: flash 1.35s ease-out; }
+@keyframes flash { 0% { opacity: 0; } 12% { opacity: 1; } 100% { opacity: 0; } }
+
+/* Carga */
+#carga {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 19px;
+  background: #050e0b;
+  transition: opacity .8s cubic-bezier(.65, 0, .35, 1), visibility .8s;
+}
+#carga::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 45%, rgba(105, 170, 40, .13), transparent 40%);
+}
+#carga.oculto { opacity: 0; visibility: hidden; }
+.carga-marca {
+  position: relative;
+  color: var(--acento);
+  font-size: 38px;
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: -.08em;
+}
+.carga-linea { width: 180px; height: 2px; overflow: hidden; background: rgba(255,255,255,.12); }
+#carga-linea-barra { display: block; width: 0; height: 100%; background: var(--acento); transition: width .2s; }
+#carga p { color: var(--suave); font-size: 11px; font-weight: 650; letter-spacing: .15em; text-transform: uppercase; }
+#carga-pct { display: inline-block; min-width: 36px; margin-left: 9px; color: var(--texto); }
+
+/* Interfaz persistente */
+.cabecera {
+  position: fixed;
+  z-index: 12;
+  top: 26px;
+  left: clamp(18px, 3vw, 48px);
+  right: clamp(18px, 3vw, 48px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+}
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  color: var(--acento);
+  font-size: 19px;
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: -.06em;
+  text-decoration: none;
+  pointer-events: auto;
+}
+.marca span {
+  color: rgba(255,255,255,.72);
+  font-size: 10px;
+  font-style: normal;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+.directo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: rgba(255,255,255,.58);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+.directo i { width: 6px; height: 6px; border-radius: 50%; background: var(--acento); box-shadow: 0 0 16px var(--acento); }
+
+.marcador {
+  position: fixed;
+  z-index: 12;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-height: 42px;
+  padding: 7px 8px 7px 15px;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 4px;
+  background: rgba(3, 12, 8, .72);
+  box-shadow: 0 10px 40px rgba(0,0,0,.22);
+  backdrop-filter: blur(16px);
+  font-variant-numeric: tabular-nums;
+}
+.marcador .equipo { color: rgba(255,255,255,.55); font-size: 9px; font-weight: 750; letter-spacing: .16em; }
+.marcador .goles { display: flex; gap: 7px; align-items: center; color: white; font-size: 17px; font-weight: 800; }
+.marcador .goles b { color: rgba(255,255,255,.3); font-weight: 400; }
+.marcador .minuto {
+  min-width: 49px;
+  padding: 9px 8px;
+  border-radius: 2px;
+  background: var(--acento);
+  color: #102008;
+  font-size: 11px;
+  font-weight: 850;
+  text-align: center;
+}
+.marcador.anotado { animation: marcadorGol .75s ease-out; }
+@keyframes marcadorGol { 30% { transform: translateX(-50%) scale(1.1); box-shadow: 0 0 45px rgba(200,255,69,.55); } }
+
+.navegacion {
+  position: fixed;
+  z-index: 12;
+  top: 50%;
+  right: clamp(14px, 2.6vw, 42px);
+  transform: translateY(-50%);
+  display: grid;
+  justify-items: center;
+  gap: 11px;
+  color: rgba(255,255,255,.5);
+  font-size: 9px;
+  font-weight: 750;
+  letter-spacing: .12em;
+}
+.progreso {
+  width: 2px;
+  height: 150px;
+  border-radius: 2px;
+  background: rgba(255,255,255,.18);
+  overflow: hidden;
+}
+#progreso-barra { width: 100%; height: 0; background: var(--acento); box-shadow: 0 0 12px var(--acento); }
+
+/* Relato */
+.bloque {
+  position: relative;
+  z-index: 5;
+  min-height: 115vh;
+  display: flex;
+  align-items: center;
+  padding: 9vh clamp(24px, 7vw, 120px);
+  pointer-events: none;
+}
+.bloque.derecha { justify-content: flex-end; }
+.bloque.hero { min-height: 100vh; justify-content: flex-start; }
+.bloque.final { min-height: 105vh; justify-content: flex-start; align-items: flex-end; padding-bottom: 9vh; }
+
+.tarjeta {
+  position: relative;
+  width: min(430px, 42vw);
+  padding: 28px 30px 27px;
+  border: 1px solid var(--linea);
+  border-left: 2px solid var(--acento);
+  border-radius: var(--radio);
+  background: linear-gradient(135deg, var(--panel-fuerte), var(--panel));
+  box-shadow: 0 28px 70px rgba(0,0,0,.28);
+  backdrop-filter: blur(18px) saturate(115%);
+  pointer-events: auto;
+}
+.tarjeta::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -2px;
+  width: 76px;
+  height: 1px;
+  background: var(--acento);
+}
+.hero .tarjeta {
+  width: min(620px, 54vw);
+  padding: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+.hero .tarjeta::after { display: none; }
+.etiqueta {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-bottom: 17px;
+  color: var(--acento);
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+.etiqueta span { display: inline-block; width: 28px; height: 1px; background: currentColor; }
+h1 {
+  max-width: 650px;
+  margin-left: -.065em;
+  font-size: clamp(74px, 10.2vw, 158px);
+  font-weight: 850;
+  line-height: .73;
+  letter-spacing: -.075em;
+  text-transform: uppercase;
+  text-shadow: 0 18px 70px rgba(0,0,0,.48);
+}
+h1 em { color: var(--acento); font-style: italic; font-weight: 900; }
+.hero .intro {
+  max-width: 390px;
+  margin-top: 33px;
+  color: rgba(255,255,255,.76);
+  font-size: 16px;
+  line-height: 1.65;
+}
+h2 {
+  margin-bottom: 16px;
+  color: white;
+  font-size: clamp(32px, 3.7vw, 52px);
+  font-weight: 780;
+  line-height: .98;
+  letter-spacing: -.045em;
+}
+.tarjeta > p:not(.etiqueta) { max-width: 350px; color: var(--suave); font-size: 14px; line-height: 1.65; }
+.tarjeta small {
+  display: block;
+  margin-top: 21px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255,255,255,.1);
+  color: rgba(255,255,255,.46);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+.pista { display: flex; align-items: center; gap: 13px; margin-top: 36px; }
+.pista i {
+  position: relative;
+  width: 29px;
+  height: 44px;
+  border: 1px solid rgba(255,255,255,.42);
+  border-radius: 18px;
+}
+.pista i::after {
+  content: '';
+  position: absolute;
+  top: 9px;
+  left: 50%;
+  width: 3px;
+  height: 8px;
+  border-radius: 3px;
+  background: var(--acento);
+  transform: translateX(-50%);
+  animation: scroll 1.7s ease-in-out infinite;
+}
+.pista span { color: rgba(255,255,255,.62); font-size: 9px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+@keyframes scroll { 70%, 100% { transform: translate(-50%, 13px); opacity: 0; } }
+
+.final .tarjeta { width: min(420px, 42vw); }
+.final h2.gol {
+  margin: -2px 0 8px;
+  color: var(--acento);
+  font-size: clamp(72px, 10vw, 136px);
+  font-style: italic;
+  font-weight: 900;
+  line-height: .82;
+  letter-spacing: -.08em;
+  text-shadow: 0 0 55px rgba(200,255,69,.22);
+}
+.final h2.gol span { color: white; }
+#repetir {
+  margin-top: 24px;
+  padding: 11px 0 7px;
+  border: 0;
+  border-bottom: 1px solid rgba(255,255,255,.38);
+  background: transparent;
+  color: white;
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+#repetir b { margin-left: 9px; color: var(--acento); font-size: 15px; }
+#repetir:hover, #repetir:focus-visible { color: var(--acento); border-color: var(--acento); outline: none; }
+
+@media (max-width: 640px) {
+  .cabecera { top: 17px; left: 15px; right: 15px; }
+  .marca span, .directo { display: none; }
+  .marcador { top: 12px; gap: 7px; min-height: 36px; padding: 5px 5px 5px 10px; }
+  .marcador .equipo { font-size: 8px; letter-spacing: .08em; }
+  .marcador .goles { gap: 5px; font-size: 14px; }
+  .marcador .minuto { min-width: 43px; padding: 7px 5px; }
+  .navegacion { right: 9px; }
+  .progreso { height: 110px; }
+  .bloque { min-height: 112vh; padding: 8vh 20px 10vh; }
+  .bloque.hero { align-items: flex-end; padding-bottom: 12vh; }
+  .bloque.derecha, .bloque.izquierda { justify-content: center; align-items: flex-end; }
+  .bloque.final { padding-bottom: 9vh; }
+  .tarjeta, .final .tarjeta { width: calc(100vw - 55px); padding: 23px 23px 22px; }
+  .hero .tarjeta { width: calc(100vw - 50px); }
+  h1 { font-size: clamp(66px, 22vw, 94px); line-height: .78; }
+  .hero .intro { max-width: 290px; margin-top: 24px; font-size: 14px; }
+  h2 { font-size: 38px; }
+  .final h2.gol { font-size: 78px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; }
+}

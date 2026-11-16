@@ -1,0 +1,21 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Button from "@/components/Button";
+---
+
+<BaseLayout title="Page not found — Aurora Studios">
+  <main class="mx-auto flex min-h-svh max-w-[1600px] flex-col justify-center px-6 md:px-10 lg:px-16">
+    <p class="font-mono text-[11px] tracking-[0.24em] text-muted uppercase">404</p>
+    <h1 class="mt-6 font-display text-6xl tracking-tight md:text-8xl">
+      This page
+      <br />
+      drifted.
+    </h1>
+    <p class="mt-6 max-w-sm text-muted">
+      The URL doesn't match anything in the studio. Head back to the work.
+    </p>
+    <div class="mt-10">
+      <Button href="/">Back home</Button>
+    </div>
+  </main>
+</BaseLayout>

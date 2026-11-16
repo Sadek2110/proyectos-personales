@@ -1,0 +1,43 @@
+{
+  "usergrades": [
+    {
+      "courseid": 2006,
+      "courseidnumber": "2902023125698399q290620767",
+      "userid": 99999,
+      "userfullname": "Alumno Demo",
+      "useridnumber": "00000000X",
+      "maxdepth": 2,
+      "gradeitems": [
+        {
+          "id": 24133,
+          "itemname": null,
+          "itemtype": "course",
+          "itemmodule": null,
+          "iteminstance": 2677,
+          "itemnumber": null,
+          "idnumber": null,
+          "categoryid": null,
+          "outcomeid": null,
+          "scaleid": null,
+          "locked": null,
+          "graderaw": null,
+          "gradedatesubmitted": null,
+          "gradedategraded": null,
+          "gradehiddenbydate": false,
+          "gradeneedsupdate": false,
+          "gradeishidden": false,
+          "gradeislocked": null,
+          "gradeisoverridden": null,
+          "gradeformatted": "-",
+          "grademin": 0,
+          "grademax": 100,
+          "rangeformatted": "0&ndash;100",
+          "percentageformatted": "-",
+          "feedback": "",
+          "feedbackformat": 0
+        }
+      ]
+    }
+  ],
+  "warnings": []
+}

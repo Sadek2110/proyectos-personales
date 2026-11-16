@@ -1,0 +1,127 @@
+Los pasos del vídeo de **Erick** ([WINDOWS 11 +200% 🚀 | Optimiza y Acelera tu PC](http://www.youtube.com/watch?v=5k5ef9YR6zY)) para optimizar Windows 11 combinan rendimiento, limpieza y privacidad sin herramientas de terceros:
+
+---
+
+### 1. Punto de restauración (Paso de seguridad previo)
+
+* **Acceso:** Presiona `Windows + S`, busca **Crear punto de restauración** y pulsa `Enter` [[00:47](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=47)].
+* **Configuración:** En la pestaña *Protección del sistema*, selecciona la unidad `C:` y haz clic en **Configurar**. Marca **Activar protección del sistema** y asigna alrededor del **5%** de uso máximo [[01:01](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=61)].
+* **Creación:** Haz clic en **Crear**, ponle un nombre descriptivo y confirma [[01:11](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=71)].
+
+---
+
+### 2. Configuración de arranque del sistema (`msconfig`)
+
+* Presiona `Windows + R`, escribe `msconfig` y pulsa `Enter` [[01:40](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=100)].
+* En la pestaña **General**, selecciona **Inicio selectivo** [[01:48](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=108)].
+* En la pestaña **Arranque**:
+* Marca la casilla **Sin arranque de GUI** (elimina la animación de carga) [[01:54](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=114)].
+* Entra en **Opciones avanzadas...**, activa **Número de procesadores** y selecciona el número máximo disponible [[02:08](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=128)].
+* Haz clic en **Aceptar**, luego en **Aplicar** y sal sin reiniciar.
+
+
+
+---
+
+### 3. Desactivación de servicios innecesarios (`services.msc`)
+
+* Presiona `Windows + R`, escribe `services.msc` y pulsa `Enter` [[02:35](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=155)].
+* Para cada uno de los siguientes servicios, haz doble clic, cambia el *Tipo de inicio* a **Deshabilitado**, presiona **Detener** (si está en ejecución) y pulsa **Aceptar**:
+* **Administrador de mapas descargados** [[02:47](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=167)].
+* **Adquisición de imágenes de Windows (WIA)** [[02:55](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=175)].
+* **Cola de impresión** (solo si no utilizas impresoras) [[03:11](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=191)].
+* **Conexión compartida a Internet (ICS)** [[03:24](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=204)].
+* **Experiencias del usuario y telemetría asociadas** [[03:34](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=214)].
+* **Registro remoto** [[03:56](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=236)].
+* **Servicio biométrico de Windows** (deshabilítalo únicamente si no usas lector de huellas o Windows Hello) [[04:09](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=249)].
+* **Servicio de geolocalización** (si no requieres ubicación en apps de mapas) [[04:28](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=268)].
+* **Servicio de Windows Insider** (si no pruebas compilaciones beta) [[04:43](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=283)].
+
+
+
+> **Nota del autor:** No desactives nunca servicios esenciales como *Windows Update*, *Firewall de Windows*, *Cliente DHCP*, *Registro de eventos* o servicios de red [[04:54](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=294)].
+
+---
+
+### 4. Ajustes de efectos visuales (`sysdm.cpl`)
+
+* Presiona `Windows + R`, escribe `sysdm.cpl` y pulsa `Enter` [[05:14](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=314)].
+* Ve a la pestaña **Opciones avanzadas** y, en la sección *Rendimiento*, entra en **Configuración** [[05:21](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=321)].
+* Marca **Ajustar para obtener el mejor rendimiento** y luego vuelve a marcar únicamente las **últimas tres casillas** (para no perder el suavizado de fuentes de pantalla ni las vistas en miniatura) [[05:47](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=347)]. Haz clic en **Aplicar** y **Aceptar**.
+
+---
+
+### 5. Configuración de Windows (`Windows + I`)
+
+#### Notificaciones y energía
+
+* **Notificaciones:** Ve a `Sistema` > `Notificaciones`. Desactiva avisos de aplicaciones prescindibles, activa *No molestar* para sesiones de juego/trabajo y en *Configuraciones adicionales* desmarca las sugerencias y ofertas publicitarias [[06:19](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=379)].
+* **Plan de energía:** Ve a `Sistema` > `Energía y batería`. Selecciona **Alto rendimiento** [[07:55](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=475)].
+* Para desbloquear el modo oculto de **Máximo rendimiento**, abre la consola (`Windows + R`, escribe `cmd`) y ejecuta [[08:17](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=497)]:
+```cmd
+powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61
+
+```
+
+
+* Tras ejecutarlo, selecciónalo en la lista de planes de energía [[08:56](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=536)].
+
+
+
+#### Sensor de almacenamiento
+
+* Ve a `Sistema` > `Almacenamiento` y activa el **Sensor de almacenamiento** [[09:06](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=546)].
+* Entra en **Archivos temporales**, selecciona los paquetes de caché, restos de actualizaciones y papelera (mantén desmarcada la carpeta *Descargas* si tienes archivos personales) y pulsa **Quitar archivos** [[09:18](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=558)].
+
+#### Componentes en segundo plano y apps instaladas
+
+* En `Sistema` > `Componentes del sistema`, localiza apps secundarias (como *Enlace móvil*, *Game Bar* u *Obtener ayuda*), entra en sus opciones avanzadas y cambia *Permisos de aplicaciones en segundo plano* a **Nunca** [[10:06](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=606)].
+* En `Aplicaciones` > `Aplicaciones instaladas`, desinstala el software preinstalado que no uses (por ejemplo, *Copilot*) [[11:10](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=670)].
+
+#### Red y DNS (Filtrado y seguridad)
+
+* Ve a `Red e Internet` > `Ethernet` (o `Wi-Fi`) > **Asignación de servidor DNS** > **Editar** [[11:51](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=711)].
+* Cambia a **Manual**, activa **IPv4** e introduce las DNS de AdGuard para bloqueo de anuncios y telemetría [[11:56](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=716)]:
+* **DNS preferido:** `94.140.14.14`
+* **DNS alternativo:** `94.140.15.15`
+
+
+
+#### Interfaz, Inicio y Barra de tareas
+
+* **Pantalla de bloqueo:** En `Personalización` > `Pantalla de bloqueo`, cambia el fondo a *Imagen fija* y desactiva datos curiosos y recomendaciones [[12:35](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=755)].
+* **Menú Inicio:** En `Personalización` > `Inicio`, desmarca mostrar apps agregadas recientemente, archivos recomendados y sugerencias [[13:09](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=789)].
+* **Barra de tareas:** En `Personalización` > `Barra de tareas`, oculta la vista de tareas, widgets y mantén el buscador solo como icono [[13:37](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=817)].
+* **Uso del dispositivo:** Desactiva todas las categorías para que Microsoft no recopile perfiles de uso para anuncios [[14:05](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=845)].
+
+#### Rendimiento en juegos y accesibilidad
+
+* **Inicio del sistema:** En `Aplicaciones` > `Inicio`, desmarca todas las aplicaciones que no necesites que arranquen con Windows [[14:23](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=863)].
+* **Juegos:** En `Juegos`, desactiva *Game Bar* y asegúrate de dejar activado el **Modo de juego** [[14:44](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=884)].
+* **Efectos visuales:** En `Accesibilidad` > `Efectos visuales`, desactiva **Efectos de transparencia** y **Efectos de animación** para liberar carga de GPU y memoria RAM [[15:15](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=915)].
+
+---
+
+### 6. Seguridad y privacidad (Windows Defender)
+
+* Ve a `Privacidad y seguridad` > `Seguridad de Windows` [[15:39](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=939)]:
+* **Protección contra ransomware:** En *Protección contra virus y amenazas*, activa el **Acceso controlado a carpetas** para evitar cifrados maliciosos [[16:15](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=975)].
+* **Protección contra amenazas:** Asegúrate de tener activada la *Protección en tiempo real*, *Protección basada en la nube* y *Protección contra alteraciones* [[16:38](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=998)].
+* **SmartScreen y Phishing:** En *Control de aplicaciones y explorador*, activa la **Protección basada en reputación**, el bloqueo de aplicaciones potencialmente no deseadas y la protección contra suplantación de identidad (phishing) [[17:49](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=1069)].
+* **Diagnósticos y publicidad:** En `Privacidad y seguridad`, entra en *Recomendaciones y ofertas* y apaga todos los identificadores de publicidad [[19:09](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=1149)]. En *Comentarios y diagnóstico*, desactiva el visor de datos de diagnóstico y elimina el historial recopilado [[19:52](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=1192)].
+
+
+
+---
+
+### 7. Limpieza manual de archivos temporales residuales
+
+Como paso final, limpia los archivos temporales ocultos que el limpiador del sistema suele pasar por alto [[20:45](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=1245)]:
+
+1. Pulsa `Windows + R`, escribe `%temp%`, pulsa `Enter`, selecciona todo (`Ctrl + E` o `Ctrl + A`) y pulsa `Supr` [[20:51](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=1251)].
+2. Pulsa `Windows + R`, escribe `temp`, pulsa `Enter`, selecciona todo y pulsa `Supr` [[21:04](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=1264)].
+3. Pulsa `Windows + R`, escribe `prefetch`, pulsa `Enter`, acepta los permisos de administrador, selecciona todo y pulsa `Supr` [[21:21](https://www.youtube.com/watch?v=5k5ef9YR6zY&t=1281)].
+
+*(Si algún archivo indica que está en uso por el sistema, marca "Hacer esto para todos los elementos actuales" y haz clic en "Omitir").*
+
+Una vez concluidos los pasos, reinicia el equipo para que todos los cambios en servicios y arranque se apliquen limpiamente.

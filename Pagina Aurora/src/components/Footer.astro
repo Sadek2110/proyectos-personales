@@ -1,0 +1,66 @@
+---
+import { navItems, socialLinks } from "@/data/nav";
+---
+
+<footer class="border-t border-off/10">
+  <div class="mx-auto max-w-[1600px] px-6 pt-16 pb-8 md:px-10 lg:px-16">
+    <a href="/" data-cursor="hover" class="block overflow-hidden">
+      <span class="font-display block text-[18vw] leading-[0.8] font-semibold tracking-[-0.06em] md:text-[14vw] lg:text-[11rem]">
+        AURORA<span class="text-violet">°</span>
+      </span>
+    </a>
+
+    <div class="mt-16 grid gap-10 border-t border-off/10 pt-12 md:grid-cols-3">
+      <div>
+        <p class="font-mono text-[11px] tracking-[0.22em] text-muted uppercase">Explore</p>
+        <ul class="mt-5 space-y-2">
+          {navItems.map((item) => (
+            <li>
+              <a href={item.href} data-cursor="hover" class="text-sm text-off/80 transition-colors hover:text-off">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <p class="font-mono text-[11px] tracking-[0.22em] text-muted uppercase">Social</p>
+        <ul class="mt-5 space-y-2">
+          {socialLinks.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                target="_blank"
+                rel="noreferrer"
+                data-cursor="hover"
+                class="text-sm text-off/80 transition-colors hover:text-off"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <p class="font-mono text-[11px] tracking-[0.22em] text-muted uppercase">Contact</p>
+        <a href="mailto:hello@aurora.studio" data-cursor="hover" class="mt-5 block text-sm">
+          hello@aurora.studio
+        </a>
+        <p class="mt-3 text-sm text-muted">
+          Madrid
+          <br />
+          Spain
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-16 flex flex-col gap-4 border-t border-off/10 pt-6 text-[11px] tracking-[0.14em] text-muted uppercase sm:flex-row sm:items-center sm:justify-between">
+      <p>© 2026 Aurora Studios</p>
+      <div class="flex gap-6">
+        <a href="/contact" data-cursor="hover">Privacy</a>
+        <a href="/contact" data-cursor="hover">Cookies</a>
+        <a href="https://instagram.com" target="_blank" rel="noreferrer" data-cursor="hover">Instagram</a>
+      </div>
+    </div>
+  </div>
+</footer>
